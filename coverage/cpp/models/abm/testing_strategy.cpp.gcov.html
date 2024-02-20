@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-02-20 16:33:32</td>
+            <td class="headerValue">2024-02-20 16:42:50</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">21</td>
@@ -227,12 +227,12 @@
 <a name="165"><span class="lineNum">     165 </span>            :     }</a>
 <a name="166"><span class="lineNum">     166 </span><span class="lineCov">         83 : }</span></a>
 <a name="167"><span class="lineNum">     167 </span>            : </a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">        955 : bool TestingStrategy::run_strategy(Person::RandomNumberGenerator&amp; rng, Person&amp; person, const Location&amp; location,</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">        958 : bool TestingStrategy::run_strategy(Person::RandomNumberGenerator&amp; rng, Person&amp; person, const Location&amp; location,</span></a>
 <a name="169"><span class="lineNum">     169 </span>            :                                    TimePoint t)</a>
 <a name="170"><span class="lineNum">     170 </span>            : {</a>
 <a name="171"><span class="lineNum">     171 </span>            :     // A Person is always allowed to go home and this is never called if a person is not discharged from a hospital or ICU.</a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">        955 :     if (location.get_type() == mio::abm::LocationType::Home) {</span></a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">        340 :         return true;</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">        958 :     if (location.get_type() == mio::abm::LocationType::Home) {</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">        343 :         return true;</span></a>
 <a name="174"><span class="lineNum">     174 </span>            :     }</a>
 <a name="175"><span class="lineNum">     175 </span>            : </a>
 <a name="176"><span class="lineNum">     176 </span>            :     //lookup schemes for this specific location as well as the location type</a>
