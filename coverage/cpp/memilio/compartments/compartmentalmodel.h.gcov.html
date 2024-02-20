@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-02-20 16:32:20</td>
+            <td class="headerValue">2024-02-20 16:33:32</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">31</td>
@@ -181,13 +181,13 @@
 <a name="119"><span class="lineNum">     119 </span>            :      * @param t the current time</a>
 <a name="120"><span class="lineNum">     120 </span>            :      * @param dydt a reference to the calculated output</a>
 <a name="121"><span class="lineNum">     121 </span>            :      */</a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">      63320 :     void eval_right_hand_side(Eigen::Ref&lt;const Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; pop,</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">      65312 :     void eval_right_hand_side(Eigen::Ref&lt;const Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; pop,</span></a>
 <a name="123"><span class="lineNum">     123 </span>            :                               Eigen::Ref&lt;const Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; y, FP t,</a>
 <a name="124"><span class="lineNum">     124 </span>            :                               Eigen::Ref&lt;Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; dydt) const</a>
 <a name="125"><span class="lineNum">     125 </span>            :     {</a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">      63320 :         dydt.setZero();</span></a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">      63320 :         this-&gt;get_derivatives(pop, y, t, dydt);</span></a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">      63320 :     }</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">      65312 :         dydt.setZero();</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">      65312 :         this-&gt;get_derivatives(pop, y, t, dydt);</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">      65312 :     }</span></a>
 <a name="129"><span class="lineNum">     129 </span>            : </a>
 <a name="130"><span class="lineNum">     130 </span>            :     /**</a>
 <a name="131"><span class="lineNum">     131 </span>            :      * @brief get_initial_values returns the initial values for the compartmental populations.</a>
@@ -253,18 +253,14 @@
 <a name="191"><span class="lineNum">     191 </span>            :  * @tparam FP, floating point type, e.g., double.</a>
 <a name="192"><span class="lineNum">     192 </span>            :  * @tparam Sim a type that may or may not be a compartment model.</a>
 <a name="193"><span class="lineNum">     193 </span>            :  */</a>
-<a name="194"><span class="lineNum">     194 </span>            : //template &lt;class M&gt;</a>
-<a name="195"><span class="lineNum">     195 </span>            : //using is_compartment_model = std::integral_constant&lt;bool, (is_expression_valid&lt;eval_right_hand_side_expr_t, M&gt;::value &amp;&amp;</a>
-<a name="196"><span class="lineNum">     196 </span>            : //                                                           is_expression_valid&lt;get_initial_values_expr_t, M&gt;::value&gt;)&gt;;</a>
-<a name="197"><span class="lineNum">     197 </span>            : </a>
-<a name="198"><span class="lineNum">     198 </span>            : template &lt;typename FP, class M&gt;</a>
-<a name="199"><span class="lineNum">     199 </span>            : using is_compartment_model =</a>
-<a name="200"><span class="lineNum">     200 </span>            :     std::integral_constant&lt;bool, (is_expression_valid&lt;eval_right_hand_side_expr_t, FP, M&gt;::value &amp;&amp;</a>
-<a name="201"><span class="lineNum">     201 </span>            :                                   is_expression_valid&lt;get_initial_values_expr_t, FP, M&gt;::value)&gt;;</a>
-<a name="202"><span class="lineNum">     202 </span>            : </a>
-<a name="203"><span class="lineNum">     203 </span>            : } // namespace mio</a>
-<a name="204"><span class="lineNum">     204 </span>            : </a>
-<a name="205"><span class="lineNum">     205 </span>            : #endif // MIO_COMPARTMENTALMODEL_H</a>
+<a name="194"><span class="lineNum">     194 </span>            : template &lt;typename FP, class M&gt;</a>
+<a name="195"><span class="lineNum">     195 </span>            : using is_compartment_model =</a>
+<a name="196"><span class="lineNum">     196 </span>            :     std::integral_constant&lt;bool, (is_expression_valid&lt;eval_right_hand_side_expr_t, FP, M&gt;::value &amp;&amp;</a>
+<a name="197"><span class="lineNum">     197 </span>            :                                   is_expression_valid&lt;get_initial_values_expr_t, FP, M&gt;::value)&gt;;</a>
+<a name="198"><span class="lineNum">     198 </span>            : </a>
+<a name="199"><span class="lineNum">     199 </span>            : } // namespace mio</a>
+<a name="200"><span class="lineNum">     200 </span>            : </a>
+<a name="201"><span class="lineNum">     201 </span>            : #endif // MIO_COMPARTMENTALMODEL_H</a>
 </pre>
       </td>
     </tr>
