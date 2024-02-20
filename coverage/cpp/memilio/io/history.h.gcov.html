@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - memilio/io/history.h</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">memilio/io</a> - history.h<span style="font-size: 80%;"> (source / <a href="history.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">20</td>
+            <td class="headerCovTableEntry">20</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2024-02-20 12:23:42</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">30</td>
+            <td class="headerCovTableEntry">43</td>
+            <td class="headerCovTableEntryLo">69.8 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /* </a>
+<a name="2"><span class="lineNum">       2 </span>            : * Copyright (C) 2020-2024 MEmilio</a>
+<a name="3"><span class="lineNum">       3 </span>            : *</a>
+<a name="4"><span class="lineNum">       4 </span>            : * Authors: Sascha Korf, Rene Schmieding </a>
+<a name="5"><span class="lineNum">       5 </span>            : *</a>
+<a name="6"><span class="lineNum">       6 </span>            : * Contact: Martin J. Kuehn &lt;Martin.Kuehn@DLR.de&gt;</a>
+<a name="7"><span class="lineNum">       7 </span>            : *</a>
+<a name="8"><span class="lineNum">       8 </span>            : * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</a>
+<a name="9"><span class="lineNum">       9 </span>            : * you may not use this file except in compliance with the License.</a>
+<a name="10"><span class="lineNum">      10 </span>            : * You may obtain a copy of the License at</a>
+<a name="11"><span class="lineNum">      11 </span>            : *</a>
+<a name="12"><span class="lineNum">      12 </span>            : *     http://www.apache.org/licenses/LICENSE-2.0</a>
+<a name="13"><span class="lineNum">      13 </span>            : *</a>
+<a name="14"><span class="lineNum">      14 </span>            : * Unless required by applicable law or agreed to in writing, software</a>
+<a name="15"><span class="lineNum">      15 </span>            : * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</a>
+<a name="16"><span class="lineNum">      16 </span>            : * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</a>
+<a name="17"><span class="lineNum">      17 </span>            : * See the License for the specific language governing permissions and</a>
+<a name="18"><span class="lineNum">      18 </span>            : * limitations under the License.</a>
+<a name="19"><span class="lineNum">      19 </span>            : */</a>
+<a name="20"><span class="lineNum">      20 </span>            : #ifndef MIO_IO_HISTORY_H</a>
+<a name="21"><span class="lineNum">      21 </span>            : #define MIO_IO_HISTORY_H</a>
+<a name="22"><span class="lineNum">      22 </span>            : </a>
+<a name="23"><span class="lineNum">      23 </span>            : #include &quot;memilio/utils/metaprogramming.h&quot;</a>
+<a name="24"><span class="lineNum">      24 </span>            : #include &lt;vector&gt;</a>
+<a name="25"><span class="lineNum">      25 </span>            : #include &lt;tuple&gt;</a>
+<a name="26"><span class="lineNum">      26 </span>            : #include &lt;iostream&gt;</a>
+<a name="27"><span class="lineNum">      27 </span>            : </a>
+<a name="28"><span class="lineNum">      28 </span>            : namespace mio</a>
+<a name="29"><span class="lineNum">      29 </span>            : {</a>
+<a name="30"><span class="lineNum">      30 </span>            : </a>
+<a name="31"><span class="lineNum">      31 </span>            : /**</a>
+<a name="32"><span class="lineNum">      32 </span>            :  * @brief This class writes data retrieved from loggers to memory. It can be used as the Writer template parameter for the History class.</a>
+<a name="33"><span class="lineNum">      33 </span>            :  * @tparam Loggers The loggers that are used to log data.</a>
+<a name="34"><span class="lineNum">      34 </span>            :  */</a>
+<a name="35"><span class="lineNum">      35 </span>            : template &lt;class... Loggers&gt;</a>
+<a name="36"><span class="lineNum">      36 </span>            : struct DataWriterToMemory {</a>
+<a name="37"><span class="lineNum">      37 </span>            :     using Data = std::tuple&lt;std::vector&lt;typename Loggers::Type&gt;...&gt;;</a>
+<a name="38"><span class="lineNum">      38 </span>            :     /**</a>
+<a name="39"><span class="lineNum">      39 </span>            :      * @brief Adds a new record for a given log result t to data.</a>
+<a name="40"><span class="lineNum">      40 </span>            :      * The parameter Logger is used to determine the type of the record t, as well as the data index at which</a>
+<a name="41"><span class="lineNum">      41 </span>            :      * the record should be added to.</a>
+<a name="42"><span class="lineNum">      42 </span>            :      * @param[in] t The result of Logger::log.</a>
+<a name="43"><span class="lineNum">      43 </span>            :      * @param[in,out] data An instance of Data to add the record to.</a>
+<a name="44"><span class="lineNum">      44 </span>            :      * @tparam Logger The type of the logger used to record t.</a>
+<a name="45"><span class="lineNum">      45 </span>            :      */</a>
+<a name="46"><span class="lineNum">      46 </span>            :     template &lt;class Logger&gt;</a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">         31 :     static void add_record(const typename Logger::Type&amp; t, Data&amp; data)</span></a>
+<a name="48"><span class="lineNum">      48 </span>            :     {</a>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">         31 :         std::get&lt;mio::index_of_type_v&lt;Logger, Loggers...&gt;&gt;(data).push_back(t);</span></a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">         31 :     }</span></a>
+<a name="51"><span class="lineNum">      51 </span>            : };</a>
+<a name="52"><span class="lineNum">      52 </span>            : </a>
+<a name="53"><span class="lineNum">      53 </span>            : /** </a>
+<a name="54"><span class="lineNum">      54 </span>            :  * @brief History class that handles writers and loggers.</a>
+<a name="55"><span class="lineNum">      55 </span>            :  * History provides a function &quot;log&quot; to add a new record and a function &quot;get_log&quot; to access all records.</a>
+<a name="56"><span class="lineNum">      56 </span>            :  *</a>
+<a name="57"><span class="lineNum">      57 </span>            :  * The History class uses Loggers to retrieve data from a given input, and a Writer to record this data.</a>
+<a name="58"><span class="lineNum">      58 </span>            :  * A Logger is a struct with a type `Type` and functions `Type log(const T&amp;)` and `bool should_log(const T&amp;)`.</a>
+<a name="59"><span class="lineNum">      59 </span>            :  * All Loggers must be unique types and default construcible/destructible. Their member &quot;should_log&quot; indicates whether</a>
+<a name="60"><span class="lineNum">      60 </span>            :  * to log, while &quot;Type&quot; and &quot;log&quot; determine what is logged. The input for &quot;should_log&quot; and &quot;log&quot; is the same input</a>
+<a name="61"><span class="lineNum">      61 </span>            :  * of type T that is given to &quot;History::log&quot;. (Note: T does not have to be a template for a Logger implementation.)</a>
+<a name="62"><span class="lineNum">      62 </span>            :  * The Writer defines the type `Data` to store all records (i.e. the return values of Logger::log), and the function</a>
+<a name="63"><span class="lineNum">      63 </span>            :  * `template &lt;class Logger&gt; static void add_record(const Logger::Type&amp;, Data&amp;)` to add a new record. &quot;add_record&quot; is</a>
+<a name="64"><span class="lineNum">      64 </span>            :  * used whenever &quot;History::log&quot; was called and &quot;Logger::should_log&quot; is true.</a>
+<a name="65"><span class="lineNum">      65 </span>            :  *</a>
+<a name="66"><span class="lineNum">      66 </span>            :  * @tparam Writer The writer that is used to handle the data, e.g. store it into an array.</a>
+<a name="67"><span class="lineNum">      67 </span>            :  * @tparam Loggers The loggers that are used to log data.</a>
+<a name="68"><span class="lineNum">      68 </span>            :  */</a>
+<a name="69"><span class="lineNum">      69 </span>            : template &lt;template &lt;class... /*Loggers*/&gt; class Writer, class... Loggers&gt;</a>
+<a name="70"><span class="lineNum">      70 </span>            : class History</a>
+<a name="71"><span class="lineNum">      71 </span>            : {</a>
+<a name="72"><span class="lineNum">      72 </span>            :     static_assert(!has_duplicates_v&lt;Loggers...&gt;, &quot;The Loggers used for a History must be unique.&quot;);</a>
+<a name="73"><span class="lineNum">      73 </span>            : </a>
+<a name="74"><span class="lineNum">      74 </span>            : public:</a>
+<a name="75"><span class="lineNum">      75 </span>            :     using WriteWrapper = Writer&lt;Loggers...&gt;;</a>
+<a name="76"><span class="lineNum">      76 </span>            : </a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">          3 :     History() = default;</span></a>
+<a name="78"><span class="lineNum">      78 </span>            : </a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          2 :     History(typename WriteWrapper::Data data)</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">          2 :         : m_data(data)</span></a>
+<a name="81"><span class="lineNum">      81 </span>            :     {</a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">          2 :     }</span></a>
+<a name="83"><span class="lineNum">      83 </span>            : </a>
+<a name="84"><span class="lineNum">      84 </span>            :     History(typename Loggers::Type... args)</a>
+<a name="85"><span class="lineNum">      85 </span>            :         : m_data(std::tie(args...))</a>
+<a name="86"><span class="lineNum">      86 </span>            :     {</a>
+<a name="87"><span class="lineNum">      87 </span>            :     }</a>
+<a name="88"><span class="lineNum">      88 </span>            : </a>
+<a name="89"><span class="lineNum">      89 </span>            :     /**</a>
+<a name="90"><span class="lineNum">      90 </span>            :      * @brief Logs new records according to the Writer and Loggers.</a>
+<a name="91"><span class="lineNum">      91 </span>            :      *</a>
+<a name="92"><span class="lineNum">      92 </span>            :      * Calls the log_impl function for every Logger for Input t to record data.</a>
+<a name="93"><span class="lineNum">      93 </span>            :      * @tparam T The type of the record.</a>
+<a name="94"><span class="lineNum">      94 </span>            :      * @param[in] t The input to record.</a>
+<a name="95"><span class="lineNum">      95 </span>            :      */</a>
+<a name="96"><span class="lineNum">      96 </span>            :     template &lt;class T&gt;</a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">        128 :     void log(const T&amp; t)</span></a>
+<a name="98"><span class="lineNum">      98 </span>            :     {</a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">        128 :         (log_impl(t, std::get&lt;index_of_type_v&lt;Loggers, Loggers...&gt;&gt;(m_loggers)), ...);</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">        128 :     }</span></a>
+<a name="101"><span class="lineNum">     101 </span>            : </a>
+<a name="102"><span class="lineNum">     102 </span>            :     /**</a>
+<a name="103"><span class="lineNum">     103 </span>            :      * @brief Get the data object.</a>
+<a name="104"><span class="lineNum">     104 </span>            :      * </a>
+<a name="105"><span class="lineNum">     105 </span>            :      * @return const WriteWrapper::Data&amp; </a>
+<a name="106"><span class="lineNum">     106 </span>            :      */</a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">          7 :     const typename WriteWrapper::Data&amp; get_log() const</span></a>
+<a name="108"><span class="lineNum">     108 </span>            :     {</a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">          7 :         return m_data;</span></a>
+<a name="110"><span class="lineNum">     110 </span>            :     }</a>
+<a name="111"><span class="lineNum">     111 </span>            : </a>
+<a name="112"><span class="lineNum">     112 </span>            : private:</a>
+<a name="113"><span class="lineNum">     113 </span>            :     typename WriteWrapper::Data m_data;</a>
+<a name="114"><span class="lineNum">     114 </span>            :     std::tuple&lt;Loggers...&gt; m_loggers;</a>
+<a name="115"><span class="lineNum">     115 </span>            : </a>
+<a name="116"><span class="lineNum">     116 </span>            :     /**</a>
+<a name="117"><span class="lineNum">     117 </span>            :      * @brief Checks if the given logger should log. If so, adds a record of the log to m_data.</a>
+<a name="118"><span class="lineNum">     118 </span>            :      * @param[in] t The argument given to History::log. Passed to Logger::should_log and Logger::log.</a>
+<a name="119"><span class="lineNum">     119 </span>            :      * @param[in] logger A Logger instance.</a>
+<a name="120"><span class="lineNum">     120 </span>            :      * @tparam Logger A logger from the list Loggers.</a>
+<a name="121"><span class="lineNum">     121 </span>            :      */</a>
+<a name="122"><span class="lineNum">     122 </span>            :     template &lt;class T, class Logger&gt;</a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">        182 :     void log_impl(const T&amp; t, Logger&amp; logger)</span></a>
+<a name="124"><span class="lineNum">     124 </span>            :     {</a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">        182 :         if (logger.should_log(t)) {</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">        132 :             WriteWrapper::template add_record&lt;Logger&gt;(logger.log(t), m_data);</span></a>
+<a name="127"><span class="lineNum">     127 </span>            :         }</a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">        182 :     }</span></a>
+<a name="129"><span class="lineNum">     129 </span>            : };</a>
+<a name="130"><span class="lineNum">     130 </span>            : </a>
+<a name="131"><span class="lineNum">     131 </span>            : template &lt;class... Loggers&gt;</a>
+<a name="132"><span class="lineNum">     132 </span>            : using HistoryWithMemoryWriter = History&lt;DataWriterToMemory, Loggers...&gt;;</a>
+<a name="133"><span class="lineNum">     133 </span>            : </a>
+<a name="134"><span class="lineNum">     134 </span>            : /**</a>
+<a name="135"><span class="lineNum">     135 </span>            :  * LogOnce and LogAlways can be used as a base class to write a logger for History. They each provide the function</a>
+<a name="136"><span class="lineNum">     136 </span>            :  * `bool should_log(const T&amp;)`, so that only the type `Type` and the function `Type log(const T&amp;)` have to be</a>
+<a name="137"><span class="lineNum">     137 </span>            :  * implemented for the derived logger, where T is some input type (the same type that is given to History::log).</a>
+<a name="138"><span class="lineNum">     138 </span>            :  * LogOnce logs only on the first call to History::log, while LogAlways logs on every call.</a>
+<a name="139"><span class="lineNum">     139 </span>            :  *</a>
+<a name="140"><span class="lineNum">     140 </span>            :  * For any other logging behaviour, should_log has to be defined in the logger (no base class required).</a>
+<a name="141"><span class="lineNum">     141 </span>            :  * @see History for a full list of requirements for a logger.</a>
+<a name="142"><span class="lineNum">     142 </span>            :  * @{</a>
+<a name="143"><span class="lineNum">     143 </span>            :  */</a>
+<a name="144"><span class="lineNum">     144 </span>            : struct LogOnce {</a>
+<a name="145"><span class="lineNum">     145 </span>            :     bool was_logged = false; ///&lt; Remember if this Logger was logged already.</a>
+<a name="146"><span class="lineNum">     146 </span>            : </a>
+<a name="147"><span class="lineNum">     147 </span>            :     /// @brief For any type T, returns true on the first call only, and false thereafter.</a>
+<a name="148"><span class="lineNum">     148 </span>            :     template &lt;class T&gt;</a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">         52 :     bool should_log(const T&amp;)</span></a>
+<a name="150"><span class="lineNum">     150 </span>            :     {</a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">         52 :         return was_logged ? false : (was_logged = true);</span></a>
+<a name="152"><span class="lineNum">     152 </span>            :     }</a>
+<a name="153"><span class="lineNum">     153 </span>            : };</a>
+<a name="154"><span class="lineNum">     154 </span>            : </a>
+<a name="155"><span class="lineNum">     155 </span>            : struct LogAlways {</a>
+<a name="156"><span class="lineNum">     156 </span>            :     /// @brief Always returns true, for any type T.</a>
+<a name="157"><span class="lineNum">     157 </span>            :     template &lt;class T&gt;</a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">        128 :     constexpr bool should_log(const T&amp;)</span></a>
+<a name="159"><span class="lineNum">     159 </span>            :     {</a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">        128 :         return true;</span></a>
+<a name="161"><span class="lineNum">     161 </span>            :     }</a>
+<a name="162"><span class="lineNum">     162 </span>            : };</a>
+<a name="163"><span class="lineNum">     163 </span>            : /** @} */</a>
+<a name="164"><span class="lineNum">     164 </span>            : </a>
+<a name="165"><span class="lineNum">     165 </span>            : } // namespace mio</a>
+<a name="166"><span class="lineNum">     166 </span>            : </a>
+<a name="167"><span class="lineNum">     167 </span>            : #endif // MIO_IO_HISTORY_H</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
