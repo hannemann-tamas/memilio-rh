@@ -10935,17 +10935,14 @@ from memilio.epidata import getDataIntoPandasDataFrame as gd
 pd.options.mode.copy_on_write = True
 
 
-def read_population_data(username, password):
-    &#39;&#39;&#39;! Reads Population data from regionalstatistik.de
+def getMobilityFromFile(directory, mobility_file):
+    &#34;&#34;&#34;! Gets a mobility matrix that is written in a plain txt file
+    under the given directory into a pandas data frame.
 
-    Username and Password are required to sign in on regionalstatistik.de.
-    A request is made to regionalstatistik.de and the StringIO is read in as a csv into the dataframe format.
-
-    @param username Username to sign in at regionalstatistik.de.
-    @param password Password to sign in at regionalstatistik.de.
-    @return DataFrame
-    &#39;&#39;&#39;
-</pre></td>
+    @param directory Path to folder where data is read.
+    @param mobility_file Mobility matrix file which has to be updated.
+    @return Mobility matrix data frame.
+    &#34;&#34;&#34;</pre></td>
             </tr>
             
             <tr>
@@ -10958,12 +10955,12 @@ def read_population_data(username, password):
                 <td><pre>Similar lines in 2 files
 ==memilio.epidata.getCaseData:[243:249]
 ==memilio.epidata.getDIVIData:[116:122]
+    try:
+        df[dd.EngEng[&#39;date&#39;]] = pd.to_datetime(
+            df[dd.EngEng[&#39;date&#39;]], format=&#34;ISO8601&#34;)
+    except ValueError:
         try:
-            df[dd.EngEng[&#39;date&#39;]] = pd.to_datetime(
-                df[dd.EngEng[&#39;date&#39;]], format=&#34;ISO8601&#34;)
-        except ValueError:
-            try:
-                df[dd.EngEng[&#39;date&#39;]] = pd.to_datetime(</pre></td>
+            df[dd.EngEng[&#39;date&#39;]] = pd.to_datetime(</pre></td>
             </tr>
             
             <tr>
@@ -10982,7 +10979,9 @@ import pandas as pd
 from memilio.epidata import defaultDict as dd
 from memilio.epidata import geoModificationGermany as geoger
 from memilio.epidata import getDataIntoPandasDataFrame as gd
-from memilio.epidata import modifyDataframeSeries as mdfs</pre></td>
+from memilio.epidata import modifyDataframeSeries as mdfs
+
+# activate CoW for more predictable behaviour of pandas DataFrames</pre></td>
             </tr>
             
             <tr>
@@ -11042,8 +11041,11 @@ from memilio.epidata import defaultDict as dd</pre></td>
     def setUp(self):
         self.setUpPyfakefs()
 
-    @patch(&#39;builtins.print&#39;)
-    def test_verify_sorted(self, mock_print):</pre></td>
+    @patch(&#39;memilio.epidata.getVaccinationData.download_vaccination_data&#39;,
+           return_value=df_vacc_data_altern)
+    @patch(&#39;memilio.epidata.getPopulationData.get_population_data&#39;, return_value=df_pop)
+    @patch(&#39;memilio.epidata.getDataIntoPandasDataFrame.user_choice&#39;, return_value=True)
+    def test_get_vaccination_data_alternative_ages(self, mockin, mockp, mockv):</pre></td>
             </tr>
             
             <tr>

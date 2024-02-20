@@ -70,10 +70,10 @@ $(function() {
 <div class="title">infection_state.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="ode__seair_2infection__state_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* </span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Copyright (C) 2020-2023 German Aerospace Center (DLR-SC)</span></div>
+<a href="ode__seair_2infection__state_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Copyright (C) 2020-2024 MEmilio</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* Authors: Daniel Abele, Jan Kleinert, Martin J. Kuehn</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* Authors: Ralf Hannemann-Tamas</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">* Contact: Martin J. Kuehn &lt;Martin.Kuehn@DLR.de&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*</span></div>
@@ -89,31 +89,32 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">* limitations under the License.</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifndef SEAIR_INFECTIONSTATE_H</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define SEAIR_INFECTIONSTATE_H</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacemio.html">mio</a></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="namespacemio_1_1oseair.html">   25</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceoseair.html">oseair</a></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548">   32</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548">InfectionState</a></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548a494bf3eaa390dc405dd04ed1c8c99311">Susceptible</a>,</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548aa54eecd5041d37f5c8443e0ee91e241a">Exposed</a>,</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548ae11a453510398112e5dba69d300da48b">Infected</a>,</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548a5c4c4cf7bbab0d76fe61420aee14a5ca">Recovered</a>,</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548a5b6d524f05c5c3a608463b08ee7d31e5">Asymptomatic</a>,</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548a68663124b7ad1d58d7b52803ea6d45c5">Perished</a>,</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548ab9403d562bb9424d57529d24043d3569">ObjectiveFunction</a>,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548ae93f994f01c537c4e2f7d8528c3eb5e9">Count</a></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;} <span class="comment">// namespace oseair</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;} <span class="comment">// namespace mio</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SEAIR_INFECTIONSTATE_H</span></div>
-<div class="ttc" id="anamespacemio_1_1oseair_html_a289e5c3e59772dac90a736f54b1fc548"><div class="ttname"><a href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548">mio::oseair::InfectionState</a></div><div class="ttdeci">InfectionState</div><div class="ttdoc">The InfectionState enum describes the possible categories for the infectious state of persons.</div><div class="ttdef"><b>Definition:</b> infection_state.h:33</div></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#ifndef ODESEAIR_INFECTIONSTATE_H</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define ODESEAIR_INFECTIONSTATE_H</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacemio.html">mio</a></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="namespacemio_1_1oseair.html">   26</a></span>&#160;<span class="keyword">namespace </span>oseair</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548">   33</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548">InfectionState</a></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548a494bf3eaa390dc405dd04ed1c8c99311">Susceptible</a>,</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548aa54eecd5041d37f5c8443e0ee91e241a">Exposed</a>,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548ae11a453510398112e5dba69d300da48b">Infected</a>,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548a5c4c4cf7bbab0d76fe61420aee14a5ca">Recovered</a>,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548a5b6d524f05c5c3a608463b08ee7d31e5">Asymptomatic</a>,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548a68663124b7ad1d58d7b52803ea6d45c5">Perished</a>,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548ab9403d562bb9424d57529d24043d3569">ObjectiveFunction</a>,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548ae93f994f01c537c4e2f7d8528c3eb5e9">Count</a></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;} <span class="comment">// namespace oseair</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;} <span class="comment">// namespace mio</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// ODESEAIR_INFECTIONSTATE_H</span></div>
+<div class="ttc" id="anamespacemio_1_1oseair_html_a289e5c3e59772dac90a736f54b1fc548"><div class="ttname"><a href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548">mio::oseair::InfectionState</a></div><div class="ttdeci">InfectionState</div><div class="ttdoc">The InfectionState enum describes the possible categories for the infectious state of persons.</div><div class="ttdef"><b>Definition:</b> infection_state.h:34</div></div>
 <div class="ttc" id="anamespacemio_1_1oseair_html_a289e5c3e59772dac90a736f54b1fc548a494bf3eaa390dc405dd04ed1c8c99311"><div class="ttname"><a href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548a494bf3eaa390dc405dd04ed1c8c99311">mio::oseair::InfectionState::Susceptible</a></div><div class="ttdeci">@ Susceptible</div></div>
 <div class="ttc" id="anamespacemio_1_1oseair_html_a289e5c3e59772dac90a736f54b1fc548a5b6d524f05c5c3a608463b08ee7d31e5"><div class="ttname"><a href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548a5b6d524f05c5c3a608463b08ee7d31e5">mio::oseair::InfectionState::Asymptomatic</a></div><div class="ttdeci">@ Asymptomatic</div></div>
 <div class="ttc" id="anamespacemio_1_1oseair_html_a289e5c3e59772dac90a736f54b1fc548a5c4c4cf7bbab0d76fe61420aee14a5ca"><div class="ttname"><a href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548a5c4c4cf7bbab0d76fe61420aee14a5ca">mio::oseair::InfectionState::Recovered</a></div><div class="ttdeci">@ Recovered</div></div>
@@ -123,7 +124,6 @@ $(function() {
 <div class="ttc" id="anamespacemio_1_1oseair_html_a289e5c3e59772dac90a736f54b1fc548ae11a453510398112e5dba69d300da48b"><div class="ttname"><a href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548ae11a453510398112e5dba69d300da48b">mio::oseair::InfectionState::Infected</a></div><div class="ttdeci">@ Infected</div></div>
 <div class="ttc" id="anamespacemio_1_1oseair_html_a289e5c3e59772dac90a736f54b1fc548ae93f994f01c537c4e2f7d8528c3eb5e9"><div class="ttname"><a href="namespacemio_1_1oseair.html#a289e5c3e59772dac90a736f54b1fc548ae93f994f01c537c4e2f7d8528c3eb5e9">mio::oseair::InfectionState::Count</a></div><div class="ttdeci">@ Count</div></div>
 <div class="ttc" id="anamespacemio_html"><div class="ttname"><a href="namespacemio.html">mio</a></div><div class="ttdoc">A collection of classes to simplify handling of matrix shapes in meta programming.</div><div class="ttdef"><b>Definition:</b> compartmentalmodel.h:33</div></div>
-<div class="ttc" id="anamespaceoseair_html"><div class="ttname"><a href="namespaceoseair.html">oseair</a></div><div class="ttdef"><b>Definition:</b> model.cpp:23</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
