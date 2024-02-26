@@ -131,7 +131,7 @@ var searchData=
   ['customindexarray_3c_20int_2c_20mio_3a_3aagegroup_20_3e_367',['CustomIndexArray&lt; int, mio::AgeGroup &gt;',['../classmio_1_1CustomIndexArray.html',1,'mio']]],
   ['customindexarray_3c_20scalartype_2c_20virusvariant_20_3e_368',['CustomIndexArray&lt; ScalarType, VirusVariant &gt;',['../classmio_1_1CustomIndexArray.html',1,'mio']]],
   ['customindexarray_3c_20scalartype_2c_20virusvariant_2c_20mio_3a_3aagegroup_20_3e_369',['CustomIndexArray&lt; ScalarType, VirusVariant, mio::AgeGroup &gt;',['../classmio_1_1CustomIndexArray.html',1,'mio']]],
-  ['customindexarray_3c_20uncertainvalue_3c_20double_20_3e_2c_20categories_2e_2e_2e_20_3e_370',['CustomIndexArray&lt; UncertainValue&lt; double &gt;, Categories... &gt;',['../classmio_1_1CustomIndexArray.html',1,'mio']]],
+  ['customindexarray_3c_20uncertainvalue_3c_20scalartype_20_3e_2c_20categories_2e_2e_2e_20_3e_370',['CustomIndexArray&lt; UncertainValue&lt; ScalarType &gt;, Categories... &gt;',['../classmio_1_1CustomIndexArray.html',1,'mio']]],
   ['customplot_2epy_371',['customPlot.py',['../customPlot_8py.html',1,'']]],
   ['cvplainmatrix_372',['CVPlainMatrix',['../structmio_1_1CVPlainMatrix.html',1,'mio']]],
   ['cvplainmatrix_3c_20eigen_3a_3aref_3c_20const_20m_20_3e_20_3e_373',['CVPlainMatrix&lt; Eigen::Ref&lt; const M &gt; &gt;',['../structmio_1_1CVPlainMatrix_3_01Eigen_1_1Ref_3_01const_01M_01_4_01_4.html',1,'mio']]],
