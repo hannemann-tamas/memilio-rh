@@ -67,7 +67,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>This module models and simulates the epidemic using an ODE-based SECIR-type model approach. Unlike the agent based model that uses particular agents, this model simulates the spread of a communicable disease in a population with subpopulations being in different compartments such as <code>Exposed</code>, <code>InfectedNoSymptoms</code>, <code>InfectedSymptoms</code> or <code>Recovered</code>. Individuals with and without symptoms are supposed to be infectious.</p>
-<h1><a class="anchor" id="autotoc_md47"></a>
+<h1><a class="anchor" id="autotoc_md48"></a>
 Structure</h1>
 <p>The model consists of the following major classes:</p><ol type="1">
 <li>Populations: Generic class to create groups and/or compartments, i.e., subpopulations of a total population, using multiple dimensions. Dimensions can be age, infection state, income, gender, etc.</li>
@@ -78,7 +78,7 @@ Structure</h1>
 <li>Parameter Studies: Method to be called on a set of 'Parameters' with a given set of random distributions to sample from the distributions and run ensemble simulations with the obtained samples.</li>
 </ol>
 <p>Below is an overview of the model architecture and its compartments.</p>
-<p><img src="https://github.com/SciCompMod/memilio/assets/69154294/d99b257b-1cc2-447d-8e32-ba3aa8329c0c" alt="secir_model" class="inline"/> </p><table class="markdownTable">
+<p><img src="https://github.com/SciCompMod/memilio/assets/70579874/46b09e8a-d083-4ef9-8328-21975890b60f" alt="secir_model" class="inline"/> </p><table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Mathematical variable   </th><th class="markdownTableHeadNone">C++ variable name   </th><th class="markdownTableHeadNone">Description    </th></tr>
 <tr class="markdownTableRowOdd">
@@ -94,9 +94,9 @@ Structure</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">$D_i$   </td><td class="markdownTableBodyNone"><code>Di</code>   </td><td class="markdownTableBodyNone">Number of death people of age group $i$.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">$\frac{1}{T_{E}}$   </td><td class="markdownTableBodyNone"><code>rateE</code>   </td><td class="markdownTableBodyNone">Time in days an individual stays in the Exposed compartment (Computed from <code>SerialInterval</code> and <code>IncubationPeriod</code>).    </td></tr>
+<td class="markdownTableBodyNone">$\frac{1}{T_{E}}$   </td><td class="markdownTableBodyNone"><code>rateE</code>   </td><td class="markdownTableBodyNone">Reciprocal of the time in days an individual stays in the Exposed compartment (Computed from <code>SerialInterval</code> and <code>IncubationPeriod</code>).    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">$\frac{1}{T_{I_{NS}}}$   </td><td class="markdownTableBodyNone"><code>rateINS</code>   </td><td class="markdownTableBodyNone">Time in days an individual stays in the InfectedNoSymptoms compartment (Computed from <code>SerialInterval</code> and <code>IncubationPeriod</code>).    </td></tr>
+<td class="markdownTableBodyNone">$\frac{1}{T_{I_{NS}}}$   </td><td class="markdownTableBodyNone"><code>rateINS</code>   </td><td class="markdownTableBodyNone">Reciprocal of the time in days an individual stays in the InfectedNoSymptoms compartment (Computed from <code>SerialInterval</code> and <code>IncubationPeriod</code>).    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">$T_{I_{Sy}}$   </td><td class="markdownTableBodyNone"><code>TimeInfectedSymptoms</code>   </td><td class="markdownTableBodyNone">Time in days an individual stays in the InfectedSymptoms compartment.    </td></tr>
 <tr class="markdownTableRowEven">
@@ -112,10 +112,10 @@ Structure</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">$\mu_{I_{Cr}}^{D}$   </td><td class="markdownTableBodyNone"><code>DeathsPerCritical</code>   </td><td class="markdownTableBodyNone">Probability of dying when in compartment InfectedCritical.   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md48"></a>
+<h1><a class="anchor" id="autotoc_md49"></a>
 Simulation</h1>
 <p>The simulation runs in discrete time steps using a numerical integration scheme. At each time step, a part of the population of each age-aware compartment moves from the current compartment to a new one. Different numerical integrations schemes are available, see the <code>math</code> folder. The Simulation class handles the parameters and the numerical integrator. It also stores the result. Ensemble runs can be done using the Parameter Studies class as soon as random distributions are set for all the parameters. This can be done using the Parameter Space class.</p>
-<h1><a class="anchor" id="autotoc_md49"></a>
+<h1><a class="anchor" id="autotoc_md50"></a>
 Examples</h1>
 <p>Different examples can be found at:</p>
 <ul>

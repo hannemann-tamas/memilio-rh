@@ -66,22 +66,73 @@ $(function() {
 <div class="title">LCT SECIR model </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This model is based on the Linear Chain Trick. For the concept see</p><ul>
+<div class="textblock"><p>This model is based on the Linear Chain Trick.</p>
+<p>The Linear Chain Trick provides the option to use Erlang-distributed sojourn times in the compartments through the use of subcompartments. The normal ODE models have (possibly unrealistic) exponentially distributed sojourn times. The LCT model can still be described by an ordinary differential equation system.</p>
+<p>For the concept see</p><ul>
 <li>Lena Plötzke, "Der Linear Chain Trick in der epidemiologischen Modellierung als Kompromiss zwischen gewöhnlichen und Integro-Differentialgleichungen", 2023. (<a href="https://elib.dlr.de/200381/">https://elib.dlr.de/200381/</a>, German only)</li>
 <li>P. J. Hurtado und A. S. Kirosingh, "Generalizations of the ‘Linear Chain Trick’: incorporating more flexible dwell time distributions into mean field ODE models“, 2019. (<a href="https://doi.org/10.1007/s00285-019-01412-w">https://doi.org/10.1007/s00285-019-01412-w</a>)</li>
 </ul>
 <p>The eight compartments</p><ul>
-<li>Susceptible, may become exposed at any time</li>
-<li>Exposed, becomes infected after some time</li>
-<li>InfectedNoSymptoms, becomes InfectedSymptoms or Recovered after some time</li>
-<li>InfectedSymptoms, becomes InfectedSevere or Recovered after some time</li>
-<li>InfectedSevere, becomes InfectedCritical or Recovered after some time</li>
-<li>InfectedCritical, becomes Recovered or Dead after some time</li>
-<li>Recovered</li>
-<li>Dead</li>
+<li><code>Susceptible</code> ($S$), may become exposed at any time</li>
+<li><code>Exposed</code> ($E$), becomes infected after some time</li>
+<li><code>InfectedNoSymptoms</code> ($I_{NS}$), becomes InfectedSymptoms or Recovered after some time</li>
+<li><code>InfectedSymptoms</code> ($I_{Sy}$), becomes InfectedSevere or Recovered after some time</li>
+<li><code>InfectedSevere</code> ($I_{Sev}$), becomes InfectedCritical or Recovered after some time</li>
+<li><code>InfectedCritical</code> ($I_{Cr}$), becomes Recovered or Dead after some time</li>
+<li><code>Recovered</code> ($R$)</li>
+<li><code>Dead</code> ($D$)</li>
 </ul>
 <p>are used to simulate the spread of the disease. It is possible to include subcompartments for the five compartments Exposed, InfectedNoSymptoms, InfectedSymptoms, InfectedSevere and InfectedCritical.</p>
-<p>A simple example can be found at: examples/lct_secir.cpp. </p>
+<p>Below is an overview of the model architecture and its compartments.</p>
+<p><img src="https://github.com/SciCompMod/memilio/assets/70579874/6a5d5a95-20f9-4176-8894-c091bd48bfb7" alt="tikzLCTSECIR" class="inline"/></p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Mathematical variable   </th><th class="markdownTableHeadNone">C++ variable name   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">$\phi$   </td><td class="markdownTableBodyNone"><code>ContactPatterns</code>   </td><td class="markdownTableBodyNone">Average number of contacts of a person per day.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">$\rho$   </td><td class="markdownTableBodyNone"><code>TransmissionProbabilityOnContact</code>   </td><td class="markdownTableBodyNone">Transmission risk for people located in the susceptible compartments.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">$\xi_{I_{NS}}$   </td><td class="markdownTableBodyNone"><code>RelativeTransmissionNoSymptoms</code>   </td><td class="markdownTableBodyNone">Proportion of nonsymptomatically infected people who are not isolated.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">$\xi_{I_{Sy}}$   </td><td class="markdownTableBodyNone"><code>RiskOfInfectionFromSymptomatic</code>   </td><td class="markdownTableBodyNone">Proportion of infected people with symptomps who are not isolated.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">$N$   </td><td class="markdownTableBodyNone"><code>m_N0</code>   </td><td class="markdownTableBodyNone">Total population.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">$D$   </td><td class="markdownTableBodyNone"><code>D</code>   </td><td class="markdownTableBodyNone">Number of death people.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">$n_E$   </td><td class="markdownTableBodyNone">Defined via <code>InfectionState</code>   </td><td class="markdownTableBodyNone">Number of subcompartments of the Exposed compartment.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">$n_{NS}$   </td><td class="markdownTableBodyNone">Defined via <code>InfectionState</code>   </td><td class="markdownTableBodyNone">Number of subcompartments of the InfectedNoSymptoms compartment.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">$n_{Sy}$   </td><td class="markdownTableBodyNone">Defined via <code>InfectionState</code>   </td><td class="markdownTableBodyNone">Number of subcompartments of the InfectedSymptoms compartment.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">$n_{Sev}$   </td><td class="markdownTableBodyNone">Defined via <code>InfectionState</code>   </td><td class="markdownTableBodyNone">Number of subcompartments of the InfectedSevere compartment.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">$n_{Cr}$   </td><td class="markdownTableBodyNone">Defined via <code>InfectionState</code>   </td><td class="markdownTableBodyNone">Number of subcompartments of the InfectedCritical compartment.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">$T_E$   </td><td class="markdownTableBodyNone"><code>TimeExposed</code>   </td><td class="markdownTableBodyNone">Average time in days an individual stays in the Exposed compartment.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">$T_{I_{NS}}$   </td><td class="markdownTableBodyNone"><code>TimeInfectedNoSymptoms</code>   </td><td class="markdownTableBodyNone">Average time in days an individual stays in the InfectedNoSymptoms compartment.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">$T_{I_{Sy}}$   </td><td class="markdownTableBodyNone"><code>TimeInfectedSymptoms</code>   </td><td class="markdownTableBodyNone">Average time in days an individual stays in the InfectedSymptoms compartment.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">$T_{I_{Sev}}$   </td><td class="markdownTableBodyNone"><code>TimeInfectedSevere</code>   </td><td class="markdownTableBodyNone">Average time in days an individual stays in the InfectedSevere compartment.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">$T_{I_{Cr}}$   </td><td class="markdownTableBodyNone"><code>TimeInfectedCritical</code>   </td><td class="markdownTableBodyNone">Average time in days an individual stays in the InfectedCritical compartment.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">$\mu_{I_{NS}}^{R}$   </td><td class="markdownTableBodyNone"><code>RecoveredPerInfectedNoSymptoms</code>   </td><td class="markdownTableBodyNone">Probability of transition from compartment InfectedNoSymptoms to Recovered.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">$\mu_{I_{Sy}}^{I_{Sev}}$   </td><td class="markdownTableBodyNone"><code>SeverePerInfectedSymptoms</code>   </td><td class="markdownTableBodyNone">Probability of transition from compartment InfectedSymptoms to InfectedSevere.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">$\mu_{I_{Sev}}^{I_{Cr}}$   </td><td class="markdownTableBodyNone"><code>CriticalPerSevere</code>   </td><td class="markdownTableBodyNone">Probability of transition from compartment InfectedSevere to InfectedCritical.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">$\mu_{I_{Cr}}^{D}$   </td><td class="markdownTableBodyNone"><code>DeathsPerCritical</code>   </td><td class="markdownTableBodyNone">Probability of dying when in compartment InfectedCritical.   </td></tr>
+</table>
+<p>The notation of the compartments with indices here stands for subcompartments and not for age groups or similar, as in some ODE models. Accordingly, $I_{NS,n_{NS}}$, for example, stands for the number of people in the $n_{NS}$-th subcompartment of the InfectedNoSymptoms compartment.</p>
+<h1><a class="anchor" id="autotoc_md45"></a>
+Examples</h1>
+<p>A simple example can be found at <a href="../../examples/lct_secir.cpp">LCT minimal example</a>. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
