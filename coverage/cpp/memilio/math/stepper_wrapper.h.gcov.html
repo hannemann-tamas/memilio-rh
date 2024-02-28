@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-02-28 14:49:23</td>
+            <td class="headerValue">2024-02-28 14:52:12</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">24</td>
@@ -136,26 +136,26 @@
 <a name="74"><span class="lineNum">      74 </span>            :     * @param[in,out] dt current time step h=dt</a>
 <a name="75"><span class="lineNum">      75 </span>            :     * @param[out] ytp1 approximated value y(t+1)</a>
 <a name="76"><span class="lineNum">      76 </span>            :     */</a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">      11910 :     bool step(const mio::DerivFunction&lt;FP&gt;&amp; f, Eigen::Ref&lt;Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt; const&gt; yt, FP&amp; t, FP&amp; dt,</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">      12128 :     bool step(const mio::DerivFunction&lt;FP&gt;&amp; f, Eigen::Ref&lt;Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt; const&gt; yt, FP&amp; t, FP&amp; dt,</span></a>
 <a name="78"><span class="lineNum">      78 </span>            :               Eigen::Ref&lt;Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; ytp1) const override</a>
 <a name="79"><span class="lineNum">      79 </span>            :     {</a>
 <a name="80"><span class="lineNum">      80 </span>            :         // copy y(t) to dydt, to retrieve the VectorXd from the Ref</a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">      11910 :         dydt           = yt;</span></a>
-<a name="82"><span class="lineNum">      82 </span><span class="lineCov">      11910 :         const FP t_old = t; // t is updated by try_step on a successfull step</span></a>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">       1682 :         do {</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">      12128 :         dydt           = yt;</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">      12128 :         const FP t_old = t; // t is updated by try_step on a successfull step</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">       1706 :         do {</span></a>
 <a name="84"><span class="lineNum">      84 </span>            :             // we use the scheme try_step(sys, inout, t, dt) with sys=f, inout=y(t) for</a>
 <a name="85"><span class="lineNum">      85 </span>            :             // in-place computation. This is similiar to do_step, but it can update t and dt</a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineCov">      27184 :             m_stepper.try_step(</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">      27668 :             m_stepper.try_step(</span></a>
 <a name="87"><span class="lineNum">      87 </span>            :                 // reorder arguments of the DerivFunction f for the stepper</a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">     163204 :                 [&amp;](const Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&amp; x, Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&amp; dxds, FP s) {</span></a>
-<a name="89"><span class="lineNum">      89 </span><span class="lineCov">      81602 :                     dxds.resizeLike(x); // try_step calls sys with a vector of size 0 for some reason</span></a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">      81602 :                     f(x, s, dxds);</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">     166108 :                 [&amp;](const Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&amp; x, Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&amp; dxds, FP s) {</span></a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">      83054 :                     dxds.resizeLike(x); // try_step calls sys with a vector of size 0 for some reason</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">      83054 :                     f(x, s, dxds);</span></a>
 <a name="91"><span class="lineNum">      91 </span>            :                 },</a>
-<a name="92"><span class="lineNum">      92 </span><span class="lineCov">      13592 :                 dydt, t, dt);</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">      13834 :                 dydt, t, dt);</span></a>
 <a name="93"><span class="lineNum">      93 </span>            :             // stop on a successfull step or a failed step size adaption (w.r.t. the minimal step size)</a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">      13592 :         } while (t == t_old &amp;&amp; dt &gt; m_dt_min);</span></a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineCov">      11910 :         ytp1 = dydt; // output new y(t)</span></a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineCov">      11910 :         return dt &gt; m_dt_min;</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">      13834 :         } while (t == t_old &amp;&amp; dt &gt; m_dt_min);</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">      12128 :         ytp1 = dydt; // output new y(t)</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">      12128 :         return dt &gt; m_dt_min;</span></a>
 <a name="97"><span class="lineNum">      97 </span>            :     }</a>
 <a name="98"><span class="lineNum">      98 </span>            : </a>
 <a name="99"><span class="lineNum">      99 </span>            :     /// @param tol the required absolute tolerance for comparison of the iterative approximation</a>

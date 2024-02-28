@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-02-28 14:49:23</td>
+            <td class="headerValue">2024-02-28 14:52:12</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">31</td>
@@ -82,14 +82,14 @@
 <a name="20"><span class="lineNum">      20 </span>            : #ifndef MIO_COMPARTMENTALMODEL_H</a>
 <a name="21"><span class="lineNum">      21 </span>            : #define MIO_COMPARTMENTALMODEL_H</a>
 <a name="22"><span class="lineNum">      22 </span>            : </a>
-<a name="23"><span class="lineNum">      23 </span>            : #include &quot;memilio/config.h&quot; // IWYU pragma: keep</a>
-<a name="24"><span class="lineNum">      24 </span>            : #include &quot;memilio/math/eigen.h&quot; // IWYU pragma: keep</a>
-<a name="25"><span class="lineNum">      25 </span>            : #include &quot;memilio/utils/custom_index_array.h&quot; // IWYU pragma: keep</a>
+<a name="23"><span class="lineNum">      23 </span>            : #include &quot;memilio/config.h&quot;</a>
+<a name="24"><span class="lineNum">      24 </span>            : #include &quot;memilio/math/eigen.h&quot;</a>
+<a name="25"><span class="lineNum">      25 </span>            : #include &quot;memilio/utils/custom_index_array.h&quot;</a>
 <a name="26"><span class="lineNum">      26 </span>            : #include &quot;memilio/utils/metaprogramming.h&quot;</a>
-<a name="27"><span class="lineNum">      27 </span>            : #include &lt;cstddef&gt; // IWYU pragma: keep</a>
+<a name="27"><span class="lineNum">      27 </span>            : #include &lt;cstddef&gt;</a>
 <a name="28"><span class="lineNum">      28 </span>            : #include &lt;type_traits&gt;</a>
-<a name="29"><span class="lineNum">      29 </span>            : #include &lt;vector&gt; // IWYU pragma: keep</a>
-<a name="30"><span class="lineNum">      30 </span>            : #include &lt;functional&gt; // IWYU pragma: keep</a>
+<a name="29"><span class="lineNum">      29 </span>            : #include &lt;vector&gt;</a>
+<a name="30"><span class="lineNum">      30 </span>            : #include &lt;functional&gt;</a>
 <a name="31"><span class="lineNum">      31 </span>            : </a>
 <a name="32"><span class="lineNum">      32 </span>            : namespace mio</a>
 <a name="33"><span class="lineNum">      33 </span>            : {</a>
@@ -181,13 +181,13 @@
 <a name="119"><span class="lineNum">     119 </span>            :      * @param t the current time</a>
 <a name="120"><span class="lineNum">     120 </span>            :      * @param dydt a reference to the calculated output</a>
 <a name="121"><span class="lineNum">     121 </span>            :      */</a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">      63758 :     void eval_right_hand_side(Eigen::Ref&lt;const Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; pop,</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">      65210 :     void eval_right_hand_side(Eigen::Ref&lt;const Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; pop,</span></a>
 <a name="123"><span class="lineNum">     123 </span>            :                               Eigen::Ref&lt;const Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; y, FP t,</a>
 <a name="124"><span class="lineNum">     124 </span>            :                               Eigen::Ref&lt;Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; dydt) const</a>
 <a name="125"><span class="lineNum">     125 </span>            :     {</a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">      63758 :         dydt.setZero();</span></a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">      63758 :         this-&gt;get_derivatives(pop, y, t, dydt);</span></a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">      63758 :     }</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">      65210 :         dydt.setZero();</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">      65210 :         this-&gt;get_derivatives(pop, y, t, dydt);</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">      65210 :     }</span></a>
 <a name="129"><span class="lineNum">     129 </span>            : </a>
 <a name="130"><span class="lineNum">     130 </span>            :     /**</a>
 <a name="131"><span class="lineNum">     131 </span>            :      * @brief get_initial_values returns the initial values for the compartmental populations.</a>
