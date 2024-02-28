@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-02-28 14:52:12</td>
+            <td class="headerValue">2024-02-28 14:57:31</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">141</td>
@@ -171,21 +171,21 @@
 <a name="109"><span class="lineNum">     109 </span>            :      * @param[in] flows The current flow values (as calculated by get_flows) as a flat array.</a>
 <a name="110"><span class="lineNum">     110 </span>            :      * @param[out] dydt A reference to the calculated output.</a>
 <a name="111"><span class="lineNum">     111 </span>            :      */</a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">      91806 :     void get_derivatives(Eigen::Ref&lt;const Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; flows,</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">      93060 :     void get_derivatives(Eigen::Ref&lt;const Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; flows,</span></a>
 <a name="113"><span class="lineNum">     113 </span>            :                          Eigen::Ref&lt;Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; dydt) const</a>
 <a name="114"><span class="lineNum">     114 </span>            :     {</a>
 <a name="115"><span class="lineNum">     115 </span>            :         // set dydt to 0, then iteratively add all flow contributions</a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">      91806 :         dydt.setZero();</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">      93060 :         dydt.setZero();</span></a>
 <a name="117"><span class="lineNum">     117 </span>            :         if constexpr (std::is_same_v&lt;FlowIndex, Index&lt;&gt;&gt;) {</a>
 <a name="118"><span class="lineNum">     118 </span>            :             // special case where PopIndex only contains Comp, hence FlowIndex has no dimensions to iterate over</a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">      46256 :             get_rhs_impl(flows, dydt, Index&lt;&gt;{});</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">      46244 :             get_rhs_impl(flows, dydt, Index&lt;&gt;{});</span></a>
 <a name="120"><span class="lineNum">     120 </span>            :         }</a>
 <a name="121"><span class="lineNum">     121 </span>            :         else {</a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">     145434 :             for (FlowIndex I : make_index_range(reduce_index&lt;FlowIndex&gt;(this-&gt;populations.size()))) {</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">      49942 :                 get_rhs_impl(flows, dydt, I);</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">     147696 :             for (FlowIndex I : make_index_range(reduce_index&lt;FlowIndex&gt;(this-&gt;populations.size()))) {</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">      50440 :                 get_rhs_impl(flows, dydt, I);</span></a>
 <a name="124"><span class="lineNum">     124 </span>            :             }</a>
 <a name="125"><span class="lineNum">     125 </span>            :         }</a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">      91806 :     }</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">      93060 :     }</span></a>
 <a name="127"><span class="lineNum">     127 </span>            : </a>
 <a name="128"><span class="lineNum">     128 </span>            :     /**</a>
 <a name="129"><span class="lineNum">     129 </span>            :      * @brief Compute the right-hand-side f(y, t) of the ODE and store it in dydt.</a>
@@ -198,14 +198,14 @@
 <a name="136"><span class="lineNum">     136 </span>            :      * @param[in] t The current time.</a>
 <a name="137"><span class="lineNum">     137 </span>            :      * @param[out] dydt A reference to the calculated output.</a>
 <a name="138"><span class="lineNum">     138 </span>            :      */</a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">      70722 :     void get_derivatives(Eigen::Ref&lt;const Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; pop,</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">      71976 :     void get_derivatives(Eigen::Ref&lt;const Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; pop,</span></a>
 <a name="140"><span class="lineNum">     140 </span>            :                          Eigen::Ref&lt;const Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; y, FP t,</a>
 <a name="141"><span class="lineNum">     141 </span>            :                          Eigen::Ref&lt;Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; dydt) const override final</a>
 <a name="142"><span class="lineNum">     142 </span>            :     {</a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">      70722 :         m_flow_values.setZero();</span></a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">      70722 :         get_flows(pop, y, t, m_flow_values);</span></a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">      70722 :         get_derivatives(m_flow_values, dydt);</span></a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">      70722 :     }</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">      71976 :         m_flow_values.setZero();</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">      71976 :         get_flows(pop, y, t, m_flow_values);</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">      71976 :         get_derivatives(m_flow_values, dydt);</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">      71976 :     }</span></a>
 <a name="147"><span class="lineNum">     147 </span>            : </a>
 <a name="148"><span class="lineNum">     148 </span>            :     /**</a>
 <a name="149"><span class="lineNum">     149 </span>            :      * @brief Initial values for flows.</a>
@@ -244,15 +244,15 @@
 <a name="182"><span class="lineNum">     182 </span>            :      * @return A flat index into a data structure storing flow values.</a>
 <a name="183"><span class="lineNum">     183 </span>            :      */</a>
 <a name="184"><span class="lineNum">     184 </span>            :     template &lt;Comp Source, Comp Target&gt;</a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">    1767281 :     size_t get_flat_flow_index(const FlowIndex&amp; indices) const</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">    1779881 :     size_t get_flat_flow_index(const FlowIndex&amp; indices) const</span></a>
 <a name="186"><span class="lineNum">     186 </span>            :     {</a>
 <a name="187"><span class="lineNum">     187 </span>            :         if constexpr (std::is_same_v&lt;FlowIndex, Index&lt;&gt;&gt;) {</a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">     138768 :             return get_flat_flow_index&lt;Source, Target&gt;();</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">     138732 :             return get_flat_flow_index&lt;Source, Target&gt;();</span></a>
 <a name="189"><span class="lineNum">     189 </span>            :         }</a>
 <a name="190"><span class="lineNum">     190 </span>            :         else {</a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">    1628513 :             const FlowIndex flow_index_dimensions = reduce_index&lt;FlowIndex&gt;(this-&gt;populations.size());</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">    1628513 :             return flatten_index(indices, flow_index_dimensions) * Flows::size() +</span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">    1628513 :                    index_of_type_v&lt;Flow&lt;Source, Target&gt;, Flows&gt;;</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">    1641149 :             const FlowIndex flow_index_dimensions = reduce_index&lt;FlowIndex&gt;(this-&gt;populations.size());</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">    1641149 :             return flatten_index(indices, flow_index_dimensions) * Flows::size() +</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">    1641149 :                    index_of_type_v&lt;Flow&lt;Source, Target&gt;, Flows&gt;;</span></a>
 <a name="194"><span class="lineNum">     194 </span>            :         }</a>
 <a name="195"><span class="lineNum">     195 </span>            :     }</a>
 <a name="196"><span class="lineNum">     196 </span>            : </a>
@@ -263,10 +263,10 @@
 <a name="201"><span class="lineNum">     201 </span>            :      * @return A flat index into a data structure storing flow values.</a>
 <a name="202"><span class="lineNum">     202 </span>            :      */</a>
 <a name="203"><span class="lineNum">     203 </span>            :     template &lt;Comp Source, Comp Target&gt;</a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">     268500 :     constexpr size_t get_flat_flow_index() const</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">     268428 :     constexpr size_t get_flat_flow_index() const</span></a>
 <a name="205"><span class="lineNum">     205 </span>            :     {</a>
 <a name="206"><span class="lineNum">     206 </span>            :         static_assert(std::is_same&lt;FlowIndex, Index&lt;&gt;&gt;::value, &quot;Other indices must be specified&quot;);</a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">     268500 :         return index_of_type_v&lt;Flow&lt;Source, Target&gt;, Flows&gt;;</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">     268428 :         return index_of_type_v&lt;Flow&lt;Source, Target&gt;, Flows&gt;;</span></a>
 <a name="208"><span class="lineNum">     208 </span>            :     }</a>
 <a name="209"><span class="lineNum">     209 </span>            : </a>
 <a name="210"><span class="lineNum">     210 </span>            : private:</a>
@@ -283,22 +283,22 @@
 <a name="221"><span class="lineNum">     221 </span>            :      * @tparam I The index of a flow in FlowChart.</a>
 <a name="222"><span class="lineNum">     222 </span>            :      */</a>
 <a name="223"><span class="lineNum">     223 </span>            :     template &lt;size_t I = 0&gt;</a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineCov">     943698 :     inline void get_rhs_impl(Eigen::Ref&lt;const Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; flows,</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">     951132 :     inline void get_rhs_impl(Eigen::Ref&lt;const Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; flows,</span></a>
 <a name="225"><span class="lineNum">     225 </span>            :                              Eigen::Ref&lt;Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; rhs, const FlowIndex&amp; index) const</a>
 <a name="226"><span class="lineNum">     226 </span>            :     {</a>
 <a name="227"><span class="lineNum">     227 </span>            :         using Flow                 = type_at_index_t&lt;I, Flows&gt;;</a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">     943698 :         const auto flat_flow_index = get_flat_flow_index&lt;Flow::source, Flow::target&gt;(index);</span></a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">     951132 :         const auto flat_flow_index = get_flat_flow_index&lt;Flow::source, Flow::target&gt;(index);</span></a>
 <a name="229"><span class="lineNum">     229 </span>            :         const auto flat_source_population =</a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">     943698 :             this-&gt;populations.get_flat_index(extend_index&lt;PopIndex&gt;(index, (size_t)Flow::source));</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">     951132 :             this-&gt;populations.get_flat_index(extend_index&lt;PopIndex&gt;(index, (size_t)Flow::source));</span></a>
 <a name="231"><span class="lineNum">     231 </span>            :         const auto flat_target_population =</a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">     943698 :             this-&gt;populations.get_flat_index(extend_index&lt;PopIndex&gt;(index, (size_t)Flow::target));</span></a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">     943698 :         rhs[flat_source_population] -= flows[flat_flow_index]; // subtract outflow from source compartment</span></a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">     943698 :         rhs[flat_target_population] += flows[flat_flow_index]; // add outflow to target compartment</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">     951132 :             this-&gt;populations.get_flat_index(extend_index&lt;PopIndex&gt;(index, (size_t)Flow::target));</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">     951132 :         rhs[flat_source_population] -= flows[flat_flow_index]; // subtract outflow from source compartment</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">     951132 :         rhs[flat_target_population] += flows[flat_flow_index]; // add outflow to target compartment</span></a>
 <a name="235"><span class="lineNum">     235 </span>            :         // handle next flow (if there is one)</a>
 <a name="236"><span class="lineNum">     236 </span>            :         if constexpr (I + 1 &lt; Flows::size()) {</a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">     847500 :             get_rhs_impl&lt;I + 1&gt;(flows, rhs, index);</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">     854448 :             get_rhs_impl&lt;I + 1&gt;(flows, rhs, index);</span></a>
 <a name="238"><span class="lineNum">     238 </span>            :         }</a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">     943698 :     }</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">     951132 :     }</span></a>
 <a name="240"><span class="lineNum">     240 </span>            : };</a>
 <a name="241"><span class="lineNum">     241 </span>            : </a>
 <a name="242"><span class="lineNum">     242 </span>            : /**</a>
