@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-02-28 14:57:31</td>
+            <td class="headerValue">2024-02-28 19:12:32</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -189,15 +189,15 @@
 <a name="127"><span class="lineNum">     127 </span><span class="lineCov">         71 :     return current_loc;</span></a>
 <a name="128"><span class="lineNum">     128 </span>            : }</a>
 <a name="129"><span class="lineNum">     129 </span>            : </a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">         85 : LocationType go_to_quarantine(Person::RandomNumberGenerator&amp; /*rng*/, const Person&amp; person, TimePoint t,</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">         84 : LocationType go_to_quarantine(Person::RandomNumberGenerator&amp; /*rng*/, const Person&amp; person, TimePoint t,</span></a>
 <a name="131"><span class="lineNum">     131 </span>            :                               TimeSpan /*dt*/, const Parameters&amp; params)</a>
 <a name="132"><span class="lineNum">     132 </span>            : {</a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">         85 :     auto current_loc = person.get_location().get_type();</span></a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">         85 :     if (person.is_in_quarantine(t, params) &amp;&amp; current_loc != LocationType::Hospital &amp;&amp;</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">         84 :     auto current_loc = person.get_location().get_type();</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">         84 :     if (person.is_in_quarantine(t, params) &amp;&amp; current_loc != LocationType::Hospital &amp;&amp;</span></a>
 <a name="135"><span class="lineNum">     135 </span>            :         current_loc != LocationType::ICU) {</a>
 <a name="136"><span class="lineNum">     136 </span><span class="lineCov">          1 :         return LocationType::Home;</span></a>
 <a name="137"><span class="lineNum">     137 </span>            :     }</a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">         84 :     return current_loc;</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">         83 :     return current_loc;</span></a>
 <a name="139"><span class="lineNum">     139 </span>            : }</a>
 <a name="140"><span class="lineNum">     140 </span>            : </a>
 <a name="141"><span class="lineNum">     141 </span><span class="lineCov">         88 : LocationType go_to_hospital(Person::RandomNumberGenerator&amp; /*rng*/, const Person&amp; person, const TimePoint t,</span></a>
