@@ -80,12 +80,13 @@ $(function() {
 <code>#include &quot;<a class="el" href="metaprogramming_8h_source.html">memilio/utils/metaprogramming.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="stepper__wrapper_8h_source.html">memilio/math/stepper_wrapper.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="eigen_8h_source.html">memilio/math/eigen.h</a>&quot;</code><br />
+<code>#include &quot;boost/numeric/odeint/stepper/runge_kutta_cash_karp54.hpp&quot;</code><br />
 </div>
 <p><a href="models_2lct__secir_2simulation_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html">mio::lsecir::Simulation</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html">mio::lsecir::Simulation&lt; Model &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class for the simulation of a LCT model.  <a href="classmio_1_1lsecir_1_1Simulation.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -99,9 +100,10 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a79775e2a8cf6100f1b9408142c316636"><td class="memItemLeft" align="right" valign="top">TimeSeries&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemio_1_1lsecir.html#a79775e2a8cf6100f1b9408142c316636">mio::lsecir::simulate</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> t0, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> tmax, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt, Model const  &amp;model, std::shared_ptr&lt; IntegratorCore&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt;&gt; integrator=nullptr)</td></tr>
-<tr class="memdesc:a79775e2a8cf6100f1b9408142c316636"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a simulation with specified parameters for given model.  <a href="namespacemio_1_1lsecir.html#a79775e2a8cf6100f1b9408142c316636">More...</a><br /></td></tr>
-<tr class="separator:a79775e2a8cf6100f1b9408142c316636"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaf690e6d4caf1c4425ac894631c7f2f"><td class="memTemplParams" colspan="2">template&lt;class Model , class Sim  = Simulation&lt;Model&gt;&gt; </td></tr>
+<tr class="memitem:aeaf690e6d4caf1c4425ac894631c7f2f"><td class="memTemplItemLeft" align="right" valign="top">TimeSeries&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemio_1_1lsecir.html#aeaf690e6d4caf1c4425ac894631c7f2f">mio::lsecir::simulate</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> t0, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> tmax, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt, Model const &amp;model, std::shared_ptr&lt; IntegratorCore&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt;&gt; integrator=nullptr)</td></tr>
+<tr class="memdesc:aeaf690e6d4caf1c4425ac894631c7f2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a simulation with specified parameters for given model.  <a href="namespacemio_1_1lsecir.html#aeaf690e6d4caf1c4425ac894631c7f2f">More...</a><br /></td></tr>
+<tr class="separator:aeaf690e6d4caf1c4425ac894631c7f2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['latencytime_2357',['LatencyTime',['../structmio_1_1iseir_1_1LatencyTime.html',1,'mio::iseir']]],
+  ['latencytime_2356',['LatencyTime',['../structmio_1_1iseir_1_1LatencyTime.html',1,'mio::iseir']]],
+  ['lctinfectionstate_2357',['LctInfectionState',['../classmio_1_1LctInfectionState.html',1,'mio']]],
   ['location_2358',['Location',['../classmio_1_1abm_1_1Location.html',1,'mio::abm']]],
   ['locationid_2359',['LocationId',['../structmio_1_1abm_1_1LocationId.html',1,'mio::abm']]],
   ['lockdowndate_2360',['LockdownDate',['../structmio_1_1abm_1_1LockdownDate.html',1,'mio::abm']]],

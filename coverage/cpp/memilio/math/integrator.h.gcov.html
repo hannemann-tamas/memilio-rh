@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-02-28 19:12:32</td>
+            <td class="headerValue">2024-03-06 12:39:16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -164,22 +164,22 @@
 <a name="102"><span class="lineNum">     102 </span>            : </a>
 <a name="103"><span class="lineNum">     103 </span><span class="lineCov">       6242 :         auto t   = t0;</span></a>
 <a name="104"><span class="lineNum">     104 </span><span class="lineCov">       6242 :         size_t i = results.get_num_time_points() - 1;</span></a>
-<a name="105"><span class="lineNum">     105 </span><span class="lineCov">      18785 :         while (fabs((tmax - t) / (tmax - t0)) &gt; 1e-10) {</span></a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineCov">      17917 :         while (fabs((tmax - t) / (tmax - t0)) &gt; 1e-10) {</span></a>
 <a name="106"><span class="lineNum">     106 </span>            :             //we don't make timesteps too small as the error estimator of an adaptive integrator</a>
 <a name="107"><span class="lineNum">     107 </span>            :             //may not be able to handle it. this is very conservative and maybe unnecessary,</a>
 <a name="108"><span class="lineNum">     108 </span>            :             //but also unlikely to happen. may need to be reevaluated</a>
 <a name="109"><span class="lineNum">     109 </span>            : </a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">      12543 :             auto dt_eff = min(dt, tmax - t);</span></a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">      12543 :             results.add_time_point();</span></a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">      12543 :             step_okay &amp;= m_core-&gt;step(f, results[i], t, dt_eff, results[i + 1]);</span></a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">      12543 :             results.get_last_time() = t;</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">      11675 :             auto dt_eff = min(dt, tmax - t);</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">      11675 :             results.add_time_point();</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">      11675 :             step_okay &amp;= m_core-&gt;step(f, results[i], t, dt_eff, results[i + 1]);</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">      11675 :             results.get_last_time() = t;</span></a>
 <a name="114"><span class="lineNum">     114 </span>            : </a>
-<a name="115"><span class="lineNum">     115 </span><span class="lineCov">      12543 :             ++i;</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">      11675 :             ++i;</span></a>
 <a name="116"><span class="lineNum">     116 </span>            : </a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">      12543 :             if (fabs((tmax - t) / (tmax - t0)) &gt; 1e-10 || dt_eff &gt; dt) {</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">      11675 :             if (fabs((tmax - t) / (tmax - t0)) &gt; 1e-10 || dt_eff &gt; dt) {</span></a>
 <a name="118"><span class="lineNum">     118 </span>            :                 //store dt only if it's not the last step as it is probably smaller than required for tolerances</a>
 <a name="119"><span class="lineNum">     119 </span>            :                 //except if the step function returns a bigger step size so as to not lose efficiency</a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       6409 :                 dt = dt_eff;</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       5545 :                 dt = dt_eff;</span></a>
 <a name="121"><span class="lineNum">     121 </span>            :             }</a>
 <a name="122"><span class="lineNum">     122 </span>            :         }</a>
 <a name="123"><span class="lineNum">     123 </span>            : </a>

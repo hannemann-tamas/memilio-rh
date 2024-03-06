@@ -87,9 +87,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1lsecir_1_1DeathsPerCritical.html">DeathsPerCritical</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The percentage of dead patients per ICU patients in the SECIR model.  <a href="structmio_1_1lsecir_1_1DeathsPerCritical.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1InfectionState.html">InfectionState</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class that defines an LCT-SECIR model.  <a href="classmio_1_1lsecir_1_1Model.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Parameters.html">Parameters</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classmio_1_1lsecir_1_1Parameters.html" title="Parameters of an LCT-SECIR model.">Parameters</a> of an LCT-SECIR model.  <a href="classmio_1_1lsecir_1_1Parameters.html#details">More...</a><br /></td></tr>
@@ -141,28 +140,29 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:af2ca3b56e95f07b93413e65d87c58094"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemio_1_1lsecir.html#af2ca3b56e95f07b93413e65d87c58094">InfectionStateBase</a> { <br />
-&#160;&#160;<a class="el" href="namespacemio_1_1lsecir.html#af2ca3b56e95f07b93413e65d87c58094a494bf3eaa390dc405dd04ed1c8c99311">Susceptible</a> = 0
-, <a class="el" href="namespacemio_1_1lsecir.html#af2ca3b56e95f07b93413e65d87c58094aa54eecd5041d37f5c8443e0ee91e241a">Exposed</a> = 1
-, <a class="el" href="namespacemio_1_1lsecir.html#af2ca3b56e95f07b93413e65d87c58094afd0b1ea9698f60d31c2e79a469b0d2af">InfectedNoSymptoms</a> = 2
-, <a class="el" href="namespacemio_1_1lsecir.html#af2ca3b56e95f07b93413e65d87c58094ae5c5d8500211987f287f130f37457115">InfectedSymptoms</a> = 3
+<tr class="memitem:a3aeb01ac3e9ac9c367ca6f0efaf7ba2b"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemio_1_1lsecir.html#a3aeb01ac3e9ac9c367ca6f0efaf7ba2b">InfectionState</a> { <br />
+&#160;&#160;<a class="el" href="namespacemio_1_1lsecir.html#a3aeb01ac3e9ac9c367ca6f0efaf7ba2ba494bf3eaa390dc405dd04ed1c8c99311">Susceptible</a> = 0
+, <a class="el" href="namespacemio_1_1lsecir.html#a3aeb01ac3e9ac9c367ca6f0efaf7ba2baa54eecd5041d37f5c8443e0ee91e241a">Exposed</a> = 1
+, <a class="el" href="namespacemio_1_1lsecir.html#a3aeb01ac3e9ac9c367ca6f0efaf7ba2bafd0b1ea9698f60d31c2e79a469b0d2af">InfectedNoSymptoms</a> = 2
+, <a class="el" href="namespacemio_1_1lsecir.html#a3aeb01ac3e9ac9c367ca6f0efaf7ba2bae5c5d8500211987f287f130f37457115">InfectedSymptoms</a> = 3
 , <br />
-&#160;&#160;<a class="el" href="namespacemio_1_1lsecir.html#af2ca3b56e95f07b93413e65d87c58094a4002b08c261f6e8ae5880f77252471d5">InfectedSevere</a> = 4
-, <a class="el" href="namespacemio_1_1lsecir.html#af2ca3b56e95f07b93413e65d87c58094a59accbf82b92fbddf3c248e36fd28989">InfectedCritical</a> = 5
-, <a class="el" href="namespacemio_1_1lsecir.html#af2ca3b56e95f07b93413e65d87c58094a5c4c4cf7bbab0d76fe61420aee14a5ca">Recovered</a> = 6
-, <a class="el" href="namespacemio_1_1lsecir.html#af2ca3b56e95f07b93413e65d87c58094a183b62c7f067711f9c5a54913c054617">Dead</a> = 7
+&#160;&#160;<a class="el" href="namespacemio_1_1lsecir.html#a3aeb01ac3e9ac9c367ca6f0efaf7ba2ba4002b08c261f6e8ae5880f77252471d5">InfectedSevere</a> = 4
+, <a class="el" href="namespacemio_1_1lsecir.html#a3aeb01ac3e9ac9c367ca6f0efaf7ba2ba59accbf82b92fbddf3c248e36fd28989">InfectedCritical</a> = 5
+, <a class="el" href="namespacemio_1_1lsecir.html#a3aeb01ac3e9ac9c367ca6f0efaf7ba2ba5c4c4cf7bbab0d76fe61420aee14a5ca">Recovered</a> = 6
+, <a class="el" href="namespacemio_1_1lsecir.html#a3aeb01ac3e9ac9c367ca6f0efaf7ba2ba183b62c7f067711f9c5a54913c054617">Dead</a> = 7
 , <br />
-&#160;&#160;<a class="el" href="namespacemio_1_1lsecir.html#af2ca3b56e95f07b93413e65d87c58094ae93f994f01c537c4e2f7d8528c3eb5e9">Count</a> = 8
+&#160;&#160;<a class="el" href="namespacemio_1_1lsecir.html#a3aeb01ac3e9ac9c367ca6f0efaf7ba2bae93f994f01c537c4e2f7d8528c3eb5e9">Count</a> = 8
 <br />
  }</td></tr>
-<tr class="memdesc:af2ca3b56e95f07b93413e65d87c58094"><td class="mdescLeft">&#160;</td><td class="mdescRight">The InfectionStateBase enum describes the possible basic categories for the infection state of persons.  <a href="namespacemio_1_1lsecir.html#af2ca3b56e95f07b93413e65d87c58094">More...</a><br /></td></tr>
-<tr class="separator:af2ca3b56e95f07b93413e65d87c58094"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:a3aeb01ac3e9ac9c367ca6f0efaf7ba2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The InfectionState enum describes the basic categories for the infection state of persons.  <a href="namespacemio_1_1lsecir.html#a3aeb01ac3e9ac9c367ca6f0efaf7ba2b">More...</a><br /></td></tr>
+<tr class="separator:a3aeb01ac3e9ac9c367ca6f0efaf7ba2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a79775e2a8cf6100f1b9408142c316636"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemio_1_1lsecir.html#a79775e2a8cf6100f1b9408142c316636">simulate</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> t0, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> tmax, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt, <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> const  &amp;model, std::shared_ptr&lt; <a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt;&gt; integrator=nullptr)</td></tr>
-<tr class="memdesc:a79775e2a8cf6100f1b9408142c316636"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a simulation with specified parameters for given model.  <a href="namespacemio_1_1lsecir.html#a79775e2a8cf6100f1b9408142c316636">More...</a><br /></td></tr>
-<tr class="separator:a79775e2a8cf6100f1b9408142c316636"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaf690e6d4caf1c4425ac894631c7f2f"><td class="memTemplParams" colspan="2">template&lt;class Model , class Sim  = Simulation&lt;Model&gt;&gt; </td></tr>
+<tr class="memitem:aeaf690e6d4caf1c4425ac894631c7f2f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemio_1_1lsecir.html#aeaf690e6d4caf1c4425ac894631c7f2f">simulate</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> t0, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> tmax, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt, <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> const &amp;model, std::shared_ptr&lt; <a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt;&gt; integrator=nullptr)</td></tr>
+<tr class="memdesc:aeaf690e6d4caf1c4425ac894631c7f2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a simulation with specified parameters for given model.  <a href="namespacemio_1_1lsecir.html#aeaf690e6d4caf1c4425ac894631c7f2f">More...</a><br /></td></tr>
+<tr class="separator:aeaf690e6d4caf1c4425ac894631c7f2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="ae8fb1d532027380b056fa8b53abbd899"></a>
@@ -180,8 +180,8 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="af2ca3b56e95f07b93413e65d87c58094"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2ca3b56e95f07b93413e65d87c58094">&#9670;&nbsp;</a></span>InfectionStateBase</h2>
+<a id="a3aeb01ac3e9ac9c367ca6f0efaf7ba2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3aeb01ac3e9ac9c367ca6f0efaf7ba2b">&#9670;&nbsp;</a></span>InfectionState</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -190,7 +190,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="namespacemio_1_1lsecir.html#af2ca3b56e95f07b93413e65d87c58094">mio::lsecir::InfectionStateBase</a></td>
+          <td class="memname">enum <a class="el" href="namespacemio_1_1lsecir.html#a3aeb01ac3e9ac9c367ca6f0efaf7ba2b">mio::lsecir::InfectionState</a></td>
         </tr>
       </table>
   </td>
@@ -200,30 +200,32 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The InfectionStateBase enum describes the possible basic categories for the infection state of persons. </p>
+<p>The InfectionState enum describes the basic categories for the infection state of persons. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af2ca3b56e95f07b93413e65d87c58094a494bf3eaa390dc405dd04ed1c8c99311"></a>Susceptible&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af2ca3b56e95f07b93413e65d87c58094aa54eecd5041d37f5c8443e0ee91e241a"></a>Exposed&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af2ca3b56e95f07b93413e65d87c58094afd0b1ea9698f60d31c2e79a469b0d2af"></a>InfectedNoSymptoms&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af2ca3b56e95f07b93413e65d87c58094ae5c5d8500211987f287f130f37457115"></a>InfectedSymptoms&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af2ca3b56e95f07b93413e65d87c58094a4002b08c261f6e8ae5880f77252471d5"></a>InfectedSevere&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af2ca3b56e95f07b93413e65d87c58094a59accbf82b92fbddf3c248e36fd28989"></a>InfectedCritical&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af2ca3b56e95f07b93413e65d87c58094a5c4c4cf7bbab0d76fe61420aee14a5ca"></a>Recovered&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af2ca3b56e95f07b93413e65d87c58094a183b62c7f067711f9c5a54913c054617"></a>Dead&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af2ca3b56e95f07b93413e65d87c58094ae93f994f01c537c4e2f7d8528c3eb5e9"></a>Count&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a3aeb01ac3e9ac9c367ca6f0efaf7ba2ba494bf3eaa390dc405dd04ed1c8c99311"></a>Susceptible&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3aeb01ac3e9ac9c367ca6f0efaf7ba2baa54eecd5041d37f5c8443e0ee91e241a"></a>Exposed&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3aeb01ac3e9ac9c367ca6f0efaf7ba2bafd0b1ea9698f60d31c2e79a469b0d2af"></a>InfectedNoSymptoms&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3aeb01ac3e9ac9c367ca6f0efaf7ba2bae5c5d8500211987f287f130f37457115"></a>InfectedSymptoms&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3aeb01ac3e9ac9c367ca6f0efaf7ba2ba4002b08c261f6e8ae5880f77252471d5"></a>InfectedSevere&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3aeb01ac3e9ac9c367ca6f0efaf7ba2ba59accbf82b92fbddf3c248e36fd28989"></a>InfectedCritical&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3aeb01ac3e9ac9c367ca6f0efaf7ba2ba5c4c4cf7bbab0d76fe61420aee14a5ca"></a>Recovered&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3aeb01ac3e9ac9c367ca6f0efaf7ba2ba183b62c7f067711f9c5a54913c054617"></a>Dead&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3aeb01ac3e9ac9c367ca6f0efaf7ba2bae93f994f01c537c4e2f7d8528c3eb5e9"></a>Count&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a79775e2a8cf6100f1b9408142c316636"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79775e2a8cf6100f1b9408142c316636">&#9670;&nbsp;</a></span>simulate()</h2>
+<a id="aeaf690e6d4caf1c4425ac894631c7f2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaf690e6d4caf1c4425ac894631c7f2f">&#9670;&nbsp;</a></span>simulate()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Model , class Sim  = Simulation&lt;Model&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt; mio::lsecir::simulate </td>
+          <td class="memname"><a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt;<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&gt; mio::lsecir::simulate </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td>
           <td class="paramname"><em>t0</em>, </td>

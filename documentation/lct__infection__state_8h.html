@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MEmilio: /home/runner/work/memilio-rh/memilio-rh/cpp/models/lct_secir/simulation.cpp File Reference</title>
+<title>MEmilio: /home/runner/work/memilio-rh/memilio-rh/cpp/memilio/epidemiology/lct_infection_state.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,39 +62,32 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_df511e5bd85cec96854b39d5e1c27aa8.html">cpp</a></li><li class="navelem"><a class="el" href="dir_cdae7d455f552d3c00c376b64b802df4.html">models</a></li><li class="navelem"><a class="el" href="dir_9bf1f16bc4195f0cd2a119051bde4b48.html">lct_secir</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_df511e5bd85cec96854b39d5e1c27aa8.html">cpp</a></li><li class="navelem"><a class="el" href="dir_c21b77d896d8fb76ff5e46df13fe67f8.html">memilio</a></li><li class="navelem"><a class="el" href="dir_8f5e01b8c3bd066a317e8e7232d3efdf.html">epidemiology</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
-<div class="title">simulation.cpp File Reference</div>  </div>
+<div class="title">lct_infection_state.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="models_2lct__secir_2simulation_8h_source.html">lct_secir/simulation.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="lct__secir_2model_8h_source.html">lct_secir/model.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="lct__secir_2parameters_8h_source.html">lct_secir/parameters.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="memilio_2config_8h_source.html">memilio/config.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="time__series_8h_source.html">memilio/utils/time_series.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="stepper__wrapper_8h_source.html">memilio/math/stepper_wrapper.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="eigen_8h_source.html">memilio/math/eigen.h</a>&quot;</code><br />
-<code>#include &quot;boost/numeric/odeint/stepper/runge_kutta_cash_karp54.hpp&quot;</code><br />
-</div><table class="memberdecls">
+<div class="textblock"><code>#include &lt;array&gt;</code><br />
+</div>
+<p><a href="lct__infection__state_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1LctInfectionState.html">mio::LctInfectionState&lt; InfectionStates, Ns &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides the functionality to be able to work with subcompartments in an LCT model.  <a href="classmio_1_1LctInfectionState.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacemio"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemio.html">mio</a></td></tr>
 <tr class="memdesc:namespacemio"><td class="mdescLeft">&#160;</td><td class="mdescRight">A collection of classes to simplify handling of matrix shapes in meta programming. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespacemio_1_1lsecir"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemio_1_1lsecir.html">mio::lsecir</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a79775e2a8cf6100f1b9408142c316636"><td class="memItemLeft" align="right" valign="top">TimeSeries&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemio_1_1lsecir.html#a79775e2a8cf6100f1b9408142c316636">mio::lsecir::simulate</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> t0, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> tmax, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt, Model const  &amp;model, std::shared_ptr&lt; IntegratorCore&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt;&gt; integrator=nullptr)</td></tr>
-<tr class="memdesc:a79775e2a8cf6100f1b9408142c316636"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a simulation with specified parameters for given model.  <a href="namespacemio_1_1lsecir.html#a79775e2a8cf6100f1b9408142c316636">More...</a><br /></td></tr>
-<tr class="separator:a79775e2a8cf6100f1b9408142c316636"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

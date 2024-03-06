@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MEmilio: mio::lsecir::Simulation Class Reference</title>
+<title>MEmilio: mio::lsecir::Simulation&lt; Model &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,7 +71,7 @@ $(function() {
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classmio_1_1lsecir_1_1Simulation-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">mio::lsecir::Simulation Class Reference</div>  </div>
+<div class="title">mio::lsecir::Simulation&lt; Model &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -82,69 +82,74 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab22aad3c894b4d25c9337b2b8b154d4b"><td class="memItemLeft" align="right" valign="top">Eigen::Ref&lt; Eigen::VectorXd &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#ab22aad3c894b4d25c9337b2b8b154d4b">advance</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> tmax)</td></tr>
-<tr class="memdesc:ab22aad3c894b4d25c9337b2b8b154d4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advance simulation to tmax.  <a href="classmio_1_1lsecir_1_1Simulation.html#ab22aad3c894b4d25c9337b2b8b154d4b">More...</a><br /></td></tr>
-<tr class="separator:ab22aad3c894b4d25c9337b2b8b154d4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9082942598fe7e2e1b629086f3109de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#aa9082942598fe7e2e1b629086f3109de">get_dt</a> ()</td></tr>
-<tr class="memdesc:aa9082942598fe7e2e1b629086f3109de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the next time step chosen by integrator.  <a href="classmio_1_1lsecir_1_1Simulation.html#aa9082942598fe7e2e1b629086f3109de">More...</a><br /></td></tr>
-<tr class="separator:aa9082942598fe7e2e1b629086f3109de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1924be87a6a707a0cdf1f8c6cbfc9a6"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#ac1924be87a6a707a0cdf1f8c6cbfc9a6">get_dt</a> () const</td></tr>
-<tr class="memdesc:ac1924be87a6a707a0cdf1f8c6cbfc9a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the next time step chosen by integrator.  <a href="classmio_1_1lsecir_1_1Simulation.html#ac1924be87a6a707a0cdf1f8c6cbfc9a6">More...</a><br /></td></tr>
-<tr class="separator:ac1924be87a6a707a0cdf1f8c6cbfc9a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa637773343de9f485d99058cd38ef89e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#aa637773343de9f485d99058cd38ef89e">get_integrator</a> ()</td></tr>
-<tr class="memdesc:aa637773343de9f485d99058cd38ef89e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a reference to the used integrator.  <a href="classmio_1_1lsecir_1_1Simulation.html#aa637773343de9f485d99058cd38ef89e">More...</a><br /></td></tr>
-<tr class="separator:aa637773343de9f485d99058cd38ef89e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a683cb135cfbf607671c31ef44227282e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#a683cb135cfbf607671c31ef44227282e">get_integrator</a> () const</td></tr>
-<tr class="memdesc:a683cb135cfbf607671c31ef44227282e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a reference to the used integrator.  <a href="classmio_1_1lsecir_1_1Simulation.html#a683cb135cfbf607671c31ef44227282e">More...</a><br /></td></tr>
-<tr class="separator:a683cb135cfbf607671c31ef44227282e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af975be1579fab0b1b2a3ed26bdb5758f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#af975be1579fab0b1b2a3ed26bdb5758f">get_model</a> ()</td></tr>
-<tr class="memdesc:af975be1579fab0b1b2a3ed26bdb5758f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the simulation model used in simulation.  <a href="classmio_1_1lsecir_1_1Simulation.html#af975be1579fab0b1b2a3ed26bdb5758f">More...</a><br /></td></tr>
-<tr class="separator:af975be1579fab0b1b2a3ed26bdb5758f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a338ff5880f2042ae75742e63a7d50888"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#a338ff5880f2042ae75742e63a7d50888">get_model</a> () const</td></tr>
-<tr class="memdesc:a338ff5880f2042ae75742e63a7d50888"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the simulation model used in simulation.  <a href="classmio_1_1lsecir_1_1Simulation.html#a338ff5880f2042ae75742e63a7d50888">More...</a><br /></td></tr>
-<tr class="separator:a338ff5880f2042ae75742e63a7d50888"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1d0a2e69830c26c1e17ad887a3d6d98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#ab1d0a2e69830c26c1e17ad887a3d6d98">get_result</a> ()</td></tr>
-<tr class="memdesc:ab1d0a2e69830c26c1e17ad887a3d6d98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the result of the simulation.  <a href="classmio_1_1lsecir_1_1Simulation.html#ab1d0a2e69830c26c1e17ad887a3d6d98">More...</a><br /></td></tr>
-<tr class="separator:ab1d0a2e69830c26c1e17ad887a3d6d98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd19b6ab75084d831fcdefdb9291f35b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#acd19b6ab75084d831fcdefdb9291f35b">get_result</a> () const</td></tr>
-<tr class="memdesc:acd19b6ab75084d831fcdefdb9291f35b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the result of the simulation.  <a href="classmio_1_1lsecir_1_1Simulation.html#acd19b6ab75084d831fcdefdb9291f35b">More...</a><br /></td></tr>
-<tr class="separator:acd19b6ab75084d831fcdefdb9291f35b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1a7bea4c683e786445f6a908c4026bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#ad1a7bea4c683e786445f6a908c4026bb">set_integrator</a> (std::shared_ptr&lt; <a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt;&gt; integrator)</td></tr>
-<tr class="memdesc:ad1a7bea4c683e786445f6a908c4026bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the core integrator used in the simulation.  <a href="classmio_1_1lsecir_1_1Simulation.html#ad1a7bea4c683e786445f6a908c4026bb">More...</a><br /></td></tr>
-<tr class="separator:ad1a7bea4c683e786445f6a908c4026bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83879389c5f90dfd093de0d5063ade35"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#a83879389c5f90dfd093de0d5063ade35">Simulation</a> (<a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> const &amp;model, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> t0=0., <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt=0.1)</td></tr>
-<tr class="memdesc:a83879389c5f90dfd093de0d5063ade35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set up the simulation with an ODE solver.  <a href="classmio_1_1lsecir_1_1Simulation.html#a83879389c5f90dfd093de0d5063ade35">More...</a><br /></td></tr>
-<tr class="separator:a83879389c5f90dfd093de0d5063ade35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5be87e5fd9e048815aceccfd7555b8a6"><td class="memItemLeft" align="right" valign="top">Eigen::Ref&lt; Eigen::VectorXd &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#a5be87e5fd9e048815aceccfd7555b8a6">advance</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> tmax)</td></tr>
+<tr class="memdesc:a5be87e5fd9e048815aceccfd7555b8a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advance simulation to tmax.  <a href="classmio_1_1lsecir_1_1Simulation.html#a5be87e5fd9e048815aceccfd7555b8a6">More...</a><br /></td></tr>
+<tr class="separator:a5be87e5fd9e048815aceccfd7555b8a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12140b77b55b57a72a04735eabcec1ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#a12140b77b55b57a72a04735eabcec1ec">get_dt</a> ()</td></tr>
+<tr class="memdesc:a12140b77b55b57a72a04735eabcec1ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the next time step chosen by integrator.  <a href="classmio_1_1lsecir_1_1Simulation.html#a12140b77b55b57a72a04735eabcec1ec">More...</a><br /></td></tr>
+<tr class="separator:a12140b77b55b57a72a04735eabcec1ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0cc812b968a0d4c348795a0ce37a8d2"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#ab0cc812b968a0d4c348795a0ce37a8d2">get_dt</a> () const</td></tr>
+<tr class="memdesc:ab0cc812b968a0d4c348795a0ce37a8d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the next time step chosen by integrator.  <a href="classmio_1_1lsecir_1_1Simulation.html#ab0cc812b968a0d4c348795a0ce37a8d2">More...</a><br /></td></tr>
+<tr class="separator:ab0cc812b968a0d4c348795a0ce37a8d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17fda86624bb4578a43bf788f9093151"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#a17fda86624bb4578a43bf788f9093151">get_integrator</a> ()</td></tr>
+<tr class="memdesc:a17fda86624bb4578a43bf788f9093151"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a reference to the used integrator.  <a href="classmio_1_1lsecir_1_1Simulation.html#a17fda86624bb4578a43bf788f9093151">More...</a><br /></td></tr>
+<tr class="separator:a17fda86624bb4578a43bf788f9093151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1edb673b4bc7e21286afe9fe57114f6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#a1edb673b4bc7e21286afe9fe57114f6f">get_integrator</a> () const</td></tr>
+<tr class="memdesc:a1edb673b4bc7e21286afe9fe57114f6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a reference to the used integrator.  <a href="classmio_1_1lsecir_1_1Simulation.html#a1edb673b4bc7e21286afe9fe57114f6f">More...</a><br /></td></tr>
+<tr class="separator:a1edb673b4bc7e21286afe9fe57114f6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae464012d234e5fd6cfaa4c0bf2a68b0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#ae464012d234e5fd6cfaa4c0bf2a68b0c">get_model</a> ()</td></tr>
+<tr class="memdesc:ae464012d234e5fd6cfaa4c0bf2a68b0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the simulation model used in simulation.  <a href="classmio_1_1lsecir_1_1Simulation.html#ae464012d234e5fd6cfaa4c0bf2a68b0c">More...</a><br /></td></tr>
+<tr class="separator:ae464012d234e5fd6cfaa4c0bf2a68b0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2a168b358fa573979d64ec56e8405ac"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#ab2a168b358fa573979d64ec56e8405ac">get_model</a> () const</td></tr>
+<tr class="memdesc:ab2a168b358fa573979d64ec56e8405ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the simulation model used in simulation.  <a href="classmio_1_1lsecir_1_1Simulation.html#ab2a168b358fa573979d64ec56e8405ac">More...</a><br /></td></tr>
+<tr class="separator:ab2a168b358fa573979d64ec56e8405ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acecb8f7ade89352822bf952d7f5af573"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#acecb8f7ade89352822bf952d7f5af573">get_result</a> ()</td></tr>
+<tr class="memdesc:acecb8f7ade89352822bf952d7f5af573"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the result of the simulation.  <a href="classmio_1_1lsecir_1_1Simulation.html#acecb8f7ade89352822bf952d7f5af573">More...</a><br /></td></tr>
+<tr class="separator:acecb8f7ade89352822bf952d7f5af573"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a369a9168b767e41a1aa3e6b1875bc1"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#a2a369a9168b767e41a1aa3e6b1875bc1">get_result</a> () const</td></tr>
+<tr class="memdesc:a2a369a9168b767e41a1aa3e6b1875bc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the result of the simulation.  <a href="classmio_1_1lsecir_1_1Simulation.html#a2a369a9168b767e41a1aa3e6b1875bc1">More...</a><br /></td></tr>
+<tr class="separator:a2a369a9168b767e41a1aa3e6b1875bc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a124beacd724d9641d84b5940a1a86cb2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#a124beacd724d9641d84b5940a1a86cb2">set_integrator</a> (std::shared_ptr&lt; <a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt;&gt; integrator)</td></tr>
+<tr class="memdesc:a124beacd724d9641d84b5940a1a86cb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the core integrator used in the simulation.  <a href="classmio_1_1lsecir_1_1Simulation.html#a124beacd724d9641d84b5940a1a86cb2">More...</a><br /></td></tr>
+<tr class="separator:a124beacd724d9641d84b5940a1a86cb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e533e874e28fc44a69793aafa7a29a9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#a6e533e874e28fc44a69793aafa7a29a9">Simulation</a> (<a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> const &amp;model, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> t0=0., <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt=0.1)</td></tr>
+<tr class="memdesc:a6e533e874e28fc44a69793aafa7a29a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set up the simulation with an ODE solver.  <a href="classmio_1_1lsecir_1_1Simulation.html#a6e533e874e28fc44a69793aafa7a29a9">More...</a><br /></td></tr>
+<tr class="separator:a6e533e874e28fc44a69793aafa7a29a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:aec01970534bcfd3405b7804fa3a4d5e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#aec01970534bcfd3405b7804fa3a4d5e2">m_dt</a></td></tr>
-<tr class="memdesc:aec01970534bcfd3405b7804fa3a4d5e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The time step used (and possibly set) by m_integratorCore::step.  <a href="classmio_1_1lsecir_1_1Simulation.html#aec01970534bcfd3405b7804fa3a4d5e2">More...</a><br /></td></tr>
-<tr class="separator:aec01970534bcfd3405b7804fa3a4d5e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab866b1654709a6a9dfcf19747f9e60f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmio_1_1OdeIntegrator.html">OdeIntegrator</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#ab866b1654709a6a9dfcf19747f9e60f9">m_integrator</a></td></tr>
-<tr class="memdesc:ab866b1654709a6a9dfcf19747f9e60f9"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classmio_1_1OdeIntegrator.html" title="Integrate initial value problems (IVP) of ordinary differential equations (ODE) of the form y&#39; = f(y,...">OdeIntegrator</a> used to perform simulation.  <a href="classmio_1_1lsecir_1_1Simulation.html#ab866b1654709a6a9dfcf19747f9e60f9">More...</a><br /></td></tr>
-<tr class="separator:ab866b1654709a6a9dfcf19747f9e60f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37519813bf30ac99709a3d419ed9896d"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#a37519813bf30ac99709a3d419ed9896d">m_integratorCore</a></td></tr>
-<tr class="memdesc:a37519813bf30ac99709a3d419ed9896d"><td class="mdescLeft">&#160;</td><td class="mdescRight">InteratorCore used for <a class="el" href="classmio_1_1lsecir_1_1Simulation.html" title="A class for the simulation of a LCT model.">Simulation</a>.  <a href="classmio_1_1lsecir_1_1Simulation.html#a37519813bf30ac99709a3d419ed9896d">More...</a><br /></td></tr>
-<tr class="separator:a37519813bf30ac99709a3d419ed9896d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92611384aa2bf92616cc8b9f0724a95a"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#a92611384aa2bf92616cc8b9f0724a95a">m_model</a></td></tr>
-<tr class="memdesc:a92611384aa2bf92616cc8b9f0724a95a"><td class="mdescLeft">&#160;</td><td class="mdescRight">LCT-model the simulation should be performed with.  <a href="classmio_1_1lsecir_1_1Simulation.html#a92611384aa2bf92616cc8b9f0724a95a">More...</a><br /></td></tr>
-<tr class="separator:a92611384aa2bf92616cc8b9f0724a95a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02a5fe7e0058f972721c34d2bf2f5c32"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#a02a5fe7e0058f972721c34d2bf2f5c32">m_result</a></td></tr>
-<tr class="memdesc:a02a5fe7e0058f972721c34d2bf2f5c32"><td class="mdescLeft">&#160;</td><td class="mdescRight">The simulation results.  <a href="classmio_1_1lsecir_1_1Simulation.html#a02a5fe7e0058f972721c34d2bf2f5c32">More...</a><br /></td></tr>
-<tr class="separator:a02a5fe7e0058f972721c34d2bf2f5c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba5ad2c19c2f0bd4f20ca22a4ad214ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#aba5ad2c19c2f0bd4f20ca22a4ad214ca">m_dt</a></td></tr>
+<tr class="memdesc:aba5ad2c19c2f0bd4f20ca22a4ad214ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">The time step used (and possibly set) by m_integratorCore::step.  <a href="classmio_1_1lsecir_1_1Simulation.html#aba5ad2c19c2f0bd4f20ca22a4ad214ca">More...</a><br /></td></tr>
+<tr class="separator:aba5ad2c19c2f0bd4f20ca22a4ad214ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21a6f7b3e5b6bf23339f2651f9aa9f5c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmio_1_1OdeIntegrator.html">OdeIntegrator</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#a21a6f7b3e5b6bf23339f2651f9aa9f5c">m_integrator</a></td></tr>
+<tr class="memdesc:a21a6f7b3e5b6bf23339f2651f9aa9f5c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classmio_1_1OdeIntegrator.html" title="Integrate initial value problems (IVP) of ordinary differential equations (ODE) of the form y&#39; = f(y,...">OdeIntegrator</a> used to perform simulation.  <a href="classmio_1_1lsecir_1_1Simulation.html#a21a6f7b3e5b6bf23339f2651f9aa9f5c">More...</a><br /></td></tr>
+<tr class="separator:a21a6f7b3e5b6bf23339f2651f9aa9f5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfa61d55fbff10931060be3300987fde"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#adfa61d55fbff10931060be3300987fde">m_integratorCore</a></td></tr>
+<tr class="memdesc:adfa61d55fbff10931060be3300987fde"><td class="mdescLeft">&#160;</td><td class="mdescRight">InteratorCore used for <a class="el" href="classmio_1_1lsecir_1_1Simulation.html" title="A class for the simulation of a LCT model.">Simulation</a>.  <a href="classmio_1_1lsecir_1_1Simulation.html#adfa61d55fbff10931060be3300987fde">More...</a><br /></td></tr>
+<tr class="separator:adfa61d55fbff10931060be3300987fde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c42a2deabd1fdb2929f5f65cd02a983"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#a1c42a2deabd1fdb2929f5f65cd02a983">m_model</a></td></tr>
+<tr class="memdesc:a1c42a2deabd1fdb2929f5f65cd02a983"><td class="mdescLeft">&#160;</td><td class="mdescRight">LCT-model the simulation should be performed with.  <a href="classmio_1_1lsecir_1_1Simulation.html#a1c42a2deabd1fdb2929f5f65cd02a983">More...</a><br /></td></tr>
+<tr class="separator:a1c42a2deabd1fdb2929f5f65cd02a983"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c6d99a3bd967b4a006c4d1a8b3886f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html#a5c6d99a3bd967b4a006c4d1a8b3886f4">m_result</a></td></tr>
+<tr class="memdesc:a5c6d99a3bd967b4a006c4d1a8b3886f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The simulation results.  <a href="classmio_1_1lsecir_1_1Simulation.html#a5c6d99a3bd967b4a006c4d1a8b3886f4">More...</a><br /></td></tr>
+<tr class="separator:a5c6d99a3bd967b4a006c4d1a8b3886f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A class for the simulation of a LCT model. </p>
+<div class="textblock"><h3>template&lt;class Model&gt;<br />
+class mio::lsecir::Simulation&lt; Model &gt;</h3>
+
+<p>A class for the simulation of a LCT model. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a83879389c5f90dfd093de0d5063ade35"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83879389c5f90dfd093de0d5063ade35">&#9670;&nbsp;</a></span>Simulation()</h2>
+<a id="a6e533e874e28fc44a69793aafa7a29a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e533e874e28fc44a69793aafa7a29a9">&#9670;&nbsp;</a></span>Simulation()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Model &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">mio::lsecir::Simulation::Simulation </td>
+          <td class="memname"><a class="el" href="classmio_1_1lsecir_1_1Simulation.html">mio::lsecir::Simulation</a>&lt; <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &gt;::<a class="el" href="classmio_1_1lsecir_1_1Simulation.html">Simulation</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> const &amp;&#160;</td>
           <td class="paramname"><em>model</em>, </td>
@@ -170,7 +175,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set up the simulation with an ODE solver. </p>
-<p>Per default Runge Kutta Cash Karp 54 solver is used. Use function <a class="el" href="classmio_1_1lsecir_1_1Simulation.html#ad1a7bea4c683e786445f6a908c4026bb" title="Set the core integrator used in the simulation.">set_integrator()</a> to set a different integrator. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Per default Runge Kutta Cash Karp 54 solver is used. Use function <a class="el" href="classmio_1_1lsecir_1_1Simulation.html#a124beacd724d9641d84b5940a1a86cb2" title="Set the core integrator used in the simulation.">set_integrator()</a> to set a different integrator. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">model</td><td>An instance of a LCT model. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">t0</td><td>The Start time, usually 0. </td></tr>
@@ -182,14 +187,16 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab22aad3c894b4d25c9337b2b8b154d4b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab22aad3c894b4d25c9337b2b8b154d4b">&#9670;&nbsp;</a></span>advance()</h2>
+<a id="a5be87e5fd9e048815aceccfd7555b8a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5be87e5fd9e048815aceccfd7555b8a6">&#9670;&nbsp;</a></span>advance()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Model &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">Eigen::Ref&lt;Eigen::VectorXd&gt; mio::lsecir::Simulation::advance </td>
+          <td class="memname">Eigen::Ref&lt;Eigen::VectorXd&gt; <a class="el" href="classmio_1_1lsecir_1_1Simulation.html">mio::lsecir::Simulation</a>&lt; <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &gt;::advance </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td>
           <td class="paramname"><em>tmax</em></td><td>)</td>
@@ -199,7 +206,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Advance simulation to tmax. </p>
-<p>tmax must be greater than <a class="el" href="classmio_1_1lsecir_1_1Simulation.html#ab1d0a2e69830c26c1e17ad887a3d6d98" title="Get the result of the simulation.">get_result()</a>.get_last_time_point(). </p><dl class="params"><dt>Parameters</dt><dd>
+<p>tmax must be greater than <a class="el" href="classmio_1_1lsecir_1_1Simulation.html#acecb8f7ade89352822bf952d7f5af573" title="Get the result of the simulation.">get_result()</a>.get_last_time_point(). </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">tmax</td><td>Stopping point of the simulation. </td></tr>
   </table>
@@ -208,14 +215,16 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aa9082942598fe7e2e1b629086f3109de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9082942598fe7e2e1b629086f3109de">&#9670;&nbsp;</a></span>get_dt() <span class="overload">[1/2]</span></h2>
+<a id="a12140b77b55b57a72a04735eabcec1ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12140b77b55b57a72a04735eabcec1ec">&#9670;&nbsp;</a></span>get_dt() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Model &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&amp; mio::lsecir::Simulation::get_dt </td>
+          <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&amp; <a class="el" href="classmio_1_1lsecir_1_1Simulation.html">mio::lsecir::Simulation</a>&lt; <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &gt;::get_dt </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -227,14 +236,16 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ac1924be87a6a707a0cdf1f8c6cbfc9a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac1924be87a6a707a0cdf1f8c6cbfc9a6">&#9670;&nbsp;</a></span>get_dt() <span class="overload">[2/2]</span></h2>
+<a id="ab0cc812b968a0d4c348795a0ce37a8d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0cc812b968a0d4c348795a0ce37a8d2">&#9670;&nbsp;</a></span>get_dt() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Model &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&amp; mio::lsecir::Simulation::get_dt </td>
+          <td class="memname">const <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&amp; <a class="el" href="classmio_1_1lsecir_1_1Simulation.html">mio::lsecir::Simulation</a>&lt; <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &gt;::get_dt </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -246,14 +257,16 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aa637773343de9f485d99058cd38ef89e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa637773343de9f485d99058cd38ef89e">&#9670;&nbsp;</a></span>get_integrator() <span class="overload">[1/2]</span></h2>
+<a id="a17fda86624bb4578a43bf788f9093151"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17fda86624bb4578a43bf788f9093151">&#9670;&nbsp;</a></span>get_integrator() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Model &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt;<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&gt;&amp; mio::lsecir::Simulation::get_integrator </td>
+          <td class="memname"><a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt;<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&gt;&amp; <a class="el" href="classmio_1_1lsecir_1_1Simulation.html">mio::lsecir::Simulation</a>&lt; <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &gt;::get_integrator </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -266,14 +279,16 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a683cb135cfbf607671c31ef44227282e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a683cb135cfbf607671c31ef44227282e">&#9670;&nbsp;</a></span>get_integrator() <span class="overload">[2/2]</span></h2>
+<a id="a1edb673b4bc7e21286afe9fe57114f6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1edb673b4bc7e21286afe9fe57114f6f">&#9670;&nbsp;</a></span>get_integrator() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Model &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt;<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&gt; const&amp; mio::lsecir::Simulation::get_integrator </td>
+          <td class="memname"><a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt;<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&gt; const&amp; <a class="el" href="classmio_1_1lsecir_1_1Simulation.html">mio::lsecir::Simulation</a>&lt; <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &gt;::get_integrator </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -286,14 +301,16 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af975be1579fab0b1b2a3ed26bdb5758f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af975be1579fab0b1b2a3ed26bdb5758f">&#9670;&nbsp;</a></span>get_model() <span class="overload">[1/2]</span></h2>
+<a id="ae464012d234e5fd6cfaa4c0bf2a68b0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae464012d234e5fd6cfaa4c0bf2a68b0c">&#9670;&nbsp;</a></span>get_model() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Model &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a>&amp; mio::lsecir::Simulation::get_model </td>
+          <td class="memname"><a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a>&amp; <a class="el" href="classmio_1_1lsecir_1_1Simulation.html">mio::lsecir::Simulation</a>&lt; <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &gt;::get_model </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -305,14 +322,16 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a338ff5880f2042ae75742e63a7d50888"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a338ff5880f2042ae75742e63a7d50888">&#9670;&nbsp;</a></span>get_model() <span class="overload">[2/2]</span></h2>
+<a id="ab2a168b358fa573979d64ec56e8405ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2a168b358fa573979d64ec56e8405ac">&#9670;&nbsp;</a></span>get_model() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Model &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a>&amp; mio::lsecir::Simulation::get_model </td>
+          <td class="memname">const <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a>&amp; <a class="el" href="classmio_1_1lsecir_1_1Simulation.html">mio::lsecir::Simulation</a>&lt; <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &gt;::get_model </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -324,14 +343,16 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ab1d0a2e69830c26c1e17ad887a3d6d98"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1d0a2e69830c26c1e17ad887a3d6d98">&#9670;&nbsp;</a></span>get_result() <span class="overload">[1/2]</span></h2>
+<a id="acecb8f7ade89352822bf952d7f5af573"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acecb8f7ade89352822bf952d7f5af573">&#9670;&nbsp;</a></span>get_result() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Model &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt;<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&gt;&amp; mio::lsecir::Simulation::get_result </td>
+          <td class="memname"><a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt;<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&gt;&amp; <a class="el" href="classmio_1_1lsecir_1_1Simulation.html">mio::lsecir::Simulation</a>&lt; <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &gt;::get_result </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -340,18 +361,20 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the result of the simulation. </p>
-<p>Return the number of persons in all <a class="el" href="classmio_1_1lsecir_1_1InfectionState.html">InfectionState</a>s (inclusive subcompartments). </p><dl class="section return"><dt>Returns</dt><dd>The result of the simulation in form of a <a class="el" href="classmio_1_1TimeSeries.html" title="stores vectors of values at time points (or some other abstract variable) the value at each time poin...">TimeSeries</a>. </dd></dl>
+<p>Return the number of persons in all InfectionStates (inclusive subcompartments). </p><dl class="section return"><dt>Returns</dt><dd>The result of the simulation in form of a <a class="el" href="classmio_1_1TimeSeries.html" title="stores vectors of values at time points (or some other abstract variable) the value at each time poin...">TimeSeries</a>. </dd></dl>
 
 </div>
 </div>
-<a id="acd19b6ab75084d831fcdefdb9291f35b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acd19b6ab75084d831fcdefdb9291f35b">&#9670;&nbsp;</a></span>get_result() <span class="overload">[2/2]</span></h2>
+<a id="a2a369a9168b767e41a1aa3e6b1875bc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a369a9168b767e41a1aa3e6b1875bc1">&#9670;&nbsp;</a></span>get_result() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Model &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt;<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&gt;&amp; mio::lsecir::Simulation::get_result </td>
+          <td class="memname">const <a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt;<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&gt;&amp; <a class="el" href="classmio_1_1lsecir_1_1Simulation.html">mio::lsecir::Simulation</a>&lt; <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &gt;::get_result </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -360,18 +383,20 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the result of the simulation. </p>
-<p>Return the number of persons in all <a class="el" href="classmio_1_1lsecir_1_1InfectionState.html">InfectionState</a>s (inclusive subcompartments). </p><dl class="section return"><dt>Returns</dt><dd>The result of the simulation in form of a <a class="el" href="classmio_1_1TimeSeries.html" title="stores vectors of values at time points (or some other abstract variable) the value at each time poin...">TimeSeries</a>. </dd></dl>
+<p>Return the number of persons in all InfectionStates (inclusive subcompartments). </p><dl class="section return"><dt>Returns</dt><dd>The result of the simulation in form of a <a class="el" href="classmio_1_1TimeSeries.html" title="stores vectors of values at time points (or some other abstract variable) the value at each time poin...">TimeSeries</a>. </dd></dl>
 
 </div>
 </div>
-<a id="ad1a7bea4c683e786445f6a908c4026bb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1a7bea4c683e786445f6a908c4026bb">&#9670;&nbsp;</a></span>set_integrator()</h2>
+<a id="a124beacd724d9641d84b5940a1a86cb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a124beacd724d9641d84b5940a1a86cb2">&#9670;&nbsp;</a></span>set_integrator()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Model &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void mio::lsecir::Simulation::set_integrator </td>
+          <td class="memname">void <a class="el" href="classmio_1_1lsecir_1_1Simulation.html">mio::lsecir::Simulation</a>&lt; <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &gt;::set_integrator </td>
           <td>(</td>
           <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt;&gt;&#160;</td>
           <td class="paramname"><em>integrator</em></td><td>)</td>
@@ -391,17 +416,19 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="aec01970534bcfd3405b7804fa3a4d5e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec01970534bcfd3405b7804fa3a4d5e2">&#9670;&nbsp;</a></span>m_dt</h2>
+<a id="aba5ad2c19c2f0bd4f20ca22a4ad214ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba5ad2c19c2f0bd4f20ca22a4ad214ca">&#9670;&nbsp;</a></span>m_dt</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Model &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> mio::lsecir::Simulation::m_dt</td>
+          <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> <a class="el" href="classmio_1_1lsecir_1_1Simulation.html">mio::lsecir::Simulation</a>&lt; <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &gt;::m_dt</td>
         </tr>
       </table>
   </td>
@@ -415,17 +442,19 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ab866b1654709a6a9dfcf19747f9e60f9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab866b1654709a6a9dfcf19747f9e60f9">&#9670;&nbsp;</a></span>m_integrator</h2>
+<a id="a21a6f7b3e5b6bf23339f2651f9aa9f5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21a6f7b3e5b6bf23339f2651f9aa9f5c">&#9670;&nbsp;</a></span>m_integrator</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Model &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmio_1_1OdeIntegrator.html">OdeIntegrator</a>&lt;<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&gt; mio::lsecir::Simulation::m_integrator</td>
+          <td class="memname"><a class="el" href="classmio_1_1OdeIntegrator.html">OdeIntegrator</a>&lt;<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&gt; <a class="el" href="classmio_1_1lsecir_1_1Simulation.html">mio::lsecir::Simulation</a>&lt; <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &gt;::m_integrator</td>
         </tr>
       </table>
   </td>
@@ -439,17 +468,19 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a37519813bf30ac99709a3d419ed9896d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a37519813bf30ac99709a3d419ed9896d">&#9670;&nbsp;</a></span>m_integratorCore</h2>
+<a id="adfa61d55fbff10931060be3300987fde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfa61d55fbff10931060be3300987fde">&#9670;&nbsp;</a></span>m_integratorCore</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Model &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt;<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&gt; &gt; mio::lsecir::Simulation::m_integratorCore</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt;<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&gt; &gt; <a class="el" href="classmio_1_1lsecir_1_1Simulation.html">mio::lsecir::Simulation</a>&lt; <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &gt;::m_integratorCore</td>
         </tr>
       </table>
   </td>
@@ -463,17 +494,19 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a92611384aa2bf92616cc8b9f0724a95a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92611384aa2bf92616cc8b9f0724a95a">&#9670;&nbsp;</a></span>m_model</h2>
+<a id="a1c42a2deabd1fdb2929f5f65cd02a983"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c42a2deabd1fdb2929f5f65cd02a983">&#9670;&nbsp;</a></span>m_model</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Model &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a>&gt; mio::lsecir::Simulation::m_model</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a>&gt; <a class="el" href="classmio_1_1lsecir_1_1Simulation.html">mio::lsecir::Simulation</a>&lt; <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &gt;::m_model</td>
         </tr>
       </table>
   </td>
@@ -487,17 +520,19 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a02a5fe7e0058f972721c34d2bf2f5c32"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02a5fe7e0058f972721c34d2bf2f5c32">&#9670;&nbsp;</a></span>m_result</h2>
+<a id="a5c6d99a3bd967b4a006c4d1a8b3886f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c6d99a3bd967b4a006c4d1a8b3886f4">&#9670;&nbsp;</a></span>m_result</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Model &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt;<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&gt; mio::lsecir::Simulation::m_result</td>
+          <td class="memname"><a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt;<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&gt; <a class="el" href="classmio_1_1lsecir_1_1Simulation.html">mio::lsecir::Simulation</a>&lt; <a class="el" href="classmio_1_1lsecir_1_1Model.html">Model</a> &gt;::m_result</td>
         </tr>
       </table>
   </td>
@@ -511,9 +546,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/runner/work/memilio-rh/memilio-rh/cpp/models/lct_secir/<a class="el" href="models_2lct__secir_2simulation_8h_source.html">simulation.h</a></li>
-<li>/home/runner/work/memilio-rh/memilio-rh/cpp/models/lct_secir/<a class="el" href="lct__secir_2simulation_8cpp.html">simulation.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -11,7 +11,7 @@ var searchData=
   ['severetocritical_2459',['SevereToCritical',['../structmio_1_1abm_1_1SevereToCritical.html',1,'mio::abm']]],
   ['severetorecovered_2460',['SevereToRecovered',['../structmio_1_1abm_1_1SevereToRecovered.html',1,'mio::abm']]],
   ['severityprotectionfactor_2461',['SeverityProtectionFactor',['../structmio_1_1abm_1_1SeverityProtectionFactor.html',1,'mio::abm']]],
-  ['simulation_2462',['Simulation',['../classmio_1_1abm_1_1Simulation.html',1,'mio::abm::Simulation'],['../classmio_1_1isecir_1_1Simulation.html',1,'mio::isecir::Simulation&lt; FP &gt;'],['../classmio_1_1lsecir_1_1Simulation.html',1,'mio::lsecir::Simulation'],['../classmio_1_1osecir_1_1Simulation.html',1,'mio::osecir::Simulation&lt; FP, BaseT &gt;'],['../classmio_1_1osecirvvs_1_1Simulation.html',1,'mio::osecirvvs::Simulation&lt; FP, BaseT &gt;'],['../classmio_1_1Simulation.html',1,'mio::Simulation&lt; FP, M &gt;']]],
+  ['simulation_2462',['Simulation',['../classmio_1_1abm_1_1Simulation.html',1,'mio::abm::Simulation'],['../classmio_1_1isecir_1_1Simulation.html',1,'mio::isecir::Simulation&lt; FP &gt;'],['../classmio_1_1lsecir_1_1Simulation.html',1,'mio::lsecir::Simulation&lt; Model &gt;'],['../classmio_1_1osecir_1_1Simulation.html',1,'mio::osecir::Simulation&lt; FP, BaseT &gt;'],['../classmio_1_1osecirvvs_1_1Simulation.html',1,'mio::osecirvvs::Simulation&lt; FP, BaseT &gt;'],['../classmio_1_1Simulation.html',1,'mio::Simulation&lt; FP, M &gt;']]],
   ['simulationday_2463',['SimulationDay',['../classmio_1_1SimulationDay.html',1,'mio']]],
   ['simulationnode_2464',['SimulationNode',['../classmio_1_1SimulationNode.html',1,'mio']]],
   ['simulationtime_2465',['SimulationTime',['../classmio_1_1SimulationTime.html',1,'mio']]],
