@@ -32,16 +32,16 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">474</td>
+            <td class="headerCovTableEntry">480</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-03-06 12:39:16</td>
+            <td class="headerValue">2024-03-14 17:16:39</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">566</td>
+            <td class="headerCovTableEntry">569</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -1852,8 +1852,8 @@
 <a name="1790"><span class="lineNum">    1790 </span>            :             return ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A1_T2, A1_OP&gt;, ad::operations::ad_hypot_pa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</a>
 <a name="1791"><span class="lineNum">    1791 </span>            :         }</a>
 <a name="1792"><span class="lineNum">    1792 </span>            :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; static inline bool operator == (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x2) ;</a>
-<a name="1793"><span class="lineNum">    1793 </span><span class="lineNoCov">          0 :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; static inline bool operator == (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x2) {</span></a>
-<a name="1794"><span class="lineNum">    1794 </span><span class="lineNoCov">          0 :             return x1._value() == x2._value();</span></a>
+<a name="1793"><span class="lineNum">    1793 </span>            :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; static inline bool operator == (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x2) {</a>
+<a name="1794"><span class="lineNum">    1794 </span>            :             return x1._value() == x2._value();</a>
 <a name="1795"><span class="lineNum">    1795 </span>            :         } template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1, class A2_T, class A2_OP &gt; static inline bool operator == (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;&amp; x2) ;</a>
 <a name="1796"><span class="lineNum">    1796 </span>            :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1, class A2_T, class A2_OP &gt; static inline bool operator == (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;&amp; x2) {</a>
 <a name="1797"><span class="lineNum">    1797 </span>            :             return x1._value() == x2._value();</a>
@@ -2170,8 +2170,8 @@
 <a name="2108"><span class="lineNum">    2108 </span>            :             return x1 &lt; x2._value();</a>
 <a name="2109"><span class="lineNum">    2109 </span>            :         }</a>
 <a name="2110"><span class="lineNum">    2110 </span>            :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; static inline bool operator &lt;= (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x2) ;</a>
-<a name="2111"><span class="lineNum">    2111 </span>            :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; static inline bool operator &lt;= (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x2) {</a>
-<a name="2112"><span class="lineNum">    2112 </span>            :             return x1._value() &lt;= x2._value();</a>
+<a name="2111"><span class="lineNum">    2111 </span><span class="lineNoCov">          0 :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; static inline bool operator &lt;= (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x2) {</span></a>
+<a name="2112"><span class="lineNum">    2112 </span><span class="lineNoCov">          0 :             return x1._value() &lt;= x2._value();</span></a>
 <a name="2113"><span class="lineNum">    2113 </span>            :         } template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1, class A2_T, class A2_OP &gt; static inline bool operator &lt;= (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;&amp; x2) ;</a>
 <a name="2114"><span class="lineNum">    2114 </span>            :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1, class A2_T, class A2_OP &gt; static inline bool operator &lt;= (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;&amp; x2) {</a>
 <a name="2115"><span class="lineNum">    2115 </span>            :             return x1._value() &lt;= x2._value();</a>
@@ -2248,8 +2248,8 @@
 <a name="2186"><span class="lineNum">    2186 </span><span class="lineNoCov">          0 :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; static inline bool operator &lt;= (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const double&amp; x2) {</span></a>
 <a name="2187"><span class="lineNum">    2187 </span><span class="lineNoCov">          0 :             return x1._value() &lt;= x2;</span></a>
 <a name="2188"><span class="lineNum">    2188 </span>            :         } template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; static inline bool operator &lt;= (const double&amp; x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x2);</a>
-<a name="2189"><span class="lineNum">    2189 </span>            :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; static inline bool operator &lt;= (const double&amp; x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x2) {</a>
-<a name="2190"><span class="lineNum">    2190 </span>            :             return x1 &lt;= x2._value();</a>
+<a name="2189"><span class="lineNum">    2189 </span><span class="lineNoCov">          0 :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; static inline bool operator &lt;= (const double&amp; x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x2) {</span></a>
+<a name="2190"><span class="lineNum">    2190 </span><span class="lineNoCov">          0 :             return x1 &lt;= x2._value();</span></a>
 <a name="2191"><span class="lineNum">    2191 </span>            :         } template&lt;class AD_TAPE_REAL, class A1_T, class A1_OP &gt; static inline bool operator &lt;= (const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt;&amp; x1, const double&amp; x2);</a>
 <a name="2192"><span class="lineNum">    2192 </span>            :         template&lt;class AD_TAPE_REAL, class A1_T, class A1_OP &gt; static inline bool operator &lt;= (const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt;&amp; x1, const double&amp; x2) {</a>
 <a name="2193"><span class="lineNum">    2193 </span>            :             return x1._value() &lt;= x2;</a>
@@ -3314,8 +3314,8 @@
 <a name="3252"><span class="lineNum">    3252 </span>            :     };</a>
 <a name="3253"><span class="lineNum">    3253 </span>            :     template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; struct trait_value &lt;const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &gt; {</a>
 <a name="3254"><span class="lineNum">    3254 </span>            :         typedef const typename ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;::VALUE_TYPE RETURN_TYPE;</a>
-<a name="3255"><span class="lineNum">    3255 </span>            :         static inline RETURN_TYPE&amp; value(const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;value) {</a>
-<a name="3256"><span class="lineNum">    3256 </span>            :             return value._value();</a>
+<a name="3255"><span class="lineNum">    3255 </span><span class="lineNoCov">          0 :         static inline RETURN_TYPE&amp; value(const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;value) {</span></a>
+<a name="3256"><span class="lineNum">    3256 </span><span class="lineNoCov">          0 :             return value._value();</span></a>
 <a name="3257"><span class="lineNum">    3257 </span>            :         }</a>
 <a name="3258"><span class="lineNum">    3258 </span>            :     };</a>
 <a name="3259"><span class="lineNum">    3259 </span>            :     template&lt;class AD_TAPE_REAL, class A1_T, class A1_OP &gt; struct trait_value &lt;ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt; &gt; {</a>
@@ -3371,8 +3371,8 @@
 <a name="3309"><span class="lineNum">    3309 </span><span class="lineNoCov">          0 :         return trait_value&lt;T&gt;::value(x);</span></a>
 <a name="3310"><span class="lineNum">    3310 </span>            :     }</a>
 <a name="3311"><span class="lineNum">    3311 </span>            :     template &lt;typename T&gt;</a>
-<a name="3312"><span class="lineNum">    3312 </span>            :     inline typename trait_value&lt;const T&gt;::RETURN_TYPE &amp;value(const T &amp;x) {</a>
-<a name="3313"><span class="lineNum">    3313 </span>            :         return trait_value&lt;const T&gt;::value(x);</a>
+<a name="3312"><span class="lineNum">    3312 </span><span class="lineNoCov">          0 :     inline typename trait_value&lt;const T&gt;::RETURN_TYPE &amp;value(const T &amp;x) {</span></a>
+<a name="3313"><span class="lineNum">    3313 </span><span class="lineNoCov">          0 :         return trait_value&lt;const T&gt;::value(x);</span></a>
 <a name="3314"><span class="lineNum">    3314 </span>            :     }</a>
 <a name="3315"><span class="lineNum">    3315 </span>            :     template&lt; typename T &gt; struct trait_passive_value : trait_value&lt;T&gt; {};</a>
 <a name="3316"><span class="lineNum">    3316 </span>            :     template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; struct trait_passive_value &lt;ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &gt; {</a>

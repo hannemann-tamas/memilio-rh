@@ -79,7 +79,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9ee483700a716588544be576638e0cb1"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1IntegratorCore.html#a9ee483700a716588544be576638e0cb1">step</a> (const <a class="el" href="namespacemio.html#a78defd26db369316f8debc8d251ae208">DerivFunction</a>&lt; FP &gt; &amp;f, Eigen::Ref&lt; const Eigen::Matrix&lt; FP, Eigen::Dynamic, 1 &gt;&gt; yt, FP &amp;t, FP &amp;dt, Eigen::Ref&lt; Eigen::Matrix&lt; FP, Eigen::Dynamic, 1 &gt;&gt; ytp1) const =0</td></tr>
-<tr class="memdesc:a9ee483700a716588544be576638e0cb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Step of the integration with possible adaptive with.  <a href="classmio_1_1IntegratorCore.html#a9ee483700a716588544be576638e0cb1">More...</a><br /></td></tr>
+<tr class="memdesc:a9ee483700a716588544be576638e0cb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make a single integration step.  <a href="classmio_1_1IntegratorCore.html#a9ee483700a716588544be576638e0cb1">More...</a><br /></td></tr>
 <tr class="separator:a9ee483700a716588544be576638e0cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3d8fda3027e7d46baf161b781185f99"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1IntegratorCore.html#ab3d8fda3027e7d46baf161b781185f99">~IntegratorCore</a> ()</td></tr>
 <tr class="separator:ab3d8fda3027e7d46baf161b781185f99"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,17 +167,19 @@ template&lt;typename FP  = double&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Step of the integration with possible adaptive with. </p>
+<p>Make a single integration step. </p>
+<p>The behaviour of this method changes when the integration scheme has adaptive step sizing. These changes are noted in the parentheses (...) below. Adaptive integrators must have bounds dt_min and dt_max for dt. The adaptive step sizing is considered to be successful, if a step of at least size dt_min sufficed tolerances. Tolerances are defined in each implementation, usually using a criterion with absolute and relative tolerances. Even if the step sizing failed, the integrator will make a step of at least size dt_min.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>Right hand side of ODE </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">yt</td><td>value of y at t, y(t) </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">t</td><td>current time step h=dt </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">dt</td><td>current time step h=dt </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">ytp1</td><td>approximated value y(t+1) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>Right hand side of the ODE. May be called multiple times with different arguments. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">yt</td><td>The known value of y at time t. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">t</td><td>The current time. It will be increased by dt. (If adaptive, the increment is instead within [dt_min, dt].) </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">dt</td><td>The current step size h=dt. Will not be changed. (If adaptive, the given dt is used as the maximum step size, and must be within [dt_min, dt_max]. During integration, dt is adjusted in [dt_min, dt_max] to have an optimal size for the next step.) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">ytp1</td><td>Set to the approximated value of y at time t + dt. (If adaptive, this time may be smaller, but it is at least t + dt_min, at most t + dt_max. Note that the increment on t may be different from the returned value of dt.) </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Always true for nonadaptive methods. (If adaptive, returns whether the adaptive step sizing was successful.) </dd></dl>
 
 </div>
 </div>
