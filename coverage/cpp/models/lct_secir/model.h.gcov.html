@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">134</td>
-            <td class="headerCovTableEntry">134</td>
+            <td class="headerCovTableEntry">138</td>
+            <td class="headerCovTableEntry">138</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-03-14 18:36:45</td>
+            <td class="headerValue">2024-03-27 13:34:32</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">12</td>
-            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntry">15</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -121,12 +121,12 @@
 <a name="59"><span class="lineNum">      59 </span>            :      * @param[in] init Vector with initial values for all infection states inclusive subcompartments.</a>
 <a name="60"><span class="lineNum">      60 </span>            :      * @param[in, out] parameters_init Specifies Parameters necessary for the Model. </a>
 <a name="61"><span class="lineNum">      61 </span>            :      */</a>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">          8 :     Model(Eigen::VectorXd init, Parameters&amp;&amp; parameters_init = Parameters())</span></a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">         10 :     Model(Eigen::VectorXd init, Parameters&amp;&amp; parameters_init = Parameters())</span></a>
 <a name="63"><span class="lineNum">      63 </span>            :         : parameters{parameters_init}</a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">          8 :         , m_initial_values{std::move(init)}</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">         10 :         , m_initial_values{std::move(init)}</span></a>
 <a name="65"><span class="lineNum">      65 </span>            :     {</a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          8 :         m_N0 = m_initial_values.sum();</span></a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">          8 :     }</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">         10 :         m_N0 = m_initial_values.sum();</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">         10 :     }</span></a>
 <a name="68"><span class="lineNum">      68 </span>            : </a>
 <a name="69"><span class="lineNum">      69 </span>            :     /**</a>
 <a name="70"><span class="lineNum">      70 </span>            :      * @brief Checks constraints of the model inclusive check for model parameters.</a>
@@ -340,23 +340,34 @@
 <a name="278"><span class="lineNum">     278 </span>            :      * This can be used as initial conditions in an ODE solver.</a>
 <a name="279"><span class="lineNum">     279 </span>            :      * @return Vector with initial values for all (sub-)compartments.</a>
 <a name="280"><span class="lineNum">     280 </span>            :      */</a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">          4 :     Eigen::VectorXd get_initial_values()</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">         17 :     Eigen::VectorXd get_initial_values()</span></a>
 <a name="282"><span class="lineNum">     282 </span>            :     {</a>
-<a name="283"><span class="lineNum">     283 </span><span class="lineCov">          4 :         return m_initial_values;</span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">         17 :         return m_initial_values;</span></a>
 <a name="284"><span class="lineNum">     284 </span>            :     }</a>
 <a name="285"><span class="lineNum">     285 </span>            : </a>
-<a name="286"><span class="lineNum">     286 </span>            :     Parameters parameters{}; ///&lt; Parameters of the model.</a>
-<a name="287"><span class="lineNum">     287 </span>            : </a>
-<a name="288"><span class="lineNum">     288 </span>            : private:</a>
-<a name="289"><span class="lineNum">     289 </span>            :     Eigen::VectorXd m_initial_values; ///&lt; Initial values of the model.</a>
-<a name="290"><span class="lineNum">     290 </span>            :     ScalarType m_N0{</a>
-<a name="291"><span class="lineNum">     291 </span>            :         0}; ///&lt; Total population size at time t_0 for the considered region (inclusive initial value for Dead).</a>
-<a name="292"><span class="lineNum">     292 </span>            : };</a>
-<a name="293"><span class="lineNum">     293 </span>            : </a>
-<a name="294"><span class="lineNum">     294 </span>            : } // namespace lsecir</a>
-<a name="295"><span class="lineNum">     295 </span>            : } // namespace mio</a>
+<a name="286"><span class="lineNum">     286 </span>            :     /**</a>
+<a name="287"><span class="lineNum">     287 </span>            :      * @brief Sets the initial values for the model.</a>
+<a name="288"><span class="lineNum">     288 </span>            :      *</a>
+<a name="289"><span class="lineNum">     289 </span>            :      * @param[in] init Vector with initial values for all infection states inclusive subcompartments.</a>
+<a name="290"><span class="lineNum">     290 </span>            :      */</a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">          1 :     void set_initial_values(Eigen::VectorXd init)</span></a>
+<a name="292"><span class="lineNum">     292 </span>            :     {</a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineCov">          1 :         m_initial_values = init;</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">          1 :         m_N0 = m_initial_values.sum();</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">          1 :     }</span></a>
 <a name="296"><span class="lineNum">     296 </span>            : </a>
-<a name="297"><span class="lineNum">     297 </span>            : #endif // LCTSECIR_MODEL_H</a>
+<a name="297"><span class="lineNum">     297 </span>            :     Parameters parameters{}; ///&lt; Parameters of the model.</a>
+<a name="298"><span class="lineNum">     298 </span>            : </a>
+<a name="299"><span class="lineNum">     299 </span>            : private:</a>
+<a name="300"><span class="lineNum">     300 </span>            :     Eigen::VectorXd m_initial_values; ///&lt; Initial values of the model.</a>
+<a name="301"><span class="lineNum">     301 </span>            :     ScalarType m_N0{</a>
+<a name="302"><span class="lineNum">     302 </span>            :         0}; ///&lt; Total population size at time t_0 for the considered region (inclusive initial value for Dead).</a>
+<a name="303"><span class="lineNum">     303 </span>            : };</a>
+<a name="304"><span class="lineNum">     304 </span>            : </a>
+<a name="305"><span class="lineNum">     305 </span>            : } // namespace lsecir</a>
+<a name="306"><span class="lineNum">     306 </span>            : } // namespace mio</a>
+<a name="307"><span class="lineNum">     307 </span>            : </a>
+<a name="308"><span class="lineNum">     308 </span>            : #endif // LCTSECIR_MODEL_H</a>
 </pre>
       </td>
     </tr>

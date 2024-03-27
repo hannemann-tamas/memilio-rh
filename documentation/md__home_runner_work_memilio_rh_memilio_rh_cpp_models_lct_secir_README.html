@@ -67,7 +67,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>This model is based on the Linear Chain Trick.</p>
-<p>The Linear Chain Trick provides the option to use Erlang-distributed sojourn times in the compartments through the use of subcompartments. The normal ODE models have (possibly unrealistic) exponentially distributed sojourn times. The LCT model can still be described by an ordinary differential equation system.</p>
+<p>The Linear Chain Trick provides the option to use Erlang-distributed stay times in the compartments through the use of subcompartments. The normal ODE models have (possibly unrealistic) exponentially distributed stay times. The LCT model can still be described by an ordinary differential equation system.</p>
 <p>For the concept see</p><ul>
 <li>Lena Plötzke, "Der Linear Chain Trick in der epidemiologischen Modellierung als Kompromiss zwischen gewöhnlichen und Integro-Differentialgleichungen", 2023. (<a href="https://elib.dlr.de/200381/">https://elib.dlr.de/200381/</a>, German only)</li>
 <li>P. J. Hurtado und A. S. Kirosingh, "Generalizations of the ‘Linear Chain Trick’: incorporating more flexible dwell time distributions into mean field ODE models“, 2019. (<a href="https://doi.org/10.1007/s00285-019-01412-w">https://doi.org/10.1007/s00285-019-01412-w</a>)</li>
@@ -132,7 +132,12 @@ $(function() {
 <p>The notation of the compartments with indices here stands for subcompartments and not for age groups or similar, as in some ODE models. Accordingly, $I_{NS,n_{NS}}$, for example, stands for the number of people in the $n_{NS}$-th subcompartment of the InfectedNoSymptoms compartment.</p>
 <h1><a class="anchor" id="autotoc_md45"></a>
 Examples</h1>
-<p>A simple example can be found at <a href="../../examples/lct_secir.cpp">LCT minimal example</a>. </p>
+<p>A simple example can be found at <a href="../../examples/lct_secir.cpp">LCT minimal example</a>.</p>
+<h1><a class="anchor" id="autotoc_md46"></a>
+Initialization</h1>
+<ul>
+<li>The file <a href="parameters_io.h">parameters_io</a> provides functionality to compute an initial value vector for the LCT-SECIR model based on real data. </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

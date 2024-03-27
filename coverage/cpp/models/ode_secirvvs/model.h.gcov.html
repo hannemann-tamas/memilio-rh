@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">481</td>
-            <td class="headerCovTableEntry">489</td>
+            <td class="headerCovTableEntry">480</td>
+            <td class="headerCovTableEntry">488</td>
             <td class="headerCovTableEntryHi">98.4 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-03-14 18:36:45</td>
+            <td class="headerValue">2024-03-27 13:34:32</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">15</td>
@@ -177,184 +177,184 @@
 <a name="115"><span class="lineNum">     115 </span><span class="lineCov">        768 :         auto icu_occupancy           = 0.0;</span></a>
 <a name="116"><span class="lineNum">     116 </span><span class="lineCov">        768 :         auto test_and_trace_required = 0.0;</span></a>
 <a name="117"><span class="lineNum">     117 </span><span class="lineCov">       2628 :         for (auto i = AgeGroup(0); i &lt; n_agegroups; ++i) {</span></a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">       1860 :             auto rateINS =</span></a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">       1860 :                 0.5 / (params.template get&lt;IncubationTime&lt;FP&gt;&gt;()[i] - params.template get&lt;SerialInterval&lt;FP&gt;&gt;()[i]);</span></a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       1860 :             test_and_trace_required +=</span></a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">       1860 :                 (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i]) * rateINS *</span></a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">       3720 :                 (this-&gt;populations.get_from(pop, {i, InfectionState::InfectedNoSymptomsNaive}) +</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">       3720 :                  this-&gt;populations.get_from(pop, {i, InfectionState::InfectedNoSymptomsPartialImmunity}) +</span></a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">       3720 :                  this-&gt;populations.get_from(pop, {i, InfectionState::InfectedNoSymptomsImprovedImmunity}) +</span></a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineCov">       3720 :                  this-&gt;populations.get_from(pop, {i, InfectionState::InfectedNoSymptomsNaiveConfirmed}) +</span></a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">       3720 :                  this-&gt;populations.get_from(pop, {i, InfectionState::InfectedNoSymptomsPartialImmunityConfirmed}) +</span></a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">       1860 :                  this-&gt;populations.get_from(pop, {i, InfectionState::InfectedNoSymptomsImprovedImmunityConfirmed}));</span></a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">       3720 :             icu_occupancy += this-&gt;populations.get_from(pop, {i, InfectionState::InfectedCriticalNaive}) +</span></a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">       3720 :                              this-&gt;populations.get_from(pop, {i, InfectionState::InfectedCriticalPartialImmunity}) +</span></a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">       1860 :                              this-&gt;populations.get_from(pop, {i, InfectionState::InfectedCriticalImprovedImmunity});</span></a>
-<a name="131"><span class="lineNum">     131 </span>            :         }</a>
-<a name="132"><span class="lineNum">     132 </span>            : </a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">       2628 :         for (auto i = AgeGroup(0); i &lt; n_agegroups; i++) {</span></a>
-<a name="134"><span class="lineNum">     134 </span>            : </a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineCov">       1860 :             size_t SNi    = this-&gt;populations.get_flat_index({i, InfectionState::SusceptibleNaive});</span></a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">       1860 :             size_t ENi    = this-&gt;populations.get_flat_index({i, InfectionState::ExposedNaive});</span></a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">       1860 :             size_t INSNi  = this-&gt;populations.get_flat_index({i, InfectionState::InfectedNoSymptomsNaive});</span></a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">       1860 :             size_t ISyNi  = this-&gt;populations.get_flat_index({i, InfectionState::InfectedSymptomsNaive});</span></a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">       1860 :             size_t ISevNi = this-&gt;populations.get_flat_index({i, InfectionState::InfectedSevereNaive});</span></a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">       1860 :             size_t ICrNi  = this-&gt;populations.get_flat_index({i, InfectionState::InfectedCriticalNaive});</span></a>
-<a name="141"><span class="lineNum">     141 </span>            : </a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">       1860 :             size_t INSNCi = this-&gt;populations.get_flat_index({i, InfectionState::InfectedNoSymptomsNaiveConfirmed});</span></a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">       1860 :             size_t ISyNCi = this-&gt;populations.get_flat_index({i, InfectionState::InfectedSymptomsNaiveConfirmed});</span></a>
-<a name="144"><span class="lineNum">     144 </span>            : </a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">       1860 :             size_t SPIi    = this-&gt;populations.get_flat_index({i, InfectionState::SusceptiblePartialImmunity});</span></a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">       1860 :             size_t EPIi    = this-&gt;populations.get_flat_index({i, InfectionState::ExposedPartialImmunity});</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">       1860 :             size_t INSPIi  = this-&gt;populations.get_flat_index({i, InfectionState::InfectedNoSymptomsPartialImmunity});</span></a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">       1860 :             size_t ISyPIi  = this-&gt;populations.get_flat_index({i, InfectionState::InfectedSymptomsPartialImmunity});</span></a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">       1860 :             size_t ISevPIi = this-&gt;populations.get_flat_index({i, InfectionState::InfectedSeverePartialImmunity});</span></a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">       1860 :             size_t ICrPIi  = this-&gt;populations.get_flat_index({i, InfectionState::InfectedCriticalPartialImmunity});</span></a>
-<a name="151"><span class="lineNum">     151 </span>            : </a>
-<a name="152"><span class="lineNum">     152 </span>            :             size_t INSPICi =</a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">       1860 :                 this-&gt;populations.get_flat_index({i, InfectionState::InfectedNoSymptomsPartialImmunityConfirmed});</span></a>
-<a name="154"><span class="lineNum">     154 </span>            :             size_t ISyPICi =</a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">       1860 :                 this-&gt;populations.get_flat_index({i, InfectionState::InfectedSymptomsPartialImmunityConfirmed});</span></a>
-<a name="156"><span class="lineNum">     156 </span>            : </a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">       1860 :             size_t EIIi    = this-&gt;populations.get_flat_index({i, InfectionState::ExposedImprovedImmunity});</span></a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">       1860 :             size_t INSIIi  = this-&gt;populations.get_flat_index({i, InfectionState::InfectedNoSymptomsImprovedImmunity});</span></a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">       1860 :             size_t ISyIIi  = this-&gt;populations.get_flat_index({i, InfectionState::InfectedSymptomsImprovedImmunity});</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">       1860 :             size_t ISevIIi = this-&gt;populations.get_flat_index({i, InfectionState::InfectedSevereImprovedImmunity});</span></a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">       1860 :             size_t ICrIIi  = this-&gt;populations.get_flat_index({i, InfectionState::InfectedCriticalImprovedImmunity});</span></a>
-<a name="162"><span class="lineNum">     162 </span>            : </a>
-<a name="163"><span class="lineNum">     163 </span>            :             size_t INSIICi =</a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">       1860 :                 this-&gt;populations.get_flat_index({i, InfectionState::InfectedNoSymptomsImprovedImmunityConfirmed});</span></a>
-<a name="165"><span class="lineNum">     165 </span>            :             size_t ISyIICi =</a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">       1860 :                 this-&gt;populations.get_flat_index({i, InfectionState::InfectedSymptomsImprovedImmunityConfirmed});</span></a>
-<a name="167"><span class="lineNum">     167 </span>            : </a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">       1860 :             size_t SIIi = this-&gt;populations.get_flat_index({i, InfectionState::SusceptibleImprovedImmunity});</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">       1860 :             double rateE =</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">       1860 :                 1.0 / (2 * params.template get&lt;SerialInterval&lt;FP&gt;&gt;()[i] - params.template get&lt;IncubationTime&lt;FP&gt;&gt;()[i]);</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">       1860 :             double rateINS =</span></a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">       1860 :                 0.5 / (params.template get&lt;IncubationTime&lt;FP&gt;&gt;()[i] - params.template get&lt;SerialInterval&lt;FP&gt;&gt;()[i]);</span></a>
-<a name="173"><span class="lineNum">     173 </span>            : </a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">       1860 :             double reducExposedPartialImmunity  = params.template get&lt;ReducExposedPartialImmunity&lt;FP&gt;&gt;()[i];</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">       1860 :             double reducExposedImprovedImmunity = params.template get&lt;ReducExposedImprovedImmunity&lt;FP&gt;&gt;()[i];</span></a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">       1860 :             double reducInfectedSymptomsPartialImmunity =</span></a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">       1860 :                 params.template get&lt;ReducInfectedSymptomsPartialImmunity&lt;FP&gt;&gt;()[i];</span></a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">       1860 :             double reducInfectedSymptomsImprovedImmunity =</span></a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">       1860 :                 params.template get&lt;ReducInfectedSymptomsImprovedImmunity&lt;FP&gt;&gt;()[i];</span></a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">       1860 :             double reducInfectedSevereCriticalDeadPartialImmunity =</span></a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">       1860 :                 params.template get&lt;ReducInfectedSevereCriticalDeadPartialImmunity&lt;FP&gt;&gt;()[i];</span></a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">       1860 :             double reducInfectedSevereCriticalDeadImprovedImmunity =</span></a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">       1860 :                 params.template get&lt;ReducInfectedSevereCriticalDeadImprovedImmunity&lt;FP&gt;&gt;()[i];</span></a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">       1860 :             double reducTimeInfectedMild = params.template get&lt;ReducTimeInfectedMild&lt;FP&gt;&gt;()[i];</span></a>
-<a name="185"><span class="lineNum">     185 </span>            : </a>
-<a name="186"><span class="lineNum">     186 </span>            :             //symptomatic are less well quarantined when testing and tracing is overwhelmed so they infect more people</a>
-<a name="187"><span class="lineNum">     187 </span>            :             auto riskFromInfectedSymptomatic =</a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">       5580 :                 smoother_cosine(test_and_trace_required, params.template get&lt;TestAndTraceCapacity&lt;FP&gt;&gt;(),</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">       1860 :                                 params.template get&lt;TestAndTraceCapacity&lt;FP&gt;&gt;() * 15,</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">       1860 :                                 params.template get&lt;RiskOfInfectionFromSymptomatic&lt;FP&gt;&gt;()[i],</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">       1860 :                                 params.template get&lt;MaxRiskOfInfectionFromSymptomatic&lt;FP&gt;&gt;()[i]);</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">       1860 :             test_and_trace_required +=</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">       3720 :                 (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i]) /</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       1860 :                 params.template get&lt;TimeInfectedNoSymptoms&lt;FP&gt;&gt;()[i] *</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">       3720 :                 (this-&gt;populations.get_from(pop, {i, InfectionState::InfectedNoSymptomsNaive}) +</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">       3720 :                  this-&gt;populations.get_from(pop, {i, InfectionState::InfectedNoSymptomsPartialImmunity}) +</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">       3720 :                  this-&gt;populations.get_from(pop, {i, InfectionState::InfectedNoSymptomsImprovedImmunity}) +</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">       3720 :                  this-&gt;populations.get_from(pop, {i, InfectionState::InfectedNoSymptomsNaiveConfirmed}) +</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">       3720 :                  this-&gt;populations.get_from(pop, {i, InfectionState::InfectedNoSymptomsPartialImmunityConfirmed}) +</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">       1860 :                  this-&gt;populations.get_from(pop, {i, InfectionState::InfectedNoSymptomsImprovedImmunityConfirmed}));</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">       3720 :             icu_occupancy += this-&gt;populations.get_from(pop, {i, InfectionState::InfectedCriticalNaive}) +</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">       3720 :                              this-&gt;populations.get_from(pop, {i, InfectionState::InfectedCriticalPartialImmunity}) +</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">       1860 :                              this-&gt;populations.get_from(pop, {i, InfectionState::InfectedCriticalImprovedImmunity});</span></a>
+<a name="130"><span class="lineNum">     130 </span>            :         }</a>
+<a name="131"><span class="lineNum">     131 </span>            : </a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">       2628 :         for (auto i = AgeGroup(0); i &lt; n_agegroups; i++) {</span></a>
+<a name="133"><span class="lineNum">     133 </span>            : </a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">       1860 :             size_t SNi    = this-&gt;populations.get_flat_index({i, InfectionState::SusceptibleNaive});</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">       1860 :             size_t ENi    = this-&gt;populations.get_flat_index({i, InfectionState::ExposedNaive});</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">       1860 :             size_t INSNi  = this-&gt;populations.get_flat_index({i, InfectionState::InfectedNoSymptomsNaive});</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">       1860 :             size_t ISyNi  = this-&gt;populations.get_flat_index({i, InfectionState::InfectedSymptomsNaive});</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">       1860 :             size_t ISevNi = this-&gt;populations.get_flat_index({i, InfectionState::InfectedSevereNaive});</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">       1860 :             size_t ICrNi  = this-&gt;populations.get_flat_index({i, InfectionState::InfectedCriticalNaive});</span></a>
+<a name="140"><span class="lineNum">     140 </span>            : </a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       1860 :             size_t INSNCi = this-&gt;populations.get_flat_index({i, InfectionState::InfectedNoSymptomsNaiveConfirmed});</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">       1860 :             size_t ISyNCi = this-&gt;populations.get_flat_index({i, InfectionState::InfectedSymptomsNaiveConfirmed});</span></a>
+<a name="143"><span class="lineNum">     143 </span>            : </a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       1860 :             size_t SPIi    = this-&gt;populations.get_flat_index({i, InfectionState::SusceptiblePartialImmunity});</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">       1860 :             size_t EPIi    = this-&gt;populations.get_flat_index({i, InfectionState::ExposedPartialImmunity});</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">       1860 :             size_t INSPIi  = this-&gt;populations.get_flat_index({i, InfectionState::InfectedNoSymptomsPartialImmunity});</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">       1860 :             size_t ISyPIi  = this-&gt;populations.get_flat_index({i, InfectionState::InfectedSymptomsPartialImmunity});</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">       1860 :             size_t ISevPIi = this-&gt;populations.get_flat_index({i, InfectionState::InfectedSeverePartialImmunity});</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">       1860 :             size_t ICrPIi  = this-&gt;populations.get_flat_index({i, InfectionState::InfectedCriticalPartialImmunity});</span></a>
+<a name="150"><span class="lineNum">     150 </span>            : </a>
+<a name="151"><span class="lineNum">     151 </span>            :             size_t INSPICi =</a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">       1860 :                 this-&gt;populations.get_flat_index({i, InfectionState::InfectedNoSymptomsPartialImmunityConfirmed});</span></a>
+<a name="153"><span class="lineNum">     153 </span>            :             size_t ISyPICi =</a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">       1860 :                 this-&gt;populations.get_flat_index({i, InfectionState::InfectedSymptomsPartialImmunityConfirmed});</span></a>
+<a name="155"><span class="lineNum">     155 </span>            : </a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">       1860 :             size_t EIIi    = this-&gt;populations.get_flat_index({i, InfectionState::ExposedImprovedImmunity});</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">       1860 :             size_t INSIIi  = this-&gt;populations.get_flat_index({i, InfectionState::InfectedNoSymptomsImprovedImmunity});</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">       1860 :             size_t ISyIIi  = this-&gt;populations.get_flat_index({i, InfectionState::InfectedSymptomsImprovedImmunity});</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">       1860 :             size_t ISevIIi = this-&gt;populations.get_flat_index({i, InfectionState::InfectedSevereImprovedImmunity});</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">       1860 :             size_t ICrIIi  = this-&gt;populations.get_flat_index({i, InfectionState::InfectedCriticalImprovedImmunity});</span></a>
+<a name="161"><span class="lineNum">     161 </span>            : </a>
+<a name="162"><span class="lineNum">     162 </span>            :             size_t INSIICi =</a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">       1860 :                 this-&gt;populations.get_flat_index({i, InfectionState::InfectedNoSymptomsImprovedImmunityConfirmed});</span></a>
+<a name="164"><span class="lineNum">     164 </span>            :             size_t ISyIICi =</a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">       1860 :                 this-&gt;populations.get_flat_index({i, InfectionState::InfectedSymptomsImprovedImmunityConfirmed});</span></a>
+<a name="166"><span class="lineNum">     166 </span>            : </a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">       1860 :             size_t SIIi = this-&gt;populations.get_flat_index({i, InfectionState::SusceptibleImprovedImmunity});</span></a>
+<a name="168"><span class="lineNum">     168 </span>            : </a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">       1860 :             double reducExposedPartialImmunity  = params.template get&lt;ReducExposedPartialImmunity&lt;FP&gt;&gt;()[i];</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">       1860 :             double reducExposedImprovedImmunity = params.template get&lt;ReducExposedImprovedImmunity&lt;FP&gt;&gt;()[i];</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">       1860 :             double reducInfectedSymptomsPartialImmunity =</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">       1860 :                 params.template get&lt;ReducInfectedSymptomsPartialImmunity&lt;FP&gt;&gt;()[i];</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">       1860 :             double reducInfectedSymptomsImprovedImmunity =</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">       1860 :                 params.template get&lt;ReducInfectedSymptomsImprovedImmunity&lt;FP&gt;&gt;()[i];</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">       1860 :             double reducInfectedSevereCriticalDeadPartialImmunity =</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">       1860 :                 params.template get&lt;ReducInfectedSevereCriticalDeadPartialImmunity&lt;FP&gt;&gt;()[i];</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">       1860 :             double reducInfectedSevereCriticalDeadImprovedImmunity =</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">       1860 :                 params.template get&lt;ReducInfectedSevereCriticalDeadImprovedImmunity&lt;FP&gt;&gt;()[i];</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">       1860 :             double reducTimeInfectedMild = params.template get&lt;ReducTimeInfectedMild&lt;FP&gt;&gt;()[i];</span></a>
+<a name="180"><span class="lineNum">     180 </span>            : </a>
+<a name="181"><span class="lineNum">     181 </span>            :             //symptomatic are less well quarantined when testing and tracing is overwhelmed so they infect more people</a>
+<a name="182"><span class="lineNum">     182 </span>            :             auto riskFromInfectedSymptomatic =</a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">       5580 :                 smoother_cosine(test_and_trace_required, params.template get&lt;TestAndTraceCapacity&lt;FP&gt;&gt;(),</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">       1860 :                                 params.template get&lt;TestAndTraceCapacity&lt;FP&gt;&gt;() * 15,</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">       1860 :                                 params.template get&lt;RiskOfInfectionFromSymptomatic&lt;FP&gt;&gt;()[i],</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">       1860 :                                 params.template get&lt;MaxRiskOfInfectionFromSymptomatic&lt;FP&gt;&gt;()[i]);</span></a>
+<a name="187"><span class="lineNum">     187 </span>            : </a>
+<a name="188"><span class="lineNum">     188 </span>            :             auto riskFromInfectedNoSymptoms =</a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">       3720 :                 smoother_cosine(test_and_trace_required, params.template get&lt;TestAndTraceCapacity&lt;FP&gt;&gt;(),</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">       1860 :                                 params.template get&lt;TestAndTraceCapacity&lt;FP&gt;&gt;() * 2,</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">       1860 :                                 params.template get&lt;RelativeTransmissionNoSymptoms&lt;FP&gt;&gt;()[i], 1.0);</span></a>
 <a name="192"><span class="lineNum">     192 </span>            : </a>
-<a name="193"><span class="lineNum">     193 </span>            :             auto riskFromInfectedNoSymptoms =</a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">       3720 :                 smoother_cosine(test_and_trace_required, params.template get&lt;TestAndTraceCapacity&lt;FP&gt;&gt;(),</span></a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">       1860 :                                 params.template get&lt;TestAndTraceCapacity&lt;FP&gt;&gt;() * 2,</span></a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">       1860 :                                 params.template get&lt;RelativeTransmissionNoSymptoms&lt;FP&gt;&gt;()[i], 1.0);</span></a>
-<a name="197"><span class="lineNum">     197 </span>            : </a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">       6636 :             for (auto j = AgeGroup(0); j &lt; n_agegroups; j++) {</span></a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">       4776 :                 size_t SNj    = this-&gt;populations.get_flat_index({j, InfectionState::SusceptibleNaive});</span></a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">       4776 :                 size_t ENj    = this-&gt;populations.get_flat_index({j, InfectionState::ExposedNaive});</span></a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineCov">       4776 :                 size_t INSNj  = this-&gt;populations.get_flat_index({j, InfectionState::InfectedNoSymptomsNaive});</span></a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">       4776 :                 size_t ISyNj  = this-&gt;populations.get_flat_index({j, InfectionState::InfectedSymptomsNaive});</span></a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">       4776 :                 size_t ISevNj = this-&gt;populations.get_flat_index({j, InfectionState::InfectedSevereNaive});</span></a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">       4776 :                 size_t ICrNj  = this-&gt;populations.get_flat_index({j, InfectionState::InfectedCriticalNaive});</span></a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">       4776 :                 size_t SIIj   = this-&gt;populations.get_flat_index({j, InfectionState::SusceptibleImprovedImmunity});</span></a>
-<a name="206"><span class="lineNum">     206 </span>            : </a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">       4776 :                 size_t INSNCj = this-&gt;populations.get_flat_index({j, InfectionState::InfectedNoSymptomsNaiveConfirmed});</span></a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">       4776 :                 size_t ISyNCj = this-&gt;populations.get_flat_index({j, InfectionState::InfectedSymptomsNaiveConfirmed});</span></a>
-<a name="209"><span class="lineNum">     209 </span>            : </a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">       4776 :                 size_t SPIj = this-&gt;populations.get_flat_index({j, InfectionState::SusceptiblePartialImmunity});</span></a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">       4776 :                 size_t EPIj = this-&gt;populations.get_flat_index({j, InfectionState::ExposedPartialImmunity});</span></a>
-<a name="212"><span class="lineNum">     212 </span>            :                 size_t INSPIj =</a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">       4776 :                     this-&gt;populations.get_flat_index({j, InfectionState::InfectedNoSymptomsPartialImmunity});</span></a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">       4776 :                 size_t ISyPIj  = this-&gt;populations.get_flat_index({j, InfectionState::InfectedSymptomsPartialImmunity});</span></a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">       4776 :                 size_t ISevPIj = this-&gt;populations.get_flat_index({j, InfectionState::InfectedSeverePartialImmunity});</span></a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">       4776 :                 size_t ICrPIj  = this-&gt;populations.get_flat_index({j, InfectionState::InfectedCriticalPartialImmunity});</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">       6636 :             for (auto j = AgeGroup(0); j &lt; n_agegroups; j++) {</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">       4776 :                 size_t SNj    = this-&gt;populations.get_flat_index({j, InfectionState::SusceptibleNaive});</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">       4776 :                 size_t ENj    = this-&gt;populations.get_flat_index({j, InfectionState::ExposedNaive});</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">       4776 :                 size_t INSNj  = this-&gt;populations.get_flat_index({j, InfectionState::InfectedNoSymptomsNaive});</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">       4776 :                 size_t ISyNj  = this-&gt;populations.get_flat_index({j, InfectionState::InfectedSymptomsNaive});</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">       4776 :                 size_t ISevNj = this-&gt;populations.get_flat_index({j, InfectionState::InfectedSevereNaive});</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">       4776 :                 size_t ICrNj  = this-&gt;populations.get_flat_index({j, InfectionState::InfectedCriticalNaive});</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">       4776 :                 size_t SIIj   = this-&gt;populations.get_flat_index({j, InfectionState::SusceptibleImprovedImmunity});</span></a>
+<a name="201"><span class="lineNum">     201 </span>            : </a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">       4776 :                 size_t INSNCj = this-&gt;populations.get_flat_index({j, InfectionState::InfectedNoSymptomsNaiveConfirmed});</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">       4776 :                 size_t ISyNCj = this-&gt;populations.get_flat_index({j, InfectionState::InfectedSymptomsNaiveConfirmed});</span></a>
+<a name="204"><span class="lineNum">     204 </span>            : </a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">       4776 :                 size_t SPIj = this-&gt;populations.get_flat_index({j, InfectionState::SusceptiblePartialImmunity});</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">       4776 :                 size_t EPIj = this-&gt;populations.get_flat_index({j, InfectionState::ExposedPartialImmunity});</span></a>
+<a name="207"><span class="lineNum">     207 </span>            :                 size_t INSPIj =</a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">       4776 :                     this-&gt;populations.get_flat_index({j, InfectionState::InfectedNoSymptomsPartialImmunity});</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">       4776 :                 size_t ISyPIj  = this-&gt;populations.get_flat_index({j, InfectionState::InfectedSymptomsPartialImmunity});</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">       4776 :                 size_t ISevPIj = this-&gt;populations.get_flat_index({j, InfectionState::InfectedSeverePartialImmunity});</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">       4776 :                 size_t ICrPIj  = this-&gt;populations.get_flat_index({j, InfectionState::InfectedCriticalPartialImmunity});</span></a>
+<a name="212"><span class="lineNum">     212 </span>            : </a>
+<a name="213"><span class="lineNum">     213 </span>            :                 size_t INSPICj =</a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">       4776 :                     this-&gt;populations.get_flat_index({j, InfectionState::InfectedNoSymptomsPartialImmunityConfirmed});</span></a>
+<a name="215"><span class="lineNum">     215 </span>            :                 size_t ISyPICj =</a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">       4776 :                     this-&gt;populations.get_flat_index({j, InfectionState::InfectedSymptomsPartialImmunityConfirmed});</span></a>
 <a name="217"><span class="lineNum">     217 </span>            : </a>
-<a name="218"><span class="lineNum">     218 </span>            :                 size_t INSPICj =</a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">       4776 :                     this-&gt;populations.get_flat_index({j, InfectionState::InfectedNoSymptomsPartialImmunityConfirmed});</span></a>
-<a name="220"><span class="lineNum">     220 </span>            :                 size_t ISyPICj =</a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">       4776 :                     this-&gt;populations.get_flat_index({j, InfectionState::InfectedSymptomsPartialImmunityConfirmed});</span></a>
-<a name="222"><span class="lineNum">     222 </span>            : </a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">       4776 :                 size_t EIIj = this-&gt;populations.get_flat_index({j, InfectionState::ExposedImprovedImmunity});</span></a>
-<a name="224"><span class="lineNum">     224 </span>            :                 size_t INSIIj =</a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">       4776 :                     this-&gt;populations.get_flat_index({j, InfectionState::InfectedNoSymptomsImprovedImmunity});</span></a>
-<a name="226"><span class="lineNum">     226 </span><span class="lineCov">       4776 :                 size_t ISyIIj = this-&gt;populations.get_flat_index({j, InfectionState::InfectedSymptomsImprovedImmunity});</span></a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">       4776 :                 size_t ISevIIj = this-&gt;populations.get_flat_index({j, InfectionState::InfectedSevereImprovedImmunity});</span></a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">       4776 :                 size_t ICrIIj = this-&gt;populations.get_flat_index({j, InfectionState::InfectedCriticalImprovedImmunity});</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">       4776 :                 size_t EIIj = this-&gt;populations.get_flat_index({j, InfectionState::ExposedImprovedImmunity});</span></a>
+<a name="219"><span class="lineNum">     219 </span>            :                 size_t INSIIj =</a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">       4776 :                     this-&gt;populations.get_flat_index({j, InfectionState::InfectedNoSymptomsImprovedImmunity});</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">       4776 :                 size_t ISyIIj = this-&gt;populations.get_flat_index({j, InfectionState::InfectedSymptomsImprovedImmunity});</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">       4776 :                 size_t ISevIIj = this-&gt;populations.get_flat_index({j, InfectionState::InfectedSevereImprovedImmunity});</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">       4776 :                 size_t ICrIIj = this-&gt;populations.get_flat_index({j, InfectionState::InfectedCriticalImprovedImmunity});</span></a>
+<a name="224"><span class="lineNum">     224 </span>            : </a>
+<a name="225"><span class="lineNum">     225 </span>            :                 size_t INSIICj =</a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">       4776 :                     this-&gt;populations.get_flat_index({j, InfectionState::InfectedNoSymptomsImprovedImmunityConfirmed});</span></a>
+<a name="227"><span class="lineNum">     227 </span>            :                 size_t ISyIICj =</a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">       4776 :                     this-&gt;populations.get_flat_index({j, InfectionState::InfectedSymptomsImprovedImmunityConfirmed});</span></a>
 <a name="229"><span class="lineNum">     229 </span>            : </a>
-<a name="230"><span class="lineNum">     230 </span>            :                 size_t INSIICj =</a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">       4776 :                     this-&gt;populations.get_flat_index({j, InfectionState::InfectedNoSymptomsImprovedImmunityConfirmed});</span></a>
-<a name="232"><span class="lineNum">     232 </span>            :                 size_t ISyIICj =</a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       4776 :                     this-&gt;populations.get_flat_index({j, InfectionState::InfectedSymptomsImprovedImmunityConfirmed});</span></a>
-<a name="234"><span class="lineNum">     234 </span>            : </a>
-<a name="235"><span class="lineNum">     235 </span>            :                 // effective contact rate by contact rate between groups i and j and damping j</a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">       4776 :                 FP season_val    = (1 + params.template get&lt;Seasonality&lt;FP&gt;&gt;() *</span></a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">       4776 :                                          sin(3.141592653589793 *</span></a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">       4776 :                                                 (std::fmod((params.template get&lt;StartDay&gt;() + t), 365.0) / 182.5 + 0.5)));</span></a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">       9552 :                 FP cont_freq_eff = season_val * contact_matrix.get_matrix_at(t)(static_cast&lt;Eigen::Index&gt;((size_t)i),</span></a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">       4776 :                                                                                 static_cast&lt;Eigen::Index&gt;((size_t)j));</span></a>
-<a name="241"><span class="lineNum">     241 </span>            :                 // without died people</a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">       4776 :                 FP Nj = pop[SNj] + pop[ENj] + pop[INSNj] + pop[ISyNj] + pop[ISevNj] + pop[ICrNj] + pop[INSNCj] +</span></a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineCov">       4776 :                         pop[ISyNCj] + pop[SPIj] + pop[EPIj] + pop[INSPIj] + pop[ISyPIj] + pop[ISevPIj] + pop[ICrPIj] +</span></a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">       4776 :                         pop[INSPICj] + pop[ISyPICj] + pop[SIIj] + pop[EIIj] + pop[INSIIj] + pop[ISyIIj] + pop[ISevIIj] +</span></a>
-<a name="245"><span class="lineNum">     245 </span><span class="lineCov">       4776 :                         pop[ICrIIj] + pop[INSIICj] + pop[ISyIICj];</span></a>
-<a name="246"><span class="lineNum">     246 </span>            : </a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">       4776 :                 FP divNj = 1.0 / Nj; // precompute 1.0/Nj</span></a>
+<a name="230"><span class="lineNum">     230 </span>            :                 // effective contact rate by contact rate between groups i and j and damping j</a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">       4776 :                 FP season_val    = (1 + params.template get&lt;Seasonality&lt;FP&gt;&gt;() *</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">       4776 :                                          sin(3.141592653589793 *</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       4776 :                                                 (std::fmod((params.template get&lt;StartDay&gt;() + t), 365.0) / 182.5 + 0.5)));</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">       9552 :                 FP cont_freq_eff = season_val * contact_matrix.get_matrix_at(t)(static_cast&lt;Eigen::Index&gt;((size_t)i),</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       4776 :                                                                                 static_cast&lt;Eigen::Index&gt;((size_t)j));</span></a>
+<a name="236"><span class="lineNum">     236 </span>            :                 // without died people</a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">       4776 :                 FP Nj = pop[SNj] + pop[ENj] + pop[INSNj] + pop[ISyNj] + pop[ISevNj] + pop[ICrNj] + pop[INSNCj] +</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">       4776 :                         pop[ISyNCj] + pop[SPIj] + pop[EPIj] + pop[INSPIj] + pop[ISyPIj] + pop[ISevPIj] + pop[ICrPIj] +</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">       4776 :                         pop[INSPICj] + pop[ISyPICj] + pop[SIIj] + pop[EIIj] + pop[INSIIj] + pop[ISyIIj] + pop[ISevIIj] +</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">       4776 :                         pop[ICrIIj] + pop[INSIICj] + pop[ISyIICj];</span></a>
+<a name="241"><span class="lineNum">     241 </span>            : </a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">       4776 :                 FP divNj = 1.0 / Nj; // precompute 1.0/Nj</span></a>
+<a name="243"><span class="lineNum">     243 </span>            : </a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">       4776 :                 FP ext_inf_force_dummy = cont_freq_eff * divNj *</span></a>
+<a name="245"><span class="lineNum">     245 </span><span class="lineCov">       4776 :                                          params.template get&lt;TransmissionProbabilityOnContact&lt;FP&gt;&gt;()[(AgeGroup)i] *</span></a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineCov">       4776 :                                          (riskFromInfectedNoSymptoms * (pop[INSNj] + pop[INSPIj] + pop[INSIIj]) +</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">       4776 :                                           riskFromInfectedSymptomatic * (pop[ISyNj] + pop[ISyPIj] + pop[ISyIIj]));</span></a>
 <a name="248"><span class="lineNum">     248 </span>            : </a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">       4776 :                 FP ext_inf_force_dummy = cont_freq_eff * divNj *</span></a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">       4776 :                                          params.template get&lt;TransmissionProbabilityOnContact&lt;FP&gt;&gt;()[(AgeGroup)i] *</span></a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">       4776 :                                          (riskFromInfectedNoSymptoms * (pop[INSNj] + pop[INSPIj] + pop[INSIIj]) +</span></a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">       4776 :                                           riskFromInfectedSymptomatic * (pop[ISyNj] + pop[ISyPIj] + pop[ISyIIj]));</span></a>
-<a name="253"><span class="lineNum">     253 </span>            : </a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">       4776 :                 FP dummy_SN = y[SNi] * ext_inf_force_dummy;</span></a>
-<a name="255"><span class="lineNum">     255 </span>            : </a>
-<a name="256"><span class="lineNum">     256 </span><span class="lineCov">       4776 :                 FP dummy_SPI = y[SPIi] * reducExposedPartialImmunity * ext_inf_force_dummy;</span></a>
-<a name="257"><span class="lineNum">     257 </span>            : </a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">       4776 :                 FP dummy_SII = y[SIIi] * reducExposedImprovedImmunity * ext_inf_force_dummy;</span></a>
-<a name="259"><span class="lineNum">     259 </span>            : </a>
-<a name="260"><span class="lineNum">     260 </span><span class="lineCov">       9552 :                 flows[this-&gt;template get_flat_flow_index&lt;InfectionState::SusceptibleNaive,</span></a>
-<a name="261"><span class="lineNum">     261 </span><span class="lineCov">       4776 :                                                          InfectionState::ExposedNaive&gt;({i})] += dummy_SN;</span></a>
-<a name="262"><span class="lineNum">     262 </span><span class="lineCov">       9552 :                 flows[this-&gt;template get_flat_flow_index&lt;InfectionState::SusceptiblePartialImmunity,</span></a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineCov">       4776 :                                                          InfectionState::ExposedPartialImmunity&gt;({i})] += dummy_SPI;</span></a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">       9552 :                 flows[this-&gt;template get_flat_flow_index&lt;InfectionState::SusceptibleImprovedImmunity,</span></a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">       4776 :                                                          InfectionState::ExposedImprovedImmunity&gt;({i})] += dummy_SII;</span></a>
-<a name="266"><span class="lineNum">     266 </span>            :             }</a>
-<a name="267"><span class="lineNum">     267 </span>            : </a>
-<a name="268"><span class="lineNum">     268 </span>            :             // ICU capacity shortage is close</a>
-<a name="269"><span class="lineNum">     269 </span>            :             // TODO: if this is used with vaccination model, it has to be adapted if CriticalPerSevere</a>
-<a name="270"><span class="lineNum">     270 </span>            :             // is different for different vaccination status. This is not the case here and in addition, ICUCapacity</a>
-<a name="271"><span class="lineNum">     271 </span>            :             // is set to infinity and this functionality is deactivated, so this is OK for the moment.</a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">       5580 :             double criticalPerSevereAdjusted = smoother_cosine(</span></a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">       3720 :                 icu_occupancy, 0.90 * params.template get&lt;ICUCapacity&lt;FP&gt;&gt;(), params.template get&lt;ICUCapacity&lt;FP&gt;&gt;(),</span></a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineCov">       1860 :                 params.template get&lt;CriticalPerSevere&lt;FP&gt;&gt;()[i], 0);</span></a>
-<a name="275"><span class="lineNum">     275 </span>            : </a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">       1860 :             FP deathsPerSevereAdjusted = params.template get&lt;CriticalPerSevere&lt;FP&gt;&gt;()[i] - criticalPerSevereAdjusted;</span></a>
-<a name="277"><span class="lineNum">     277 </span>            : </a>
-<a name="278"><span class="lineNum">     278 </span>            :             /**** path of immune-naive ***/</a>
-<a name="279"><span class="lineNum">     279 </span>            :             // Exposed</a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::ExposedNaive,</span></a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">       1860 :                                                      InfectionState::InfectedNoSymptomsNaive&gt;({i})] += rateE * y[ENi];</span></a>
-<a name="282"><span class="lineNum">     282 </span>            : </a>
-<a name="283"><span class="lineNum">     283 </span>            :             // InfectedNoSymptoms</a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">       4776 :                 FP dummy_SN = y[SNi] * ext_inf_force_dummy;</span></a>
+<a name="250"><span class="lineNum">     250 </span>            : </a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">       4776 :                 FP dummy_SPI = y[SPIi] * reducExposedPartialImmunity * ext_inf_force_dummy;</span></a>
+<a name="252"><span class="lineNum">     252 </span>            : </a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">       4776 :                 FP dummy_SII = y[SIIi] * reducExposedImprovedImmunity * ext_inf_force_dummy;</span></a>
+<a name="254"><span class="lineNum">     254 </span>            : </a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">       9552 :                 flows[this-&gt;template get_flat_flow_index&lt;InfectionState::SusceptibleNaive,</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">       4776 :                                                          InfectionState::ExposedNaive&gt;({i})] += dummy_SN;</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">       9552 :                 flows[this-&gt;template get_flat_flow_index&lt;InfectionState::SusceptiblePartialImmunity,</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">       4776 :                                                          InfectionState::ExposedPartialImmunity&gt;({i})] += dummy_SPI;</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">       9552 :                 flows[this-&gt;template get_flat_flow_index&lt;InfectionState::SusceptibleImprovedImmunity,</span></a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineCov">       4776 :                                                          InfectionState::ExposedImprovedImmunity&gt;({i})] += dummy_SII;</span></a>
+<a name="261"><span class="lineNum">     261 </span>            :             }</a>
+<a name="262"><span class="lineNum">     262 </span>            : </a>
+<a name="263"><span class="lineNum">     263 </span>            :             // ICU capacity shortage is close</a>
+<a name="264"><span class="lineNum">     264 </span>            :             // TODO: if this is used with vaccination model, it has to be adapted if CriticalPerSevere</a>
+<a name="265"><span class="lineNum">     265 </span>            :             // is different for different vaccination status. This is not the case here and in addition, ICUCapacity</a>
+<a name="266"><span class="lineNum">     266 </span>            :             // is set to infinity and this functionality is deactivated, so this is OK for the moment.</a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">       5580 :             double criticalPerSevereAdjusted = smoother_cosine(</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">       3720 :                 icu_occupancy, 0.90 * params.template get&lt;ICUCapacity&lt;FP&gt;&gt;(), params.template get&lt;ICUCapacity&lt;FP&gt;&gt;(),</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">       1860 :                 params.template get&lt;CriticalPerSevere&lt;FP&gt;&gt;()[i], 0);</span></a>
+<a name="270"><span class="lineNum">     270 </span>            : </a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">       1860 :             FP deathsPerSevereAdjusted = params.template get&lt;CriticalPerSevere&lt;FP&gt;&gt;()[i] - criticalPerSevereAdjusted;</span></a>
+<a name="272"><span class="lineNum">     272 </span>            : </a>
+<a name="273"><span class="lineNum">     273 </span>            :             /**** path of immune-naive ***/</a>
+<a name="274"><span class="lineNum">     274 </span>            :             // Exposed</a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::ExposedNaive,</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">       1860 :                                                      InfectionState::InfectedNoSymptomsNaive&gt;({i})] +=</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">       1860 :                 y[ENi] / params.template get&lt;TimeExposed&lt;FP&gt;&gt;()[i];</span></a>
+<a name="278"><span class="lineNum">     278 </span>            : </a>
+<a name="279"><span class="lineNum">     279 </span>            :             // InfectedNoSymptoms</a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::InfectedNoSymptomsNaive,</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">       1860 :                                                      InfectionState::SusceptibleImprovedImmunity&gt;({i})] =</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">       3720 :                 params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i] /</span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">       3720 :                 params.template get&lt;TimeInfectedNoSymptoms&lt;FP&gt;&gt;()[i] * y[INSNi];</span></a>
 <a name="284"><span class="lineNum">     284 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::InfectedNoSymptomsNaive,</span></a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineCov">       1860 :                                                      InfectionState::SusceptibleImprovedImmunity&gt;({i})] =</span></a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">       1860 :                 params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i] * rateINS * y[INSNi];</span></a>
-<a name="287"><span class="lineNum">     287 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::InfectedNoSymptomsNaive,</span></a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineCov">       1860 :                                                      InfectionState::InfectedSymptomsNaive&gt;({i})] =</span></a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineCov">       1860 :                 (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i]) * rateINS * y[INSNi];</span></a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::InfectedNoSymptomsNaiveConfirmed,</span></a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">       1860 :                                                      InfectionState::InfectedSymptomsNaiveConfirmed&gt;({i})] =</span></a>
-<a name="292"><span class="lineNum">     292 </span><span class="lineCov">       1860 :                 (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i]) * rateINS * y[INSNCi];</span></a>
-<a name="293"><span class="lineNum">     293 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::InfectedNoSymptomsNaiveConfirmed,</span></a>
-<a name="294"><span class="lineNum">     294 </span><span class="lineCov">       1860 :                                                      InfectionState::SusceptibleImprovedImmunity&gt;({i})] =</span></a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">       1860 :                 params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i] * rateINS * y[INSNCi];</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineCov">       1860 :                                                      InfectionState::InfectedSymptomsNaive&gt;({i})] =</span></a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineCov">       3720 :                 (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i]) /</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">       3720 :                 params.template get&lt;TimeInfectedNoSymptoms&lt;FP&gt;&gt;()[i] * y[INSNi];</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::InfectedNoSymptomsNaiveConfirmed,</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">       1860 :                                                      InfectionState::InfectedSymptomsNaiveConfirmed&gt;({i})] =</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">       3720 :                 (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i]) /</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">       3720 :                 params.template get&lt;TimeInfectedNoSymptoms&lt;FP&gt;&gt;()[i] * y[INSNCi];</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::InfectedNoSymptomsNaiveConfirmed,</span></a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineCov">       1860 :                                                      InfectionState::SusceptibleImprovedImmunity&gt;({i})] =</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">       3720 :                 params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i] /</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">       3720 :                 params.template get&lt;TimeInfectedNoSymptoms&lt;FP&gt;&gt;()[i] * y[INSNCi];</span></a>
 <a name="296"><span class="lineNum">     296 </span>            : </a>
 <a name="297"><span class="lineNum">     297 </span>            :             // InfectedSymptoms</a>
 <a name="298"><span class="lineNum">     298 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::InfectedSymptomsNaive,</span></a>
@@ -404,29 +404,29 @@
 <a name="342"><span class="lineNum">     342 </span>            :             // Exposed</a>
 <a name="343"><span class="lineNum">     343 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::ExposedPartialImmunity,</span></a>
 <a name="344"><span class="lineNum">     344 </span><span class="lineCov">       1860 :                                                      InfectionState::InfectedNoSymptomsPartialImmunity&gt;({i})] +=</span></a>
-<a name="345"><span class="lineNum">     345 </span><span class="lineCov">       1860 :                 rateE * y[EPIi];</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">       1860 :                 y[EPIi] / params.template get&lt;TimeExposed&lt;FP&gt;&gt;()[i];</span></a>
 <a name="346"><span class="lineNum">     346 </span>            : </a>
 <a name="347"><span class="lineNum">     347 </span>            :             // InfectedNoSymptoms</a>
 <a name="348"><span class="lineNum">     348 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::InfectedNoSymptomsPartialImmunity,</span></a>
 <a name="349"><span class="lineNum">     349 </span><span class="lineCov">       1860 :                                                      InfectionState::SusceptibleImprovedImmunity&gt;({i})] =</span></a>
 <a name="350"><span class="lineNum">     350 </span><span class="lineCov">       3720 :                 (1 - (reducInfectedSymptomsPartialImmunity / reducExposedPartialImmunity) *</span></a>
-<a name="351"><span class="lineNum">     351 </span><span class="lineCov">       1860 :                          (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i])) *</span></a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineCov">       1860 :                 rateINS / reducTimeInfectedMild * y[INSPIi];</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">       1860 :                          (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i])) /</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">       1860 :                 (params.template get&lt;TimeInfectedNoSymptoms&lt;FP&gt;&gt;()[i] * reducTimeInfectedMild) * y[INSPIi];</span></a>
 <a name="353"><span class="lineNum">     353 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::InfectedNoSymptomsPartialImmunity,</span></a>
 <a name="354"><span class="lineNum">     354 </span><span class="lineCov">       1860 :                                                      InfectionState::InfectedSymptomsPartialImmunity&gt;({i})] =</span></a>
 <a name="355"><span class="lineNum">     355 </span><span class="lineCov">       3720 :                 (reducInfectedSymptomsPartialImmunity / reducExposedPartialImmunity) *</span></a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">       1860 :                 (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i]) * (rateINS / reducTimeInfectedMild) *</span></a>
-<a name="357"><span class="lineNum">     357 </span><span class="lineCov">       1860 :                 y[INSPIi];</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">       1860 :                 (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i]) /</span></a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">       1860 :                 (params.template get&lt;TimeInfectedNoSymptoms&lt;FP&gt;&gt;()[i] * reducTimeInfectedMild) * y[INSPIi];</span></a>
 <a name="358"><span class="lineNum">     358 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::InfectedNoSymptomsPartialImmunityConfirmed,</span></a>
 <a name="359"><span class="lineNum">     359 </span><span class="lineCov">       1860 :                                                      InfectionState::InfectedSymptomsPartialImmunityConfirmed&gt;({i})] =</span></a>
 <a name="360"><span class="lineNum">     360 </span><span class="lineCov">       3720 :                 (reducInfectedSymptomsPartialImmunity / reducExposedPartialImmunity) *</span></a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineCov">       1860 :                 (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i]) * (rateINS / reducTimeInfectedMild) *</span></a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineCov">       1860 :                 y[INSPICi];</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">       1860 :                 (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i]) /</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">       1860 :                 (params.template get&lt;TimeInfectedNoSymptoms&lt;FP&gt;&gt;()[i] * reducTimeInfectedMild) * y[INSPICi];</span></a>
 <a name="363"><span class="lineNum">     363 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::InfectedNoSymptomsPartialImmunityConfirmed,</span></a>
 <a name="364"><span class="lineNum">     364 </span><span class="lineCov">       1860 :                                                      InfectionState::SusceptibleImprovedImmunity&gt;({i})] =</span></a>
 <a name="365"><span class="lineNum">     365 </span><span class="lineCov">       3720 :                 (1 - (reducInfectedSymptomsPartialImmunity / reducExposedPartialImmunity) *</span></a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">       1860 :                          (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i])) *</span></a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">       1860 :                 rateINS / reducTimeInfectedMild * y[INSPICi];</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">       1860 :                          (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i])) /</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">       1860 :                 (params.template get&lt;TimeInfectedNoSymptoms&lt;FP&gt;&gt;()[i] * reducTimeInfectedMild) * y[INSPICi];</span></a>
 <a name="368"><span class="lineNum">     368 </span>            : </a>
 <a name="369"><span class="lineNum">     369 </span>            :             // InfectedSymptoms</a>
 <a name="370"><span class="lineNum">     370 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::InfectedSymptomsPartialImmunity,</span></a>
@@ -487,29 +487,29 @@
 <a name="425"><span class="lineNum">     425 </span>            :             // Exposed</a>
 <a name="426"><span class="lineNum">     426 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::ExposedImprovedImmunity,</span></a>
 <a name="427"><span class="lineNum">     427 </span><span class="lineCov">       1860 :                                                      InfectionState::InfectedNoSymptomsImprovedImmunity&gt;({i})] +=</span></a>
-<a name="428"><span class="lineNum">     428 </span><span class="lineCov">       1860 :                 rateE * y[EIIi];</span></a>
+<a name="428"><span class="lineNum">     428 </span><span class="lineCov">       1860 :                 y[EIIi] / params.template get&lt;TimeExposed&lt;FP&gt;&gt;()[i];</span></a>
 <a name="429"><span class="lineNum">     429 </span>            : </a>
 <a name="430"><span class="lineNum">     430 </span>            :             // InfectedNoSymptoms</a>
 <a name="431"><span class="lineNum">     431 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::InfectedNoSymptomsImprovedImmunity,</span></a>
 <a name="432"><span class="lineNum">     432 </span><span class="lineCov">       1860 :                                                      InfectionState::SusceptibleImprovedImmunity&gt;({i})] =</span></a>
 <a name="433"><span class="lineNum">     433 </span><span class="lineCov">       3720 :                 (1 - (reducInfectedSymptomsImprovedImmunity / reducExposedImprovedImmunity) *</span></a>
-<a name="434"><span class="lineNum">     434 </span><span class="lineCov">       1860 :                          (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i])) *</span></a>
-<a name="435"><span class="lineNum">     435 </span><span class="lineCov">       1860 :                 rateINS / reducTimeInfectedMild * y[INSIIi];</span></a>
+<a name="434"><span class="lineNum">     434 </span><span class="lineCov">       1860 :                          (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i])) /</span></a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineCov">       1860 :                 (params.template get&lt;TimeInfectedNoSymptoms&lt;FP&gt;&gt;()[i] * reducTimeInfectedMild) * y[INSIIi];</span></a>
 <a name="436"><span class="lineNum">     436 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::InfectedNoSymptomsImprovedImmunity,</span></a>
 <a name="437"><span class="lineNum">     437 </span><span class="lineCov">       1860 :                                                      InfectionState::InfectedSymptomsImprovedImmunity&gt;({i})] =</span></a>
 <a name="438"><span class="lineNum">     438 </span><span class="lineCov">       3720 :                 (reducInfectedSymptomsImprovedImmunity / reducExposedImprovedImmunity) *</span></a>
-<a name="439"><span class="lineNum">     439 </span><span class="lineCov">       1860 :                 (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i]) * (rateINS / reducTimeInfectedMild) *</span></a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">       1860 :                 y[INSIIi];</span></a>
+<a name="439"><span class="lineNum">     439 </span><span class="lineCov">       1860 :                 (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i]) /</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">       1860 :                 (params.template get&lt;TimeInfectedNoSymptoms&lt;FP&gt;&gt;()[i] * reducTimeInfectedMild) * y[INSIIi];</span></a>
 <a name="441"><span class="lineNum">     441 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::InfectedNoSymptomsImprovedImmunityConfirmed,</span></a>
 <a name="442"><span class="lineNum">     442 </span><span class="lineCov">       1860 :                                                      InfectionState::InfectedSymptomsImprovedImmunityConfirmed&gt;({i})] =</span></a>
 <a name="443"><span class="lineNum">     443 </span><span class="lineCov">       3720 :                 (reducInfectedSymptomsImprovedImmunity / reducExposedImprovedImmunity) *</span></a>
-<a name="444"><span class="lineNum">     444 </span><span class="lineCov">       1860 :                 (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i]) * (rateINS / reducTimeInfectedMild) *</span></a>
-<a name="445"><span class="lineNum">     445 </span><span class="lineCov">       1860 :                 y[INSIICi];</span></a>
+<a name="444"><span class="lineNum">     444 </span><span class="lineCov">       1860 :                 (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i]) /</span></a>
+<a name="445"><span class="lineNum">     445 </span><span class="lineCov">       1860 :                 (params.template get&lt;TimeInfectedNoSymptoms&lt;FP&gt;&gt;()[i] * reducTimeInfectedMild) * y[INSIICi];</span></a>
 <a name="446"><span class="lineNum">     446 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::InfectedNoSymptomsImprovedImmunityConfirmed,</span></a>
 <a name="447"><span class="lineNum">     447 </span><span class="lineCov">       1860 :                                                      InfectionState::SusceptibleImprovedImmunity&gt;({i})] =</span></a>
 <a name="448"><span class="lineNum">     448 </span><span class="lineCov">       3720 :                 (1 - (reducInfectedSymptomsImprovedImmunity / reducExposedImprovedImmunity) *</span></a>
-<a name="449"><span class="lineNum">     449 </span><span class="lineCov">       1860 :                          (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i])) *</span></a>
-<a name="450"><span class="lineNum">     450 </span><span class="lineCov">       1860 :                 rateINS / reducTimeInfectedMild * y[INSIICi];</span></a>
+<a name="449"><span class="lineNum">     449 </span><span class="lineCov">       1860 :                          (1 - params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;()[i])) /</span></a>
+<a name="450"><span class="lineNum">     450 </span><span class="lineCov">       1860 :                 (params.template get&lt;TimeInfectedNoSymptoms&lt;FP&gt;&gt;()[i] * reducTimeInfectedMild) * y[INSIICi];</span></a>
 <a name="451"><span class="lineNum">     451 </span>            : </a>
 <a name="452"><span class="lineNum">     452 </span>            :             // InfectedSymptoms</a>
 <a name="453"><span class="lineNum">     453 </span><span class="lineCov">       3720 :             flows[this-&gt;template get_flat_flow_index&lt;InfectionState::InfectedSymptomsImprovedImmunity,</span></a>
@@ -879,22 +879,22 @@
 <a name="817"><span class="lineNum">     817 </span>            : {</a>
 <a name="818"><span class="lineNum">     818 </span><span class="lineCov">          1 :     auto&amp; params = sim.get_model().parameters;</span></a>
 <a name="819"><span class="lineNum">     819 </span>            :     //parameters as arrays</a>
-<a name="820"><span class="lineNum">     820 </span><span class="lineCov">          1 :     auto&amp; t_inc     = params.template get&lt;IncubationTime&lt;FP&gt;&gt;().array().template cast&lt;FP&gt;();</span></a>
-<a name="821"><span class="lineNum">     821 </span><span class="lineCov">          1 :     auto&amp; t_ser     = params.template get&lt;SerialInterval&lt;FP&gt;&gt;().array().template cast&lt;FP&gt;();</span></a>
-<a name="822"><span class="lineNum">     822 </span><span class="lineCov">          1 :     auto&amp; p_asymp   = params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;().array().template cast&lt;FP&gt;();</span></a>
-<a name="823"><span class="lineNum">     823 </span><span class="lineCov">          1 :     auto&amp; p_inf     = params.template get&lt;RiskOfInfectionFromSymptomatic&lt;FP&gt;&gt;().array().template cast&lt;FP&gt;();</span></a>
-<a name="824"><span class="lineNum">     824 </span><span class="lineCov">          1 :     auto&amp; p_inf_max = params.template get&lt;MaxRiskOfInfectionFromSymptomatic&lt;FP&gt;&gt;().array().template cast&lt;FP&gt;();</span></a>
-<a name="825"><span class="lineNum">     825 </span>            :     //slice of InfectedNoSymptoms</a>
-<a name="826"><span class="lineNum">     826 </span><span class="lineCov">          6 :     auto y_car = slice(y, {Eigen::Index(InfectionState::InfectedNoSymptomsNaive),</span></a>
+<a name="820"><span class="lineNum">     820 </span><span class="lineCov">          1 :     auto&amp; p_asymp   = params.template get&lt;RecoveredPerInfectedNoSymptoms&lt;FP&gt;&gt;().array().template cast&lt;FP&gt;();</span></a>
+<a name="821"><span class="lineNum">     821 </span><span class="lineCov">          1 :     auto&amp; p_inf     = params.template get&lt;RiskOfInfectionFromSymptomatic&lt;FP&gt;&gt;().array().template cast&lt;FP&gt;();</span></a>
+<a name="822"><span class="lineNum">     822 </span><span class="lineCov">          1 :     auto&amp; p_inf_max = params.template get&lt;MaxRiskOfInfectionFromSymptomatic&lt;FP&gt;&gt;().array().template cast&lt;FP&gt;();</span></a>
+<a name="823"><span class="lineNum">     823 </span>            :     //slice of InfectedNoSymptoms</a>
+<a name="824"><span class="lineNum">     824 </span><span class="lineCov">          6 :     auto y_INS = slice(y, {Eigen::Index(InfectionState::InfectedNoSymptomsNaive),</span></a>
+<a name="825"><span class="lineNum">     825 </span><span class="lineCov">          2 :                            Eigen::Index(size_t(params.get_num_groups())), Eigen::Index(InfectionState::Count)}) +</span></a>
+<a name="826"><span class="lineNum">     826 </span>            :                  slice(y, {Eigen::Index(InfectionState::InfectedNoSymptomsPartialImmunity),</a>
 <a name="827"><span class="lineNum">     827 </span><span class="lineCov">          2 :                            Eigen::Index(size_t(params.get_num_groups())), Eigen::Index(InfectionState::Count)}) +</span></a>
-<a name="828"><span class="lineNum">     828 </span>            :                  slice(y, {Eigen::Index(InfectionState::InfectedNoSymptomsPartialImmunity),</a>
-<a name="829"><span class="lineNum">     829 </span><span class="lineCov">          2 :                            Eigen::Index(size_t(params.get_num_groups())), Eigen::Index(InfectionState::Count)}) +</span></a>
-<a name="830"><span class="lineNum">     830 </span>            :                  slice(y, {Eigen::Index(InfectionState::InfectedNoSymptomsImprovedImmunity),</a>
-<a name="831"><span class="lineNum">     831 </span><span class="lineCov">          2 :                            Eigen::Index(size_t(params.get_num_groups())), Eigen::Index(InfectionState::Count)});</span></a>
-<a name="832"><span class="lineNum">     832 </span>            : </a>
-<a name="833"><span class="lineNum">     833 </span>            :     //compute isolation, same as infection risk from main model</a>
-<a name="834"><span class="lineNum">     834 </span><span class="lineCov">          1 :     auto R3                      = 0.5 / (t_inc - t_ser);</span></a>
-<a name="835"><span class="lineNum">     835 </span><span class="lineCov">          1 :     auto test_and_trace_required = ((1 - p_asymp) * R3 * y_car.array()).sum();</span></a>
+<a name="828"><span class="lineNum">     828 </span>            :                  slice(y, {Eigen::Index(InfectionState::InfectedNoSymptomsImprovedImmunity),</a>
+<a name="829"><span class="lineNum">     829 </span><span class="lineCov">          2 :                            Eigen::Index(size_t(params.get_num_groups())), Eigen::Index(InfectionState::Count)});</span></a>
+<a name="830"><span class="lineNum">     830 </span>            : </a>
+<a name="831"><span class="lineNum">     831 </span>            :     //compute isolation, same as infection risk from main model</a>
+<a name="832"><span class="lineNum">     832 </span><span class="lineCov">          1 :     auto test_and_trace_required =</span></a>
+<a name="833"><span class="lineNum">     833 </span><span class="lineCov">          3 :         ((1 - p_asymp) / params.template get&lt;TimeInfectedNoSymptoms&lt;FP&gt;&gt;().array().template cast&lt;double&gt;() *</span></a>
+<a name="834"><span class="lineNum">     834 </span>            :          y_INS.array())</a>
+<a name="835"><span class="lineNum">     835 </span><span class="lineCov">          4 :             .sum();</span></a>
 <a name="836"><span class="lineNum">     836 </span><span class="lineCov">          3 :     auto riskFromInfectedSymptomatic =</span></a>
 <a name="837"><span class="lineNum">     837 </span><span class="lineCov">          1 :         smoother_cosine(test_and_trace_required, double(params.template get&lt;TestAndTraceCapacity&lt;FP&gt;&gt;()),</span></a>
 <a name="838"><span class="lineNum">     838 </span><span class="lineCov">          1 :                         params.template get&lt;TestAndTraceCapacity&lt;FP&gt;&gt;() * 5, p_inf.matrix(), p_inf_max.matrix());</span></a>

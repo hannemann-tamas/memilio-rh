@@ -15,7 +15,7 @@ var searchData=
   ['update_5factive_5fdampings_2033',['update_active_dampings',['../classmio_1_1Dampings.html#af686f4971c59254e0149d9ed23c6a437',1,'mio::Dampings']]],
   ['update_5factivity_5fstatus_2034',['update_activity_status',['../classmio_1_1abm_1_1TestingStrategy.html#a0dea1b79776f7ad73aa681b7759a9b28',1,'mio::abm::TestingStrategy::update_activity_status()'],['../classmio_1_1abm_1_1TestingScheme.html#a26419f2794fa465a543dd53fdabfba71',1,'mio::abm::TestingScheme::update_activity_status()']]],
   ['update_5fcache_2035',['update_cache',['../classmio_1_1Dampings.html#a1be5f4b4214445d5da9e143b7c5cb490',1,'mio::Dampings']]],
-  ['update_5fforceofinfection_2036',['update_forceofinfection',['../classmio_1_1isecir_1_1Model.html#acc4982433129dce1cb3a407a329d5025',1,'mio::isecir::Model']]],
+  ['update_5fforceofinfection_2036',['update_forceofinfection',['../classmio_1_1isecir_1_1Model.html#a0e8fbb324b5afbc4e69d8435ddf0b61b',1,'mio::isecir::Model']]],
   ['updatemobility2022_2037',['updateMobility2022',['../namespacememilio_1_1epidata_1_1transformMobilityData.html#a8651e36de86889063267ffb0c59d0130',1,'memilio::epidata::transformMobilityData']]],
   ['use_5fmigration_5frules_2038',['use_migration_rules',['../classmio_1_1abm_1_1World.html#a334e2ab0164a296345a3b793ac1e7fa9',1,'mio::abm::World::use_migration_rules(bool param)'],['../classmio_1_1abm_1_1World.html#a2af4450932ffe14f9689da5cefdee615',1,'mio::abm::World::use_migration_rules() const']]],
   ['use_5fweekday_5ftrips_5fon_5fweekend_2039',['use_weekday_trips_on_weekend',['../classmio_1_1abm_1_1TripList.html#a1bd2eb0d034d59cc9b59c66d9ee0d9f5',1,'mio::abm::TripList']]],

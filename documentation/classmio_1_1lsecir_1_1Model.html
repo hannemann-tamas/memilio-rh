@@ -105,6 +105,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa9c602f740946cbe90c7a9f8e15b670a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Model.html#aa9c602f740946cbe90c7a9f8e15b670a">Model</a> (Eigen::VectorXd init, <a class="el" href="classmio_1_1lsecir_1_1Parameters.html">Parameters</a> &amp;&amp;parameters_init=<a class="el" href="classmio_1_1lsecir_1_1Parameters.html">Parameters</a>())</td></tr>
 <tr class="memdesc:aa9c602f740946cbe90c7a9f8e15b670a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor to create an LCT SECIR <a class="el" href="classmio_1_1lsecir_1_1Model.html" title="Class that defines an LCT-SECIR model.">Model</a>.  <a href="classmio_1_1lsecir_1_1Model.html#aa9c602f740946cbe90c7a9f8e15b670a">More...</a><br /></td></tr>
 <tr class="separator:aa9c602f740946cbe90c7a9f8e15b670a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9aa6e8db79f226df2b60fc75d5c84c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1lsecir_1_1Model.html#aa9aa6e8db79f226df2b60fc75d5c84c6">set_initial_values</a> (Eigen::VectorXd init)</td></tr>
+<tr class="memdesc:aa9aa6e8db79f226df2b60fc75d5c84c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the initial values for the model.  <a href="classmio_1_1lsecir_1_1Model.html#aa9aa6e8db79f226df2b60fc75d5c84c6">More...</a><br /></td></tr>
+<tr class="separator:aa9aa6e8db79f226df2b60fc75d5c84c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -311,6 +314,34 @@ template&lt;unsigned int NumExposed, unsigned int NumInfectedNoSymptoms, unsigne
 
 <p>Returns the initial values for the model. </p>
 <p>This can be used as initial conditions in an ODE solver. </p><dl class="section return"><dt>Returns</dt><dd>Vector with initial values for all (sub-)compartments. </dd></dl>
+
+</div>
+</div>
+<a id="aa9aa6e8db79f226df2b60fc75d5c84c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9aa6e8db79f226df2b60fc75d5c84c6">&#9670;&nbsp;</a></span>set_initial_values()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned int NumExposed, unsigned int NumInfectedNoSymptoms, unsigned int NumInfectedSymptoms, unsigned int NumInfectedSevere, unsigned int NumInfectedCritical&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classmio_1_1lsecir_1_1Model.html">mio::lsecir::Model</a>&lt; NumExposed, NumInfectedNoSymptoms, NumInfectedSymptoms, NumInfectedSevere, NumInfectedCritical &gt;::set_initial_values </td>
+          <td>(</td>
+          <td class="paramtype">Eigen::VectorXd&#160;</td>
+          <td class="paramname"><em>init</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the initial values for the model. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">init</td><td>Vector with initial values for all infection states inclusive subcompartments. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

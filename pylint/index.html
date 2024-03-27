@@ -12365,13 +12365,15 @@ from memilio.epidata import defaultDict as dd</pre></td>
                 <td><pre>Similar lines in 2 files
 ==memilio.epidata.getJHData:[97:106]
 ==memilio.epidata_test.test_epidata_get_jh_data:[122:129]
-        directory_ger = os.path.join(out_folder, &#39;Germany/&#39;)
-        directory_es = os.path.join(out_folder, &#39;Spain/&#39;)
-        directory_fr = os.path.join(out_folder, &#39;France/&#39;)
-        directory_it = os.path.join(out_folder, &#39;Italy/&#39;)
-        directory_us = os.path.join(out_folder, &#39;US/&#39;)
-        directory_rok = os.path.join(out_folder, &#39;SouthKorea/&#39;)
-        directory_prc = os.path.join(out_folder, &#39;China/&#39;)</pre></td>
+    directory_ger = os.path.join(out_folder, &#39;Germany/&#39;)
+    directory_es = os.path.join(out_folder, &#39;Spain/&#39;)
+    directory_fr = os.path.join(out_folder, &#39;France/&#39;)
+    directory_it = os.path.join(out_folder, &#39;Italy/&#39;)
+    directory_us = os.path.join(out_folder, &#39;US/&#39;)
+    directory_rok = os.path.join(out_folder, &#39;SouthKorea/&#39;)
+    directory_prc = os.path.join(out_folder, &#39;China/&#39;)
+
+    # dictionary of countries</pre></td>
             </tr>
             
             <tr>
@@ -12428,7 +12430,9 @@ import pandas as pd
 from memilio.epidata import defaultDict as dd
 from memilio.epidata import geoModificationGermany as geoger
 from memilio.epidata import getDataIntoPandasDataFrame as gd
-from memilio.epidata import modifyDataframeSeries as mdfs</pre></td>
+from memilio.epidata import modifyDataframeSeries as mdfs
+
+# activate CoW for more predictable behaviour of pandas DataFrames</pre></td>
             </tr>
             
             <tr>
@@ -12509,14 +12513,17 @@ from memilio.epidata import getDataIntoPandasDataFrame as gd
 pd.options.mode.copy_on_write = True
 
 
-def getMobilityFromFile(directory, mobility_file):
-    &#34;&#34;&#34;! Gets a mobility matrix that is written in a plain txt file
-    under the given directory into a pandas data frame.
+def read_population_data(username, password):
+    &#39;&#39;&#39;! Reads Population data from regionalstatistik.de
 
-    @param directory Path to folder where data is read.
-    @param mobility_file Mobility matrix file which has to be updated.
-    @return Mobility matrix data frame.
-    &#34;&#34;&#34;</pre></td>
+    Username and Password are required to sign in on regionalstatistik.de.
+    A request is made to regionalstatistik.de and the StringIO is read in as a csv into the dataframe format.
+
+    @param username Username to sign in at regionalstatistik.de.
+    @param password Password to sign in at regionalstatistik.de.
+    @return DataFrame
+    &#39;&#39;&#39;
+</pre></td>
             </tr>
             
             <tr>
@@ -12614,15 +12621,35 @@ from memilio.epidata import modifyDataframeSeries as mdfs
 pd.options.mode.copy_on_write = True
 
 
-def hospit_sanity_checks(df):
-    &#34;&#34;&#34;! Checks the sanity of the hospitalization_data dataframe
+def get_jh_data(read_data=dd.defaultDict[&#39;read_data&#39;],
+                file_format=dd.defaultDict[&#39;file_format&#39;],
+                out_folder=dd.defaultDict[&#39;out_folder&#39;],
+                start_date=date(2020, 1, 22),
+                end_date=dd.defaultDict[&#39;end_date&#39;],
+                impute_dates=dd.defaultDict[&#39;impute_dates&#39;],
+                **kwargs):
+    &#34;&#34;&#34;! Download data from John Hopkins University
 
-    Checks if type of the given data is a dataframe
-    Checks if the headers of the dataframe are those which are needed
+   Data is either downloaded and afterwards stored or loaded from a stored filed.
+   The file is &#34;FullData_JohnHopkins.json&#34;
 
-    @param df The dataframe which has to be checked
-    &#34;&#34;&#34;
-    # test if dataframe is empty</pre></td>
+   Working with the data includes
+   - rename columns such that &#34;/&#34; is deleted, e.g Country/Region becomes CountryRegion
+   - data of all countries together are written to a file
+   - download the data from following countries in a separate file
+   and are stored in the according folders with the country name
+       - Germany, SouthKorea, Spain, France, Italy, US, China
+   - furthermore, all countries, for which provinces are added, are written to a file
+
+    @param read_data True or False. Defines if data is read from file or downloaded. Default defined in defaultDict.
+    @param file_format File format which is used for writing the data. Default defined in defaultDict.
+    @param out_folder Folder where data is written to. Default defined in defaultDict.
+    @param start_date Date of first date in dataframe. Default defined in defaultDict.
+    @param end_date Date of last date in dataframe. Default defined in defaultDict.
+    @param impute_dates [Currently not used] True or False. Defines if values for dates without new information are imputed. Default defined in defaultDict.
+    @param moving_average [Currently not used] Integers &gt;=0. Applies an &#39;moving_average&#39;-days moving average on all time series
+        to smooth out effects of irregular reporting. Default defined in defaultDict.
+   &#34;&#34;&#34;</pre></td>
             </tr>
             
             <tr>
@@ -12683,9 +12710,7 @@ import pandas as pd
 
 from memilio.epidata import defaultDict as dd
 from memilio.epidata import geoModificationGermany as geoger
-from memilio.epidata import getDataIntoPandasDataFrame as gd
-
-# activate CoW for more predictable behaviour of pandas DataFrames</pre></td>
+from memilio.epidata import getDataIntoPandasDataFrame as gd</pre></td>
             </tr>
             
             <tr>
@@ -12703,7 +12728,43 @@ import pandas as pd
 from memilio.epidata import defaultDict as dd
 from memilio.epidata import geoModificationGermany as geoger
 from memilio.epidata import getDataIntoPandasDataFrame as gd
-from memilio.epidata import modifyDataframeSeries as mdfs</pre></td>
+from memilio.epidata import modifyDataframeSeries as mdfs
+
+
+def get_divi_data(read_data=dd.defaultDict[&#39;read_data&#39;],
+                  file_format=dd.defaultDict[&#39;file_format&#39;],
+                  out_folder=dd.defaultDict[&#39;out_folder&#39;],
+                  start_date=date(2020, 4, 24),
+                  end_date=dd.defaultDict[&#39;end_date&#39;],
+                  impute_dates=dd.defaultDict[&#39;impute_dates&#39;],
+                  moving_average=dd.defaultDict[&#39;moving_average&#39;],
+                  **kwargs
+                  ):
+    &#34;&#34;&#34;! Downloads or reads the DIVI ICU data and writes them in different files.
+
+    Available data starts from 2020-04-24.
+    If the given start_date is earlier, it is changed to this date and a warning is printed.
+    If it does not already exist, the folder Germany is generated in the given out_folder.
+    If read_data == True and the file &#34;FullData_DIVI.json&#34; exists, the data is read form this file
+    and stored in a pandas dataframe. If read_data = True and the file does not exist the program is stopped.
+
+    The downloaded dataframe is written to the file &#34;FullData_DIVI&#34;.
+    After that, the columns are renamed to English and the state and county names are added.
+    Afterwards, three kinds of structuring of the data are done.
+    We obtain the chronological sequence of ICU and ICU_ventilated
+    stored in the files &#34;county_divi&#34;.json&#34;, &#34;state_divi.json&#34; and &#34;germany_divi.json&#34;
+    for counties, states and whole Germany, respectively.
+
+    @param read_data True or False. Defines if data is read from file or downloaded. Default defined in defaultDict.
+    @param file_format File format which is used for writing the data. Default defined in defaultDict.
+    @param out_folder Folder where data is written to. Default defined in defaultDict.
+    @param start_date Date of first date in dataframe. Default defined in defaultDict.
+    @param end_date Date of last date in dataframe. Default defined in defaultDict.
+    @param impute_dates True or False. Defines if values for dates without new information are imputed. Default defined in defaultDict.
+    @param moving_average Integers &gt;=0. Applies an &#39;moving_average&#39;-days moving average on all time series
+        to smooth out effects of irregular reporting. Default defined in defaultDict.
+    &#34;&#34;&#34;
+</pre></td>
             </tr>
             
             <tr>

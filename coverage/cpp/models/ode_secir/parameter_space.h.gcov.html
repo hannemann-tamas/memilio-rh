@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">115</td>
-            <td class="headerCovTableEntry">115</td>
+            <td class="headerCovTableEntry">114</td>
+            <td class="headerCovTableEntry">114</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-03-14 18:36:45</td>
+            <td class="headerValue">2024-03-27 13:34:32</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -110,7 +110,7 @@
 <a name="48"><span class="lineNum">      48 </span>            : {</a>
 <a name="49"><span class="lineNum">      49 </span><span class="lineCov">       1566 :     auto set_distribution = [dev_rel](UncertainValue&lt;FP&gt;&amp; v, double min_val = 0.001) {</span></a>
 <a name="50"><span class="lineNum">      50 </span><span class="lineCov">       2595 :         v.set_distribution(ParameterDistributionNormal(</span></a>
-<a name="51"><span class="lineNum">      51 </span>            :             //add add limitsfornonsense big values. Also mscv has a problem with a few doublesso this fixes it</a>
+<a name="51"><span class="lineNum">      51 </span>            :             //add add limits for nonsense big values. Also mscv has a problem with a few doubles so this fixes it</a>
 <a name="52"><span class="lineNum">      52 </span><span class="lineCov">       1557 :             std::min(std::max(min_val, (1 - dev_rel * 2.6) * v), 0.1 * std::numeric_limits&lt;double&gt;::max()),</span></a>
 <a name="53"><span class="lineNum">      53 </span><span class="lineCov">       1557 :             std::min(std::max(min_val, (1 + dev_rel * 2.6) * v), 0.5 * std::numeric_limits&lt;double&gt;::max()),</span></a>
 <a name="54"><span class="lineNum">      54 </span><span class="lineCov">       1038 :             std::min(std::max(min_val, double(v)), 0.3 * std::numeric_limits&lt;double&gt;::max()),</span></a>
@@ -138,8 +138,8 @@
 <a name="76"><span class="lineNum">      76 </span>            :     // times</a>
 <a name="77"><span class="lineNum">      77 </span><span class="lineCov">         32 :     for (auto i = AgeGroup(0); i &lt; model.parameters.get_num_groups(); i++) {</span></a>
 <a name="78"><span class="lineNum">      78 </span>            : </a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">         23 :         set_distribution(model.parameters.template get&lt;IncubationTime&lt;FP&gt;&gt;()[i]);</span></a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">         23 :         set_distribution(model.parameters.template get&lt;SerialInterval&lt;FP&gt;&gt;()[i]);</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">         23 :         set_distribution(model.parameters.template get&lt;TimeExposed&lt;FP&gt;&gt;()[i]);</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">         23 :         set_distribution(model.parameters.template get&lt;TimeInfectedNoSymptoms&lt;FP&gt;&gt;()[i]);</span></a>
 <a name="81"><span class="lineNum">      81 </span><span class="lineCov">         23 :         set_distribution(model.parameters.template get&lt;TimeInfectedSymptoms&lt;FP&gt;&gt;()[i]);</span></a>
 <a name="82"><span class="lineNum">      82 </span><span class="lineCov">         23 :         set_distribution(model.parameters.template get&lt;TimeInfectedSevere&lt;FP&gt;&gt;()[i]);</span></a>
 <a name="83"><span class="lineNum">      83 </span><span class="lineCov">         23 :         set_distribution(model.parameters.template get&lt;TimeInfectedCritical&lt;FP&gt;&gt;()[i]);</span></a>
@@ -162,8 +162,8 @@
 <a name="100"><span class="lineNum">     100 </span>            :     }</a>
 <a name="101"><span class="lineNum">     101 </span><span class="lineCov">          9 :     auto groups = Eigen::VectorXd::Constant(Eigen::Index(model.parameters.get_num_groups().get()), 1.0);</span></a>
 <a name="102"><span class="lineNum">     102 </span><span class="lineCov">         18 :     model.parameters.template get&lt;ContactPatterns&lt;FP&gt;&gt;().get_dampings().emplace_back(</span></a>
-<a name="103"><span class="lineNum">     103 </span><span class="lineCov">         18 :         mio::UncertainValue&lt;FP&gt;(0.5), mio::DampingLevel(0), mio::DampingType(0),</span></a>
-<a name="104"><span class="lineNum">     104 </span><span class="lineCov">         18 :         mio::SimulationTime(t0 + (tmax - t0) / 2), matrices, groups);</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">         18 :         mio::UncertainValue(0.5), mio::DampingLevel(0), mio::DampingType(0), mio::SimulationTime(t0 + (tmax - t0) / 2),</span></a>
+<a name="104"><span class="lineNum">     104 </span>            :         matrices, groups);</a>
 <a name="105"><span class="lineNum">     105 </span><span class="lineCov">          9 :     set_distribution(model.parameters.template get&lt;ContactPatterns&lt;FP&gt;&gt;().get_dampings()[0].get_value(), 0.0);</span></a>
 <a name="106"><span class="lineNum">     106 </span><span class="lineCov">          9 : }</span></a>
 <a name="107"><span class="lineNum">     107 </span>            : </a>
@@ -207,8 +207,8 @@
 <a name="145"><span class="lineNum">     145 </span><span class="lineCov">         19 :     model.parameters.template get&lt;Seasonality&lt;FP&gt;&gt;().draw_sample();</span></a>
 <a name="146"><span class="lineNum">     146 </span>            : </a>
 <a name="147"><span class="lineNum">     147 </span>            :     //not age dependent</a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">         19 :     model.parameters.template get&lt;IncubationTime&lt;FP&gt;&gt;()[AgeGroup(0)].draw_sample();</span></a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">         19 :     model.parameters.template get&lt;SerialInterval&lt;FP&gt;&gt;()[AgeGroup(0)].draw_sample();</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">         19 :     model.parameters.template get&lt;TimeExposed&lt;FP&gt;&gt;()[AgeGroup(0)].draw_sample();</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">         19 :     model.parameters.template get&lt;TimeInfectedNoSymptoms&lt;FP&gt;&gt;()[AgeGroup(0)].draw_sample();</span></a>
 <a name="150"><span class="lineNum">     150 </span><span class="lineCov">         19 :     model.parameters.template get&lt;TimeInfectedSymptoms&lt;FP&gt;&gt;()[AgeGroup(0)].draw_sample();</span></a>
 <a name="151"><span class="lineNum">     151 </span><span class="lineCov">         19 :     model.parameters.template get&lt;RelativeTransmissionNoSymptoms&lt;FP&gt;&gt;()[AgeGroup(0)].draw_sample();</span></a>
 <a name="152"><span class="lineNum">     152 </span><span class="lineCov">         19 :     model.parameters.template get&lt;RiskOfInfectionFromSymptomatic&lt;FP&gt;&gt;()[AgeGroup(0)].draw_sample();</span></a>
@@ -216,10 +216,10 @@
 <a name="154"><span class="lineNum">     154 </span>            : </a>
 <a name="155"><span class="lineNum">     155 </span><span class="lineCov">         54 :     for (auto i = AgeGroup(0); i &lt; model.parameters.get_num_groups(); i++) {</span></a>
 <a name="156"><span class="lineNum">     156 </span>            :         //not age dependent</a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">         35 :         model.parameters.template get&lt;IncubationTime&lt;FP&gt;&gt;()[i] =</span></a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         70 :             model.parameters.template get&lt;IncubationTime&lt;FP&gt;&gt;()[AgeGroup(0)];</span></a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">         35 :         model.parameters.template get&lt;SerialInterval&lt;FP&gt;&gt;()[i] =</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         70 :             model.parameters.template get&lt;SerialInterval&lt;FP&gt;&gt;()[AgeGroup(0)];</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">         35 :         model.parameters.template get&lt;TimeExposed&lt;FP&gt;&gt;()[i] =</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         70 :             model.parameters.template get&lt;TimeExposed&lt;FP&gt;&gt;()[AgeGroup(0)];</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">         35 :         model.parameters.template get&lt;TimeInfectedNoSymptoms&lt;FP&gt;&gt;()[i] =</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         70 :             model.parameters.template get&lt;TimeInfectedNoSymptoms&lt;FP&gt;&gt;()[AgeGroup(0)];</span></a>
 <a name="161"><span class="lineNum">     161 </span><span class="lineCov">         35 :         model.parameters.template get&lt;RelativeTransmissionNoSymptoms&lt;FP&gt;&gt;()[i] =</span></a>
 <a name="162"><span class="lineNum">     162 </span><span class="lineCov">         70 :             model.parameters.template get&lt;RelativeTransmissionNoSymptoms&lt;FP&gt;&gt;()[AgeGroup(0)];</span></a>
 <a name="163"><span class="lineNum">     163 </span><span class="lineCov">         35 :         model.parameters.template get&lt;RiskOfInfectionFromSymptomatic&lt;FP&gt;&gt;()[i] =</span></a>
