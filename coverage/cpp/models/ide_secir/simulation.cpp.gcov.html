@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-03-27 13:34:32</td>
+            <td class="headerValue">2024-04-02 15:07:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -121,10 +121,10 @@
 <a name="59"><span class="lineNum">      59 </span>            :     }</a>
 <a name="60"><span class="lineNum">      60 </span><span class="lineCov">         13 : }</span></a>
 <a name="61"><span class="lineNum">      61 </span>            : </a>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">          2 : TimeSeries&lt;ScalarType&gt; simulate(ScalarType t0, ScalarType tmax, ScalarType dt, Model const&amp; m_model)</span></a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">          2 : TimeSeries&lt;ScalarType&gt; simulate(ScalarType tmax, ScalarType dt, Model const&amp; m_model)</span></a>
 <a name="63"><span class="lineNum">      63 </span>            : {</a>
 <a name="64"><span class="lineNum">      64 </span><span class="lineCov">          2 :     m_model.check_constraints(dt);</span></a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">          4 :     Simulation sim(m_model, t0, dt);</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">          4 :     Simulation sim(m_model, dt);</span></a>
 <a name="66"><span class="lineNum">      66 </span><span class="lineCov">          2 :     sim.advance(tmax);</span></a>
 <a name="67"><span class="lineNum">      67 </span><span class="lineCov">          4 :     return sim.get_result();</span></a>
 <a name="68"><span class="lineNum">      68 </span>            : }</a>

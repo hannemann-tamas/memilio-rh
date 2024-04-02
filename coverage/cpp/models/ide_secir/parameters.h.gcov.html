@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">87</td>
-            <td class="headerCovTableEntry">87</td>
+            <td class="headerCovTableEntry">94</td>
+            <td class="headerCovTableEntry">94</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-03-27 13:34:32</td>
+            <td class="headerValue">2024-04-02 15:07:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">8</td>
-            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">10</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -212,159 +212,203 @@
 <a name="150"><span class="lineNum">     150 </span>            :     }</a>
 <a name="151"><span class="lineNum">     151 </span>            : };</a>
 <a name="152"><span class="lineNum">     152 </span>            : </a>
-<a name="153"><span class="lineNum">     153 </span>            : // Define Parameterset for IDE SECIR model.</a>
-<a name="154"><span class="lineNum">     154 </span>            : using ParametersBase =</a>
-<a name="155"><span class="lineNum">     155 </span>            :     ParameterSet&lt;TransitionDistributions, TransitionProbabilities, ContactPatterns, TransmissionProbabilityOnContact,</a>
-<a name="156"><span class="lineNum">     156 </span>            :                  RelativeTransmissionNoSymptoms, RiskOfInfectionFromSymptomatic&gt;;</a>
-<a name="157"><span class="lineNum">     157 </span>            : </a>
-<a name="158"><span class="lineNum">     158 </span>            : /**</a>
-<a name="159"><span class="lineNum">     159 </span>            :  * @brief Parameters of an age-resolved SECIR/SECIHURD model.</a>
-<a name="160"><span class="lineNum">     160 </span>            :  */</a>
-<a name="161"><span class="lineNum">     161 </span>            : class Parameters : public ParametersBase</a>
-<a name="162"><span class="lineNum">     162 </span>            : {</a>
-<a name="163"><span class="lineNum">     163 </span>            : public:</a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">         14 :     Parameters()</span></a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">         14 :         : ParametersBase()</span></a>
-<a name="166"><span class="lineNum">     166 </span>            :     {</a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">         14 :     }</span></a>
-<a name="168"><span class="lineNum">     168 </span>            : </a>
-<a name="169"><span class="lineNum">     169 </span>            :     /**</a>
-<a name="170"><span class="lineNum">     170 </span>            :      * @brief Checks whether all Parameters satisfy their corresponding constraints and logs an error.</a>
-<a name="171"><span class="lineNum">     171 </span>            :      * @param dt Time step size which is used to get model specific StateAgeFunction%s support.</a>
-<a name="172"><span class="lineNum">     172 </span>            :      * @return Returns true if one (or more) constraint(s) are not satisfied, otherwise false.</a>
-<a name="173"><span class="lineNum">     173 </span>            :      */</a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">         15 :     bool check_constraints() const</span></a>
-<a name="175"><span class="lineNum">     175 </span>            :     {</a>
-<a name="176"><span class="lineNum">     176 </span>            :         // For parameters potentially depending on the infectious age, values are checked</a>
-<a name="177"><span class="lineNum">     177 </span>            :         // equidistantly on a realistic maximum window.</a>
-<a name="178"><span class="lineNum">     178 </span>            :         // Please note that this is an incomplete check on correctness.</a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">         15 :         size_t infectious_window_check = 50; // parameter defining minimal window on x-axis</span></a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">        715 :         for (size_t i = 0; i &lt; infectious_window_check; i++) {</span></a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">       1401 :             if (this-&gt;get&lt;TransmissionProbabilityOnContact&gt;().eval((ScalarType)i) &lt; 0.0 ||</span></a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">        700 :                 this-&gt;get&lt;TransmissionProbabilityOnContact&gt;().eval((ScalarType)i) &gt; 1.0) {</span></a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          2 :                 log_error(&quot;Constraint check: TransmissionProbabilityOnContact smaller {:d} or larger {:d} at some &quot;</span></a>
-<a name="184"><span class="lineNum">     184 </span>            :                           &quot;time {:d}&quot;,</a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">          2 :                           0, 1, i);</span></a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          1 :                 return true;</span></a>
-<a name="187"><span class="lineNum">     187 </span>            :             }</a>
-<a name="188"><span class="lineNum">     188 </span>            :         }</a>
-<a name="189"><span class="lineNum">     189 </span>            : </a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">        664 :         for (size_t i = 0; i &lt; infectious_window_check; i++) {</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">       1301 :             if (this-&gt;get&lt;RelativeTransmissionNoSymptoms&gt;().eval((ScalarType)i) &lt; 0.0 ||</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">        650 :                 this-&gt;get&lt;RelativeTransmissionNoSymptoms&gt;().eval((ScalarType)i) &gt; 1.0) {</span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          2 :                 log_error(&quot;Constraint check: RelativeTransmissionNoSymptoms smaller {:d} or larger {:d} at some &quot;</span></a>
-<a name="194"><span class="lineNum">     194 </span>            :                           &quot;time {:d}&quot;,</a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          2 :                           0, 1, i);</span></a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">          1 :                 return true;</span></a>
-<a name="197"><span class="lineNum">     197 </span>            :             }</a>
-<a name="198"><span class="lineNum">     198 </span>            :         }</a>
-<a name="199"><span class="lineNum">     199 </span>            : </a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">        613 :         for (size_t i = 0; i &lt; infectious_window_check; i++) {</span></a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineCov">       1201 :             if (this-&gt;get&lt;RiskOfInfectionFromSymptomatic&gt;().eval((ScalarType)i) &lt; 0.0 ||</span></a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">        600 :                 this-&gt;get&lt;RiskOfInfectionFromSymptomatic&gt;().eval((ScalarType)i) &gt; 1.0) {</span></a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">          2 :                 log_error(&quot;Constraint check: RiskOfInfectionFromSymptomatic smaller {:d} or larger {:d} at some &quot;</span></a>
-<a name="204"><span class="lineNum">     204 </span>            :                           &quot;time {:d}&quot;,</a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">          2 :                           0, 1, i);</span></a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          1 :                 return true;</span></a>
-<a name="207"><span class="lineNum">     207 </span>            :             }</a>
-<a name="208"><span class="lineNum">     208 </span>            :         }</a>
-<a name="209"><span class="lineNum">     209 </span>            : </a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">        130 :         for (size_t i = 0; i &lt; (int)InfectionTransition::Count; i++) {</span></a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">        119 :             if (this-&gt;get&lt;TransitionProbabilities&gt;()[i] &lt; 0.0 || this-&gt;get&lt;TransitionProbabilities&gt;()[i] &gt; 1.0) {</span></a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">          2 :                 log_error(&quot;Constraint check: One parameter in TransitionProbabilities smaller {:d} or larger {:d}&quot;, 0,</span></a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">          2 :                           1);</span></a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">          1 :                 return true;</span></a>
-<a name="215"><span class="lineNum">     215 </span>            :             }</a>
-<a name="216"><span class="lineNum">     216 </span>            :         }</a>
-<a name="217"><span class="lineNum">     217 </span>            : </a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">         11 :         if (!floating_point_equal(this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::SusceptibleToExposed],</span></a>
-<a name="219"><span class="lineNum">     219 </span>            :                                   1.0, 1e-14)) {</a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          2 :             log_error(&quot;Constraint check: Parameter transition probability for SusceptibleToExposed unequal to {:d}&quot;, 1);</span></a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">          1 :             return true;</span></a>
-<a name="222"><span class="lineNum">     222 </span>            :         }</a>
-<a name="223"><span class="lineNum">     223 </span>            : </a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineCov">         20 :         if (!floating_point_equal(</span></a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">         10 :                 this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::ExposedToInfectedNoSymptoms], 1.0,</span></a>
-<a name="226"><span class="lineNum">     226 </span>            :                 1e-14)) {</a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">          2 :             log_error(</span></a>
-<a name="228"><span class="lineNum">     228 </span>            :                 &quot;Constraint check: Parameter transition probability for ExposedToInfectedNoSymptoms unequal to {:d}&quot;,</a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          2 :                 1);</span></a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">          1 :             return true;</span></a>
-<a name="231"><span class="lineNum">     231 </span>            :         }</a>
-<a name="232"><span class="lineNum">     232 </span>            : </a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">         27 :         if (!floating_point_equal(</span></a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">          9 :                 this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::InfectedNoSymptomsToInfectedSymptoms] +</span></a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">          9 :                     this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::InfectedNoSymptomsToRecovered],</span></a>
-<a name="236"><span class="lineNum">     236 </span>            :                 1.0, 1e-14)) {</a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">          2 :             log_error(&quot;Constraint check: Sum of transition probability for InfectedNoSymptomsToInfectedSymptoms and &quot;</span></a>
-<a name="238"><span class="lineNum">     238 </span>            :                       &quot;InfectedNoSymptomsToRecovered not equal to {:d}&quot;,</a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">          2 :                       1);</span></a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          1 :             return true;</span></a>
-<a name="241"><span class="lineNum">     241 </span>            :         }</a>
-<a name="242"><span class="lineNum">     242 </span>            : </a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineCov">         24 :         if (!floating_point_equal(</span></a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">          8 :                 this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::InfectedSymptomsToInfectedSevere] +</span></a>
-<a name="245"><span class="lineNum">     245 </span><span class="lineCov">          8 :                     this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::InfectedSymptomsToRecovered],</span></a>
-<a name="246"><span class="lineNum">     246 </span>            :                 1.0, 1e-14)) {</a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">          2 :             log_error(&quot;Constraint check: Sum of transition probability for InfectedSymptomsToInfectedSevere and &quot;</span></a>
-<a name="248"><span class="lineNum">     248 </span>            :                       &quot;InfectedSymptomsToRecovered not equal to {:d}&quot;,</a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">          2 :                       1);</span></a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          1 :             return true;</span></a>
-<a name="251"><span class="lineNum">     251 </span>            :         }</a>
-<a name="252"><span class="lineNum">     252 </span>            : </a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">         21 :         if (!floating_point_equal(</span></a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">          7 :                 this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::InfectedSevereToInfectedCritical] +</span></a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">          7 :                     this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::InfectedSevereToRecovered],</span></a>
-<a name="256"><span class="lineNum">     256 </span>            :                 1.0, 1e-14)) {</a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineCov">          2 :             log_error(&quot;Constraint check: Sum of transition probability for InfectedSevereToInfectedCritical and &quot;</span></a>
-<a name="258"><span class="lineNum">     258 </span>            :                       &quot;InfectedSevereToRecovered not equal to {:d}&quot;,</a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineCov">          2 :                       1);</span></a>
-<a name="260"><span class="lineNum">     260 </span><span class="lineCov">          1 :             return true;</span></a>
-<a name="261"><span class="lineNum">     261 </span>            :         }</a>
-<a name="262"><span class="lineNum">     262 </span>            : </a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineCov">         18 :         if (!floating_point_equal(</span></a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">          6 :                 this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::InfectedCriticalToDead] +</span></a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">          6 :                     this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::InfectedCriticalToRecovered],</span></a>
-<a name="266"><span class="lineNum">     266 </span>            :                 1.0, 1e-14)) {</a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">          2 :             log_error(&quot;Constraint check: Sum of transition probability for InfectedCriticalToDead and &quot;</span></a>
-<a name="268"><span class="lineNum">     268 </span>            :                       &quot;InfectedCriticalToRecovered not equal to {:d}&quot;,</a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">          2 :                       1);</span></a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">          1 :             return true;</span></a>
-<a name="271"><span class="lineNum">     271 </span>            :         }</a>
-<a name="272"><span class="lineNum">     272 </span>            :         /* The first entry of TransitionDistributions is not checked because the distribution S-&gt;E is never used </a>
-<a name="273"><span class="lineNum">     273 </span>            :         (and it makes no sense to use the distribution). The support does not need to be valid.*/</a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineCov">         41 :         for (size_t i = 1; i &lt; (int)InfectionTransition::Count; i++) {</span></a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">         37 :             if (floating_point_less(this-&gt;get&lt;TransitionDistributions&gt;()[i].get_support_max(10), 0.0, 1e-14)) {</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">          2 :                 log_error(&quot;Constraint check: One function in TransitionDistributions has invalid support.&quot;);</span></a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">          1 :                 return true;</span></a>
-<a name="278"><span class="lineNum">     278 </span>            :             }</a>
+<a name="153"><span class="lineNum">     153 </span>            : /**</a>
+<a name="154"><span class="lineNum">     154 </span>            :  * @brief Sets the day in a year at which a simulation with an IDE-SECIR model is started.</a>
+<a name="155"><span class="lineNum">     155 </span>            :  *</a>
+<a name="156"><span class="lineNum">     156 </span>            :  * The value 0.0 corresponds to the 1st of January at 0:00 am, 31.25 is the 1st of February at 6:00 am, and so on.</a>
+<a name="157"><span class="lineNum">     157 </span>            :  * The start day defines in which season the simulation is started.</a>
+<a name="158"><span class="lineNum">     158 </span>            :  * If the start day is 180 and simulation takes place from t0=0 to</a>
+<a name="159"><span class="lineNum">     159 </span>            :  * tmax=100 the days 180 to 280 of the year are simulated.</a>
+<a name="160"><span class="lineNum">     160 </span>            :  * The parameter is used in the formula of the seasonality in the model.</a>
+<a name="161"><span class="lineNum">     161 </span>            :  */</a>
+<a name="162"><span class="lineNum">     162 </span>            : struct StartDay {</a>
+<a name="163"><span class="lineNum">     163 </span>            :     using Type = ScalarType;</a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">         14 :     static Type get_default()</span></a>
+<a name="165"><span class="lineNum">     165 </span>            :     {</a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">         14 :         return 0.;</span></a>
+<a name="167"><span class="lineNum">     167 </span>            :     }</a>
+<a name="168"><span class="lineNum">     168 </span>            :     static std::string name()</a>
+<a name="169"><span class="lineNum">     169 </span>            :     {</a>
+<a name="170"><span class="lineNum">     170 </span>            :         return &quot;StartDay&quot;;</a>
+<a name="171"><span class="lineNum">     171 </span>            :     }</a>
+<a name="172"><span class="lineNum">     172 </span>            : };</a>
+<a name="173"><span class="lineNum">     173 </span>            : </a>
+<a name="174"><span class="lineNum">     174 </span>            : /**</a>
+<a name="175"><span class="lineNum">     175 </span>            :  * @brief The seasonality parameter k in the IDE-SECIR model.</a>
+<a name="176"><span class="lineNum">     176 </span>            :  * The formula for the seasonality used in the model is given as (1+k*sin()) where the sine</a>
+<a name="177"><span class="lineNum">     177 </span>            :  * curve is below one in summer and above one in winter.</a>
+<a name="178"><span class="lineNum">     178 </span>            :  */</a>
+<a name="179"><span class="lineNum">     179 </span>            : struct Seasonality {</a>
+<a name="180"><span class="lineNum">     180 </span>            :     using Type = ScalarType;</a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">         14 :     static Type get_default()</span></a>
+<a name="182"><span class="lineNum">     182 </span>            :     {</a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">         14 :         return Type(0.);</span></a>
+<a name="184"><span class="lineNum">     184 </span>            :     }</a>
+<a name="185"><span class="lineNum">     185 </span>            :     static std::string name()</a>
+<a name="186"><span class="lineNum">     186 </span>            :     {</a>
+<a name="187"><span class="lineNum">     187 </span>            :         return &quot;Seasonality&quot;;</a>
+<a name="188"><span class="lineNum">     188 </span>            :     }</a>
+<a name="189"><span class="lineNum">     189 </span>            : };</a>
+<a name="190"><span class="lineNum">     190 </span>            : </a>
+<a name="191"><span class="lineNum">     191 </span>            : // Define Parameterset for IDE-SECIR model.</a>
+<a name="192"><span class="lineNum">     192 </span>            : using ParametersBase =</a>
+<a name="193"><span class="lineNum">     193 </span>            :     ParameterSet&lt;TransitionDistributions, TransitionProbabilities, ContactPatterns, TransmissionProbabilityOnContact,</a>
+<a name="194"><span class="lineNum">     194 </span>            :                  RelativeTransmissionNoSymptoms, RiskOfInfectionFromSymptomatic, StartDay, Seasonality&gt;;</a>
+<a name="195"><span class="lineNum">     195 </span>            : </a>
+<a name="196"><span class="lineNum">     196 </span>            : /**</a>
+<a name="197"><span class="lineNum">     197 </span>            :  * @brief Parameters of an age-resolved SECIR/SECIHURD model.</a>
+<a name="198"><span class="lineNum">     198 </span>            :  */</a>
+<a name="199"><span class="lineNum">     199 </span>            : class Parameters : public ParametersBase</a>
+<a name="200"><span class="lineNum">     200 </span>            : {</a>
+<a name="201"><span class="lineNum">     201 </span>            : public:</a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">         14 :     Parameters()</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">         14 :         : ParametersBase()</span></a>
+<a name="204"><span class="lineNum">     204 </span>            :     {</a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">         14 :     }</span></a>
+<a name="206"><span class="lineNum">     206 </span>            : </a>
+<a name="207"><span class="lineNum">     207 </span>            :     /**</a>
+<a name="208"><span class="lineNum">     208 </span>            :      * @brief Checks whether all Parameters satisfy their corresponding constraints and logs an error.</a>
+<a name="209"><span class="lineNum">     209 </span>            :      * @param dt Time step size which is used to get model specific StateAgeFunction%s support.</a>
+<a name="210"><span class="lineNum">     210 </span>            :      * @return Returns true if one (or more) constraint(s) are not satisfied, otherwise false.</a>
+<a name="211"><span class="lineNum">     211 </span>            :      */</a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">         16 :     bool check_constraints() const</span></a>
+<a name="213"><span class="lineNum">     213 </span>            :     {</a>
+<a name="214"><span class="lineNum">     214 </span>            :         // For parameters potentially depending on the infectious age, values are checked</a>
+<a name="215"><span class="lineNum">     215 </span>            :         // equidistantly on a realistic maximum window.</a>
+<a name="216"><span class="lineNum">     216 </span>            :         // Please note that this is an incomplete check on correctness.</a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">         16 :         size_t infectious_window_check = 50; // parameter defining minimal window on x-axis</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">        766 :         for (size_t i = 0; i &lt; infectious_window_check; i++) {</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">       1501 :             if (this-&gt;get&lt;TransmissionProbabilityOnContact&gt;().eval((ScalarType)i) &lt; 0.0 ||</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">        750 :                 this-&gt;get&lt;TransmissionProbabilityOnContact&gt;().eval((ScalarType)i) &gt; 1.0) {</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">          2 :                 log_error(&quot;Constraint check: TransmissionProbabilityOnContact smaller {:d} or larger {:d} at some &quot;</span></a>
+<a name="222"><span class="lineNum">     222 </span>            :                           &quot;time {:d}&quot;,</a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">          2 :                           0, 1, i);</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">          1 :                 return true;</span></a>
+<a name="225"><span class="lineNum">     225 </span>            :             }</a>
+<a name="226"><span class="lineNum">     226 </span>            :         }</a>
+<a name="227"><span class="lineNum">     227 </span>            : </a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">        715 :         for (size_t i = 0; i &lt; infectious_window_check; i++) {</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">       1401 :             if (this-&gt;get&lt;RelativeTransmissionNoSymptoms&gt;().eval((ScalarType)i) &lt; 0.0 ||</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">        700 :                 this-&gt;get&lt;RelativeTransmissionNoSymptoms&gt;().eval((ScalarType)i) &gt; 1.0) {</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">          2 :                 log_error(&quot;Constraint check: RelativeTransmissionNoSymptoms smaller {:d} or larger {:d} at some &quot;</span></a>
+<a name="232"><span class="lineNum">     232 </span>            :                           &quot;time {:d}&quot;,</a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          2 :                           0, 1, i);</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">          1 :                 return true;</span></a>
+<a name="235"><span class="lineNum">     235 </span>            :             }</a>
+<a name="236"><span class="lineNum">     236 </span>            :         }</a>
+<a name="237"><span class="lineNum">     237 </span>            : </a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">        664 :         for (size_t i = 0; i &lt; infectious_window_check; i++) {</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">       1301 :             if (this-&gt;get&lt;RiskOfInfectionFromSymptomatic&gt;().eval((ScalarType)i) &lt; 0.0 ||</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">        650 :                 this-&gt;get&lt;RiskOfInfectionFromSymptomatic&gt;().eval((ScalarType)i) &gt; 1.0) {</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">          2 :                 log_error(&quot;Constraint check: RiskOfInfectionFromSymptomatic smaller {:d} or larger {:d} at some &quot;</span></a>
+<a name="242"><span class="lineNum">     242 </span>            :                           &quot;time {:d}&quot;,</a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineCov">          2 :                           0, 1, i);</span></a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">          1 :                 return true;</span></a>
+<a name="245"><span class="lineNum">     245 </span>            :             }</a>
+<a name="246"><span class="lineNum">     246 </span>            :         }</a>
+<a name="247"><span class="lineNum">     247 </span>            : </a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">        141 :         for (size_t i = 0; i &lt; (int)InfectionTransition::Count; i++) {</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">        129 :             if (this-&gt;get&lt;TransitionProbabilities&gt;()[i] &lt; 0.0 || this-&gt;get&lt;TransitionProbabilities&gt;()[i] &gt; 1.0) {</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          2 :                 log_error(&quot;Constraint check: One parameter in TransitionProbabilities smaller {:d} or larger {:d}&quot;, 0,</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">          2 :                           1);</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          1 :                 return true;</span></a>
+<a name="253"><span class="lineNum">     253 </span>            :             }</a>
+<a name="254"><span class="lineNum">     254 </span>            :         }</a>
+<a name="255"><span class="lineNum">     255 </span>            : </a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">         12 :         if (!floating_point_equal(this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::SusceptibleToExposed],</span></a>
+<a name="257"><span class="lineNum">     257 </span>            :                                   1.0, 1e-14)) {</a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">          2 :             log_error(&quot;Constraint check: Parameter transition probability for SusceptibleToExposed unequal to {:d}&quot;, 1);</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">          1 :             return true;</span></a>
+<a name="260"><span class="lineNum">     260 </span>            :         }</a>
+<a name="261"><span class="lineNum">     261 </span>            : </a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineCov">         22 :         if (!floating_point_equal(</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineCov">         11 :                 this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::ExposedToInfectedNoSymptoms], 1.0,</span></a>
+<a name="264"><span class="lineNum">     264 </span>            :                 1e-14)) {</a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">          2 :             log_error(</span></a>
+<a name="266"><span class="lineNum">     266 </span>            :                 &quot;Constraint check: Parameter transition probability for ExposedToInfectedNoSymptoms unequal to {:d}&quot;,</a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">          2 :                 1);</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">          1 :             return true;</span></a>
+<a name="269"><span class="lineNum">     269 </span>            :         }</a>
+<a name="270"><span class="lineNum">     270 </span>            : </a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">         30 :         if (!floating_point_equal(</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">         10 :                 this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::InfectedNoSymptomsToInfectedSymptoms] +</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">         10 :                     this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::InfectedNoSymptomsToRecovered],</span></a>
+<a name="274"><span class="lineNum">     274 </span>            :                 1.0, 1e-14)) {</a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">          2 :             log_error(&quot;Constraint check: Sum of transition probability for InfectedNoSymptomsToInfectedSymptoms and &quot;</span></a>
+<a name="276"><span class="lineNum">     276 </span>            :                       &quot;InfectedNoSymptomsToRecovered not equal to {:d}&quot;,</a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">          2 :                       1);</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">          1 :             return true;</span></a>
 <a name="279"><span class="lineNum">     279 </span>            :         }</a>
 <a name="280"><span class="lineNum">     280 </span>            : </a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">          4 :         return false;</span></a>
-<a name="282"><span class="lineNum">     282 </span>            :     }</a>
-<a name="283"><span class="lineNum">     283 </span>            : </a>
-<a name="284"><span class="lineNum">     284 </span>            :     /**</a>
-<a name="285"><span class="lineNum">     285 </span>            :      * deserialize an object of this class.</a>
-<a name="286"><span class="lineNum">     286 </span>            :      * @see mio::deserialize</a>
-<a name="287"><span class="lineNum">     287 </span>            :      */</a>
-<a name="288"><span class="lineNum">     288 </span>            :     template &lt;class IOContext&gt;</a>
-<a name="289"><span class="lineNum">     289 </span>            :     static IOResult&lt;Parameters&gt; deserialize(IOContext&amp; io)</a>
-<a name="290"><span class="lineNum">     290 </span>            :     {</a>
-<a name="291"><span class="lineNum">     291 </span>            :         BOOST_OUTCOME_TRY(base, ParametersBase::deserialize(io));</a>
-<a name="292"><span class="lineNum">     292 </span>            :         return success(Parameters(std::move(base)));</a>
-<a name="293"><span class="lineNum">     293 </span>            :     }</a>
-<a name="294"><span class="lineNum">     294 </span>            : </a>
-<a name="295"><span class="lineNum">     295 </span>            : private:</a>
-<a name="296"><span class="lineNum">     296 </span>            :     Parameters(ParametersBase&amp;&amp; base)</a>
-<a name="297"><span class="lineNum">     297 </span>            :         : ParametersBase(std::move(base))</a>
-<a name="298"><span class="lineNum">     298 </span>            :     {</a>
-<a name="299"><span class="lineNum">     299 </span>            :     }</a>
-<a name="300"><span class="lineNum">     300 </span>            : };</a>
-<a name="301"><span class="lineNum">     301 </span>            : </a>
-<a name="302"><span class="lineNum">     302 </span>            : } // namespace isecir</a>
-<a name="303"><span class="lineNum">     303 </span>            : } // namespace mio</a>
-<a name="304"><span class="lineNum">     304 </span>            : </a>
-<a name="305"><span class="lineNum">     305 </span>            : #endif // IDE_SECIR_PARAMS_H</a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">         27 :         if (!floating_point_equal(</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">          9 :                 this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::InfectedSymptomsToInfectedSevere] +</span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">          9 :                     this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::InfectedSymptomsToRecovered],</span></a>
+<a name="284"><span class="lineNum">     284 </span>            :                 1.0, 1e-14)) {</a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineCov">          2 :             log_error(&quot;Constraint check: Sum of transition probability for InfectedSymptomsToInfectedSevere and &quot;</span></a>
+<a name="286"><span class="lineNum">     286 </span>            :                       &quot;InfectedSymptomsToRecovered not equal to {:d}&quot;,</a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">          2 :                       1);</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">          1 :             return true;</span></a>
+<a name="289"><span class="lineNum">     289 </span>            :         }</a>
+<a name="290"><span class="lineNum">     290 </span>            : </a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">         24 :         if (!floating_point_equal(</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">          8 :                 this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::InfectedSevereToInfectedCritical] +</span></a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineCov">          8 :                     this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::InfectedSevereToRecovered],</span></a>
+<a name="294"><span class="lineNum">     294 </span>            :                 1.0, 1e-14)) {</a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">          2 :             log_error(&quot;Constraint check: Sum of transition probability for InfectedSevereToInfectedCritical and &quot;</span></a>
+<a name="296"><span class="lineNum">     296 </span>            :                       &quot;InfectedSevereToRecovered not equal to {:d}&quot;,</a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">          2 :                       1);</span></a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">          1 :             return true;</span></a>
+<a name="299"><span class="lineNum">     299 </span>            :         }</a>
+<a name="300"><span class="lineNum">     300 </span>            : </a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">         21 :         if (!floating_point_equal(</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">          7 :                 this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::InfectedCriticalToDead] +</span></a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">          7 :                     this-&gt;get&lt;TransitionProbabilities&gt;()[(int)InfectionTransition::InfectedCriticalToRecovered],</span></a>
+<a name="304"><span class="lineNum">     304 </span>            :                 1.0, 1e-14)) {</a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineCov">          2 :             log_error(&quot;Constraint check: Sum of transition probability for InfectedCriticalToDead and &quot;</span></a>
+<a name="306"><span class="lineNum">     306 </span>            :                       &quot;InfectedCriticalToRecovered not equal to {:d}&quot;,</a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">          2 :                       1);</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">          1 :             return true;</span></a>
+<a name="309"><span class="lineNum">     309 </span>            :         }</a>
+<a name="310"><span class="lineNum">     310 </span>            : </a>
+<a name="311"><span class="lineNum">     311 </span>            :         /* The first entry of TransitionDistributions is not checked because the distribution S-&gt;E is never used </a>
+<a name="312"><span class="lineNum">     312 </span>            :         (and it makes no sense to use the distribution). The support does not need to be valid.*/</a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">         51 :         for (size_t i = 1; i &lt; (int)InfectionTransition::Count; i++) {</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">         46 :             if (floating_point_less(this-&gt;get&lt;TransitionDistributions&gt;()[i].get_support_max(10), 0.0, 1e-14)) {</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">          2 :                 log_error(&quot;Constraint check: One function in TransitionDistributions has invalid support.&quot;);</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">          1 :                 return true;</span></a>
+<a name="317"><span class="lineNum">     317 </span>            :             }</a>
+<a name="318"><span class="lineNum">     318 </span>            :         }</a>
+<a name="319"><span class="lineNum">     319 </span>            : </a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">          5 :         if (this-&gt;get&lt;Seasonality&gt;() &lt; 0.0 || this-&gt;get&lt;Seasonality&gt;() &gt; 0.5) {</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">          2 :             log_warning(&quot;Constraint check: Parameter Seasonality should lie between {:0.4f} and {:.4f}&quot;, 0.0, 0.5);</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">          1 :             return true;</span></a>
+<a name="323"><span class="lineNum">     323 </span>            :         }</a>
+<a name="324"><span class="lineNum">     324 </span>            : </a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">          4 :         return false;</span></a>
+<a name="326"><span class="lineNum">     326 </span>            :     }</a>
+<a name="327"><span class="lineNum">     327 </span>            : </a>
+<a name="328"><span class="lineNum">     328 </span>            :     /**</a>
+<a name="329"><span class="lineNum">     329 </span>            :      * deserialize an object of this class.</a>
+<a name="330"><span class="lineNum">     330 </span>            :      * @see mio::deserialize</a>
+<a name="331"><span class="lineNum">     331 </span>            :      */</a>
+<a name="332"><span class="lineNum">     332 </span>            :     template &lt;class IOContext&gt;</a>
+<a name="333"><span class="lineNum">     333 </span>            :     static IOResult&lt;Parameters&gt; deserialize(IOContext&amp; io)</a>
+<a name="334"><span class="lineNum">     334 </span>            :     {</a>
+<a name="335"><span class="lineNum">     335 </span>            :         BOOST_OUTCOME_TRY(base, ParametersBase::deserialize(io));</a>
+<a name="336"><span class="lineNum">     336 </span>            :         return success(Parameters(std::move(base)));</a>
+<a name="337"><span class="lineNum">     337 </span>            :     }</a>
+<a name="338"><span class="lineNum">     338 </span>            : </a>
+<a name="339"><span class="lineNum">     339 </span>            : private:</a>
+<a name="340"><span class="lineNum">     340 </span>            :     Parameters(ParametersBase&amp;&amp; base)</a>
+<a name="341"><span class="lineNum">     341 </span>            :         : ParametersBase(std::move(base))</a>
+<a name="342"><span class="lineNum">     342 </span>            :     {</a>
+<a name="343"><span class="lineNum">     343 </span>            :     }</a>
+<a name="344"><span class="lineNum">     344 </span>            : };</a>
+<a name="345"><span class="lineNum">     345 </span>            : </a>
+<a name="346"><span class="lineNum">     346 </span>            : } // namespace isecir</a>
+<a name="347"><span class="lineNum">     347 </span>            : } // namespace mio</a>
+<a name="348"><span class="lineNum">     348 </span>            : </a>
+<a name="349"><span class="lineNum">     349 </span>            : #endif // IDE_SECIR_PARAMS_H</a>
 </pre>
       </td>
     </tr>

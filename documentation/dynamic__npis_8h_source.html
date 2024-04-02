@@ -210,7 +210,7 @@ $(function() {
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;{</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    std::vector&lt;size_t&gt; indices;</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; damping_expr.get_dampings().size(); ++i) {</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keyword">auto</span>&amp; d = damping_expr.get_dampings()[i];</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> d = damping_expr.get_dampings()[i];</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="keywordflow">if</span> (d.get_level() == lvl &amp;&amp; d.get_type() == type &amp;&amp; <span class="keywordtype">double</span>(d.get_time()) &gt; <span class="keywordtype">double</span>(<a class="code" href="namespacemio.html#aa6c974748a742fac0093de2634750791">begin</a>) &amp;&amp;</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="keywordtype">double</span>(d.get_time()) &lt; <span class="keywordtype">double</span>(<a class="code" href="namespacemio.html#a81e603f62801572c7afdf910bc057681">end</a>)) {</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            indices.push_back(i);</div>

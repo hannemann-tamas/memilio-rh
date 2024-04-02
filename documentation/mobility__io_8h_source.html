@@ -139,7 +139,7 @@ $(function() {
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment">//one file for the model (parameters and population)</span></div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> inode = <span class="keywordtype">size_t</span>(0); inode &lt; graph.nodes().size(); ++inode) {</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="comment">//node</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keyword">auto</span>&amp; node = graph.nodes()[inode];</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> node = graph.nodes()[inode];</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        BOOST_OUTCOME_TRY(js_node_model, serialize_json(node.property, ioflags));</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        Json::Value js_node(Json::objectValue);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        js_node[<span class="stringliteral">&quot;NodeId&quot;</span>]  = node.id;</div>

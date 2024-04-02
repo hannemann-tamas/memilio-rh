@@ -106,6 +106,10 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespacemio_1_1regions"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemio_1_1regions.html">regions</a></td></tr>
 <tr class="memdesc:namespacemio_1_1regions"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains utilities that depend on geographical regions. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacemio_1_1ssir"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemio_1_1ssir.html">ssir</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacemio_1_1ssirs"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemio_1_1ssirs.html">ssirs</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -1071,11 +1075,11 @@ Functions</h2></td></tr>
 <tr class="separator:a9109ed83aaeea1ebec958b6ac8cb48dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3499af5a1a20a34bd86d9f8e77726695"><td class="memTemplParams" colspan="2">template&lt;typename FP , class Model , class Sim  = Simulation&lt;FP, Model&gt;&gt; </td></tr>
 <tr class="memitem:a3499af5a1a20a34bd86d9f8e77726695"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt; FP &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemio.html#a3499af5a1a20a34bd86d9f8e77726695">simulate</a> (FP t0, FP tmax, FP dt, Model const &amp;model, std::shared_ptr&lt; <a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt; FP &gt;&gt; integrator=nullptr)</td></tr>
-<tr class="memdesc:a3499af5a1a20a34bd86d9f8e77726695"><td class="mdescLeft">&#160;</td><td class="mdescRight">simulate simulates a compartmental model  <a href="namespacemio.html#a3499af5a1a20a34bd86d9f8e77726695">More...</a><br /></td></tr>
+<tr class="memdesc:a3499af5a1a20a34bd86d9f8e77726695"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run a <a class="el" href="classmio_1_1Simulation.html" title="A class for the simulation of a compartment model.">Simulation</a> of a <a class="el" href="structmio_1_1CompartmentalModel.html" title="CompartmentalModel is a template for a compartmental model for an array of initial populations and a ...">CompartmentalModel</a>.  <a href="namespacemio.html#a3499af5a1a20a34bd86d9f8e77726695">More...</a><br /></td></tr>
 <tr class="separator:a3499af5a1a20a34bd86d9f8e77726695"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8afba1cbb39d8db247a597ae45d226c1"><td class="memTemplParams" colspan="2">template&lt;typename FP , class Model , class Sim  = FlowSimulation&lt;FP, Model&gt;&gt; </td></tr>
 <tr class="memitem:a8afba1cbb39d8db247a597ae45d226c1"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt; FP &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemio.html#a8afba1cbb39d8db247a597ae45d226c1">simulate_flows</a> (FP t0, FP tmax, FP dt, Model const &amp;model, std::shared_ptr&lt; <a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt; FP &gt;&gt; integrator=nullptr)</td></tr>
-<tr class="memdesc:a8afba1cbb39d8db247a597ae45d226c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">simulate simulates a compartmental model and returns the same results as simulate and also the flows.  <a href="namespacemio.html#a8afba1cbb39d8db247a597ae45d226c1">More...</a><br /></td></tr>
+<tr class="memdesc:a8afba1cbb39d8db247a597ae45d226c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run a <a class="el" href="classmio_1_1FlowSimulation.html">FlowSimulation</a> of a <a class="el" href="classmio_1_1FlowModel.html" title="A FlowModel is a CompartmentalModel defined by the flows between compartments.">FlowModel</a>.  <a href="namespacemio.html#a8afba1cbb39d8db247a597ae45d226c1">More...</a><br /></td></tr>
 <tr class="separator:a8afba1cbb39d8db247a597ae45d226c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad68521b3c371e12d598418900b3049d"><td class="memTemplParams" colspan="2">template&lt;class M , std::enable_if_t&lt; is_dynamic_matrix&lt; M &gt;::value, int &gt;  = 0&gt; </td></tr>
 <tr class="memitem:aad68521b3c371e12d598418900b3049d"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemio.html#aad68521b3c371e12d598418900b3049d">slice</a> (M &amp;&amp;m, <a class="el" href="structmio_1_1Seq.html">Seq</a>&lt; Eigen::Index &gt; rows, <a class="el" href="structmio_1_1Seq.html">Seq</a>&lt; Eigen::Index &gt; cols)</td></tr>
@@ -7062,22 +7066,23 @@ template&lt;typename FP , class Model , class Sim  = Simulation&lt;FP, Model&gt;
       </table>
 </div><div class="memdoc">
 
-<p>simulate simulates a compartmental model </p>
+<p>Run a <a class="el" href="classmio_1_1Simulation.html" title="A class for the simulation of a compartment model.">Simulation</a> of a <a class="el" href="structmio_1_1CompartmentalModel.html" title="CompartmentalModel is a template for a compartmental model for an array of initial populations and a ...">CompartmentalModel</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">t0</td><td>start time </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">tmax</td><td>end time </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>initial step size of integration </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">model</td><td>An instance of a compartmental model </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t0</td><td>Start time. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tmax</td><td>End time. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>Initial step size of integration. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">model</td><td>An instance of a <a class="el" href="structmio_1_1CompartmentalModel.html" title="CompartmentalModel is a template for a compartmental model for an array of initial populations and a ...">CompartmentalModel</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">integrator</td><td>Optionally override the <a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a> used by the <a class="el" href="classmio_1_1Simulation.html" title="A class for the simulation of a compartment model.">Simulation</a>. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a <a class="el" href="classmio_1_1TimeSeries.html" title="stores vectors of values at time points (or some other abstract variable) the value at each time poin...">TimeSeries</a> to represent the final simulation result </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classmio_1_1TimeSeries.html" title="stores vectors of values at time points (or some other abstract variable) the value at each time poin...">TimeSeries</a> to represent the final <a class="el" href="classmio_1_1Simulation.html" title="A class for the simulation of a compartment model.">Simulation</a> result </dd></dl>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">FP</td><td>floating point type, e.g., double </td></tr>
-    <tr><td class="paramname">Model</td><td>a compartment model type </td></tr>
-    <tr><td class="paramname">Sim</td><td>a simulation type that can simulate the model. </td></tr>
+    <tr><td class="paramname">Model</td><td>The particular Model derived from CompartmentModel to simulate. </td></tr>
+    <tr><td class="paramname">Sim</td><td>A <a class="el" href="classmio_1_1Simulation.html" title="A class for the simulation of a compartment model.">Simulation</a> that can simulate the model. </td></tr>
   </table>
   </dd>
 </dl>
@@ -7130,22 +7135,23 @@ template&lt;typename FP , class Model , class Sim  = FlowSimulation&lt;FP, Model
       </table>
 </div><div class="memdoc">
 
-<p>simulate simulates a compartmental model and returns the same results as simulate and also the flows. </p>
+<p>Run a <a class="el" href="classmio_1_1FlowSimulation.html">FlowSimulation</a> of a <a class="el" href="classmio_1_1FlowModel.html" title="A FlowModel is a CompartmentalModel defined by the flows between compartments.">FlowModel</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">t0</td><td>start time </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">tmax</td><td>end time </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>initial step size of integration </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">model</td><td>An instance of a compartmental model </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t0</td><td>Start time. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tmax</td><td>End time. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>Initial step size of integration. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">model</td><td>An instance of a <a class="el" href="classmio_1_1FlowModel.html" title="A FlowModel is a CompartmentalModel defined by the flows between compartments.">FlowModel</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">integrator</td><td>Optionally override the <a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a> used by the <a class="el" href="classmio_1_1FlowSimulation.html">FlowSimulation</a>. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a Tuple of two <a class="el" href="classmio_1_1TimeSeries.html" title="stores vectors of values at time points (or some other abstract variable) the value at each time poin...">TimeSeries</a> to represent the final simulation result and flows </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The simulation result as two <a class="el" href="classmio_1_1TimeSeries.html" title="stores vectors of values at time points (or some other abstract variable) the value at each time poin...">TimeSeries</a>. The first describes the compartments at each time point, the second gives the corresponding flows that lead from t0 to each time point. </dd></dl>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">FP</td><td>a floating point type, e.g., double </td></tr>
-    <tr><td class="paramname">Model</td><td>a compartment model type </td></tr>
-    <tr><td class="paramname">Sim</td><td>a simulation type that can simulate the model. </td></tr>
+    <tr><td class="paramname">Model</td><td>The particular Model derived from <a class="el" href="classmio_1_1FlowModel.html" title="A FlowModel is a CompartmentalModel defined by the flows between compartments.">FlowModel</a> to simulate. </td></tr>
+    <tr><td class="paramname">Sim</td><td>A <a class="el" href="classmio_1_1FlowSimulation.html">FlowSimulation</a> that can simulate the model. </td></tr>
   </table>
   </dd>
 </dl>

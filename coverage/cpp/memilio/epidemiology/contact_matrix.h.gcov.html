@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-03-27 13:34:32</td>
+            <td class="headerValue">2024-04-02 15:07:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">129</td>
@@ -117,13 +117,13 @@
 <a name="55"><span class="lineNum">      55 </span>            :      * @tparam M, K matrix expressions compatible with Matrix type</a>
 <a name="56"><span class="lineNum">      56 </span>            :      */</a>
 <a name="57"><span class="lineNum">      57 </span>            :     template &lt;class M, class K&gt;</a>
-<a name="58"><span class="lineNum">      58 </span><span class="lineCov">        562 :     DampingMatrixExpression(const Eigen::MatrixBase&lt;M&gt;&amp; baseline, const Eigen::MatrixBase&lt;K&gt;&amp; minimum)</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">        568 :     DampingMatrixExpression(const Eigen::MatrixBase&lt;M&gt;&amp; baseline, const Eigen::MatrixBase&lt;K&gt;&amp; minimum)</span></a>
 <a name="59"><span class="lineNum">      59 </span>            :         : m_baseline(baseline)</a>
 <a name="60"><span class="lineNum">      60 </span>            :         , m_minimum(minimum)</a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">        562 :         , m_dampings(Shape::get_shape_of(m_baseline))</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">        568 :         , m_dampings(Shape::get_shape_of(m_baseline))</span></a>
 <a name="62"><span class="lineNum">      62 </span>            :     {</a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">        562 :         assert(Shape::get_shape_of(m_minimum) == Shape::get_shape_of(m_baseline));</span></a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">        562 :     }</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">        568 :         assert(Shape::get_shape_of(m_minimum) == Shape::get_shape_of(m_baseline));</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">        568 :     }</span></a>
 <a name="65"><span class="lineNum">      65 </span>            : </a>
 <a name="66"><span class="lineNum">      66 </span>            :     /**</a>
 <a name="67"><span class="lineNum">      67 </span>            :      * construct with only baseline, minimum and dampings is zero.</a>
@@ -131,11 +131,11 @@
 <a name="69"><span class="lineNum">      69 </span>            :      * @tparam M matrix expressions compatible with Matrix type</a>
 <a name="70"><span class="lineNum">      70 </span>            :      */</a>
 <a name="71"><span class="lineNum">      71 </span>            :     template &lt;class M&gt;</a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        548 :     explicit DampingMatrixExpression(const Eigen::MatrixBase&lt;M&gt;&amp; baseline)</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        554 :     explicit DampingMatrixExpression(const Eigen::MatrixBase&lt;M&gt;&amp; baseline)</span></a>
 <a name="73"><span class="lineNum">      73 </span>            :         : DampingMatrixExpression(</a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        548 :               baseline, Matrix::Zero(Shape::get_shape_of(baseline).rows(), Shape::get_shape_of(baseline).cols()))</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        554 :               baseline, Matrix::Zero(Shape::get_shape_of(baseline).rows(), Shape::get_shape_of(baseline).cols()))</span></a>
 <a name="75"><span class="lineNum">      75 </span>            :     {</a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">        548 :     }</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">        554 :     }</span></a>
 <a name="77"><span class="lineNum">      77 </span>            : </a>
 <a name="78"><span class="lineNum">      78 </span>            :     /**</a>
 <a name="79"><span class="lineNum">      79 </span>            :      * construct with shape.</a>
@@ -144,10 +144,10 @@
 <a name="82"><span class="lineNum">      82 </span>            :      * @tparam T shape arguments.</a>
 <a name="83"><span class="lineNum">      83 </span>            :      */</a>
 <a name="84"><span class="lineNum">      84 </span>            :     template &lt;class... T, class = std::enable_if_t&lt;std::is_constructible&lt;Shape, T...&gt;::value, void&gt;&gt;</a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">        142 :     explicit DampingMatrixExpression(T... shape_args)</span></a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineCov">        142 :         : DampingMatrixExpression(Matrix::Zero(Shape(shape_args...).rows(), Shape(shape_args...).cols()))</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">        148 :     explicit DampingMatrixExpression(T... shape_args)</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">        148 :         : DampingMatrixExpression(Matrix::Zero(Shape(shape_args...).rows(), Shape(shape_args...).cols()))</span></a>
 <a name="87"><span class="lineNum">      87 </span>            :     {</a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">        142 :     }</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">        148 :     }</span></a>
 <a name="89"><span class="lineNum">      89 </span>            : </a>
 <a name="90"><span class="lineNum">      90 </span>            :     /**</a>
 <a name="91"><span class="lineNum">      91 </span>            :      * adds a damping.</a>
@@ -195,9 +195,9 @@
 <a name="133"><span class="lineNum">     133 </span>            :     {</a>
 <a name="134"><span class="lineNum">     134 </span><span class="lineCov">         26 :         return m_baseline;</span></a>
 <a name="135"><span class="lineNum">     135 </span>            :     }</a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">        446 :     Matrix&amp; get_baseline()</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">        474 :     Matrix&amp; get_baseline()</span></a>
 <a name="137"><span class="lineNum">     137 </span>            :     {</a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">        446 :         return m_baseline;</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">        474 :         return m_baseline;</span></a>
 <a name="139"><span class="lineNum">     139 </span>            :     }</a>
 <a name="140"><span class="lineNum">     140 </span>            : </a>
 <a name="141"><span class="lineNum">     141 </span>            :     /**</a>
@@ -215,9 +215,9 @@
 <a name="153"><span class="lineNum">     153 </span>            :     /**</a>
 <a name="154"><span class="lineNum">     154 </span>            :      * dimensions of the matrix.</a>
 <a name="155"><span class="lineNum">     155 </span>            :      */</a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">     148125 :     Shape get_shape() const</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">     144045 :     Shape get_shape() const</span></a>
 <a name="157"><span class="lineNum">     157 </span>            :     {</a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">     148125 :         return Shape::get_shape_of(m_baseline);</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">     144045 :         return Shape::get_shape_of(m_baseline);</span></a>
 <a name="159"><span class="lineNum">     159 </span>            :     }</a>
 <a name="160"><span class="lineNum">     160 </span>            : </a>
 <a name="161"><span class="lineNum">     161 </span>            :     /**</a>
@@ -247,13 +247,13 @@
 <a name="185"><span class="lineNum">     185 </span>            :      * @param t time in the simulation</a>
 <a name="186"><span class="lineNum">     186 </span>            :      * @return matrix expression (num_groups x num_groups)</a>
 <a name="187"><span class="lineNum">     187 </span>            :      */</a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">     136166 :     auto get_matrix_at(SimulationTime t) const</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">     134162 :     auto get_matrix_at(SimulationTime t) const</span></a>
 <a name="189"><span class="lineNum">     189 </span>            :     {</a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">     136166 :         return m_baseline - (m_dampings.get_matrix_at(t).array() * (m_baseline - m_minimum).array()).matrix();</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">     134162 :         return m_baseline - (m_dampings.get_matrix_at(t).array() * (m_baseline - m_minimum).array()).matrix();</span></a>
 <a name="191"><span class="lineNum">     191 </span>            :     }</a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">     136166 :     auto get_matrix_at(double t) const</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">     134162 :     auto get_matrix_at(double t) const</span></a>
 <a name="193"><span class="lineNum">     193 </span>            :     {</a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">     136166 :         return get_matrix_at(SimulationTime(t));</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">     134162 :         return get_matrix_at(SimulationTime(t));</span></a>
 <a name="195"><span class="lineNum">     195 </span>            :     }</a>
 <a name="196"><span class="lineNum">     196 </span>            : </a>
 <a name="197"><span class="lineNum">     197 </span>            :     /**</a>
@@ -394,9 +394,9 @@
 <a name="332"><span class="lineNum">     332 </span>            :     /**</a>
 <a name="333"><span class="lineNum">     333 </span>            :      * get the number of groups.</a>
 <a name="334"><span class="lineNum">     334 </span>            :      */</a>
-<a name="335"><span class="lineNum">     335 </span><span class="lineCov">     147938 :     Shape get_shape() const</span></a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineCov">     143858 :     Shape get_shape() const</span></a>
 <a name="336"><span class="lineNum">     336 </span>            :     {</a>
-<a name="337"><span class="lineNum">     337 </span><span class="lineCov">     147938 :         return m_matrices[0].get_shape();</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">     143858 :         return m_matrices[0].get_shape();</span></a>
 <a name="338"><span class="lineNum">     338 </span>            :     }</a>
 <a name="339"><span class="lineNum">     339 </span>            : </a>
 <a name="340"><span class="lineNum">     340 </span>            :     /** </a>
@@ -451,14 +451,14 @@
 <a name="389"><span class="lineNum">     389 </span>            :      * @return matrix expression of size num_groups x num_groups</a>
 <a name="390"><span class="lineNum">     390 </span>            :      */</a>
 <a name="391"><span class="lineNum">     391 </span>            :     template &lt;class T&gt;</a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineCov">      73961 :     auto get_matrix_at(T t) const</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">      71921 :     auto get_matrix_at(T t) const</span></a>
 <a name="393"><span class="lineNum">     393 </span>            :     {</a>
-<a name="394"><span class="lineNum">     394 </span><span class="lineCov">     295844 :         return Eigen::MatrixXd::NullaryExpr(</span></a>
-<a name="395"><span class="lineNum">     395 </span><span class="lineCov">     683758 :             get_shape().rows(), get_shape().cols(), [t, this](Eigen::Index i, Eigen::Index j) {</span></a>
-<a name="396"><span class="lineNum">     396 </span><span class="lineCov">     584724 :                 return std::accumulate(m_matrices.begin(), m_matrices.end(), 0.0, [t, i, j](double s, auto&amp; m) {</span></a>
-<a name="397"><span class="lineNum">     397 </span><span class="lineCov">     215260 :                     return s + m.get_matrix_at(t)(i, j);</span></a>
-<a name="398"><span class="lineNum">     398 </span><span class="lineCov">      92375 :                 });</span></a>
-<a name="399"><span class="lineNum">     399 </span><span class="lineCov">     147922 :             });</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">     287684 :         return Eigen::MatrixXd::NullaryExpr(</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">     667438 :             get_shape().rows(), get_shape().cols(), [t, this](Eigen::Index i, Eigen::Index j) {</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">     572484 :                 return std::accumulate(m_matrices.begin(), m_matrices.end(), 0.0, [t, i, j](double s, auto&amp; m) {</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">     211180 :                     return s + m.get_matrix_at(t)(i, j);</span></a>
+<a name="398"><span class="lineNum">     398 </span><span class="lineCov">      90335 :                 });</span></a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">     143842 :             });</span></a>
 <a name="400"><span class="lineNum">     400 </span>            :     }</a>
 <a name="401"><span class="lineNum">     401 </span>            : </a>
 <a name="402"><span class="lineNum">     402 </span>            :     /**</a>
