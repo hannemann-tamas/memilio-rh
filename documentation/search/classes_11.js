@@ -11,7 +11,7 @@ var searchData=
   ['severetorecovered_2475',['SevereToRecovered',['../structmio_1_1abm_1_1SevereToRecovered.html',1,'mio::abm']]],
   ['severityprotectionfactor_2476',['SeverityProtectionFactor',['../structmio_1_1abm_1_1SeverityProtectionFactor.html',1,'mio::abm']]],
   ['simulation_2477',['Simulation',['../classmio_1_1abm_1_1Simulation.html',1,'mio::abm::Simulation'],['../classmio_1_1isecir_1_1Simulation.html',1,'mio::isecir::Simulation'],['../classmio_1_1lsecir_1_1Simulation.html',1,'mio::lsecir::Simulation&lt; Model &gt;'],['../classmio_1_1osecir_1_1Simulation.html',1,'mio::osecir::Simulation&lt; FP, BaseT &gt;'],['../classmio_1_1osecirvvs_1_1Simulation.html',1,'mio::osecirvvs::Simulation&lt; FP, BaseT &gt;'],['../classmio_1_1Simulation.html',1,'mio::Simulation&lt; FP, M &gt;'],['../classmio_1_1ssir_1_1Simulation.html',1,'mio::ssir::Simulation'],['../classmio_1_1ssirs_1_1Simulation.html',1,'mio::ssirs::Simulation']]],
-  ['simulation_3c_20double_2c_20model_20_3e_2478',['Simulation&lt; double, Model &gt;',['../classmio_1_1Simulation.html',1,'mio']]],
+  ['simulation_3c_20scalartype_2c_20model_20_3e_2478',['Simulation&lt; ScalarType, Model &gt;',['../classmio_1_1Simulation.html',1,'mio']]],
   ['simulationday_2479',['SimulationDay',['../classmio_1_1SimulationDay.html',1,'mio']]],
   ['simulationnode_2480',['SimulationNode',['../classmio_1_1SimulationNode.html',1,'mio']]],
   ['simulationtime_2481',['SimulationTime',['../classmio_1_1SimulationTime.html',1,'mio']]],

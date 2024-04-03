@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-04-02 15:07:13</td>
+            <td class="headerValue">2024-04-03 14:10:39</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -102,9 +102,9 @@
 <a name="40"><span class="lineNum">      40 </span>            :                        Flow&lt;InfectionState::Infected, InfectionState::Recovered&gt;,</a>
 <a name="41"><span class="lineNum">      41 </span>            :                        Flow&lt;InfectionState::Recovered, InfectionState::Susceptible&gt;&gt;;</a>
 <a name="42"><span class="lineNum">      42 </span>            : </a>
-<a name="43"><span class="lineNum">      43 </span>            : class Model : public FlowModel&lt;double, InfectionState, mio::Populations&lt;double, InfectionState&gt;, Parameters, Flows&gt;</a>
+<a name="43"><span class="lineNum">      43 </span>            : class Model : public FlowModel&lt;ScalarType, InfectionState, Populations&lt;ScalarType, InfectionState&gt;, Parameters, Flows&gt;</a>
 <a name="44"><span class="lineNum">      44 </span>            : {</a>
-<a name="45"><span class="lineNum">      45 </span>            :     using Base = FlowModel&lt;double, InfectionState, mio::Populations&lt;double, InfectionState&gt;, Parameters, Flows&gt;;</a>
+<a name="45"><span class="lineNum">      45 </span>            :     using Base = FlowModel&lt;ScalarType, InfectionState, mio::Populations&lt;ScalarType, InfectionState&gt;, Parameters, Flows&gt;;</a>
 <a name="46"><span class="lineNum">      46 </span>            : </a>
 <a name="47"><span class="lineNum">      47 </span>            : public:</a>
 <a name="48"><span class="lineNum">      48 </span><span class="lineCov">          1 :     Model()</span></a>

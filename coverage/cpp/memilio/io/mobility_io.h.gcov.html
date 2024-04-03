@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-04-02 15:07:13</td>
+            <td class="headerValue">2024-04-03 14:10:39</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -194,7 +194,7 @@
 <a name="132"><span class="lineNum">     132 </span>            :  * @param ioflags flags that set the behavior of serialization; see mio::IOFlags</a>
 <a name="133"><span class="lineNum">     133 </span>            :  * @param read_edges boolean value that decides whether the edges of the graph should also be read in.</a>
 <a name="134"><span class="lineNum">     134 </span>            :  */</a>
-<a name="135"><span class="lineNum">     135 </span>            : template &lt;class Model, typename FP = double&gt;</a>
+<a name="135"><span class="lineNum">     135 </span>            : template &lt;typename FP, class Model&gt;</a>
 <a name="136"><span class="lineNum">     136 </span><span class="lineCov">          3 : IOResult&lt;Graph&lt;Model, MigrationParameters&lt;FP&gt;&gt;&gt; read_graph(const std::string&amp; directory, int ioflags = IOF_None,</span></a>
 <a name="137"><span class="lineNum">     137 </span>            :                                                            bool read_edges = true)</a>
 <a name="138"><span class="lineNum">     138 </span>            : {</a>

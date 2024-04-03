@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-04-02 15:07:13</td>
+            <td class="headerValue">2024-04-03 14:10:39</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">25</td>
@@ -223,13 +223,13 @@
 <a name="161"><span class="lineNum">     161 </span><span class="lineCov">        126 :     return minimum_goto_work_time + seconds(seconds_after_minimum);</span></a>
 <a name="162"><span class="lineNum">     162 </span>            : }</a>
 <a name="163"><span class="lineNum">     163 </span>            : </a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">         74 : TimeSpan Person::get_go_to_school_time(const Parameters&amp; params) const</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">         76 : TimeSpan Person::get_go_to_school_time(const Parameters&amp; params) const</span></a>
 <a name="165"><span class="lineNum">     165 </span>            : {</a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">         74 :     TimeSpan minimum_goto_school_time = params.get&lt;GotoSchoolTimeMinimum&gt;()[m_age];</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">         74 :     TimeSpan maximum_goto_school_time = params.get&lt;GotoSchoolTimeMaximum&gt;()[m_age];</span></a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">         74 :     int timeSlots                     = (maximum_goto_school_time.seconds() - minimum_goto_school_time.seconds());</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">         74 :     int seconds_after_minimum         = int(timeSlots * m_random_goto_school_hour);</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">        148 :     return minimum_goto_school_time + seconds(seconds_after_minimum);</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">         76 :     TimeSpan minimum_goto_school_time = params.get&lt;GotoSchoolTimeMinimum&gt;()[m_age];</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">         76 :     TimeSpan maximum_goto_school_time = params.get&lt;GotoSchoolTimeMaximum&gt;()[m_age];</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">         76 :     int timeSlots                     = (maximum_goto_school_time.seconds() - minimum_goto_school_time.seconds());</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">         76 :     int seconds_after_minimum         = int(timeSlots * m_random_goto_school_hour);</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">        152 :     return minimum_goto_school_time + seconds(seconds_after_minimum);</span></a>
 <a name="171"><span class="lineNum">     171 </span>            : }</a>
 <a name="172"><span class="lineNum">     172 </span>            : </a>
 <a name="173"><span class="lineNum">     173 </span><span class="lineCov">         10 : bool Person::goes_to_school(TimePoint t, const Parameters&amp; params) const</span></a>
