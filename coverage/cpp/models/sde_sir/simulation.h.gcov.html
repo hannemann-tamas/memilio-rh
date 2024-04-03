@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-04-03 14:10:39</td>
+            <td class="headerValue">2024-04-03 15:16:12</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -105,7 +105,7 @@
 <a name="43"><span class="lineNum">      43 </span>            :      * @param[in] t0 Start time.</a>
 <a name="44"><span class="lineNum">      44 </span>            :      * @param[in] dt Initial step size of integration.</a>
 <a name="45"><span class="lineNum">      45 </span>            :      */</a>
-<a name="46"><span class="lineNum">      46 </span><span class="lineCov">          1 :     Simulation(Model const&amp; model, double t0 = 0., double dt = 0.1)</span></a>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">          1 :     Simulation(Model const&amp; model, ScalarType t0 = 0., ScalarType dt = 0.1)</span></a>
 <a name="47"><span class="lineNum">      47 </span><span class="lineCov">          1 :         : mio::Simulation&lt;ScalarType, Model&gt;(model, t0, dt)</span></a>
 <a name="48"><span class="lineNum">      48 </span>            :     {</a>
 <a name="49"><span class="lineNum">      49 </span><span class="lineCov">          2 :         auto integrator = std::make_shared&lt;mio::EulerIntegratorCore&lt;ScalarType&gt;&gt;();</span></a>
@@ -118,7 +118,7 @@
 <a name="56"><span class="lineNum">      56 </span>            :      * tmax must be greater than get_result().get_last_time_point()</a>
 <a name="57"><span class="lineNum">      57 </span>            :      * @param tmax next stopping point of simulation</a>
 <a name="58"><span class="lineNum">      58 </span>            :      */</a>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">          2 :     Eigen::Ref&lt;Eigen::VectorXd&gt; advance(double tmax)</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">          2 :     Eigen::Ref&lt;Eigen::Matrix&lt;ScalarType, Eigen::Dynamic, 1&gt;&gt; advance(ScalarType tmax)</span></a>
 <a name="60"><span class="lineNum">      60 </span>            :     {</a>
 <a name="61"><span class="lineNum">      61 </span><span class="lineCov">          2 :         return get_ode_integrator().advance(</span></a>
 <a name="62"><span class="lineNum">      62 </span><span class="lineCov">          2 :             [this](auto&amp;&amp; y, auto&amp;&amp; t, auto&amp;&amp; dydt) {</span></a>
@@ -137,7 +137,7 @@
 <a name="75"><span class="lineNum">      75 </span>            :  * @param[in] model An instance of mio::ssir::Model.</a>
 <a name="76"><span class="lineNum">      76 </span>            :  * @return A TimeSeries to represent the final simulation result</a>
 <a name="77"><span class="lineNum">      77 </span>            :  */</a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineNoCov">          0 : inline TimeSeries&lt;ScalarType&gt; simulate(double t0, double tmax, double dt, Model const&amp; model)</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineNoCov">          0 : inline TimeSeries&lt;ScalarType&gt; simulate(ScalarType t0, ScalarType tmax, ScalarType dt, Model const&amp; model)</span></a>
 <a name="79"><span class="lineNum">      79 </span>            : {</a>
 <a name="80"><span class="lineNum">      80 </span><span class="lineNoCov">          0 :     model.check_constraints();</span></a>
 <a name="81"><span class="lineNum">      81 </span><span class="lineNoCov">          0 :     Simulation sim(model, t0, dt);</span></a>
@@ -158,7 +158,7 @@
 <a name="96"><span class="lineNum">      96 </span>            :      * @param[in] t0 Start time.</a>
 <a name="97"><span class="lineNum">      97 </span>            :      * @param[in] dt Initial step size of integration.</a>
 <a name="98"><span class="lineNum">      98 </span>            :      */</a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          1 :     FlowSimulation(Model const&amp; model, double t0 = 0., double dt = 0.1)</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          1 :     FlowSimulation(Model const&amp; model, ScalarType t0 = 0., ScalarType dt = 0.1)</span></a>
 <a name="100"><span class="lineNum">     100 </span><span class="lineCov">          1 :         : mio::FlowSimulation&lt;ScalarType, Model&gt;(model, t0, dt)</span></a>
 <a name="101"><span class="lineNum">     101 </span>            :     {</a>
 <a name="102"><span class="lineNum">     102 </span><span class="lineCov">          2 :         auto integrator = std::make_shared&lt;mio::EulerIntegratorCore&lt;ScalarType&gt;&gt;();</span></a>
@@ -170,7 +170,7 @@
 <a name="108"><span class="lineNum">     108 </span>            :      * tmax must be greater than get_result().get_last_time_point().</a>
 <a name="109"><span class="lineNum">     109 </span>            :      * @param[in] tmax Next stopping time of the simulation.</a>
 <a name="110"><span class="lineNum">     110 </span>            :      */</a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">          2 :     Eigen::Ref&lt;Eigen::VectorXd&gt; advance(double tmax)</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">          2 :     Eigen::Ref&lt;Eigen::Matrix&lt;ScalarType, Eigen::Dynamic, 1&gt;&gt; advance(ScalarType tmax)</span></a>
 <a name="112"><span class="lineNum">     112 </span>            :     {</a>
 <a name="113"><span class="lineNum">     113 </span><span class="lineCov">          2 :         assert(get_flows().get_num_time_points() == get_result().get_num_time_points());</span></a>
 <a name="114"><span class="lineNum">     114 </span><span class="lineCov">          2 :         auto result = this-&gt;get_ode_integrator().advance(</span></a>
@@ -201,18 +201,19 @@
 <a name="139"><span class="lineNum">     139 </span>            :  * @return The simulation result as two TimeSeries. The first describes the compartments at each time point,</a>
 <a name="140"><span class="lineNum">     140 </span>            :  *         the second gives the corresponding flows that lead from t0 to each time point.</a>
 <a name="141"><span class="lineNum">     141 </span>            :  */</a>
-<a name="142"><span class="lineNum">     142 </span>            : inline std::vector&lt;TimeSeries&lt;ScalarType&gt;&gt; simulate_flows(double t0, double tmax, double dt, Model const&amp; model)</a>
-<a name="143"><span class="lineNum">     143 </span>            : {</a>
-<a name="144"><span class="lineNum">     144 </span>            :     model.check_constraints();</a>
-<a name="145"><span class="lineNum">     145 </span>            :     FlowSimulation sim(model, t0, dt);</a>
-<a name="146"><span class="lineNum">     146 </span>            :     sim.advance(tmax);</a>
-<a name="147"><span class="lineNum">     147 </span>            :     return {sim.get_result(), sim.get_flows()};</a>
-<a name="148"><span class="lineNum">     148 </span>            : }</a>
-<a name="149"><span class="lineNum">     149 </span>            : </a>
-<a name="150"><span class="lineNum">     150 </span>            : } // namespace ssir</a>
-<a name="151"><span class="lineNum">     151 </span>            : } // namespace mio</a>
-<a name="152"><span class="lineNum">     152 </span>            : </a>
-<a name="153"><span class="lineNum">     153 </span>            : #endif // MIO_SDE_SIR_SIMULATION_H</a>
+<a name="142"><span class="lineNum">     142 </span>            : inline std::vector&lt;TimeSeries&lt;ScalarType&gt;&gt; simulate_flows(ScalarType t0, ScalarType tmax, ScalarType dt,</a>
+<a name="143"><span class="lineNum">     143 </span>            :                                                           Model const&amp; model)</a>
+<a name="144"><span class="lineNum">     144 </span>            : {</a>
+<a name="145"><span class="lineNum">     145 </span>            :     model.check_constraints();</a>
+<a name="146"><span class="lineNum">     146 </span>            :     FlowSimulation sim(model, t0, dt);</a>
+<a name="147"><span class="lineNum">     147 </span>            :     sim.advance(tmax);</a>
+<a name="148"><span class="lineNum">     148 </span>            :     return {sim.get_result(), sim.get_flows()};</a>
+<a name="149"><span class="lineNum">     149 </span>            : }</a>
+<a name="150"><span class="lineNum">     150 </span>            : </a>
+<a name="151"><span class="lineNum">     151 </span>            : } // namespace ssir</a>
+<a name="152"><span class="lineNum">     152 </span>            : } // namespace mio</a>
+<a name="153"><span class="lineNum">     153 </span>            : </a>
+<a name="154"><span class="lineNum">     154 </span>            : #endif // MIO_SDE_SIR_SIMULATION_H</a>
 </pre>
       </td>
     </tr>
