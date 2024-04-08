@@ -46,6 +46,10 @@ add_executable(ad_odeint_example ad_odeint_example.cpp)
 target_link_libraries(ad_odeint_example PRIVATE AD::AD Boost::boost memilio)
 set_target_properties(ad_odeint_example PROPERTIES CXX_STANDARD 14)
 
+add_executable(ad_secirvvs_example ad_secirvvs_example.cpp)
+target_link_libraries(ad_odeint_example PRIVATE AD::AD memilio ode_secirvvs)
+target_compile_options(ad_odeint_example PRIVATE ${MEMILIO_CXX_FLAGS_ENABLE_WARNING_ERRORS})
+
 
 add_executable(seir_flows_example ode_seir_flows.cpp)
 target_link_libraries(seir_flows_example PRIVATE memilio ode_seir)
