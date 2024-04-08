@@ -1332,95 +1332,113 @@ $(function() {
 <div class="line"><a name="l01340"></a><span class="lineno"> 1340</span>&#160; </div>
 <div class="line"><a name="l01341"></a><span class="lineno"> 1341</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespacemio.html#a80d7fd30c9669e05b537b2caedd82bb8">success</a>();</div>
 <div class="line"><a name="l01342"></a><span class="lineno"> 1342</span>&#160;}</div>
-<div class="line"><a name="l01343"></a><span class="lineno"> 1343</span>&#160; </div>
-<div class="line"><a name="l01344"></a><span class="lineno"> 1344</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//MEMILIO_HAS_HDF5</span></div>
-<div class="line"><a name="l01345"></a><span class="lineno"> 1345</span>&#160; </div>
-<div class="line"><a name="l01360"></a><span class="lineno"> 1360</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Model&gt;</div>
-<div class="line"><a name="l01361"></a><span class="lineno"> 1361</span>&#160;IOResult&lt;void&gt; read_input_data_county(std::vector&lt;Model&gt;&amp; model, Date date, <span class="keyword">const</span> std::vector&lt;int&gt;&amp; county,</div>
-<div class="line"><a name="l01362"></a><span class="lineno"> 1362</span>&#160;                                      <span class="keyword">const</span> std::vector&lt;double&gt;&amp; scaling_factor_inf, <span class="keywordtype">double</span> scaling_factor_icu,</div>
-<div class="line"><a name="l01363"></a><span class="lineno"> 1363</span>&#160;                                      <span class="keyword">const</span> std::string&amp; dir, <span class="keywordtype">int</span> num_days, <span class="keywordtype">bool</span> export_time_series = <span class="keyword">false</span>)</div>
-<div class="line"><a name="l01364"></a><span class="lineno"> 1364</span>&#160;{</div>
-<div class="line"><a name="l01365"></a><span class="lineno"> 1365</span>&#160;    BOOST_OUTCOME_TRY(details::set_vaccination_data(</div>
-<div class="line"><a name="l01366"></a><span class="lineno"> 1366</span>&#160;        model, <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(dir, <span class="stringliteral">&quot;pydata/Germany&quot;</span>, <span class="stringliteral">&quot;all_county_ageinf_vacc_ma7.json&quot;</span>), date, county, num_days));</div>
-<div class="line"><a name="l01367"></a><span class="lineno"> 1367</span>&#160; </div>
-<div class="line"><a name="l01368"></a><span class="lineno"> 1368</span>&#160;    <span class="comment">// TODO: Reuse more code, e.g., set_divi_data (in secir) and a set_divi_data (here) only need a different ModelType.</span></div>
-<div class="line"><a name="l01369"></a><span class="lineno"> 1369</span>&#160;    <span class="comment">// TODO: add option to set ICU data from confirmed cases if DIVI or other data is not available.</span></div>
-<div class="line"><a name="l01370"></a><span class="lineno"> 1370</span>&#160;    <span class="keywordflow">if</span> (date &gt; Date(2020, 4, 23)) {</div>
-<div class="line"><a name="l01371"></a><span class="lineno"> 1371</span>&#160;        BOOST_OUTCOME_TRY(details::set_divi_data(model, <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(dir, <span class="stringliteral">&quot;pydata/Germany&quot;</span>, <span class="stringliteral">&quot;county_divi_ma7.json&quot;</span>),</div>
-<div class="line"><a name="l01372"></a><span class="lineno"> 1372</span>&#160;                                                 county, date, scaling_factor_icu));</div>
-<div class="line"><a name="l01373"></a><span class="lineno"> 1373</span>&#160;    }</div>
-<div class="line"><a name="l01374"></a><span class="lineno"> 1374</span>&#160;    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01375"></a><span class="lineno"> 1375</span>&#160;        <a class="code" href="namespacemio.html#a34f961d5004bf46cf1cee1133671f8bc">log_warning</a>(<span class="stringliteral">&quot;No DIVI data available for this date&quot;</span>);</div>
-<div class="line"><a name="l01376"></a><span class="lineno"> 1376</span>&#160;    }</div>
-<div class="line"><a name="l01377"></a><span class="lineno"> 1377</span>&#160; </div>
-<div class="line"><a name="l01378"></a><span class="lineno"> 1378</span>&#160;    BOOST_OUTCOME_TRY(details::set_confirmed_cases_data(</div>
-<div class="line"><a name="l01379"></a><span class="lineno"> 1379</span>&#160;        model, <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(dir, <span class="stringliteral">&quot;pydata/Germany&quot;</span>, <span class="stringliteral">&quot;cases_all_county_age_ma7.json&quot;</span>), county, date, scaling_factor_inf));</div>
-<div class="line"><a name="l01380"></a><span class="lineno"> 1380</span>&#160;    BOOST_OUTCOME_TRY(</div>
-<div class="line"><a name="l01381"></a><span class="lineno"> 1381</span>&#160;        details::set_population_data(model, <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(dir, <span class="stringliteral">&quot;pydata/Germany&quot;</span>, <span class="stringliteral">&quot;county_current_population.json&quot;</span>),</div>
-<div class="line"><a name="l01382"></a><span class="lineno"> 1382</span>&#160;                                     <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(dir, <span class="stringliteral">&quot;pydata/Germany&quot;</span>, <span class="stringliteral">&quot;cases_all_county_age_ma7.json&quot;</span>), county, date));</div>
-<div class="line"><a name="l01383"></a><span class="lineno"> 1383</span>&#160; </div>
-<div class="line"><a name="l01384"></a><span class="lineno"> 1384</span>&#160;    <span class="keywordflow">if</span> (export_time_series) {</div>
-<div class="line"><a name="l01385"></a><span class="lineno"> 1385</span>&#160;        <span class="comment">// Use only if extrapolated real data is needed for comparison. EXPENSIVE !</span></div>
-<div class="line"><a name="l01386"></a><span class="lineno"> 1386</span>&#160;        <span class="comment">// Run time equals run time of the previous functions times the num_days !</span></div>
-<div class="line"><a name="l01387"></a><span class="lineno"> 1387</span>&#160;        <span class="comment">// (This only represents the vectorization of the previous function over all simulation days...)</span></div>
-<div class="line"><a name="l01388"></a><span class="lineno"> 1388</span>&#160;        <a class="code" href="namespacemio.html#a34f961d5004bf46cf1cee1133671f8bc">log_warning</a>(<span class="stringliteral">&quot;Exporting time series of extrapolated real data. This may take some minutes. &quot;</span></div>
-<div class="line"><a name="l01389"></a><span class="lineno"> 1389</span>&#160;                    <span class="stringliteral">&quot;For simulation runs over the same time period, deactivate it.&quot;</span>);</div>
-<div class="line"><a name="l01390"></a><span class="lineno"> 1390</span>&#160;        BOOST_OUTCOME_TRY(</div>
-<div class="line"><a name="l01391"></a><span class="lineno"> 1391</span>&#160;            export_input_data_county_timeseries(model, dir, county, date, scaling_factor_inf, scaling_factor_icu,</div>
-<div class="line"><a name="l01392"></a><span class="lineno"> 1392</span>&#160;                                                num_days, <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(dir, <span class="stringliteral">&quot;pydata/Germany&quot;</span>, <span class="stringliteral">&quot;county_divi_ma7.json&quot;</span>),</div>
-<div class="line"><a name="l01393"></a><span class="lineno"> 1393</span>&#160;                                                <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(dir, <span class="stringliteral">&quot;pydata/Germany&quot;</span>, <span class="stringliteral">&quot;cases_all_county_age_ma7.json&quot;</span>),</div>
-<div class="line"><a name="l01394"></a><span class="lineno"> 1394</span>&#160;                                                <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(dir, <span class="stringliteral">&quot;pydata/Germany&quot;</span>, <span class="stringliteral">&quot;county_current_population.json&quot;</span>)));</div>
-<div class="line"><a name="l01395"></a><span class="lineno"> 1395</span>&#160;    }</div>
-<div class="line"><a name="l01396"></a><span class="lineno"> 1396</span>&#160; </div>
-<div class="line"><a name="l01397"></a><span class="lineno"> 1397</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespacemio.html#a80d7fd30c9669e05b537b2caedd82bb8">success</a>();</div>
-<div class="line"><a name="l01398"></a><span class="lineno"> 1398</span>&#160;}</div>
-<div class="line"><a name="l01399"></a><span class="lineno"> 1399</span>&#160; </div>
-<div class="line"><a name="l01414"></a><span class="lineno"> 1414</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Model&gt;</div>
-<div class="line"><a name="l01415"></a><span class="lineno"> 1415</span>&#160;IOResult&lt;void&gt; read_input_data(std::vector&lt;Model&gt;&amp; model, Date date, <span class="keyword">const</span> std::vector&lt;int&gt;&amp; node_ids,</div>
-<div class="line"><a name="l01416"></a><span class="lineno"> 1416</span>&#160;                               <span class="keyword">const</span> std::vector&lt;double&gt;&amp; scaling_factor_inf, <span class="keywordtype">double</span> scaling_factor_icu,</div>
-<div class="line"><a name="l01417"></a><span class="lineno"> 1417</span>&#160;                               <span class="keyword">const</span> std::string&amp; data_dir, <span class="keywordtype">int</span> num_days, <span class="keywordtype">bool</span> export_time_series = <span class="keyword">false</span>)</div>
-<div class="line"><a name="l01418"></a><span class="lineno"> 1418</span>&#160;{</div>
-<div class="line"><a name="l01419"></a><span class="lineno"> 1419</span>&#160; </div>
-<div class="line"><a name="l01420"></a><span class="lineno"> 1420</span>&#160;    BOOST_OUTCOME_TRY(</div>
-<div class="line"><a name="l01421"></a><span class="lineno"> 1421</span>&#160;        details::set_vaccination_data(model, <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(data_dir, <span class="stringliteral">&quot;vaccination_data.json&quot;</span>), date, node_ids, num_days));</div>
-<div class="line"><a name="l01422"></a><span class="lineno"> 1422</span>&#160; </div>
-<div class="line"><a name="l01423"></a><span class="lineno"> 1423</span>&#160;    <span class="comment">// TODO: Reuse more code, e.g., set_divi_data (in secir) and a set_divi_data (here) only need a different ModelType.</span></div>
-<div class="line"><a name="l01424"></a><span class="lineno"> 1424</span>&#160;    <span class="comment">// TODO: add option to set ICU data from confirmed cases if DIVI or other data is not available.</span></div>
-<div class="line"><a name="l01425"></a><span class="lineno"> 1425</span>&#160;    <span class="keywordflow">if</span> (date &gt; Date(2020, 4, 23)) {</div>
-<div class="line"><a name="l01426"></a><span class="lineno"> 1426</span>&#160;        BOOST_OUTCOME_TRY(details::set_divi_data(model, <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(data_dir, <span class="stringliteral">&quot;critical_cases.json&quot;</span>), node_ids, date,</div>
-<div class="line"><a name="l01427"></a><span class="lineno"> 1427</span>&#160;                                                 scaling_factor_icu));</div>
-<div class="line"><a name="l01428"></a><span class="lineno"> 1428</span>&#160;    }</div>
-<div class="line"><a name="l01429"></a><span class="lineno"> 1429</span>&#160;    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01430"></a><span class="lineno"> 1430</span>&#160;        <a class="code" href="namespacemio.html#a34f961d5004bf46cf1cee1133671f8bc">log_warning</a>(<span class="stringliteral">&quot;No DIVI data available for this date&quot;</span>);</div>
-<div class="line"><a name="l01431"></a><span class="lineno"> 1431</span>&#160;    }</div>
-<div class="line"><a name="l01432"></a><span class="lineno"> 1432</span>&#160; </div>
-<div class="line"><a name="l01433"></a><span class="lineno"> 1433</span>&#160;    BOOST_OUTCOME_TRY(details::set_confirmed_cases_data(model, <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(data_dir, <span class="stringliteral">&quot;confirmed_cases.json&quot;</span>), node_ids,</div>
-<div class="line"><a name="l01434"></a><span class="lineno"> 1434</span>&#160;                                                        date, scaling_factor_inf));</div>
-<div class="line"><a name="l01435"></a><span class="lineno"> 1435</span>&#160;    BOOST_OUTCOME_TRY(details::set_population_data(model, <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(data_dir, <span class="stringliteral">&quot;population_data.json&quot;</span>),</div>
-<div class="line"><a name="l01436"></a><span class="lineno"> 1436</span>&#160;                                                   <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(data_dir, <span class="stringliteral">&quot;confirmed_cases.json&quot;</span>), node_ids, date));</div>
+<div class="line"><a name="l01343"></a><span class="lineno"> 1343</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l01344"></a><span class="lineno"> 1344</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Model&gt;</div>
+<div class="line"><a name="l01345"></a><span class="lineno"> 1345</span>&#160;IOResult&lt;void&gt; export_input_data_county_timeseries(std::vector&lt;Model&gt;&amp;, <span class="keyword">const</span> std::string&amp;, std::vector&lt;int&gt; <span class="keyword">const</span>&amp;,</div>
+<div class="line"><a name="l01346"></a><span class="lineno"> 1346</span>&#160;                                                   Date, <span class="keyword">const</span> std::vector&lt;double&gt;&amp;, <span class="keywordtype">double</span>, <span class="keywordtype">int</span>, <span class="keyword">const</span> std::string&amp;,</div>
+<div class="line"><a name="l01347"></a><span class="lineno"> 1347</span>&#160;                                                   <span class="keyword">const</span> std::string&amp;, <span class="keyword">const</span> std::string&amp;)</div>
+<div class="line"><a name="l01348"></a><span class="lineno"> 1348</span>&#160;{</div>
+<div class="line"><a name="l01349"></a><span class="lineno"> 1349</span>&#160;    <a class="code" href="namespacemio.html#a34f961d5004bf46cf1cee1133671f8bc">mio::log_warning</a>(<span class="stringliteral">&quot;HDF5 not available. Cannot export time series of extrapolated real data.&quot;</span>);</div>
+<div class="line"><a name="l01350"></a><span class="lineno"> 1350</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespacemio.html#a80d7fd30c9669e05b537b2caedd82bb8">success</a>();</div>
+<div class="line"><a name="l01351"></a><span class="lineno"> 1351</span>&#160;}</div>
+<div class="line"><a name="l01352"></a><span class="lineno"> 1352</span>&#160; </div>
+<div class="line"><a name="l01353"></a><span class="lineno"> 1353</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Model&gt;</div>
+<div class="line"><a name="l01354"></a><span class="lineno"> 1354</span>&#160;IOResult&lt;void&gt; export_input_data_county_timeseries(std::vector&lt;Model&gt;&amp;&amp;, <span class="keyword">const</span> std::string&amp;, std::vector&lt;int&gt; <span class="keyword">const</span>&amp;,</div>
+<div class="line"><a name="l01355"></a><span class="lineno"> 1355</span>&#160;                                                   Date, <span class="keyword">const</span> std::vector&lt;double&gt;&amp;, <span class="keywordtype">double</span>, <span class="keywordtype">int</span>, <span class="keyword">const</span> std::string&amp;,</div>
+<div class="line"><a name="l01356"></a><span class="lineno"> 1356</span>&#160;                                                   <span class="keyword">const</span> std::string&amp;, <span class="keyword">const</span> std::string&amp;, <span class="keywordtype">bool</span>, <span class="keyword">const</span> std::string&amp;)</div>
+<div class="line"><a name="l01357"></a><span class="lineno"> 1357</span>&#160;{</div>
+<div class="line"><a name="l01358"></a><span class="lineno"> 1358</span>&#160;    <a class="code" href="namespacemio.html#a34f961d5004bf46cf1cee1133671f8bc">mio::log_warning</a>(<span class="stringliteral">&quot;HDF5 not available. Cannot export time series of extrapolated real data.&quot;</span>);</div>
+<div class="line"><a name="l01359"></a><span class="lineno"> 1359</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespacemio.html#a80d7fd30c9669e05b537b2caedd82bb8">success</a>();</div>
+<div class="line"><a name="l01360"></a><span class="lineno"> 1360</span>&#160;}</div>
+<div class="line"><a name="l01361"></a><span class="lineno"> 1361</span>&#160; </div>
+<div class="line"><a name="l01362"></a><span class="lineno"> 1362</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//MEMILIO_HAS_HDF5</span></div>
+<div class="line"><a name="l01363"></a><span class="lineno"> 1363</span>&#160; </div>
+<div class="line"><a name="l01378"></a><span class="lineno"> 1378</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Model&gt;</div>
+<div class="line"><a name="l01379"></a><span class="lineno"> 1379</span>&#160;IOResult&lt;void&gt; read_input_data_county(std::vector&lt;Model&gt;&amp; model, Date date, <span class="keyword">const</span> std::vector&lt;int&gt;&amp; county,</div>
+<div class="line"><a name="l01380"></a><span class="lineno"> 1380</span>&#160;                                      <span class="keyword">const</span> std::vector&lt;double&gt;&amp; scaling_factor_inf, <span class="keywordtype">double</span> scaling_factor_icu,</div>
+<div class="line"><a name="l01381"></a><span class="lineno"> 1381</span>&#160;                                      <span class="keyword">const</span> std::string&amp; dir, <span class="keywordtype">int</span> num_days, <span class="keywordtype">bool</span> export_time_series = <span class="keyword">false</span>)</div>
+<div class="line"><a name="l01382"></a><span class="lineno"> 1382</span>&#160;{</div>
+<div class="line"><a name="l01383"></a><span class="lineno"> 1383</span>&#160;    BOOST_OUTCOME_TRY(details::set_vaccination_data(</div>
+<div class="line"><a name="l01384"></a><span class="lineno"> 1384</span>&#160;        model, <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(dir, <span class="stringliteral">&quot;pydata/Germany&quot;</span>, <span class="stringliteral">&quot;all_county_ageinf_vacc_ma7.json&quot;</span>), date, county, num_days));</div>
+<div class="line"><a name="l01385"></a><span class="lineno"> 1385</span>&#160; </div>
+<div class="line"><a name="l01386"></a><span class="lineno"> 1386</span>&#160;    <span class="comment">// TODO: Reuse more code, e.g., set_divi_data (in secir) and a set_divi_data (here) only need a different ModelType.</span></div>
+<div class="line"><a name="l01387"></a><span class="lineno"> 1387</span>&#160;    <span class="comment">// TODO: add option to set ICU data from confirmed cases if DIVI or other data is not available.</span></div>
+<div class="line"><a name="l01388"></a><span class="lineno"> 1388</span>&#160;    <span class="keywordflow">if</span> (date &gt; Date(2020, 4, 23)) {</div>
+<div class="line"><a name="l01389"></a><span class="lineno"> 1389</span>&#160;        BOOST_OUTCOME_TRY(details::set_divi_data(model, <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(dir, <span class="stringliteral">&quot;pydata/Germany&quot;</span>, <span class="stringliteral">&quot;county_divi_ma7.json&quot;</span>),</div>
+<div class="line"><a name="l01390"></a><span class="lineno"> 1390</span>&#160;                                                 county, date, scaling_factor_icu));</div>
+<div class="line"><a name="l01391"></a><span class="lineno"> 1391</span>&#160;    }</div>
+<div class="line"><a name="l01392"></a><span class="lineno"> 1392</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01393"></a><span class="lineno"> 1393</span>&#160;        <a class="code" href="namespacemio.html#a34f961d5004bf46cf1cee1133671f8bc">log_warning</a>(<span class="stringliteral">&quot;No DIVI data available for this date&quot;</span>);</div>
+<div class="line"><a name="l01394"></a><span class="lineno"> 1394</span>&#160;    }</div>
+<div class="line"><a name="l01395"></a><span class="lineno"> 1395</span>&#160; </div>
+<div class="line"><a name="l01396"></a><span class="lineno"> 1396</span>&#160;    BOOST_OUTCOME_TRY(details::set_confirmed_cases_data(</div>
+<div class="line"><a name="l01397"></a><span class="lineno"> 1397</span>&#160;        model, <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(dir, <span class="stringliteral">&quot;pydata/Germany&quot;</span>, <span class="stringliteral">&quot;cases_all_county_age_ma7.json&quot;</span>), county, date, scaling_factor_inf));</div>
+<div class="line"><a name="l01398"></a><span class="lineno"> 1398</span>&#160;    BOOST_OUTCOME_TRY(</div>
+<div class="line"><a name="l01399"></a><span class="lineno"> 1399</span>&#160;        details::set_population_data(model, <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(dir, <span class="stringliteral">&quot;pydata/Germany&quot;</span>, <span class="stringliteral">&quot;county_current_population.json&quot;</span>),</div>
+<div class="line"><a name="l01400"></a><span class="lineno"> 1400</span>&#160;                                     <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(dir, <span class="stringliteral">&quot;pydata/Germany&quot;</span>, <span class="stringliteral">&quot;cases_all_county_age_ma7.json&quot;</span>), county, date));</div>
+<div class="line"><a name="l01401"></a><span class="lineno"> 1401</span>&#160; </div>
+<div class="line"><a name="l01402"></a><span class="lineno"> 1402</span>&#160;    <span class="keywordflow">if</span> (export_time_series) {</div>
+<div class="line"><a name="l01403"></a><span class="lineno"> 1403</span>&#160;        <span class="comment">// Use only if extrapolated real data is needed for comparison. EXPENSIVE !</span></div>
+<div class="line"><a name="l01404"></a><span class="lineno"> 1404</span>&#160;        <span class="comment">// Run time equals run time of the previous functions times the num_days !</span></div>
+<div class="line"><a name="l01405"></a><span class="lineno"> 1405</span>&#160;        <span class="comment">// (This only represents the vectorization of the previous function over all simulation days...)</span></div>
+<div class="line"><a name="l01406"></a><span class="lineno"> 1406</span>&#160;        <a class="code" href="namespacemio.html#a34f961d5004bf46cf1cee1133671f8bc">log_warning</a>(<span class="stringliteral">&quot;Exporting time series of extrapolated real data. This may take some minutes. &quot;</span></div>
+<div class="line"><a name="l01407"></a><span class="lineno"> 1407</span>&#160;                    <span class="stringliteral">&quot;For simulation runs over the same time period, deactivate it.&quot;</span>);</div>
+<div class="line"><a name="l01408"></a><span class="lineno"> 1408</span>&#160;        BOOST_OUTCOME_TRY(</div>
+<div class="line"><a name="l01409"></a><span class="lineno"> 1409</span>&#160;            export_input_data_county_timeseries(model, dir, county, date, scaling_factor_inf, scaling_factor_icu,</div>
+<div class="line"><a name="l01410"></a><span class="lineno"> 1410</span>&#160;                                                num_days, <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(dir, <span class="stringliteral">&quot;pydata/Germany&quot;</span>, <span class="stringliteral">&quot;county_divi_ma7.json&quot;</span>),</div>
+<div class="line"><a name="l01411"></a><span class="lineno"> 1411</span>&#160;                                                <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(dir, <span class="stringliteral">&quot;pydata/Germany&quot;</span>, <span class="stringliteral">&quot;cases_all_county_age_ma7.json&quot;</span>),</div>
+<div class="line"><a name="l01412"></a><span class="lineno"> 1412</span>&#160;                                                <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(dir, <span class="stringliteral">&quot;pydata/Germany&quot;</span>, <span class="stringliteral">&quot;county_current_population.json&quot;</span>)));</div>
+<div class="line"><a name="l01413"></a><span class="lineno"> 1413</span>&#160;    }</div>
+<div class="line"><a name="l01414"></a><span class="lineno"> 1414</span>&#160; </div>
+<div class="line"><a name="l01415"></a><span class="lineno"> 1415</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespacemio.html#a80d7fd30c9669e05b537b2caedd82bb8">success</a>();</div>
+<div class="line"><a name="l01416"></a><span class="lineno"> 1416</span>&#160;}</div>
+<div class="line"><a name="l01417"></a><span class="lineno"> 1417</span>&#160; </div>
+<div class="line"><a name="l01432"></a><span class="lineno"> 1432</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Model&gt;</div>
+<div class="line"><a name="l01433"></a><span class="lineno"> 1433</span>&#160;IOResult&lt;void&gt; read_input_data(std::vector&lt;Model&gt;&amp; model, Date date, <span class="keyword">const</span> std::vector&lt;int&gt;&amp; node_ids,</div>
+<div class="line"><a name="l01434"></a><span class="lineno"> 1434</span>&#160;                               <span class="keyword">const</span> std::vector&lt;double&gt;&amp; scaling_factor_inf, <span class="keywordtype">double</span> scaling_factor_icu,</div>
+<div class="line"><a name="l01435"></a><span class="lineno"> 1435</span>&#160;                               <span class="keyword">const</span> std::string&amp; data_dir, <span class="keywordtype">int</span> num_days, <span class="keywordtype">bool</span> export_time_series = <span class="keyword">false</span>)</div>
+<div class="line"><a name="l01436"></a><span class="lineno"> 1436</span>&#160;{</div>
 <div class="line"><a name="l01437"></a><span class="lineno"> 1437</span>&#160; </div>
-<div class="line"><a name="l01438"></a><span class="lineno"> 1438</span>&#160;    <span class="keywordflow">if</span> (export_time_series) {</div>
-<div class="line"><a name="l01439"></a><span class="lineno"> 1439</span>&#160;        <span class="comment">// Use only if extrapolated real data is needed for comparison. EXPENSIVE !</span></div>
-<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;        <span class="comment">// Run time equals run time of the previous functions times the num_days !</span></div>
-<div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;        <span class="comment">// (This only represents the vectorization of the previous function over all simulation days...)</span></div>
-<div class="line"><a name="l01442"></a><span class="lineno"> 1442</span>&#160;        <a class="code" href="namespacemio.html#a34f961d5004bf46cf1cee1133671f8bc">log_warning</a>(<span class="stringliteral">&quot;Exporting time series of extrapolated real data. This may take some minutes. &quot;</span></div>
-<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;                    <span class="stringliteral">&quot;For simulation runs over the same time period, deactivate it.&quot;</span>);</div>
-<div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160;        BOOST_OUTCOME_TRY(export_input_data_county_timeseries(</div>
-<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;            model, data_dir, node_ids, date, scaling_factor_inf, scaling_factor_icu, num_days,</div>
-<div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160;            <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(data_dir, <span class="stringliteral">&quot;critical_cases.json&quot;</span>), <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(data_dir, <span class="stringliteral">&quot;confirmed_cases.json&quot;</span>),</div>
-<div class="line"><a name="l01447"></a><span class="lineno"> 1447</span>&#160;            <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(data_dir, <span class="stringliteral">&quot;population_data.json&quot;</span>)));</div>
-<div class="line"><a name="l01448"></a><span class="lineno"> 1448</span>&#160;    }</div>
-<div class="line"><a name="l01449"></a><span class="lineno"> 1449</span>&#160; </div>
-<div class="line"><a name="l01450"></a><span class="lineno"> 1450</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespacemio.html#a80d7fd30c9669e05b537b2caedd82bb8">success</a>();</div>
-<div class="line"><a name="l01451"></a><span class="lineno"> 1451</span>&#160;}</div>
-<div class="line"><a name="l01452"></a><span class="lineno"> 1452</span>&#160; </div>
-<div class="line"><a name="l01453"></a><span class="lineno"> 1453</span>&#160;} <span class="comment">// namespace osecirvvs</span></div>
-<div class="line"><a name="l01454"></a><span class="lineno"> 1454</span>&#160;} <span class="comment">// namespace mio</span></div>
+<div class="line"><a name="l01438"></a><span class="lineno"> 1438</span>&#160;    BOOST_OUTCOME_TRY(</div>
+<div class="line"><a name="l01439"></a><span class="lineno"> 1439</span>&#160;        details::set_vaccination_data(model, <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(data_dir, <span class="stringliteral">&quot;vaccination_data.json&quot;</span>), date, node_ids, num_days));</div>
+<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160; </div>
+<div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;    <span class="comment">// TODO: Reuse more code, e.g., set_divi_data (in secir) and a set_divi_data (here) only need a different ModelType.</span></div>
+<div class="line"><a name="l01442"></a><span class="lineno"> 1442</span>&#160;    <span class="comment">// TODO: add option to set ICU data from confirmed cases if DIVI or other data is not available.</span></div>
+<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;    <span class="keywordflow">if</span> (date &gt; Date(2020, 4, 23)) {</div>
+<div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160;        BOOST_OUTCOME_TRY(details::set_divi_data(model, <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(data_dir, <span class="stringliteral">&quot;critical_cases.json&quot;</span>), node_ids, date,</div>
+<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;                                                 scaling_factor_icu));</div>
+<div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160;    }</div>
+<div class="line"><a name="l01447"></a><span class="lineno"> 1447</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01448"></a><span class="lineno"> 1448</span>&#160;        <a class="code" href="namespacemio.html#a34f961d5004bf46cf1cee1133671f8bc">log_warning</a>(<span class="stringliteral">&quot;No DIVI data available for this date&quot;</span>);</div>
+<div class="line"><a name="l01449"></a><span class="lineno"> 1449</span>&#160;    }</div>
+<div class="line"><a name="l01450"></a><span class="lineno"> 1450</span>&#160; </div>
+<div class="line"><a name="l01451"></a><span class="lineno"> 1451</span>&#160;    BOOST_OUTCOME_TRY(details::set_confirmed_cases_data(model, <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(data_dir, <span class="stringliteral">&quot;confirmed_cases.json&quot;</span>), node_ids,</div>
+<div class="line"><a name="l01452"></a><span class="lineno"> 1452</span>&#160;                                                        date, scaling_factor_inf));</div>
+<div class="line"><a name="l01453"></a><span class="lineno"> 1453</span>&#160;    BOOST_OUTCOME_TRY(details::set_population_data(model, <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(data_dir, <span class="stringliteral">&quot;population_data.json&quot;</span>),</div>
+<div class="line"><a name="l01454"></a><span class="lineno"> 1454</span>&#160;                                                   <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(data_dir, <span class="stringliteral">&quot;confirmed_cases.json&quot;</span>), node_ids, date));</div>
 <div class="line"><a name="l01455"></a><span class="lineno"> 1455</span>&#160; </div>
-<div class="line"><a name="l01456"></a><span class="lineno"> 1456</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// MEMILIO_HAS_JSONCPP</span></div>
-<div class="line"><a name="l01457"></a><span class="lineno"> 1457</span>&#160; </div>
-<div class="line"><a name="l01458"></a><span class="lineno"> 1458</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// ODESECIRVVS_PARAMETERS_IO_H</span></div>
-<div class="ttc" id="aclassmio_1_1TimeSeries_html_a85094ebcad0ab2a8246cf6dd3be8cd1b"><div class="ttname"><a href="classmio_1_1TimeSeries.html#a85094ebcad0ab2a8246cf6dd3be8cd1b">mio::TimeSeries&lt; double &gt;::zero</a></div><div class="ttdeci">static TimeSeries zero(Eigen::Index num_time_points, Eigen::Index num_elements)</div><div class="ttdoc">constructs TimeSeries instance and initializes it with zeros</div><div class="ttdef"><b>Definition:</b> time_series.h:122</div></div>
+<div class="line"><a name="l01456"></a><span class="lineno"> 1456</span>&#160;    <span class="keywordflow">if</span> (export_time_series) {</div>
+<div class="line"><a name="l01457"></a><span class="lineno"> 1457</span>&#160;        <span class="comment">// Use only if extrapolated real data is needed for comparison. EXPENSIVE !</span></div>
+<div class="line"><a name="l01458"></a><span class="lineno"> 1458</span>&#160;        <span class="comment">// Run time equals run time of the previous functions times the num_days !</span></div>
+<div class="line"><a name="l01459"></a><span class="lineno"> 1459</span>&#160;        <span class="comment">// (This only represents the vectorization of the previous function over all simulation days...)</span></div>
+<div class="line"><a name="l01460"></a><span class="lineno"> 1460</span>&#160;        <a class="code" href="namespacemio.html#a34f961d5004bf46cf1cee1133671f8bc">log_warning</a>(<span class="stringliteral">&quot;Exporting time series of extrapolated real data. This may take some minutes. &quot;</span></div>
+<div class="line"><a name="l01461"></a><span class="lineno"> 1461</span>&#160;                    <span class="stringliteral">&quot;For simulation runs over the same time period, deactivate it.&quot;</span>);</div>
+<div class="line"><a name="l01462"></a><span class="lineno"> 1462</span>&#160;        BOOST_OUTCOME_TRY(export_input_data_county_timeseries(</div>
+<div class="line"><a name="l01463"></a><span class="lineno"> 1463</span>&#160;            model, data_dir, node_ids, date, scaling_factor_inf, scaling_factor_icu, num_days,</div>
+<div class="line"><a name="l01464"></a><span class="lineno"> 1464</span>&#160;            <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(data_dir, <span class="stringliteral">&quot;critical_cases.json&quot;</span>), <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(data_dir, <span class="stringliteral">&quot;confirmed_cases.json&quot;</span>),</div>
+<div class="line"><a name="l01465"></a><span class="lineno"> 1465</span>&#160;            <a class="code" href="namespacemio.html#ad5d271b1fc1bc5f9ef54eb91c695f239">path_join</a>(data_dir, <span class="stringliteral">&quot;population_data.json&quot;</span>)));</div>
+<div class="line"><a name="l01466"></a><span class="lineno"> 1466</span>&#160;    }</div>
+<div class="line"><a name="l01467"></a><span class="lineno"> 1467</span>&#160; </div>
+<div class="line"><a name="l01468"></a><span class="lineno"> 1468</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespacemio.html#a80d7fd30c9669e05b537b2caedd82bb8">success</a>();</div>
+<div class="line"><a name="l01469"></a><span class="lineno"> 1469</span>&#160;}</div>
+<div class="line"><a name="l01470"></a><span class="lineno"> 1470</span>&#160; </div>
+<div class="line"><a name="l01471"></a><span class="lineno"> 1471</span>&#160;} <span class="comment">// namespace osecirvvs</span></div>
+<div class="line"><a name="l01472"></a><span class="lineno"> 1472</span>&#160;} <span class="comment">// namespace mio</span></div>
+<div class="line"><a name="l01473"></a><span class="lineno"> 1473</span>&#160; </div>
+<div class="line"><a name="l01474"></a><span class="lineno"> 1474</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// MEMILIO_HAS_JSONCPP</span></div>
+<div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160; </div>
+<div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// ODESECIRVVS_PARAMETERS_IO_H</span></div>
+<div class="ttc" id="aclassmio_1_1TimeSeries_html_a85094ebcad0ab2a8246cf6dd3be8cd1b"><div class="ttname"><a href="classmio_1_1TimeSeries.html#a85094ebcad0ab2a8246cf6dd3be8cd1b">mio::TimeSeries&lt; double &gt;::zero</a></div><div class="ttdeci">static TimeSeries zero(Eigen::Index num_time_points, Eigen::Index num_elements)</div><div class="ttdoc">constructs TimeSeries instance and initializes it with zeros</div><div class="ttdef"><b>Definition:</b> time_series.h:119</div></div>
 <div class="ttc" id="adate_8h_html"><div class="ttname"><a href="date_8h.html">date.h</a></div></div>
 <div class="ttc" id="aeigen__util_8h_html"><div class="ttname"><a href="eigen__util_8h.html">eigen_util.h</a></div></div>
 <div class="ttc" id="aepi__data_8h_html"><div class="ttname"><a href="epi__data_8h.html">epi_data.h</a></div></div>

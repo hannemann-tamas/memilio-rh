@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-04-03 15:16:12</td>
+            <td class="headerValue">2024-04-08 15:54:10</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">44</td>
@@ -288,7 +288,7 @@
 <a name="226"><span class="lineNum">     226 </span><span class="lineCov">       2380 :         changed = adapt_standard_dev(standard_dev);</span></a>
 <a name="227"><span class="lineNum">     227 </span>            : </a>
 <a name="228"><span class="lineNum">     228 </span><span class="lineCov">       2380 :         if (changed &amp;&amp; m_log_stddev_change) {</span></a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">        142 :             log_warning(&quot;Standard deviation reduced to fit 99% of the distribution within [lowerbound,upperbound].&quot;);</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">        132 :             log_warning(&quot;Standard deviation reduced to fit 99% of the distribution within [lowerbound,upperbound].&quot;);</span></a>
 <a name="230"><span class="lineNum">     230 </span>            :         }</a>
 <a name="231"><span class="lineNum">     231 </span>            : </a>
 <a name="232"><span class="lineNum">     232 </span><span class="lineCov">       2380 :         return changed;</span></a>
@@ -309,8 +309,8 @@
 <a name="247"><span class="lineNum">     247 </span>            :     {</a>
 <a name="248"><span class="lineNum">     248 </span><span class="lineCov">       2380 :         bool changed = false;</span></a>
 <a name="249"><span class="lineNum">     249 </span><span class="lineCov">       2380 :         if (m_mean + standard_dev * m_quantile &gt; m_upper_bound) {</span></a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">         72 :             standard_dev = (m_upper_bound - m_mean) / m_quantile;</span></a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">         72 :             changed      = true;</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">         67 :             standard_dev = (m_upper_bound - m_mean) / m_quantile;</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">         67 :             changed      = true;</span></a>
 <a name="252"><span class="lineNum">     252 </span>            :         }</a>
 <a name="253"><span class="lineNum">     253 </span><span class="lineCov">       2380 :         if (m_mean - standard_dev * m_quantile &lt; m_lower_bound) {</span></a>
 <a name="254"><span class="lineNum">     254 </span><span class="lineNoCov">          0 :             standard_dev = (m_mean - m_lower_bound) / m_quantile;</span></a>
@@ -362,10 +362,10 @@
 <a name="300"><span class="lineNum">     300 </span><span class="lineCov">       1581 :         int i        = 0;</span></a>
 <a name="301"><span class="lineNum">     301 </span><span class="lineCov">       1581 :         int retries  = 10;</span></a>
 <a name="302"><span class="lineNum">     302 </span><span class="lineCov">       1581 :         double rnumb = m_distribution(thread_local_rng());</span></a>
-<a name="303"><span class="lineNum">     303 </span><span class="lineCov">       1591 :         while ((rnumb &gt; m_upper_bound || rnumb &lt; m_lower_bound) &amp;&amp; i &lt; retries) {</span></a>
-<a name="304"><span class="lineNum">     304 </span><span class="lineCov">         10 :             rnumb = m_distribution(thread_local_rng());</span></a>
-<a name="305"><span class="lineNum">     305 </span><span class="lineCov">         10 :             i++;</span></a>
-<a name="306"><span class="lineNum">     306 </span><span class="lineCov">         10 :             if (i == retries) {</span></a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">       1589 :         while ((rnumb &gt; m_upper_bound || rnumb &lt; m_lower_bound) &amp;&amp; i &lt; retries) {</span></a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">          8 :             rnumb = m_distribution(thread_local_rng());</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineCov">          8 :             i++;</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">          8 :             if (i == retries) {</span></a>
 <a name="307"><span class="lineNum">     307 </span><span class="lineNoCov">          0 :                 log_warning(&quot;Not successfully sampled within [min,max].&quot;);</span></a>
 <a name="308"><span class="lineNum">     308 </span><span class="lineNoCov">          0 :                 if (rnumb &gt; m_upper_bound) {</span></a>
 <a name="309"><span class="lineNum">     309 </span><span class="lineNoCov">          0 :                     rnumb = m_upper_bound;</span></a>

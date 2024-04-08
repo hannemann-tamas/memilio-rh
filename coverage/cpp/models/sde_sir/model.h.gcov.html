@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-04-03 15:16:12</td>
+            <td class="headerValue">2024-04-08 15:54:10</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -111,9 +111,9 @@
 <a name="49"><span class="lineNum">      49 </span>            :     {</a>
 <a name="50"><span class="lineNum">      50 </span><span class="lineCov">          1 :     }</span></a>
 <a name="51"><span class="lineNum">      51 </span>            : </a>
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          6 :     void get_flows(Eigen::Ref&lt;const Eigen::Matrix&lt;ScalarType, Eigen::Dynamic, 1&gt;&gt; pop,</span></a>
-<a name="53"><span class="lineNum">      53 </span>            :                    Eigen::Ref&lt;const Eigen::Matrix&lt;ScalarType, Eigen::Dynamic, 1&gt;&gt; y, ScalarType t,</a>
-<a name="54"><span class="lineNum">      54 </span>            :                    Eigen::Ref&lt;Eigen::Matrix&lt;ScalarType, Eigen::Dynamic, 1&gt;&gt; flows) const</a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          6 :     void get_flows(Eigen::Ref&lt;const Vector&lt;&gt;&gt; pop,</span></a>
+<a name="53"><span class="lineNum">      53 </span>            :                    Eigen::Ref&lt;const Vector&lt;&gt;&gt; y, ScalarType t,</a>
+<a name="54"><span class="lineNum">      54 </span>            :                    Eigen::Ref&lt;Vector&lt;&gt;&gt; flows) const</a>
 <a name="55"><span class="lineNum">      55 </span>            :     {</a>
 <a name="56"><span class="lineNum">      56 </span><span class="lineCov">          6 :         auto&amp; params         = this-&gt;parameters;</span></a>
 <a name="57"><span class="lineNum">      57 </span><span class="lineCov">         12 :         ScalarType coeffStoI = params.get&lt;ContactPatterns&gt;().get_matrix_at(t)(0, 0) *</span></a>

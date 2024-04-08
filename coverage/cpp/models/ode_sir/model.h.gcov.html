@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-04-03 15:16:12</td>
+            <td class="headerValue">2024-04-08 15:54:10</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -109,28 +109,27 @@
 <a name="47"><span class="lineNum">      47 </span>            :     {</a>
 <a name="48"><span class="lineNum">      48 </span><span class="lineCov">          5 :     }</span></a>
 <a name="49"><span class="lineNum">      49 </span>            : </a>
-<a name="50"><span class="lineNum">      50 </span><span class="lineCov">        492 :     void get_derivatives(Eigen::Ref&lt;const Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; pop,</span></a>
-<a name="51"><span class="lineNum">      51 </span>            :                          Eigen::Ref&lt;const Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; y, FP t,</a>
-<a name="52"><span class="lineNum">      52 </span>            :                          Eigen::Ref&lt;Eigen::Matrix&lt;FP, Eigen::Dynamic, 1&gt;&gt; dydt) const override</a>
-<a name="53"><span class="lineNum">      53 </span>            :     {</a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">        492 :         auto&amp; params     = this-&gt;parameters;</span></a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">        984 :         double coeffStoI = params.template get&lt;ContactPatterns&gt;().get_matrix_at(t)(0, 0) *</span></a>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">        984 :                            params.template get&lt;TransmissionProbabilityOnContact&lt;FP&gt;&gt;() / this-&gt;populations.get_total();</span></a>
-<a name="57"><span class="lineNum">      57 </span>            : </a>
-<a name="58"><span class="lineNum">      58 </span><span class="lineCov">        492 :         dydt[(size_t)InfectionState::Susceptible] =</span></a>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">        492 :             -coeffStoI * y[(size_t)InfectionState::Susceptible] * pop[(size_t)InfectionState::Infected];</span></a>
-<a name="60"><span class="lineNum">      60 </span><span class="lineCov">        492 :         dydt[(size_t)InfectionState::Infected] =</span></a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">        492 :             coeffStoI * y[(size_t)InfectionState::Susceptible] * pop[(size_t)InfectionState::Infected] -</span></a>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">        492 :             (1.0 / params.template get&lt;TimeInfected&lt;FP&gt;&gt;()) * y[(size_t)InfectionState::Infected];</span></a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">        492 :         dydt[(size_t)InfectionState::Recovered] =</span></a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">        492 :             (1.0 / params.template get&lt;TimeInfected&lt;FP&gt;&gt;()) * y[(size_t)InfectionState::Infected];</span></a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">        492 :     }</span></a>
-<a name="66"><span class="lineNum">      66 </span>            : };</a>
-<a name="67"><span class="lineNum">      67 </span>            : </a>
-<a name="68"><span class="lineNum">      68 </span>            : } // namespace osir</a>
-<a name="69"><span class="lineNum">      69 </span>            : } // namespace mio</a>
-<a name="70"><span class="lineNum">      70 </span>            : </a>
-<a name="71"><span class="lineNum">      71 </span>            : #endif // ODESIR_MODEL_H</a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">        492 :     void get_derivatives(Eigen::Ref&lt;const Vector&lt;FP&gt;&gt; pop, Eigen::Ref&lt;const Vector&lt;FP&gt;&gt; y, FP t,</span></a>
+<a name="51"><span class="lineNum">      51 </span>            :                          Eigen::Ref&lt;Vector&lt;FP&gt;&gt; dydt) const override</a>
+<a name="52"><span class="lineNum">      52 </span>            :     {</a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">        492 :         auto&amp; params     = this-&gt;parameters;</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">        984 :         double coeffStoI = params.template get&lt;ContactPatterns&gt;().get_matrix_at(t)(0, 0) *</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">        984 :                            params.template get&lt;TransmissionProbabilityOnContact&lt;FP&gt;&gt;() / this-&gt;populations.get_total();</span></a>
+<a name="56"><span class="lineNum">      56 </span>            : </a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">        492 :         dydt[(size_t)InfectionState::Susceptible] =</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">        492 :             -coeffStoI * y[(size_t)InfectionState::Susceptible] * pop[(size_t)InfectionState::Infected];</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">        492 :         dydt[(size_t)InfectionState::Infected] =</span></a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">        492 :             coeffStoI * y[(size_t)InfectionState::Susceptible] * pop[(size_t)InfectionState::Infected] -</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">        492 :             (1.0 / params.template get&lt;TimeInfected&lt;FP&gt;&gt;()) * y[(size_t)InfectionState::Infected];</span></a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">        492 :         dydt[(size_t)InfectionState::Recovered] =</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">        492 :             (1.0 / params.template get&lt;TimeInfected&lt;FP&gt;&gt;()) * y[(size_t)InfectionState::Infected];</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">        492 :     }</span></a>
+<a name="65"><span class="lineNum">      65 </span>            : };</a>
+<a name="66"><span class="lineNum">      66 </span>            : </a>
+<a name="67"><span class="lineNum">      67 </span>            : } // namespace osir</a>
+<a name="68"><span class="lineNum">      68 </span>            : } // namespace mio</a>
+<a name="69"><span class="lineNum">      69 </span>            : </a>
+<a name="70"><span class="lineNum">      70 </span>            : #endif // ODESIR_MODEL_H</a>
 </pre>
       </td>
     </tr>
