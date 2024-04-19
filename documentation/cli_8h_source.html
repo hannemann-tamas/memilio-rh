@@ -536,7 +536,7 @@ $(function() {
 <div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;            i++; <span class="comment">// skip the PrintOption argument</span></div>
 <div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;            <span class="keywordflow">for</span> (; i &lt; argc &amp;&amp; !Identifier(argv[i]).is_option(); i++) {</div>
 <div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;                <span class="comment">// try to get the parameter&#39;s json value</span></div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;                BOOST_OUTCOME_TRY(<a class="code" href="namespacead.html#ae3b24063a8792ec27e283f71088c91c0">value</a>, get_param(parameters, argv[i]));</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;                BOOST_OUTCOME_TRY(<span class="keyword">auto</span>&amp;&amp; <a class="code" href="namespacead.html#ae3b24063a8792ec27e283f71088c91c0">value</a>, get_param(parameters, argv[i]));</div>
 <div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;                <span class="comment">// print the name (or alias) and value</span></div>
 <div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;                os &lt;&lt; <span class="stringliteral">&quot;Option &quot;</span> &lt;&lt; argv[i] &lt;&lt; <span class="stringliteral">&quot;:\n&quot;</span> &lt;&lt; <a class="code" href="namespacead.html#ae3b24063a8792ec27e283f71088c91c0">value</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;            }</div>

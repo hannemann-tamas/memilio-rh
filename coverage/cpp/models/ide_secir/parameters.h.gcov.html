@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-04-08 15:54:10</td>
+            <td class="headerValue">2024-04-19 13:56:46</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">10</td>
@@ -394,7 +394,7 @@
 <a name="332"><span class="lineNum">     332 </span>            :     template &lt;class IOContext&gt;</a>
 <a name="333"><span class="lineNum">     333 </span>            :     static IOResult&lt;Parameters&gt; deserialize(IOContext&amp; io)</a>
 <a name="334"><span class="lineNum">     334 </span>            :     {</a>
-<a name="335"><span class="lineNum">     335 </span>            :         BOOST_OUTCOME_TRY(base, ParametersBase::deserialize(io));</a>
+<a name="335"><span class="lineNum">     335 </span>            :         BOOST_OUTCOME_TRY(auto&amp;&amp; base, ParametersBase::deserialize(io));</a>
 <a name="336"><span class="lineNum">     336 </span>            :         return success(Parameters(std::move(base)));</a>
 <a name="337"><span class="lineNum">     337 </span>            :     }</a>
 <a name="338"><span class="lineNum">     338 </span>            : </a>

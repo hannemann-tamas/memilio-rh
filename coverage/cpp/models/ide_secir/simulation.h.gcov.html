@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-04-08 15:54:10</td>
+            <td class="headerValue">2024-04-19 13:56:46</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -108,11 +108,11 @@
 <a name="46"><span class="lineNum">      46 </span>            :      * @param[in] model An instance of the IDE model.</a>
 <a name="47"><span class="lineNum">      47 </span>            :      * @param[in] dt Step size of numerical solver.</a>
 <a name="48"><span class="lineNum">      48 </span>            :      */</a>
-<a name="49"><span class="lineNum">      49 </span><span class="lineCov">         13 :     Simulation(Model const&amp; model, ScalarType dt = 0.1)</span></a>
-<a name="50"><span class="lineNum">      50 </span><span class="lineCov">         13 :         : m_model(std::make_unique&lt;Model&gt;(model))</span></a>
-<a name="51"><span class="lineNum">      51 </span><span class="lineCov">         13 :         , m_dt(dt)</span></a>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">         14 :     Simulation(Model const&amp; model, ScalarType dt = 0.1)</span></a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">         14 :         : m_model(std::make_unique&lt;Model&gt;(model))</span></a>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">         14 :         , m_dt(dt)</span></a>
 <a name="52"><span class="lineNum">      52 </span>            :     {</a>
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">         13 :     }</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">         14 :     }</span></a>
 <a name="54"><span class="lineNum">      54 </span>            : </a>
 <a name="55"><span class="lineNum">      55 </span>            :     /** </a>
 <a name="56"><span class="lineNum">      56 </span>            :      * Run the simulation from the current time to tmax.</a>
@@ -125,9 +125,9 @@
 <a name="63"><span class="lineNum">      63 </span>            :      * Return the number of persons in all #InfectionState%s.</a>
 <a name="64"><span class="lineNum">      64 </span>            :      * @return The result of the simulation.</a>
 <a name="65"><span class="lineNum">      65 </span>            :      */</a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          6 :     TimeSeries&lt;double&gt;&amp; get_result()</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          7 :     TimeSeries&lt;double&gt;&amp; get_result()</span></a>
 <a name="67"><span class="lineNum">      67 </span>            :     {</a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">          6 :         return m_model-&gt;m_populations;</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">          7 :         return m_model-&gt;m_populations;</span></a>
 <a name="69"><span class="lineNum">      69 </span>            :     }</a>
 <a name="70"><span class="lineNum">      70 </span>            : </a>
 <a name="71"><span class="lineNum">      71 </span>            :     /**</a>
@@ -145,9 +145,9 @@
 <a name="83"><span class="lineNum">      83 </span>            :      * </a>
 <a name="84"><span class="lineNum">      84 </span>            :      * @return TimeSeries with stored transitions calculated in the simulation.</a>
 <a name="85"><span class="lineNum">      85 </span>            :      */</a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineCov">          2 :     TimeSeries&lt;ScalarType&gt; const&amp; get_transitions()</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">          3 :     TimeSeries&lt;ScalarType&gt; const&amp; get_transitions()</span></a>
 <a name="87"><span class="lineNum">      87 </span>            :     {</a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">          2 :         return m_model-&gt;m_transitions;</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">          3 :         return m_model-&gt;m_transitions;</span></a>
 <a name="89"><span class="lineNum">      89 </span>            :     }</a>
 <a name="90"><span class="lineNum">      90 </span>            : </a>
 <a name="91"><span class="lineNum">      91 </span>            :     /**</a>

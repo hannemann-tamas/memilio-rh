@@ -1657,7 +1657,7 @@ template&lt;class T &gt; </div>
 </div><!-- fragment --><p> This way, code the branches that are added for error handling are not visible in your code, the logic looks completely linear, e.g.: </p><div class="fragment"><div class="line"><span class="keyword">extern</span> <span class="keywordtype">void</span> use_int(<span class="keywordtype">int</span> i);</div>
 <div class="line">IOResult&lt;void&gt; parse_and_use_int(<span class="keyword">const</span> std::string&amp; s)</div>
 <div class="line">{</div>
-<div class="line">  BOOST_OUTCOME_TRY(i, parse_int(s));</div>
+<div class="line">  BOOST_OUTCOME_TRY(<span class="keyword">auto</span>&amp;&amp; i, parse_int(s));</div>
 <div class="line">  use_int(i);</div>
 <div class="line">  <span class="keywordflow">return</span> <a class="code" href="namespacemio.html#a80d7fd30c9669e05b537b2caedd82bb8">success</a>();</div>
 <div class="line">}</div>

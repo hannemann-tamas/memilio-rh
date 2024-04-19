@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">189</td>
-            <td class="headerCovTableEntry">189</td>
+            <td class="headerCovTableEntry">188</td>
+            <td class="headerCovTableEntry">188</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-04-08 15:54:10</td>
+            <td class="headerValue">2024-04-19 13:56:46</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -130,7 +130,7 @@
 <a name="68"><span class="lineNum">      68 </span>            :     using LctState = typename Model::LctState;</a>
 <a name="69"><span class="lineNum">      69 </span>            : </a>
 <a name="70"><span class="lineNum">      70 </span>            :     // Try to get rki data from path.</a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          8 :     BOOST_OUTCOME_TRY(rki_data, mio::read_confirmed_cases_noage(path));</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          8 :     BOOST_OUTCOME_TRY(auto&amp;&amp; rki_data, mio::read_confirmed_cases_noage(path));</span></a>
 <a name="72"><span class="lineNum">      72 </span><span class="lineCov">          4 :     auto max_date_entry = std::max_element(rki_data.begin(), rki_data.end(), [](auto&amp;&amp; a, auto&amp;&amp; b) {</span></a>
 <a name="73"><span class="lineNum">      73 </span><span class="lineCov">         42 :         return a.date &lt; b.date;</span></a>
 <a name="74"><span class="lineNum">      74 </span>            :     });</a>
@@ -180,8 +180,8 @@
 <a name="118"><span class="lineNum">     118 </span><span class="lineCov">          7 :                 int idxInfectedNoSymptoms_last =</span></a>
 <a name="119"><span class="lineNum">     119 </span>            :                     LctState::template get_first_index&lt;InfectionState::InfectedNoSymptoms&gt;() +</a>
 <a name="120"><span class="lineNum">     120 </span>            :                     LctState::template get_num_subcompartments&lt;InfectionState::InfectedNoSymptoms&gt;() - 1;</a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">         28 :                 for (int i = 0;</span></a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">         28 :                      i &lt; (int)LctState::template get_num_subcompartments&lt;InfectionState::InfectedNoSymptoms&gt;(); i++) {</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">         28 :                 for (int i = 0; i &lt; LctState::template get_num_subcompartments&lt;InfectionState::InfectedNoSymptoms&gt;();</span></a>
+<a name="122"><span class="lineNum">     122 </span>            :                      i++) {</a>
 <a name="123"><span class="lineNum">     123 </span><span class="lineCov">         21 :                     if (offset == std::floor(i * timeInfectedNoSymptoms_i)) {</span></a>
 <a name="124"><span class="lineNum">     124 </span><span class="lineCov">         10 :                         init[idxInfectedNoSymptoms_last - i] -=</span></a>
 <a name="125"><span class="lineNum">     125 </span><span class="lineCov">          5 :                             (1 - (i * timeInfectedNoSymptoms_i - std::floor(i * timeInfectedNoSymptoms_i))) *</span></a>
@@ -214,7 +214,7 @@
 <a name="152"><span class="lineNum">     152 </span>            :                 // Index of the last subcompartment of Exposed.</a>
 <a name="153"><span class="lineNum">     153 </span><span class="lineCov">          4 :                 int idxExposed_last = LctState::template get_first_index&lt;InfectionState::Exposed&gt;() +</span></a>
 <a name="154"><span class="lineNum">     154 </span>            :                                       LctState::template get_num_subcompartments&lt;InfectionState::Exposed&gt;() - 1;</a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">         12 :                 for (int i = 0; i &lt; (int)LctState::template get_num_subcompartments&lt;InfectionState::Exposed&gt;(); i++) {</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">         12 :                 for (int i = 0; i &lt; LctState::template get_num_subcompartments&lt;InfectionState::Exposed&gt;(); i++) {</span></a>
 <a name="156"><span class="lineNum">     156 </span><span class="lineCov">          8 :                     if (offset == std::floor(timeInfectedNoSymptoms + i * timeExposed_i)) {</span></a>
 <a name="157"><span class="lineNum">     157 </span><span class="lineCov">          4 :                         init[idxExposed_last - i] -= (1 - (timeInfectedNoSymptoms + i * timeExposed_i -</span></a>
 <a name="158"><span class="lineNum">     158 </span><span class="lineCov">          2 :                                                            std::floor(timeInfectedNoSymptoms + i * timeExposed_i))) *</span></a>
@@ -247,7 +247,7 @@
 <a name="185"><span class="lineNum">     185 </span>            :                     (ScalarType)LctState::template get_num_subcompartments&lt;InfectionState::InfectedSymptoms&gt;();</a>
 <a name="186"><span class="lineNum">     186 </span>            :                 // Index of the first subcompartment of InfectedSymptoms.</a>
 <a name="187"><span class="lineNum">     187 </span><span class="lineCov">          8 :                 int idxInfectedSymptoms_first = LctState::template get_first_index&lt;InfectionState::InfectedSymptoms&gt;();</span></a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">         24 :                 for (int i = 0; i &lt; (int)LctState::template get_num_subcompartments&lt;InfectionState::InfectedSymptoms&gt;();</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">         24 :                 for (int i = 0; i &lt; LctState::template get_num_subcompartments&lt;InfectionState::InfectedSymptoms&gt;();</span></a>
 <a name="189"><span class="lineNum">     189 </span>            :                      i++) {</a>
 <a name="190"><span class="lineNum">     190 </span><span class="lineCov">         16 :                     if (offset == std::floor(-timeInfectedSymptoms_i * (i + 1))) {</span></a>
 <a name="191"><span class="lineNum">     191 </span><span class="lineCov">          8 :                         init[idxInfectedSymptoms_first + i] -=</span></a>
@@ -283,139 +283,138 @@
 <a name="221"><span class="lineNum">     221 </span><span class="lineCov">          8 :                 ScalarType prob_SeverePerInfectedSymptoms = model.parameters.template get&lt;SeverePerInfectedSymptoms&gt;();</span></a>
 <a name="222"><span class="lineNum">     222 </span>            :                 // Index of the first subcompartment of InfectedSevere.</a>
 <a name="223"><span class="lineNum">     223 </span><span class="lineCov">          8 :                 int idxInfectedSevere_first = LctState::template get_first_index&lt;InfectionState::InfectedSevere&gt;();</span></a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineCov">         24 :                 for (int i = 0; i &lt; (int)LctState::template get_num_subcompartments&lt;InfectionState::InfectedSevere&gt;();</span></a>
-<a name="225"><span class="lineNum">     225 </span>            :                      i++) {</a>
-<a name="226"><span class="lineNum">     226 </span><span class="lineCov">         16 :                     if (offset == std::floor(-timeInfectedSymptoms - timeInfectedSevere_i * (i + 1))) {</span></a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">          8 :                         init[idxInfectedSevere_first + i] -=</span></a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">          4 :                             prob_SeverePerInfectedSymptoms *</span></a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          4 :                             (1 - (-timeInfectedSymptoms - (i + 1) * timeInfectedSevere_i -</span></a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">          4 :                                   std::floor(-timeInfectedSymptoms - (i + 1) * timeInfectedSevere_i))) *</span></a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">          4 :                             scale_confirmed_cases * entry.num_confirmed;</span></a>
-<a name="232"><span class="lineNum">     232 </span>            :                     }</a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">         16 :                     if (offset == std::ceil(-timeInfectedSymptoms - timeInfectedSevere_i * (i + 1))) {</span></a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">          8 :                         init[idxInfectedSevere_first + i] -=</span></a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">          4 :                             prob_SeverePerInfectedSymptoms *</span></a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">          4 :                             (-timeInfectedSymptoms - (i + 1) * timeInfectedSevere_i -</span></a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">          4 :                              std::floor(-timeInfectedSymptoms - (i + 1) * timeInfectedSevere_i)) *</span></a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">          4 :                             scale_confirmed_cases * entry.num_confirmed;</span></a>
-<a name="239"><span class="lineNum">     239 </span>            :                     }</a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">         16 :                     if (offset == std::floor(-timeInfectedSymptoms - timeInfectedSevere_i * i)) {</span></a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">          8 :                         init[idxInfectedSevere_first + i] +=</span></a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">          4 :                             prob_SeverePerInfectedSymptoms *</span></a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineCov">          4 :                             (1 - (-timeInfectedSymptoms - i * timeInfectedSevere_i -</span></a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">          4 :                                   std::floor(-timeInfectedSymptoms - i * timeInfectedSevere_i))) *</span></a>
-<a name="245"><span class="lineNum">     245 </span><span class="lineCov">          4 :                             scale_confirmed_cases * entry.num_confirmed;</span></a>
-<a name="246"><span class="lineNum">     246 </span>            :                     }</a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">         16 :                     if (offset == std::ceil(-timeInfectedSymptoms - timeInfectedSevere_i * i)) {</span></a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">          8 :                         init[idxInfectedSevere_first + i] +=</span></a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">          4 :                             prob_SeverePerInfectedSymptoms *</span></a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          4 :                             (-timeInfectedSymptoms - i * timeInfectedSevere_i -</span></a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">          4 :                              std::floor(-timeInfectedSymptoms - i * timeInfectedSevere_i)) *</span></a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          4 :                             scale_confirmed_cases * entry.num_confirmed;</span></a>
-<a name="253"><span class="lineNum">     253 </span>            :                     }</a>
-<a name="254"><span class="lineNum">     254 </span>            :                 }</a>
-<a name="255"><span class="lineNum">     255 </span>            :             }</a>
-<a name="256"><span class="lineNum">     256 </span>            : </a>
-<a name="257"><span class="lineNum">     257 </span>            :             // Compute initial values for compartment InfectedCritical.</a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">         25 :             if (offset &gt;= min_offset_needed &amp;&amp; offset &lt;= std::ceil(-timeInfectedSymptoms - timeInfectedSevere)) {</span></a>
-<a name="259"><span class="lineNum">     259 </span>            :                 // Mean stay time in each subcompartment.</a>
-<a name="260"><span class="lineNum">     260 </span><span class="lineCov">         10 :                 ScalarType timeInfectedCritical_i =</span></a>
-<a name="261"><span class="lineNum">     261 </span><span class="lineCov">         10 :                     timeInfectedCritical /</span></a>
-<a name="262"><span class="lineNum">     262 </span>            :                     LctState::template get_num_subcompartments&lt;InfectionState::InfectedCritical&gt;();</a>
-<a name="263"><span class="lineNum">     263 </span>            :                 // Transmission probabilities.</a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">         10 :                 ScalarType prob_SeverePerInfectedSymptoms = model.parameters.template get&lt;SeverePerInfectedSymptoms&gt;();</span></a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">         10 :                 ScalarType prob_CriticalPerSevere         = model.parameters.template get&lt;CriticalPerSevere&gt;();</span></a>
-<a name="266"><span class="lineNum">     266 </span>            :                 // Index of the first subcompartment of InfectedCritical.</a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">         10 :                 int idxInfectedCritical_first = LctState::template get_first_index&lt;InfectionState::InfectedCritical&gt;();</span></a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">         20 :                 for (int i = 0; i &lt; (int)LctState::template get_num_subcompartments&lt;InfectionState::InfectedCritical&gt;();</span></a>
-<a name="269"><span class="lineNum">     269 </span>            :                      i++) {</a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">         10 :                     if (offset ==</span></a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineCov">         10 :                         std::floor(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical_i * (i + 1))) {</span></a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">          4 :                         init[idxInfectedCritical_first + i] -=</span></a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">          2 :                             prob_SeverePerInfectedSymptoms * prob_CriticalPerSevere *</span></a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineCov">          2 :                             (1 - (-timeInfectedSymptoms - timeInfectedSevere - (i + 1) * timeInfectedCritical_i -</span></a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">          2 :                                   std::floor(-timeInfectedSymptoms - timeInfectedSevere -</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">          2 :                                              (i + 1) * timeInfectedCritical_i))) *</span></a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">          2 :                             scale_confirmed_cases * entry.num_confirmed;</span></a>
-<a name="278"><span class="lineNum">     278 </span>            :                     }</a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">         10 :                     if (offset ==</span></a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">         10 :                         std::ceil(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical_i * (i + 1))) {</span></a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">          4 :                         init[idxInfectedCritical_first + i] -=</span></a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">          2 :                             prob_SeverePerInfectedSymptoms * prob_CriticalPerSevere *</span></a>
-<a name="283"><span class="lineNum">     283 </span><span class="lineCov">          2 :                             (-timeInfectedSymptoms - timeInfectedSevere - (i + 1) * timeInfectedCritical_i -</span></a>
-<a name="284"><span class="lineNum">     284 </span><span class="lineCov">          2 :                              std::floor(-timeInfectedSymptoms - timeInfectedSevere -</span></a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineCov">          2 :                                         (i + 1) * timeInfectedCritical_i)) *</span></a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">          2 :                             scale_confirmed_cases * entry.num_confirmed;</span></a>
-<a name="287"><span class="lineNum">     287 </span>            :                     }</a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineCov">         10 :                     if (offset == std::floor(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical_i * i)) {</span></a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineCov">          4 :                         init[idxInfectedCritical_first + i] +=</span></a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">          2 :                             prob_SeverePerInfectedSymptoms * prob_CriticalPerSevere *</span></a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">          2 :                             (1 -</span></a>
-<a name="292"><span class="lineNum">     292 </span><span class="lineCov">          2 :                              (-timeInfectedSymptoms - timeInfectedSevere - i * timeInfectedCritical_i -</span></a>
-<a name="293"><span class="lineNum">     293 </span><span class="lineCov">          2 :                               std::floor(-timeInfectedSymptoms - timeInfectedSevere - i * timeInfectedCritical_i))) *</span></a>
-<a name="294"><span class="lineNum">     294 </span><span class="lineCov">          2 :                             scale_confirmed_cases * entry.num_confirmed;</span></a>
-<a name="295"><span class="lineNum">     295 </span>            :                     }</a>
-<a name="296"><span class="lineNum">     296 </span><span class="lineCov">         10 :                     if (offset == std::ceil(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical_i * i)) {</span></a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineCov">          4 :                         init[idxInfectedCritical_first + i] +=</span></a>
-<a name="298"><span class="lineNum">     298 </span><span class="lineCov">          2 :                             prob_SeverePerInfectedSymptoms * prob_CriticalPerSevere *</span></a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">          2 :                             (-timeInfectedSymptoms - timeInfectedSevere - i * timeInfectedCritical_i -</span></a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineCov">          2 :                              std::floor(-timeInfectedSymptoms - timeInfectedSevere - i * timeInfectedCritical_i)) *</span></a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">          2 :                             scale_confirmed_cases * entry.num_confirmed;</span></a>
-<a name="302"><span class="lineNum">     302 </span>            :                     }</a>
-<a name="303"><span class="lineNum">     303 </span>            :                 }</a>
-<a name="304"><span class="lineNum">     304 </span>            :             }</a>
-<a name="305"><span class="lineNum">     305 </span>            : </a>
-<a name="306"><span class="lineNum">     306 </span>            :             // Compute Dead.</a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineCov">         25 :             if (offset == min_offset_needed) {</span></a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineCov">          2 :                 min_offset_needed_avail = true;</span></a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineCov">          4 :                 init[LctState::template get_first_index&lt;InfectionState::Dead&gt;()] +=</span></a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineCov">          2 :                     (1 - (-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical -</span></a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">          4 :                           std::floor(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical))) *</span></a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">          2 :                     entry.num_deaths;</span></a>
-<a name="313"><span class="lineNum">     313 </span>            :             }</a>
-<a name="314"><span class="lineNum">     314 </span><span class="lineCov">         25 :             if (offset == std::ceil(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical)) {</span></a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">          4 :                 init[LctState::template get_first_index&lt;InfectionState::Dead&gt;()] +=</span></a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">          2 :                     (-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical -</span></a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">          4 :                      std::floor(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical)) *</span></a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">          2 :                     entry.num_deaths;</span></a>
-<a name="319"><span class="lineNum">     319 </span>            :             }</a>
-<a name="320"><span class="lineNum">     320 </span><span class="lineCov">         25 :             if (offset == max_offset_needed) {</span></a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineCov">          1 :                 max_offset_needed_avail = true;</span></a>
-<a name="322"><span class="lineNum">     322 </span>            :             }</a>
-<a name="323"><span class="lineNum">     323 </span>            :         }</a>
-<a name="324"><span class="lineNum">     324 </span>            :     }</a>
-<a name="325"><span class="lineNum">     325 </span>            : </a>
-<a name="326"><span class="lineNum">     326 </span>            :     // Compute Recovered.</a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">          2 :     init[LctState::template get_first_index&lt;InfectionState::Recovered&gt;()] -=</span></a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineCov">          2 :         init.segment(LctState::template get_first_index&lt;InfectionState::InfectedSymptoms&gt;(),</span></a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">          2 :                      LctState::template get_num_subcompartments&lt;InfectionState::InfectedSymptoms&gt;() +</span></a>
-<a name="330"><span class="lineNum">     330 </span><span class="lineCov">          2 :                          LctState::template get_num_subcompartments&lt;InfectionState::InfectedSevere&gt;() +</span></a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">          2 :                          LctState::template get_num_subcompartments&lt;InfectionState::InfectedCritical&gt;())</span></a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineCov">          6 :             .sum();</span></a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineCov">          2 :     init[LctState::template get_first_index&lt;InfectionState::Recovered&gt;()] -=</span></a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineCov">          2 :         init[LctState::template get_first_index&lt;InfectionState::Dead&gt;()];</span></a>
-<a name="335"><span class="lineNum">     335 </span>            : </a>
-<a name="336"><span class="lineNum">     336 </span>            :     // Compute Susceptibles.</a>
-<a name="337"><span class="lineNum">     337 </span><span class="lineCov">          4 :     init[LctState::template get_first_index&lt;InfectionState::Susceptible&gt;()] =</span></a>
-<a name="338"><span class="lineNum">     338 </span><span class="lineCov">          4 :         total_population - init.segment(1, LctState::Count - 1).sum();</span></a>
-<a name="339"><span class="lineNum">     339 </span>            : </a>
-<a name="340"><span class="lineNum">     340 </span>            :     // Check whether all necessary dates are available.</a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineCov">          2 :     if (!max_offset_needed_avail || !min_offset_needed_avail) {</span></a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineCov">          2 :         log_error(&quot;Necessary range of dates needed to compute initial values does not exist in RKI data.&quot;);</span></a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineCov">          1 :         return failure(StatusCode::OutOfRange, path + &quot;, necessary range of dates does not exist in RKI data.&quot;);</span></a>
-<a name="344"><span class="lineNum">     344 </span>            :     }</a>
-<a name="345"><span class="lineNum">     345 </span>            : </a>
-<a name="346"><span class="lineNum">     346 </span>            :     // Set computed initial value vector.</a>
-<a name="347"><span class="lineNum">     347 </span><span class="lineCov">          1 :     model.set_initial_values(std::move(init));</span></a>
-<a name="348"><span class="lineNum">     348 </span>            : </a>
-<a name="349"><span class="lineNum">     349 </span><span class="lineCov">          2 :     return mio::success();</span></a>
-<a name="350"><span class="lineNum">     350 </span>            : }</a>
-<a name="351"><span class="lineNum">     351 </span>            : </a>
-<a name="352"><span class="lineNum">     352 </span>            : } // namespace lsecir</a>
-<a name="353"><span class="lineNum">     353 </span>            : } // namespace mio</a>
-<a name="354"><span class="lineNum">     354 </span>            : #endif // MEMILIO_HAS_JSONCPP</a>
-<a name="355"><span class="lineNum">     355 </span>            : </a>
-<a name="356"><span class="lineNum">     356 </span>            : #endif // LCTSECIR_PARAMETERS_IO_H</a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">         24 :                 for (int i = 0; i &lt; LctState::template get_num_subcompartments&lt;InfectionState::InfectedSevere&gt;(); i++) {</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">         16 :                     if (offset == std::floor(-timeInfectedSymptoms - timeInfectedSevere_i * (i + 1))) {</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">          8 :                         init[idxInfectedSevere_first + i] -=</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">          4 :                             prob_SeverePerInfectedSymptoms *</span></a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">          4 :                             (1 - (-timeInfectedSymptoms - (i + 1) * timeInfectedSevere_i -</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          4 :                                   std::floor(-timeInfectedSymptoms - (i + 1) * timeInfectedSevere_i))) *</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">          4 :                             scale_confirmed_cases * entry.num_confirmed;</span></a>
+<a name="231"><span class="lineNum">     231 </span>            :                     }</a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">         16 :                     if (offset == std::ceil(-timeInfectedSymptoms - timeInfectedSevere_i * (i + 1))) {</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          8 :                         init[idxInfectedSevere_first + i] -=</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">          4 :                             prob_SeverePerInfectedSymptoms *</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">          4 :                             (-timeInfectedSymptoms - (i + 1) * timeInfectedSevere_i -</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">          4 :                              std::floor(-timeInfectedSymptoms - (i + 1) * timeInfectedSevere_i)) *</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">          4 :                             scale_confirmed_cases * entry.num_confirmed;</span></a>
+<a name="238"><span class="lineNum">     238 </span>            :                     }</a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">         16 :                     if (offset == std::floor(-timeInfectedSymptoms - timeInfectedSevere_i * i)) {</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          8 :                         init[idxInfectedSevere_first + i] +=</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">          4 :                             prob_SeverePerInfectedSymptoms *</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">          4 :                             (1 - (-timeInfectedSymptoms - i * timeInfectedSevere_i -</span></a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineCov">          4 :                                   std::floor(-timeInfectedSymptoms - i * timeInfectedSevere_i))) *</span></a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">          4 :                             scale_confirmed_cases * entry.num_confirmed;</span></a>
+<a name="245"><span class="lineNum">     245 </span>            :                     }</a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineCov">         16 :                     if (offset == std::ceil(-timeInfectedSymptoms - timeInfectedSevere_i * i)) {</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">          8 :                         init[idxInfectedSevere_first + i] +=</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">          4 :                             prob_SeverePerInfectedSymptoms *</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">          4 :                             (-timeInfectedSymptoms - i * timeInfectedSevere_i -</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          4 :                              std::floor(-timeInfectedSymptoms - i * timeInfectedSevere_i)) *</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">          4 :                             scale_confirmed_cases * entry.num_confirmed;</span></a>
+<a name="252"><span class="lineNum">     252 </span>            :                     }</a>
+<a name="253"><span class="lineNum">     253 </span>            :                 }</a>
+<a name="254"><span class="lineNum">     254 </span>            :             }</a>
+<a name="255"><span class="lineNum">     255 </span>            : </a>
+<a name="256"><span class="lineNum">     256 </span>            :             // Compute initial values for compartment InfectedCritical.</a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">         25 :             if (offset &gt;= min_offset_needed &amp;&amp; offset &lt;= std::ceil(-timeInfectedSymptoms - timeInfectedSevere)) {</span></a>
+<a name="258"><span class="lineNum">     258 </span>            :                 // Mean stay time in each subcompartment.</a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">         10 :                 ScalarType timeInfectedCritical_i =</span></a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineCov">         10 :                     timeInfectedCritical /</span></a>
+<a name="261"><span class="lineNum">     261 </span>            :                     LctState::template get_num_subcompartments&lt;InfectionState::InfectedCritical&gt;();</a>
+<a name="262"><span class="lineNum">     262 </span>            :                 // Transmission probabilities.</a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineCov">         10 :                 ScalarType prob_SeverePerInfectedSymptoms = model.parameters.template get&lt;SeverePerInfectedSymptoms&gt;();</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">         10 :                 ScalarType prob_CriticalPerSevere         = model.parameters.template get&lt;CriticalPerSevere&gt;();</span></a>
+<a name="265"><span class="lineNum">     265 </span>            :                 // Index of the first subcompartment of InfectedCritical.</a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">         10 :                 int idxInfectedCritical_first = LctState::template get_first_index&lt;InfectionState::InfectedCritical&gt;();</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">         20 :                 for (int i = 0; i &lt; LctState::template get_num_subcompartments&lt;InfectionState::InfectedCritical&gt;();</span></a>
+<a name="268"><span class="lineNum">     268 </span>            :                      i++) {</a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">         10 :                     if (offset ==</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">         10 :                         std::floor(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical_i * (i + 1))) {</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">          4 :                         init[idxInfectedCritical_first + i] -=</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">          2 :                             prob_SeverePerInfectedSymptoms * prob_CriticalPerSevere *</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">          2 :                             (1 - (-timeInfectedSymptoms - timeInfectedSevere - (i + 1) * timeInfectedCritical_i -</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineCov">          2 :                                   std::floor(-timeInfectedSymptoms - timeInfectedSevere -</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">          2 :                                              (i + 1) * timeInfectedCritical_i))) *</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">          2 :                             scale_confirmed_cases * entry.num_confirmed;</span></a>
+<a name="277"><span class="lineNum">     277 </span>            :                     }</a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">         10 :                     if (offset ==</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">         10 :                         std::ceil(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical_i * (i + 1))) {</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">          4 :                         init[idxInfectedCritical_first + i] -=</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">          2 :                             prob_SeverePerInfectedSymptoms * prob_CriticalPerSevere *</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">          2 :                             (-timeInfectedSymptoms - timeInfectedSevere - (i + 1) * timeInfectedCritical_i -</span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">          2 :                              std::floor(-timeInfectedSymptoms - timeInfectedSevere -</span></a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">          2 :                                         (i + 1) * timeInfectedCritical_i)) *</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineCov">          2 :                             scale_confirmed_cases * entry.num_confirmed;</span></a>
+<a name="286"><span class="lineNum">     286 </span>            :                     }</a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">         10 :                     if (offset == std::floor(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical_i * i)) {</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">          4 :                         init[idxInfectedCritical_first + i] +=</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">          2 :                             prob_SeverePerInfectedSymptoms * prob_CriticalPerSevere *</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">          2 :                             (1 -</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">          2 :                              (-timeInfectedSymptoms - timeInfectedSevere - i * timeInfectedCritical_i -</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">          2 :                               std::floor(-timeInfectedSymptoms - timeInfectedSevere - i * timeInfectedCritical_i))) *</span></a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineCov">          2 :                             scale_confirmed_cases * entry.num_confirmed;</span></a>
+<a name="294"><span class="lineNum">     294 </span>            :                     }</a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">         10 :                     if (offset == std::ceil(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical_i * i)) {</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">          4 :                         init[idxInfectedCritical_first + i] +=</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">          2 :                             prob_SeverePerInfectedSymptoms * prob_CriticalPerSevere *</span></a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">          2 :                             (-timeInfectedSymptoms - timeInfectedSevere - i * timeInfectedCritical_i -</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">          2 :                              std::floor(-timeInfectedSymptoms - timeInfectedSevere - i * timeInfectedCritical_i)) *</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">          2 :                             scale_confirmed_cases * entry.num_confirmed;</span></a>
+<a name="301"><span class="lineNum">     301 </span>            :                     }</a>
+<a name="302"><span class="lineNum">     302 </span>            :                 }</a>
+<a name="303"><span class="lineNum">     303 </span>            :             }</a>
+<a name="304"><span class="lineNum">     304 </span>            : </a>
+<a name="305"><span class="lineNum">     305 </span>            :             // Compute Dead.</a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">         25 :             if (offset == min_offset_needed) {</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">          2 :                 min_offset_needed_avail = true;</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">          4 :                 init[LctState::template get_first_index&lt;InfectionState::Dead&gt;()] +=</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">          2 :                     (1 - (-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical -</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">          4 :                           std::floor(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical))) *</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">          2 :                     entry.num_deaths;</span></a>
+<a name="312"><span class="lineNum">     312 </span>            :             }</a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">         25 :             if (offset == std::ceil(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical)) {</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">          4 :                 init[LctState::template get_first_index&lt;InfectionState::Dead&gt;()] +=</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">          2 :                     (-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical -</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">          4 :                      std::floor(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical)) *</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">          2 :                     entry.num_deaths;</span></a>
+<a name="318"><span class="lineNum">     318 </span>            :             }</a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">         25 :             if (offset == max_offset_needed) {</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">          1 :                 max_offset_needed_avail = true;</span></a>
+<a name="321"><span class="lineNum">     321 </span>            :             }</a>
+<a name="322"><span class="lineNum">     322 </span>            :         }</a>
+<a name="323"><span class="lineNum">     323 </span>            :     }</a>
+<a name="324"><span class="lineNum">     324 </span>            : </a>
+<a name="325"><span class="lineNum">     325 </span>            :     // Compute Recovered.</a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">          2 :     init[LctState::template get_first_index&lt;InfectionState::Recovered&gt;()] -=</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">          2 :         init.segment(LctState::template get_first_index&lt;InfectionState::InfectedSymptoms&gt;(),</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">          2 :                      LctState::template get_num_subcompartments&lt;InfectionState::InfectedSymptoms&gt;() +</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">          2 :                          LctState::template get_num_subcompartments&lt;InfectionState::InfectedSevere&gt;() +</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">          2 :                          LctState::template get_num_subcompartments&lt;InfectionState::InfectedCritical&gt;())</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">          6 :             .sum();</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">          2 :     init[LctState::template get_first_index&lt;InfectionState::Recovered&gt;()] -=</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineCov">          2 :         init[LctState::template get_first_index&lt;InfectionState::Dead&gt;()];</span></a>
+<a name="334"><span class="lineNum">     334 </span>            : </a>
+<a name="335"><span class="lineNum">     335 </span>            :     // Compute Susceptibles.</a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">          4 :     init[LctState::template get_first_index&lt;InfectionState::Susceptible&gt;()] =</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">          4 :         total_population - init.segment(1, LctState::Count - 1).sum();</span></a>
+<a name="338"><span class="lineNum">     338 </span>            : </a>
+<a name="339"><span class="lineNum">     339 </span>            :     // Check whether all necessary dates are available.</a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">          2 :     if (!max_offset_needed_avail || !min_offset_needed_avail) {</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">          2 :         log_error(&quot;Necessary range of dates needed to compute initial values does not exist in RKI data.&quot;);</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">          1 :         return failure(StatusCode::OutOfRange, path + &quot;, necessary range of dates does not exist in RKI data.&quot;);</span></a>
+<a name="343"><span class="lineNum">     343 </span>            :     }</a>
+<a name="344"><span class="lineNum">     344 </span>            : </a>
+<a name="345"><span class="lineNum">     345 </span>            :     // Set computed initial value vector.</a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">          1 :     model.set_initial_values(std::move(init));</span></a>
+<a name="347"><span class="lineNum">     347 </span>            : </a>
+<a name="348"><span class="lineNum">     348 </span><span class="lineCov">          2 :     return mio::success();</span></a>
+<a name="349"><span class="lineNum">     349 </span>            : }</a>
+<a name="350"><span class="lineNum">     350 </span>            : </a>
+<a name="351"><span class="lineNum">     351 </span>            : } // namespace lsecir</a>
+<a name="352"><span class="lineNum">     352 </span>            : } // namespace mio</a>
+<a name="353"><span class="lineNum">     353 </span>            : #endif // MEMILIO_HAS_JSONCPP</a>
+<a name="354"><span class="lineNum">     354 </span>            : </a>
+<a name="355"><span class="lineNum">     355 </span>            : #endif // LCTSECIR_PARAMETERS_IO_H</a>
 </pre>
       </td>
     </tr>

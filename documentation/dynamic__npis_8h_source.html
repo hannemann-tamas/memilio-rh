@@ -276,7 +276,7 @@ $(function() {
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; damping_expr : damping_expr_group) {</div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        <span class="comment">//go from the back so indices aren&#39;t invalidated when dampings are removed</span></div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        <span class="comment">//use indices to loop instead of reverse iterators because removing invalidates the current iterator</span></div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = <span class="keywordtype">size_t</span>(0); i &lt; damping_expr.get_dampings().size() - 1; ++i) {</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = <span class="keywordtype">int</span>(0); i &lt; int(damping_expr.get_dampings().size()) - 1; ++i) {</div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            <span class="keyword">auto</span> it = damping_expr.get_dampings().rbegin() + i;</div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            <span class="comment">//look for previous damping of the same type/level</span></div>

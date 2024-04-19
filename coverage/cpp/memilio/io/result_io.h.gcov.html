@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-04-08 15:54:10</td>
+            <td class="headerValue">2024-04-19 13:56:46</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -176,9 +176,9 @@
 <a name="114"><span class="lineNum">     114 </span>            : {</a>
 <a name="115"><span class="lineNum">     115 </span><span class="lineCov">         15 :     auto result_dir_run = result_dir / (&quot;run&quot; + std::to_string(run_idx));</span></a>
 <a name="116"><span class="lineNum">     116 </span><span class="lineCov">          6 :     BOOST_OUTCOME_TRY(create_directory(result_dir_run.string()));</span></a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          6 :     BOOST_OUTCOME_TRY(save_result(result, county_ids, (int)(size_t)params[0].parameters.get_num_groups(),</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">         15 :     BOOST_OUTCOME_TRY(save_result(result, county_ids, (int)(size_t)params[0].parameters.get_num_groups(),</span></a>
 <a name="118"><span class="lineNum">     118 </span>            :                                   (result_dir_run / &quot;Result.h5&quot;).string()));</a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">          6 :     BOOST_OUTCOME_TRY(write_graph(create_graph_without_edges&lt;Model, MigrationParameters&lt;double&gt;&gt;(params, county_ids),</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">          9 :     BOOST_OUTCOME_TRY(write_graph(create_graph_without_edges&lt;Model, MigrationParameters&lt;double&gt;&gt;(params, county_ids),</span></a>
 <a name="120"><span class="lineNum">     120 </span>            :                                   result_dir_run.string(), IOF_OmitDistributions));</a>
 <a name="121"><span class="lineNum">     121 </span><span class="lineCov">          6 :     return success();</span></a>
 <a name="122"><span class="lineNum">     122 </span>            : }</a>
@@ -204,9 +204,9 @@
 <a name="142"><span class="lineNum">     142 </span><span class="lineCov">          1 :     auto num_groups          = (int)(size_t)ensemble_params[0][0].parameters.get_num_groups();</span></a>
 <a name="143"><span class="lineNum">     143 </span><span class="lineCov">          1 :     if (save_single_runs) {</span></a>
 <a name="144"><span class="lineNum">     144 </span><span class="lineCov">          4 :         for (size_t i = 0; i &lt; ensemble_result_sum.size(); ++i) {</span></a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">          3 :             BOOST_OUTCOME_TRY(save_result(ensemble_result_sum[i], {0}, num_groups,</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">         27 :             BOOST_OUTCOME_TRY(save_result(ensemble_result_sum[i], {0}, num_groups,</span></a>
 <a name="146"><span class="lineNum">     146 </span>            :                                           (result_dir / (&quot;results_run&quot; + std::to_string(i) + &quot;_sum.h5&quot;)).string()));</a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">          3 :             BOOST_OUTCOME_TRY(save_result(ensemble_results[i], county_ids, num_groups,</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">         21 :             BOOST_OUTCOME_TRY(save_result(ensemble_results[i], county_ids, num_groups,</span></a>
 <a name="148"><span class="lineNum">     148 </span>            :                                           (result_dir / (&quot;results_run&quot; + std::to_string(i) + &quot;.h5&quot;)).string()));</a>
 <a name="149"><span class="lineNum">     149 </span>            :         }</a>
 <a name="150"><span class="lineNum">     150 </span>            :     }</a>
@@ -232,15 +232,15 @@
 <a name="170"><span class="lineNum">     170 </span><span class="lineCov">          1 :             auto ensemble_results_sum_p75 = ensemble_percentile(ensemble_result_sum, 0.75);</span></a>
 <a name="171"><span class="lineNum">     171 </span><span class="lineCov">          1 :             auto ensemble_results_sum_p95 = ensemble_percentile(ensemble_result_sum, 0.95);</span></a>
 <a name="172"><span class="lineNum">     172 </span>            : </a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          1 :             BOOST_OUTCOME_TRY(</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          6 :             BOOST_OUTCOME_TRY(</span></a>
 <a name="174"><span class="lineNum">     174 </span>            :                 save_result(ensemble_results_sum_p05, {0}, num_groups, (result_dir_p05 / &quot;Results_sum.h5&quot;).string()));</a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          1 :             BOOST_OUTCOME_TRY(</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          6 :             BOOST_OUTCOME_TRY(</span></a>
 <a name="176"><span class="lineNum">     176 </span>            :                 save_result(ensemble_results_sum_p25, {0}, num_groups, (result_dir_p25 / &quot;Results_sum.h5&quot;).string()));</a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          1 :             BOOST_OUTCOME_TRY(</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          6 :             BOOST_OUTCOME_TRY(</span></a>
 <a name="178"><span class="lineNum">     178 </span>            :                 save_result(ensemble_results_sum_p50, {0}, num_groups, (result_dir_p50 / &quot;Results_sum.h5&quot;).string()));</a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          1 :             BOOST_OUTCOME_TRY(</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          6 :             BOOST_OUTCOME_TRY(</span></a>
 <a name="180"><span class="lineNum">     180 </span>            :                 save_result(ensemble_results_sum_p75, {0}, num_groups, (result_dir_p75 / &quot;Results_sum.h5&quot;).string()));</a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          1 :             BOOST_OUTCOME_TRY(</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          6 :             BOOST_OUTCOME_TRY(</span></a>
 <a name="182"><span class="lineNum">     182 </span>            :                 save_result(ensemble_results_sum_p95, {0}, num_groups, (result_dir_p95 / &quot;Results_sum.h5&quot;).string()));</a>
 <a name="183"><span class="lineNum">     183 </span>            :         }</a>
 <a name="184"><span class="lineNum">     184 </span>            : </a>
@@ -252,15 +252,15 @@
 <a name="190"><span class="lineNum">     190 </span><span class="lineCov">          1 :             auto ensemble_results_p75 = ensemble_percentile(ensemble_results, 0.75);</span></a>
 <a name="191"><span class="lineNum">     191 </span><span class="lineCov">          1 :             auto ensemble_results_p95 = ensemble_percentile(ensemble_results, 0.95);</span></a>
 <a name="192"><span class="lineNum">     192 </span>            : </a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          1 :             BOOST_OUTCOME_TRY(</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          4 :             BOOST_OUTCOME_TRY(</span></a>
 <a name="194"><span class="lineNum">     194 </span>            :                 save_result(ensemble_results_p05, county_ids, num_groups, (result_dir_p05 / &quot;Results.h5&quot;).string()));</a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          1 :             BOOST_OUTCOME_TRY(</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          4 :             BOOST_OUTCOME_TRY(</span></a>
 <a name="196"><span class="lineNum">     196 </span>            :                 save_result(ensemble_results_p25, county_ids, num_groups, (result_dir_p25 / &quot;Results.h5&quot;).string()));</a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          1 :             BOOST_OUTCOME_TRY(</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          4 :             BOOST_OUTCOME_TRY(</span></a>
 <a name="198"><span class="lineNum">     198 </span>            :                 save_result(ensemble_results_p50, county_ids, num_groups, (result_dir_p50 / &quot;Results.h5&quot;).string()));</a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          1 :             BOOST_OUTCOME_TRY(</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          4 :             BOOST_OUTCOME_TRY(</span></a>
 <a name="200"><span class="lineNum">     200 </span>            :                 save_result(ensemble_results_p75, county_ids, num_groups, (result_dir_p75 / &quot;Results.h5&quot;).string()));</a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineCov">          1 :             BOOST_OUTCOME_TRY(</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineCov">          4 :             BOOST_OUTCOME_TRY(</span></a>
 <a name="202"><span class="lineNum">     202 </span>            :                 save_result(ensemble_results_p95, county_ids, num_groups, (result_dir_p95 / &quot;Results.h5&quot;).string()));</a>
 <a name="203"><span class="lineNum">     203 </span>            :         }</a>
 <a name="204"><span class="lineNum">     204 </span>            : </a>
@@ -275,15 +275,15 @@
 <a name="213"><span class="lineNum">     213 </span><span class="lineCov">          6 :             auto make_graph = [&amp;county_ids](auto&amp;&amp; params) {</span></a>
 <a name="214"><span class="lineNum">     214 </span><span class="lineCov">          5 :                 return create_graph_without_edges&lt;Model, MigrationParameters&lt;double&gt;&gt;(params, county_ids);</span></a>
 <a name="215"><span class="lineNum">     215 </span>            :             };</a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">          1 :             BOOST_OUTCOME_TRY(</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">          2 :             BOOST_OUTCOME_TRY(</span></a>
 <a name="217"><span class="lineNum">     217 </span>            :                 write_graph(make_graph(ensemble_params_p05), result_dir_p05.string(), IOF_OmitDistributions));</a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">          1 :             BOOST_OUTCOME_TRY(</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">          2 :             BOOST_OUTCOME_TRY(</span></a>
 <a name="219"><span class="lineNum">     219 </span>            :                 write_graph(make_graph(ensemble_params_p25), result_dir_p25.string(), IOF_OmitDistributions));</a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          1 :             BOOST_OUTCOME_TRY(</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          2 :             BOOST_OUTCOME_TRY(</span></a>
 <a name="221"><span class="lineNum">     221 </span>            :                 write_graph(make_graph(ensemble_params_p50), result_dir_p50.string(), IOF_OmitDistributions));</a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">          1 :             BOOST_OUTCOME_TRY(</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">          2 :             BOOST_OUTCOME_TRY(</span></a>
 <a name="223"><span class="lineNum">     223 </span>            :                 write_graph(make_graph(ensemble_params_p75), result_dir_p75.string(), IOF_OmitDistributions));</a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineCov">          1 :             BOOST_OUTCOME_TRY(</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">          2 :             BOOST_OUTCOME_TRY(</span></a>
 <a name="225"><span class="lineNum">     225 </span>            :                 write_graph(make_graph(ensemble_params_p95), result_dir_p95.string(), IOF_OmitDistributions));</a>
 <a name="226"><span class="lineNum">     226 </span>            :         }</a>
 <a name="227"><span class="lineNum">     227 </span>            :     }</a>

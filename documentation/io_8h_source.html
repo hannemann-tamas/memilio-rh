@@ -365,7 +365,7 @@ $(function() {
 <div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;    <a class="code" href="classmio_1_1IOStatus.html">IOStatus</a> status[] = {(rs ? <a class="code" href="classmio_1_1IOStatus.html">IOStatus</a>{} : rs.error())...};</div>
 <div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    <span class="keyword">auto</span> iter_err     = std::find_if(<a class="code" href="namespacemio.html#aa6c974748a742fac0093de2634750791">std::begin</a>(status), <a class="code" href="namespacemio.html#a81e603f62801572c7afdf910bc057681">std::end</a>(status), [](<span class="keyword">auto</span>&amp; s) {</div>
 <div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;        <span class="keywordflow">return</span> s.is_error();</div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;    });</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;        });</div>
 <div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160; </div>
 <div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;    <span class="comment">//evaluate f if all succesful</span></div>
 <div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;    <span class="keyword">auto</span> result =</div>
@@ -492,7 +492,7 @@ $(function() {
 <div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;<a class="code" href="namespacead.html#ae3b24063a8792ec27e283f71088c91c0">template &lt;class IOContext, class E, std::enable_if_t&lt;std::is_enum&lt;E&gt;::value</a>, <span class="keywordtype">void</span>*&gt; = <span class="keyword">nullptr</span>&gt;</div>
 <div class="line"><a name="l00659"></a><span class="lineno"><a class="line" href="namespacemio.html#a1525dc162e36390f91c4e30c4b50d5cc">  659</a></span>&#160;<a class="code" href="namespacemio.html#ae556a666d14183eb2bf3a3efc11551ec">IOResult&lt;E&gt;</a> <a class="code" href="namespacemio.html#a00cf52f73f21f24b421264732496fe81">deserialize_internal</a>(IOContext&amp; io, <a class="code" href="namespacemio.html#a2f858e287c3935240954cf75cf53cfeb">Tag&lt;E&gt;</a> <span class="comment">/*tag*/</span>)</div>
 <div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;{</div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    BOOST_OUTCOME_TRY(i, <a class="code" href="namespacemio.html#a1eecf99ef3a231d628f968aeb2136865">mio::deserialize</a>(io, <a class="code" href="namespacemio.html#a2f858e287c3935240954cf75cf53cfeb">mio::Tag</a>&lt;std::underlying_type_t&lt;E&gt;&gt;{}));</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    BOOST_OUTCOME_TRY(<span class="keyword">auto</span>&amp;&amp; i, <a class="code" href="namespacemio.html#a1eecf99ef3a231d628f968aeb2136865">mio::deserialize</a>(io, <a class="code" href="namespacemio.html#a2f858e287c3935240954cf75cf53cfeb">mio::Tag</a>&lt;std::underlying_type_t&lt;E&gt;&gt;{}));</div>
 <div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespacemio.html#a80d7fd30c9669e05b537b2caedd82bb8">success</a>(E(i));</div>
 <div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;}</div>
 <div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160; </div>

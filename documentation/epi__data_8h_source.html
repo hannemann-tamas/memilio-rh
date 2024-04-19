@@ -127,7 +127,7 @@ $(function() {
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespacemio.html#a3cd34c233549e8b0e086c67fd82809d3">apply</a>(</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            io,</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            [](<span class="keyword">auto</span>&amp;&amp; str_) -&gt; IOResult&lt;StringDate&gt; {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                BOOST_OUTCOME_TRY(date, <a class="code" href="namespacemio.html#a8630d8af93b95cc04f1f60ec774a425b">parse_date</a>(str_));</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                BOOST_OUTCOME_TRY(<span class="keyword">auto</span>&amp;&amp; date, <a class="code" href="namespacemio.html#a8630d8af93b95cc04f1f60ec774a425b">parse_date</a>(str_));</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="namespacemio.html#a80d7fd30c9669e05b537b2caedd82bb8">success</a>(date);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            },</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            str);</div>
@@ -218,7 +218,7 @@ $(function() {
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="keyword">inline</span> IOResult&lt;std::vector&lt;ConfirmedCasesDataEntry&gt;&gt; deserialize_confirmed_cases_data(<span class="keyword">const</span> Json::Value&amp; jsvalue)</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;{</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    BOOST_OUTCOME_TRY(cases_data, deserialize_json(jsvalue, <a class="code" href="namespacemio.html#a2f858e287c3935240954cf75cf53cfeb">Tag</a>&lt;std::vector&lt;ConfirmedCasesDataEntry&gt;&gt;{}));</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    BOOST_OUTCOME_TRY(<span class="keyword">auto</span>&amp;&amp; cases_data, deserialize_json(jsvalue, <a class="code" href="namespacemio.html#a2f858e287c3935240954cf75cf53cfeb">Tag</a>&lt;std::vector&lt;ConfirmedCasesDataEntry&gt;&gt;{}));</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="comment">//filter entries with unknown age group</span></div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keyword">auto</span> it = std::remove_if(cases_data.begin(), cases_data.end(), [](<span class="keyword">auto</span>&amp;&amp; rki_entry) {</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        return rki_entry.age_group &gt;= AgeGroup(ConfirmedCasesDataEntry::age_group_names.size());</div>
@@ -229,7 +229,7 @@ $(function() {
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="keyword">inline</span> IOResult&lt;std::vector&lt;ConfirmedCasesDataEntry&gt;&gt; read_confirmed_cases_data(<span class="keyword">const</span> std::string&amp; filename)</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;{</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    BOOST_OUTCOME_TRY(jsvalue, read_json(filename));</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    BOOST_OUTCOME_TRY(<span class="keyword">auto</span>&amp;&amp; jsvalue, read_json(filename));</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordflow">return</span> deserialize_confirmed_cases_data(jsvalue);</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;}</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
@@ -279,7 +279,7 @@ $(function() {
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    std::vector&lt;T&gt; w;</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    w.reserve(v.size());</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; r : v) {</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        BOOST_OUTCOME_TRY(t, r);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        BOOST_OUTCOME_TRY(<span class="keyword">auto</span>&amp;&amp; t, r);</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        w.push_back(t);</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    }</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespacemio.html#a80d7fd30c9669e05b537b2caedd82bb8">success</a>(w);</div>
@@ -407,7 +407,7 @@ $(function() {
 <div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="keyword">inline</span> IOResult&lt;std::vector&lt;PopulationDataEntry&gt;&gt; deserialize_population_data(<span class="keyword">const</span> Json::Value&amp; jsvalue,</div>
 <div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                                                                              <span class="keywordtype">bool</span> rki_age_groups = <span class="keyword">true</span>)</div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;{</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    BOOST_OUTCOME_TRY(population_data, deserialize_json(jsvalue, <a class="code" href="namespacemio.html#a2f858e287c3935240954cf75cf53cfeb">Tag</a>&lt;std::vector&lt;PopulationDataEntry&gt;&gt;{}));</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    BOOST_OUTCOME_TRY(<span class="keyword">auto</span>&amp;&amp; population_data, deserialize_json(jsvalue, <a class="code" href="namespacemio.html#a2f858e287c3935240954cf75cf53cfeb">Tag</a>&lt;std::vector&lt;PopulationDataEntry&gt;&gt;{}));</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    <span class="keywordflow">if</span> (rki_age_groups) {</div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespacemio.html#a80d7fd30c9669e05b537b2caedd82bb8">success</a>(details::interpolate_to_rki_age_groups(population_data));</div>
 <div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    }</div>
@@ -419,7 +419,7 @@ $(function() {
 <div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;<span class="keyword">inline</span> IOResult&lt;std::vector&lt;PopulationDataEntry&gt;&gt; <a class="code" href="namespacememilio_1_1epidata_1_1getPopulationData.html#ac66417653f81cb2389a16c6eb839fedf">read_population_data</a>(<span class="keyword">const</span> std::string&amp; filename,</div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                                                                       <span class="keywordtype">bool</span> rki_age_group = <span class="keyword">true</span>)</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;{</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    BOOST_OUTCOME_TRY(jsvalue, read_json(filename));</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    BOOST_OUTCOME_TRY(<span class="keyword">auto</span>&amp;&amp; jsvalue, read_json(filename));</div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    <span class="keywordflow">return</span> deserialize_population_data(jsvalue, rki_age_group);</div>
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;}</div>
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160; </div>
@@ -477,7 +477,7 @@ $(function() {
 <div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160; </div>
 <div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;<span class="keyword">inline</span> IOResult&lt;std::vector&lt;VaccinationDataEntry&gt;&gt; read_vaccination_data(<span class="keyword">const</span> std::string&amp; filename)</div>
 <div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;{</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    BOOST_OUTCOME_TRY(jsvalue, read_json(filename));</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    BOOST_OUTCOME_TRY(<span class="keyword">auto</span>&amp;&amp; jsvalue, read_json(filename));</div>
 <div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;    <span class="keywordflow">return</span> deserialize_vaccination_data(jsvalue);</div>
 <div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;}</div>
 <div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160; </div>

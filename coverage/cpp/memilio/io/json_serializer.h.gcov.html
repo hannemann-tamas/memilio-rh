@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-04-08 15:54:10</td>
+            <td class="headerValue">2024-04-19 13:56:46</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">274</td>
@@ -498,7 +498,7 @@
 <a name="436"><span class="lineNum">     436 </span><span class="lineCov">        142 :             Container v;</span></a>
 <a name="437"><span class="lineNum">     437 </span><span class="lineCov">      37093 :             for (auto&amp;&amp; el : array) {</span></a>
 <a name="438"><span class="lineNum">     438 </span><span class="lineCov">      18514 :                 auto ctxt = JsonContext(el, io.m_status, io.m_flags);</span></a>
-<a name="439"><span class="lineNum">     439 </span><span class="lineCov">      18514 :                 BOOST_OUTCOME_TRY(val, mio::deserialize(ctxt, Tag&lt;typename Container::value_type&gt;{}));</span></a>
+<a name="439"><span class="lineNum">     439 </span><span class="lineCov">      18514 :                 BOOST_OUTCOME_TRY(auto&amp;&amp; val, mio::deserialize(ctxt, Tag&lt;typename Container::value_type&gt;{}));</span></a>
 <a name="440"><span class="lineNum">     440 </span><span class="lineCov">      18511 :                 v.insert(v.end(), val);</span></a>
 <a name="441"><span class="lineNum">     441 </span>            :             }</a>
 <a name="442"><span class="lineNum">     442 </span><span class="lineCov">         68 :             return success(std::move(v));</span></a>
@@ -564,7 +564,7 @@
 <a name="502"><span class="lineNum">     502 </span>            : template &lt;class T&gt;</a>
 <a name="503"><span class="lineNum">     503 </span><span class="lineCov">          5 : IOResult&lt;void&gt; write_json(const std::string&amp; path, const T&amp; t, int flags = IOF_None)</span></a>
 <a name="504"><span class="lineNum">     504 </span>            : {</a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineCov">         10 :     BOOST_OUTCOME_TRY(js, serialize_json(t, flags));</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineCov">         10 :     BOOST_OUTCOME_TRY(auto&amp;&amp; js, serialize_json(t, flags));</span></a>
 <a name="506"><span class="lineNum">     506 </span><span class="lineCov">          5 :     return write_json(path, js);</span></a>
 <a name="507"><span class="lineNum">     507 </span>            : }</a>
 <a name="508"><span class="lineNum">     508 </span>            : </a>
@@ -614,7 +614,7 @@
 <a name="552"><span class="lineNum">     552 </span>            : template &lt;class T&gt;</a>
 <a name="553"><span class="lineNum">     553 </span><span class="lineCov">         20 : IOResult&lt;T&gt; read_json(const std::string&amp; path, Tag&lt;T&gt; tag, int flags = IOF_None)</span></a>
 <a name="554"><span class="lineNum">     554 </span>            : {</a>
-<a name="555"><span class="lineNum">     555 </span><span class="lineCov">         40 :     BOOST_OUTCOME_TRY(js, read_json(path));</span></a>
+<a name="555"><span class="lineNum">     555 </span><span class="lineCov">         40 :     BOOST_OUTCOME_TRY(auto&amp;&amp; js, read_json(path));</span></a>
 <a name="556"><span class="lineNum">     556 </span><span class="lineCov">         20 :     return deserialize_json(js, tag, flags);</span></a>
 <a name="557"><span class="lineNum">     557 </span>            : }</a>
 <a name="558"><span class="lineNum">     558 </span>            : </a>

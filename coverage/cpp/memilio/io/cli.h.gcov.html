@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-04-08 15:54:10</td>
+            <td class="headerValue">2024-04-19 13:56:46</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">302</td>
@@ -596,7 +596,7 @@
 <a name="534"><span class="lineNum">     534 </span>            :     }</a>
 <a name="535"><span class="lineNum">     535 </span>            :     // set each parameter manually</a>
 <a name="536"><span class="lineNum">     536 </span><span class="lineCov">          6 :     for (auto itr = json_result.value().begin(); itr != json_result.value().end(); itr++) {</span></a>
-<a name="537"><span class="lineNum">     537 </span><span class="lineCov">          4 :         BOOST_OUTCOME_TRY(set_param_impl&lt;details::cli::NameOrAliasMatcher&gt;(typelist&lt;Parameters...&gt;{}, parameters,</span></a>
+<a name="537"><span class="lineNum">     537 </span><span class="lineCov">          8 :         BOOST_OUTCOME_TRY(set_param_impl&lt;details::cli::NameOrAliasMatcher&gt;(typelist&lt;Parameters...&gt;{}, parameters,</span></a>
 <a name="538"><span class="lineNum">     538 </span>            :                                                                            itr.name().c_str(), *itr));</a>
 <a name="539"><span class="lineNum">     539 </span>            :     }</a>
 <a name="540"><span class="lineNum">     540 </span><span class="lineCov">          4 :     return mio::success();</span></a>
@@ -646,7 +646,7 @@
 <a name="584"><span class="lineNum">     584 </span><span class="lineCov">          1 :             i++; // skip the PrintOption argument</span></a>
 <a name="585"><span class="lineNum">     585 </span><span class="lineCov">          3 :             for (; i &lt; argc &amp;&amp; !Identifier(argv[i]).is_option(); i++) {</span></a>
 <a name="586"><span class="lineNum">     586 </span>            :                 // try to get the parameter's json value</a>
-<a name="587"><span class="lineNum">     587 </span><span class="lineCov">          2 :                 BOOST_OUTCOME_TRY(value, get_param(parameters, argv[i]));</span></a>
+<a name="587"><span class="lineNum">     587 </span><span class="lineCov">          6 :                 BOOST_OUTCOME_TRY(auto&amp;&amp; value, get_param(parameters, argv[i]));</span></a>
 <a name="588"><span class="lineNum">     588 </span>            :                 // print the name (or alias) and value</a>
 <a name="589"><span class="lineNum">     589 </span><span class="lineCov">          2 :                 os &lt;&lt; &quot;Option &quot; &lt;&lt; argv[i] &lt;&lt; &quot;:\n&quot; &lt;&lt; value &lt;&lt; &quot;\n&quot;;</span></a>
 <a name="590"><span class="lineNum">     590 </span>            :             }</a>

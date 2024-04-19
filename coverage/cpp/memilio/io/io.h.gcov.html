@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-04-08 15:54:10</td>
+            <td class="headerValue">2024-04-19 13:56:46</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">758</td>
@@ -254,7 +254,7 @@
 <a name="192"><span class="lineNum">     192 </span>            :     /**</a>
 <a name="193"><span class="lineNum">     193 </span>            :      * default constructor, represents success</a>
 <a name="194"><span class="lineNum">     194 </span>            :      */</a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">     398494 :     IOStatus() = default;</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">     133195 :     IOStatus() = default;</span></a>
 <a name="196"><span class="lineNum">     196 </span>            : </a>
 <a name="197"><span class="lineNum">     197 </span>            :     /**</a>
 <a name="198"><span class="lineNum">     198 </span>            :      * constructor with error code and message</a>
@@ -394,7 +394,7 @@
 <a name="332"><span class="lineNum">     332 </span>            :  * extern void use_int(int i);</a>
 <a name="333"><span class="lineNum">     333 </span>            :  * IOResult&lt;void&gt; parse_and_use_int(const std::string&amp; s)</a>
 <a name="334"><span class="lineNum">     334 </span>            :  * {</a>
-<a name="335"><span class="lineNum">     335 </span>            :  *   BOOST_OUTCOME_TRY(i, parse_int(s));</a>
+<a name="335"><span class="lineNum">     335 </span>            :  *   BOOST_OUTCOME_TRY(auto&amp;&amp; i, parse_int(s));</a>
 <a name="336"><span class="lineNum">     336 </span>            :  *   use_int(i);</a>
 <a name="337"><span class="lineNum">     337 </span>            :  *   return success();</a>
 <a name="338"><span class="lineNum">     338 </span>            :  * }</a>
@@ -432,9 +432,9 @@
 <a name="370"><span class="lineNum">     370 </span>            :  * Use `return failure(s)` to conveniently return an error from a function.</a>
 <a name="371"><span class="lineNum">     371 </span>            :  * @param s the status that contains the error.</a>
 <a name="372"><span class="lineNum">     372 </span>            :  */</a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">         42 : inline auto failure(const IOStatus&amp; s)</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">         41 : inline auto failure(const IOStatus&amp; s)</span></a>
 <a name="374"><span class="lineNum">     374 </span>            : {</a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">         42 :     return boost::outcome_v2::failure(s);</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">         41 :     return boost::outcome_v2::failure(s);</span></a>
 <a name="376"><span class="lineNum">     376 </span>            : }</a>
 <a name="377"><span class="lineNum">     377 </span>            : </a>
 <a name="378"><span class="lineNum">     378 </span>            : /**</a>
@@ -544,7 +544,7 @@
 <a name="482"><span class="lineNum">     482 </span><span class="lineCov">     198302 :     IOStatus status[] = {(rs ? IOStatus{} : rs.error())...};</span></a>
 <a name="483"><span class="lineNum">     483 </span><span class="lineCov">     165610 :     auto iter_err     = std::find_if(std::begin(status), std::end(status), [](auto&amp; s) {</span></a>
 <a name="484"><span class="lineNum">     484 </span><span class="lineCov">     132924 :         return s.is_error();</span></a>
-<a name="485"><span class="lineNum">     485 </span>            :     });</a>
+<a name="485"><span class="lineNum">     485 </span>            :         });</a>
 <a name="486"><span class="lineNum">     486 </span>            : </a>
 <a name="487"><span class="lineNum">     487 </span>            :     //evaluate f if all succesful</a>
 <a name="488"><span class="lineNum">     488 </span><span class="lineCov">      32690 :     auto result =</span></a>
@@ -720,7 +720,7 @@
 <a name="658"><span class="lineNum">     658 </span>            : template &lt;class IOContext, class E, std::enable_if_t&lt;std::is_enum&lt;E&gt;::value, void*&gt; = nullptr&gt;</a>
 <a name="659"><span class="lineNum">     659 </span><span class="lineCov">          2 : IOResult&lt;E&gt; deserialize_internal(IOContext&amp; io, Tag&lt;E&gt; /*tag*/)</span></a>
 <a name="660"><span class="lineNum">     660 </span>            : {</a>
-<a name="661"><span class="lineNum">     661 </span><span class="lineCov">          4 :     BOOST_OUTCOME_TRY(i, mio::deserialize(io, mio::Tag&lt;std::underlying_type_t&lt;E&gt;&gt;{}));</span></a>
+<a name="661"><span class="lineNum">     661 </span><span class="lineCov">          4 :     BOOST_OUTCOME_TRY(auto&amp;&amp; i, mio::deserialize(io, mio::Tag&lt;std::underlying_type_t&lt;E&gt;&gt;{}));</span></a>
 <a name="662"><span class="lineNum">     662 </span><span class="lineCov">          2 :     return success(E(i));</span></a>
 <a name="663"><span class="lineNum">     663 </span>            : }</a>
 <a name="664"><span class="lineNum">     664 </span>            : </a>

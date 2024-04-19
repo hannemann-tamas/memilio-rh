@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-04-08 15:54:10</td>
+            <td class="headerValue">2024-04-19 13:56:46</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">38</td>
@@ -383,7 +383,7 @@
 <a name="321"><span class="lineNum">     321 </span><span class="lineCov">         17 :     for (auto&amp; damping_expr : damping_expr_group) {</span></a>
 <a name="322"><span class="lineNum">     322 </span>            :         //go from the back so indices aren't invalidated when dampings are removed</a>
 <a name="323"><span class="lineNum">     323 </span>            :         //use indices to loop instead of reverse iterators because removing invalidates the current iterator</a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineCov">         34 :         for (auto i = size_t(0); i &lt; damping_expr.get_dampings().size() - 1; ++i) {</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">         34 :         for (auto i = int(0); i &lt; int(damping_expr.get_dampings().size()) - 1; ++i) {</span></a>
 <a name="325"><span class="lineNum">     325 </span><span class="lineCov">         24 :             auto it = damping_expr.get_dampings().rbegin() + i;</span></a>
 <a name="326"><span class="lineNum">     326 </span>            : </a>
 <a name="327"><span class="lineNum">     327 </span>            :             //look for previous damping of the same type/level</a>

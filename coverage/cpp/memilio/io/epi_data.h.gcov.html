@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-04-08 15:54:10</td>
+            <td class="headerValue">2024-04-19 13:56:46</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">28</td>
@@ -120,7 +120,7 @@
 <a name="58"><span class="lineNum">      58 </span>            :         return apply(</a>
 <a name="59"><span class="lineNum">      59 </span>            :             io,</a>
 <a name="60"><span class="lineNum">      60 </span><span class="lineCov">      12879 :             [](auto&amp;&amp; str_) -&gt; IOResult&lt;StringDate&gt; {</span></a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">      25758 :                 BOOST_OUTCOME_TRY(date, parse_date(str_));</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">      25758 :                 BOOST_OUTCOME_TRY(auto&amp;&amp; date, parse_date(str_));</span></a>
 <a name="62"><span class="lineNum">      62 </span><span class="lineCov">      25758 :                 return success(date);</span></a>
 <a name="63"><span class="lineNum">      63 </span>            :             },</a>
 <a name="64"><span class="lineNum">      64 </span><span class="lineCov">      25758 :             str);</span></a>
@@ -239,7 +239,7 @@
 <a name="177"><span class="lineNum">     177 </span>            :  */</a>
 <a name="178"><span class="lineNum">     178 </span><span class="lineCov">         19 : inline IOResult&lt;std::vector&lt;ConfirmedCasesDataEntry&gt;&gt; deserialize_confirmed_cases_data(const Json::Value&amp; jsvalue)</span></a>
 <a name="179"><span class="lineNum">     179 </span>            : {</a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">         37 :     BOOST_OUTCOME_TRY(cases_data, deserialize_json(jsvalue, Tag&lt;std::vector&lt;ConfirmedCasesDataEntry&gt;&gt;{}));</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">         38 :     BOOST_OUTCOME_TRY(auto&amp;&amp; cases_data, deserialize_json(jsvalue, Tag&lt;std::vector&lt;ConfirmedCasesDataEntry&gt;&gt;{}));</span></a>
 <a name="181"><span class="lineNum">     181 </span>            :     //filter entries with unknown age group</a>
 <a name="182"><span class="lineNum">     182 </span><span class="lineCov">         36 :     auto it = std::remove_if(cases_data.begin(), cases_data.end(), [](auto&amp;&amp; rki_entry) {</span></a>
 <a name="183"><span class="lineNum">     183 </span><span class="lineCov">       9022 :         return rki_entry.age_group &gt;= AgeGroup(ConfirmedCasesDataEntry::age_group_names.size());</span></a>
@@ -255,7 +255,7 @@
 <a name="193"><span class="lineNum">     193 </span>            :  */</a>
 <a name="194"><span class="lineNum">     194 </span><span class="lineCov">         17 : inline IOResult&lt;std::vector&lt;ConfirmedCasesDataEntry&gt;&gt; read_confirmed_cases_data(const std::string&amp; filename)</span></a>
 <a name="195"><span class="lineNum">     195 </span>            : {</a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">         34 :     BOOST_OUTCOME_TRY(jsvalue, read_json(filename));</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">         34 :     BOOST_OUTCOME_TRY(auto&amp;&amp; jsvalue, read_json(filename));</span></a>
 <a name="197"><span class="lineNum">     197 </span><span class="lineCov">         17 :     return deserialize_confirmed_cases_data(jsvalue);</span></a>
 <a name="198"><span class="lineNum">     198 </span>            : }</a>
 <a name="199"><span class="lineNum">     199 </span>            : </a>
@@ -321,7 +321,7 @@
 <a name="259"><span class="lineNum">     259 </span><span class="lineCov">      11242 :     std::vector&lt;T&gt; w;</span></a>
 <a name="260"><span class="lineNum">     260 </span><span class="lineCov">       5621 :     w.reserve(v.size());</span></a>
 <a name="261"><span class="lineNum">     261 </span><span class="lineCov">      67441 :     for (auto&amp;&amp; r : v) {</span></a>
-<a name="262"><span class="lineNum">     262 </span><span class="lineCov">      61821 :         BOOST_OUTCOME_TRY(t, r);</span></a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineCov">      61821 :         BOOST_OUTCOME_TRY(auto&amp;&amp; t, r);</span></a>
 <a name="263"><span class="lineNum">     263 </span><span class="lineCov">      61820 :         w.push_back(t);</span></a>
 <a name="264"><span class="lineNum">     264 </span>            :     }</a>
 <a name="265"><span class="lineNum">     265 </span><span class="lineCov">       5620 :     return success(w);</span></a>
@@ -462,7 +462,7 @@
 <a name="400"><span class="lineNum">     400 </span><span class="lineCov">         18 : inline IOResult&lt;std::vector&lt;PopulationDataEntry&gt;&gt; deserialize_population_data(const Json::Value&amp; jsvalue,</span></a>
 <a name="401"><span class="lineNum">     401 </span>            :                                                                               bool rki_age_groups = true)</a>
 <a name="402"><span class="lineNum">     402 </span>            : {</a>
-<a name="403"><span class="lineNum">     403 </span><span class="lineCov">         35 :     BOOST_OUTCOME_TRY(population_data, deserialize_json(jsvalue, Tag&lt;std::vector&lt;PopulationDataEntry&gt;&gt;{}));</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">         36 :     BOOST_OUTCOME_TRY(auto&amp;&amp; population_data, deserialize_json(jsvalue, Tag&lt;std::vector&lt;PopulationDataEntry&gt;&gt;{}));</span></a>
 <a name="404"><span class="lineNum">     404 </span><span class="lineCov">         17 :     if (rki_age_groups) {</span></a>
 <a name="405"><span class="lineNum">     405 </span><span class="lineCov">         16 :         return success(details::interpolate_to_rki_age_groups(population_data));</span></a>
 <a name="406"><span class="lineNum">     406 </span>            :     }</a>
@@ -480,7 +480,7 @@
 <a name="418"><span class="lineNum">     418 </span><span class="lineCov">         16 : inline IOResult&lt;std::vector&lt;PopulationDataEntry&gt;&gt; read_population_data(const std::string&amp; filename,</span></a>
 <a name="419"><span class="lineNum">     419 </span>            :                                                                        bool rki_age_group = true)</a>
 <a name="420"><span class="lineNum">     420 </span>            : {</a>
-<a name="421"><span class="lineNum">     421 </span><span class="lineCov">         32 :     BOOST_OUTCOME_TRY(jsvalue, read_json(filename));</span></a>
+<a name="421"><span class="lineNum">     421 </span><span class="lineCov">         32 :     BOOST_OUTCOME_TRY(auto&amp;&amp; jsvalue, read_json(filename));</span></a>
 <a name="422"><span class="lineNum">     422 </span><span class="lineCov">         16 :     return deserialize_population_data(jsvalue, rki_age_group);</span></a>
 <a name="423"><span class="lineNum">     423 </span>            : }</a>
 <a name="424"><span class="lineNum">     424 </span>            : </a>
@@ -569,7 +569,7 @@
 <a name="507"><span class="lineNum">     507 </span>            :  */</a>
 <a name="508"><span class="lineNum">     508 </span><span class="lineCov">          7 : inline IOResult&lt;std::vector&lt;VaccinationDataEntry&gt;&gt; read_vaccination_data(const std::string&amp; filename)</span></a>
 <a name="509"><span class="lineNum">     509 </span>            : {</a>
-<a name="510"><span class="lineNum">     510 </span><span class="lineCov">         14 :     BOOST_OUTCOME_TRY(jsvalue, read_json(filename));</span></a>
+<a name="510"><span class="lineNum">     510 </span><span class="lineCov">         14 :     BOOST_OUTCOME_TRY(auto&amp;&amp; jsvalue, read_json(filename));</span></a>
 <a name="511"><span class="lineNum">     511 </span><span class="lineCov">          7 :     return deserialize_vaccination_data(jsvalue);</span></a>
 <a name="512"><span class="lineNum">     512 </span>            : }</a>
 <a name="513"><span class="lineNum">     513 </span>            : </a>

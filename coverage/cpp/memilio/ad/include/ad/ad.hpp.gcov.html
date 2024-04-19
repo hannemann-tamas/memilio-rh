@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">477</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntry">103</td>
+            <td class="headerCovTableEntry">489</td>
+            <td class="headerCovTableEntryLo">21.1 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-04-08 15:54:10</td>
+            <td class="headerValue">2024-04-19 13:56:46</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">567</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntry">79</td>
+            <td class="headerCovTableEntry">591</td>
+            <td class="headerCovTableEntryLo">13.4 %</td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -178,8 +178,8 @@
 <a name="116"><span class="lineNum">     116 </span>            : namespace ad {</a>
 <a name="117"><span class="lineNum">     117 </span>            :     namespace operations {</a>
 <a name="118"><span class="lineNum">     118 </span>            :         template&lt;class AD_TAPE_REAL&gt;struct ad_add_aa {</a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineNoCov">          0 :             template&lt;class T1, class T2&gt;static inline const AD_TAPE_REAL eval (const T1 &amp;arg1, const T2 &amp;arg2) {</span></a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineNoCov">          0 :                 return arg1._value() + arg2._value();</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">         84 :             template&lt;class T1, class T2&gt;static inline const AD_TAPE_REAL eval (const T1 &amp;arg1, const T2 &amp;arg2) {</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">         84 :                 return arg1._value() + arg2._value();</span></a>
 <a name="121"><span class="lineNum">     121 </span><span class="lineNoCov">          0 :             } template&lt;class T1,class T2&gt;static inline const AD_TAPE_REAL calc_partial1(const AD_TAPE_REAL &amp;_value, const T1 &amp;arg1, const T2 &amp;arg2 ) {</span></a>
 <a name="122"><span class="lineNum">     122 </span>            :                 (void) _value;</a>
 <a name="123"><span class="lineNum">     123 </span>            :                 (void)arg1;</a>
@@ -193,48 +193,48 @@
 <a name="131"><span class="lineNum">     131 </span>            :             }</a>
 <a name="132"><span class="lineNum">     132 </span>            :         };</a>
 <a name="133"><span class="lineNum">     133 </span>            :         template&lt;class AD_TAPE_REAL&gt;struct ad_sub_aa {</a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineNoCov">          0 :             template&lt;class T1, class T2&gt;static inline const AD_TAPE_REAL eval (const T1 &amp;arg1, const T2 &amp;arg2) {</span></a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineNoCov">          0 :                 return arg1._value() - arg2._value();</span></a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineNoCov">          0 :             } template&lt;class T1,class T2&gt;static inline const AD_TAPE_REAL calc_partial1(const AD_TAPE_REAL &amp;_value, const T1 &amp;arg1, const T2 &amp;arg2 ) {</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">        117 :             template&lt;class T1, class T2&gt;static inline const AD_TAPE_REAL eval (const T1 &amp;arg1, const T2 &amp;arg2) {</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">        117 :                 return arg1._value() - arg2._value();</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">         12 :             } template&lt;class T1,class T2&gt;static inline const AD_TAPE_REAL calc_partial1(const AD_TAPE_REAL &amp;_value, const T1 &amp;arg1, const T2 &amp;arg2 ) {</span></a>
 <a name="137"><span class="lineNum">     137 </span>            :                 (void) _value;</a>
 <a name="138"><span class="lineNum">     138 </span>            :                 (void)arg1;</a>
 <a name="139"><span class="lineNum">     139 </span>            :                 (void)arg2;</a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineNoCov">          0 :                 return 1.0;</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineNoCov">          0 :             } template&lt;class T1,class T2&gt;static inline const AD_TAPE_REAL calc_partial2(const AD_TAPE_REAL &amp;_value, const T1 &amp;arg1, const T2 &amp;arg2 ) {</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">         12 :                 return 1.0;</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">         12 :             } template&lt;class T1,class T2&gt;static inline const AD_TAPE_REAL calc_partial2(const AD_TAPE_REAL &amp;_value, const T1 &amp;arg1, const T2 &amp;arg2 ) {</span></a>
 <a name="142"><span class="lineNum">     142 </span>            :                 (void) _value;</a>
 <a name="143"><span class="lineNum">     143 </span>            :                 (void)arg1;</a>
 <a name="144"><span class="lineNum">     144 </span>            :                 (void)arg2;</a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineNoCov">          0 :                 return -1.0;</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">         12 :                 return -1.0;</span></a>
 <a name="146"><span class="lineNum">     146 </span>            :             }</a>
 <a name="147"><span class="lineNum">     147 </span>            :         };</a>
 <a name="148"><span class="lineNum">     148 </span>            :         template&lt;class AD_TAPE_REAL&gt;struct ad_mul_aa {</a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineNoCov">          0 :             template&lt;class T1, class T2&gt;static inline const AD_TAPE_REAL eval (const T1 &amp;arg1, const T2 &amp;arg2) {</span></a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 :                 return arg1._value() * arg2._value();</span></a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 :             } template&lt;class T1,class T2&gt;static inline const AD_TAPE_REAL calc_partial1(const AD_TAPE_REAL &amp;_value, const T1 &amp;arg1, const T2 &amp;arg2 ) {</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">        154 :             template&lt;class T1, class T2&gt;static inline const AD_TAPE_REAL eval (const T1 &amp;arg1, const T2 &amp;arg2) {</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">        154 :                 return arg1._value() * arg2._value();</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">         60 :             } template&lt;class T1,class T2&gt;static inline const AD_TAPE_REAL calc_partial1(const AD_TAPE_REAL &amp;_value, const T1 &amp;arg1, const T2 &amp;arg2 ) {</span></a>
 <a name="152"><span class="lineNum">     152 </span>            :                 (void) _value;</a>
 <a name="153"><span class="lineNum">     153 </span>            :                 (void)arg1;</a>
 <a name="154"><span class="lineNum">     154 </span>            :                 (void)arg2;</a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineNoCov">          0 :                 return arg2._value();</span></a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 :             } template&lt;class T1,class T2&gt;static inline const AD_TAPE_REAL calc_partial2(const AD_TAPE_REAL &amp;_value, const T1 &amp;arg1, const T2 &amp;arg2 ) {</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">         60 :                 return arg2._value();</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">         60 :             } template&lt;class T1,class T2&gt;static inline const AD_TAPE_REAL calc_partial2(const AD_TAPE_REAL &amp;_value, const T1 &amp;arg1, const T2 &amp;arg2 ) {</span></a>
 <a name="157"><span class="lineNum">     157 </span>            :                 (void) _value;</a>
 <a name="158"><span class="lineNum">     158 </span>            :                 (void)arg1;</a>
 <a name="159"><span class="lineNum">     159 </span>            :                 (void)arg2;</a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :                 return arg1._value();</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         60 :                 return arg1._value();</span></a>
 <a name="161"><span class="lineNum">     161 </span>            :             }</a>
 <a name="162"><span class="lineNum">     162 </span>            :         };</a>
 <a name="163"><span class="lineNum">     163 </span>            :         template&lt;class AD_TAPE_REAL&gt;struct ad_div_aa {</a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :             template&lt;class T1, class T2&gt;static inline const AD_TAPE_REAL eval (const T1 &amp;arg1, const T2 &amp;arg2) {</span></a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 :                 return arg1._value() / arg2._value();</span></a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineNoCov">          0 :             } template&lt;class T1,class T2&gt;static inline const AD_TAPE_REAL calc_partial1(const AD_TAPE_REAL &amp;_value, const T1 &amp;arg1, const T2 &amp;arg2 ) {</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">          6 :             template&lt;class T1, class T2&gt;static inline const AD_TAPE_REAL eval (const T1 &amp;arg1, const T2 &amp;arg2) {</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          6 :                 return arg1._value() / arg2._value();</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          6 :             } template&lt;class T1,class T2&gt;static inline const AD_TAPE_REAL calc_partial1(const AD_TAPE_REAL &amp;_value, const T1 &amp;arg1, const T2 &amp;arg2 ) {</span></a>
 <a name="167"><span class="lineNum">     167 </span>            :                 (void) _value;</a>
 <a name="168"><span class="lineNum">     168 </span>            :                 (void)arg1;</a>
 <a name="169"><span class="lineNum">     169 </span>            :                 (void)arg2;</a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineNoCov">          0 :                 return 1.0 / arg2._value();</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineNoCov">          0 :             } template&lt;class T1,class T2&gt;static inline const AD_TAPE_REAL calc_partial2(const AD_TAPE_REAL &amp;_value, const T1 &amp;arg1, const T2 &amp;arg2 ) {</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          6 :                 return 1.0 / arg2._value();</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          6 :             } template&lt;class T1,class T2&gt;static inline const AD_TAPE_REAL calc_partial2(const AD_TAPE_REAL &amp;_value, const T1 &amp;arg1, const T2 &amp;arg2 ) {</span></a>
 <a name="172"><span class="lineNum">     172 </span>            :                 (void) _value;</a>
 <a name="173"><span class="lineNum">     173 </span>            :                 (void)arg1;</a>
 <a name="174"><span class="lineNum">     174 </span>            :                 (void)arg2;</a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineNoCov">          0 :                 return -_value / arg2._value();</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          6 :                 return -_value / arg2._value();</span></a>
 <a name="176"><span class="lineNum">     176 </span>            :             }</a>
 <a name="177"><span class="lineNum">     177 </span>            :         };</a>
 <a name="178"><span class="lineNum">     178 </span>            :         template&lt;class AD_TAPE_REAL&gt;struct ad_add_ap {</a>
@@ -498,13 +498,13 @@
 <a name="436"><span class="lineNum">     436 </span>            :             }</a>
 <a name="437"><span class="lineNum">     437 </span>            :         };</a>
 <a name="438"><span class="lineNum">     438 </span>            :         template&lt;class AD_TAPE_REAL&gt;struct ad_minus {</a>
-<a name="439"><span class="lineNum">     439 </span><span class="lineNoCov">          0 :             template&lt;class T&gt;static inline const AD_TAPE_REAL eval(const T &amp;arg1) {</span></a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineNoCov">          0 :                 return -arg1._value();</span></a>
+<a name="439"><span class="lineNum">     439 </span><span class="lineCov">         92 :             template&lt;class T&gt;static inline const AD_TAPE_REAL eval(const T &amp;arg1) {</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">         92 :                 return -arg1._value();</span></a>
 <a name="441"><span class="lineNum">     441 </span>            :             }</a>
-<a name="442"><span class="lineNum">     442 </span><span class="lineNoCov">          0 :             template&lt;class T&gt;static inline const AD_TAPE_REAL calc_partial(const AD_TAPE_REAL &amp;_value, const T &amp;arg1 ) {</span></a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">          8 :             template&lt;class T&gt;static inline const AD_TAPE_REAL calc_partial(const AD_TAPE_REAL &amp;_value, const T &amp;arg1 ) {</span></a>
 <a name="443"><span class="lineNum">     443 </span>            :                 (void)_value;</a>
 <a name="444"><span class="lineNum">     444 </span>            :                 (void)arg1;</a>
-<a name="445"><span class="lineNum">     445 </span><span class="lineNoCov">          0 :                 return -1.0;</span></a>
+<a name="445"><span class="lineNum">     445 </span><span class="lineCov">          8 :                 return -1.0;</span></a>
 <a name="446"><span class="lineNum">     446 </span>            :             }</a>
 <a name="447"><span class="lineNum">     447 </span>            :         };</a>
 <a name="448"><span class="lineNum">     448 </span>            :         template&lt;class AD_TAPE_REAL&gt;struct ad_plus {</a>
@@ -519,13 +519,13 @@
 <a name="457"><span class="lineNum">     457 </span>            :         };</a>
 <a name="458"><span class="lineNum">     458 </span>            :         using ::fabs;</a>
 <a name="459"><span class="lineNum">     459 </span>            :         template&lt;class AD_TAPE_REAL&gt;struct ad_fabs {</a>
-<a name="460"><span class="lineNum">     460 </span><span class="lineNoCov">          0 :             template&lt;class T&gt;static inline const AD_TAPE_REAL eval(const T &amp;arg1) {</span></a>
-<a name="461"><span class="lineNum">     461 </span><span class="lineNoCov">          0 :                 return fabs(arg1._value());</span></a>
+<a name="460"><span class="lineNum">     460 </span><span class="lineCov">        225 :             template&lt;class T&gt;static inline const AD_TAPE_REAL eval(const T &amp;arg1) {</span></a>
+<a name="461"><span class="lineNum">     461 </span><span class="lineCov">        225 :                 return fabs(arg1._value());</span></a>
 <a name="462"><span class="lineNum">     462 </span>            :             }</a>
-<a name="463"><span class="lineNum">     463 </span><span class="lineNoCov">          0 :             template&lt;class T&gt;static inline const AD_TAPE_REAL calc_partial(const AD_TAPE_REAL &amp;_value, const T &amp;arg1 ) {</span></a>
+<a name="463"><span class="lineNum">     463 </span><span class="lineCov">        204 :             template&lt;class T&gt;static inline const AD_TAPE_REAL calc_partial(const AD_TAPE_REAL &amp;_value, const T &amp;arg1 ) {</span></a>
 <a name="464"><span class="lineNum">     464 </span>            :                 (void) _value;</a>
-<a name="465"><span class="lineNum">     465 </span><span class="lineNoCov">          0 :                 if (arg1._value() &lt; 0) return -1.0;</span></a>
-<a name="466"><span class="lineNum">     466 </span><span class="lineNoCov">          0 :                 else return 1.0;</span></a>
+<a name="465"><span class="lineNum">     465 </span><span class="lineCov">        204 :                 if (arg1._value() &lt; 0) return -1.0;</span></a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineCov">        196 :                 else return 1.0;</span></a>
 <a name="467"><span class="lineNum">     467 </span>            :             }</a>
 <a name="468"><span class="lineNum">     468 </span>            :         };</a>
 <a name="469"><span class="lineNum">     469 </span>            :         template&lt;class AD_TAPE_REAL&gt;struct ad_atan2_aa {</a>
@@ -687,13 +687,13 @@
 <a name="625"><span class="lineNum">     625 </span>            :             const AD_ARG &amp;_arg;</a>
 <a name="626"><span class="lineNum">     626 </span>            :             typedef AD_TAPE_REAL VALUE_TYPE;</a>
 <a name="627"><span class="lineNum">     627 </span>            :             typedef typename AD_ARG::DATA_TYPE DATA_TYPE;</a>
-<a name="628"><span class="lineNum">     628 </span><span class="lineNoCov">          0 :             explicit unary_intermediate(const AD_ARG &amp;arg) : _value_(AD_OPERATION::eval(arg)), _arg(arg) {</span></a>
-<a name="629"><span class="lineNum">     629 </span><span class="lineNoCov">          0 :             }</span></a>
-<a name="630"><span class="lineNum">     630 </span><span class="lineNoCov">          0 :             inline const AD_TAPE_REAL &amp;_value() const {</span></a>
-<a name="631"><span class="lineNum">     631 </span><span class="lineNoCov">          0 :                 return _value_;</span></a>
+<a name="628"><span class="lineNum">     628 </span><span class="lineCov">        317 :             explicit unary_intermediate(const AD_ARG &amp;arg) : _value_(AD_OPERATION::eval(arg)), _arg(arg) {</span></a>
+<a name="629"><span class="lineNum">     629 </span><span class="lineCov">        317 :             }</span></a>
+<a name="630"><span class="lineNum">     630 </span><span class="lineCov">        327 :             inline const AD_TAPE_REAL &amp;_value() const {</span></a>
+<a name="631"><span class="lineNum">     631 </span><span class="lineCov">        327 :                 return _value_;</span></a>
 <a name="632"><span class="lineNum">     632 </span>            :             }</a>
-<a name="633"><span class="lineNum">     633 </span><span class="lineNoCov">          0 :             inline const AD_TAPE_REAL pval() const {</span></a>
-<a name="634"><span class="lineNum">     634 </span><span class="lineNoCov">          0 :                 return AD_OPERATION::calc_partial(_value(), _arg);</span></a>
+<a name="633"><span class="lineNum">     633 </span><span class="lineCov">        212 :             inline const AD_TAPE_REAL pval() const {</span></a>
+<a name="634"><span class="lineNum">     634 </span><span class="lineCov">        212 :                 return AD_OPERATION::calc_partial(_value(), _arg);</span></a>
 <a name="635"><span class="lineNum">     635 </span>            :             }</a>
 <a name="636"><span class="lineNum">     636 </span>            :         };</a>
 <a name="637"><span class="lineNum">     637 </span>            :         template&lt;class AD_TAPE_REAL, class AD_ARG1, class AD_ARG2, class AD_OPERATION&gt; struct binary_intermediate_aa {</a>
@@ -702,19 +702,19 @@
 <a name="640"><span class="lineNum">     640 </span>            :             const AD_ARG2 &amp;_arg2;</a>
 <a name="641"><span class="lineNum">     641 </span>            :             typedef AD_TAPE_REAL VALUE_TYPE;</a>
 <a name="642"><span class="lineNum">     642 </span>            :             typedef typename AD_ARG1::DATA_TYPE DATA_TYPE;</a>
-<a name="643"><span class="lineNum">     643 </span><span class="lineNoCov">          0 :             binary_intermediate_aa(const AD_ARG1 &amp;arg1, const AD_ARG2 &amp;arg2) :</span></a>
-<a name="644"><span class="lineNum">     644 </span><span class="lineNoCov">          0 :                 _value_(AD_OPERATION::eval(arg1, arg2)),</span></a>
+<a name="643"><span class="lineNum">     643 </span><span class="lineCov">        361 :             binary_intermediate_aa(const AD_ARG1 &amp;arg1, const AD_ARG2 &amp;arg2) :</span></a>
+<a name="644"><span class="lineNum">     644 </span><span class="lineCov">        361 :                 _value_(AD_OPERATION::eval(arg1, arg2)),</span></a>
 <a name="645"><span class="lineNum">     645 </span>            :                 _arg1(arg1),</a>
-<a name="646"><span class="lineNum">     646 </span><span class="lineNoCov">          0 :                 _arg2(arg2) {</span></a>
-<a name="647"><span class="lineNum">     647 </span><span class="lineNoCov">          0 :             }</span></a>
-<a name="648"><span class="lineNum">     648 </span><span class="lineNoCov">          0 :             inline const AD_TAPE_REAL pval1() const {</span></a>
-<a name="649"><span class="lineNum">     649 </span><span class="lineNoCov">          0 :                 return AD_OPERATION::calc_partial1(_value(), _arg1, _arg2);</span></a>
+<a name="646"><span class="lineNum">     646 </span><span class="lineCov">        361 :                 _arg2(arg2) {</span></a>
+<a name="647"><span class="lineNum">     647 </span><span class="lineCov">        361 :             }</span></a>
+<a name="648"><span class="lineNum">     648 </span><span class="lineCov">         78 :             inline const AD_TAPE_REAL pval1() const {</span></a>
+<a name="649"><span class="lineNum">     649 </span><span class="lineCov">         78 :                 return AD_OPERATION::calc_partial1(_value(), _arg1, _arg2);</span></a>
 <a name="650"><span class="lineNum">     650 </span>            :             }</a>
-<a name="651"><span class="lineNum">     651 </span><span class="lineNoCov">          0 :             inline const AD_TAPE_REAL pval2() const {</span></a>
-<a name="652"><span class="lineNum">     652 </span><span class="lineNoCov">          0 :                 return AD_OPERATION::calc_partial2(_value(), _arg1, _arg2);</span></a>
+<a name="651"><span class="lineNum">     651 </span><span class="lineCov">         78 :             inline const AD_TAPE_REAL pval2() const {</span></a>
+<a name="652"><span class="lineNum">     652 </span><span class="lineCov">         78 :                 return AD_OPERATION::calc_partial2(_value(), _arg1, _arg2);</span></a>
 <a name="653"><span class="lineNum">     653 </span>            :             }</a>
-<a name="654"><span class="lineNum">     654 </span><span class="lineNoCov">          0 :             inline const AD_TAPE_REAL &amp;_value() const {</span></a>
-<a name="655"><span class="lineNum">     655 </span><span class="lineNoCov">          0 :                 return _value_;</span></a>
+<a name="654"><span class="lineNum">     654 </span><span class="lineCov">        445 :             inline const AD_TAPE_REAL &amp;_value() const {</span></a>
+<a name="655"><span class="lineNum">     655 </span><span class="lineCov">        445 :                 return _value_;</span></a>
 <a name="656"><span class="lineNum">     656 </span>            :             }</a>
 <a name="657"><span class="lineNum">     657 </span>            :         };</a>
 <a name="658"><span class="lineNum">     658 </span>            :         template&lt;class AD_TAPE_REAL, class AD_ARG1, class AD_OPERATION&gt; struct binary_intermediate_ap {</a>
@@ -759,17 +759,17 @@
 <a name="697"><span class="lineNum">     697 </span>            :                 typedef AD_TAPE_REAL VALUE_TYPE;</a>
 <a name="698"><span class="lineNum">     698 </span>            :                 typedef DATA_HANDLER DATA_TYPE;</a>
 <a name="699"><span class="lineNum">     699 </span>            :                 typedef typename passive_value_type_of&lt;AD_TAPE_REAL&gt;::TYPE PASSIVE_VALUE_TYPE;</a>
-<a name="700"><span class="lineNum">     700 </span><span class="lineNoCov">          0 :                 inline const AD_TAPE_REAL &amp;_value() const {</span></a>
-<a name="701"><span class="lineNum">     701 </span><span class="lineNoCov">          0 :                     return _value_;</span></a>
+<a name="700"><span class="lineNum">     700 </span><span class="lineCov">       1431 :                 inline const AD_TAPE_REAL &amp;_value() const {</span></a>
+<a name="701"><span class="lineNum">     701 </span><span class="lineCov">       1431 :                     return _value_;</span></a>
 <a name="702"><span class="lineNum">     702 </span>            :                 }</a>
 <a name="703"><span class="lineNum">     703 </span><span class="lineNoCov">          0 :                 inline AD_TAPE_REAL &amp;_value() {</span></a>
 <a name="704"><span class="lineNum">     704 </span><span class="lineNoCov">          0 :                     return _value_;</span></a>
 <a name="705"><span class="lineNum">     705 </span>            :                 }</a>
-<a name="706"><span class="lineNum">     706 </span><span class="lineNoCov">          0 :                 inline const DATA_HANDLER &amp;_data() const {</span></a>
-<a name="707"><span class="lineNum">     707 </span><span class="lineNoCov">          0 :                     return _data_;</span></a>
+<a name="706"><span class="lineNum">     706 </span><span class="lineCov">        362 :                 inline const DATA_HANDLER &amp;_data() const {</span></a>
+<a name="707"><span class="lineNum">     707 </span><span class="lineCov">        362 :                     return _data_;</span></a>
 <a name="708"><span class="lineNum">     708 </span>            :                 }</a>
-<a name="709"><span class="lineNum">     709 </span><span class="lineNoCov">          0 :                 inline DATA_HANDLER &amp;_data() {</span></a>
-<a name="710"><span class="lineNum">     710 </span><span class="lineNoCov">          0 :                     return _data_;</span></a>
+<a name="709"><span class="lineNum">     709 </span><span class="lineCov">        284 :                 inline DATA_HANDLER &amp;_data() {</span></a>
+<a name="710"><span class="lineNum">     710 </span><span class="lineCov">        284 :                     return _data_;</span></a>
 <a name="711"><span class="lineNum">     711 </span>            :                 }</a>
 <a name="712"><span class="lineNum">     712 </span>            :                 inline void _clear() {</a>
 <a name="713"><span class="lineNum">     713 </span>            :                     _data_.clear();</a>
@@ -789,7 +789,7 @@
 <a name="727"><span class="lineNum">     727 </span><span class="lineNoCov">          0 :                 inline active_type() : _value_(static_cast&lt;AD_TAPE_REAL&gt;(0.0)) {}</span></a>
 <a name="728"><span class="lineNum">     728 </span>            :                 template&lt;class AD_TAPE_REAL_TMP, class DATA_HANDLER_TMP&gt;</a>
 <a name="729"><span class="lineNum">     729 </span>            :                 inline active_type(const active_type&lt;AD_TAPE_REAL_TMP, DATA_HANDLER_TMP&gt; &amp;val) : _value_(val) {}</a>
-<a name="730"><span class="lineNum">     730 </span><span class="lineNoCov">          0 :                 inline active_type(const PASSIVE_VALUE_TYPE &amp;val) : _value_(val) {}</span></a>
+<a name="730"><span class="lineNum">     730 </span><span class="lineCov">         30 :                 inline active_type(const PASSIVE_VALUE_TYPE &amp;val) : _value_(val) {}</span></a>
 <a name="731"><span class="lineNum">     731 </span><span class="lineNoCov">          0 :                 inline active_type &amp;operator = (const active_type &amp;x) {</span></a>
 <a name="732"><span class="lineNum">     732 </span><span class="lineNoCov">          0 :                     this-&gt;_value_ = x._value_;</span></a>
 <a name="733"><span class="lineNum">     733 </span><span class="lineNoCov">          0 :                     this-&gt;_data_ = x._data_;</span></a>
@@ -807,13 +807,13 @@
 <a name="745"><span class="lineNum">     745 </span>            :                     return *this;</a>
 <a name="746"><span class="lineNum">     746 </span>            :                 }</a>
 <a name="747"><span class="lineNum">     747 </span>            :             private:</a>
-<a name="748"><span class="lineNum">     748 </span><span class="lineNoCov">          0 :                 template&lt;class A1_T1, class A1_T2, class A1_OP &gt; inline void build_from(const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt; &amp;x) {</span></a>
-<a name="749"><span class="lineNum">     749 </span><span class="lineNoCov">          0 :                     DATA_HANDLER::handle(x, *this);</span></a>
-<a name="750"><span class="lineNum">     750 </span><span class="lineNoCov">          0 :                     this-&gt;_value_ = x._value_;</span></a>
-<a name="751"><span class="lineNum">     751 </span><span class="lineNoCov">          0 :                 } public:</span></a>
-<a name="752"><span class="lineNum">     752 </span><span class="lineNoCov">          0 :                 template&lt;class A1_T1, class A1_T2, class A1_OP &gt; active_type(const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt; &amp;x) {</span></a>
-<a name="753"><span class="lineNum">     753 </span><span class="lineNoCov">          0 :                     build_from(x);</span></a>
-<a name="754"><span class="lineNum">     754 </span><span class="lineNoCov">          0 :                 } template&lt;class A1_T1, class A1_T2, class A1_OP &gt; inline active_type&amp; operator=(const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt; &amp;x) {</span></a>
+<a name="748"><span class="lineNum">     748 </span><span class="lineCov">         72 :                 template&lt;class A1_T1, class A1_T2, class A1_OP &gt; inline void build_from(const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt; &amp;x) {</span></a>
+<a name="749"><span class="lineNum">     749 </span><span class="lineCov">         72 :                     DATA_HANDLER::handle(x, *this);</span></a>
+<a name="750"><span class="lineNum">     750 </span><span class="lineCov">         72 :                     this-&gt;_value_ = x._value_;</span></a>
+<a name="751"><span class="lineNum">     751 </span><span class="lineCov">         72 :                 } public:</span></a>
+<a name="752"><span class="lineNum">     752 </span><span class="lineCov">         72 :                 template&lt;class A1_T1, class A1_T2, class A1_OP &gt; active_type(const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt; &amp;x) {</span></a>
+<a name="753"><span class="lineNum">     753 </span><span class="lineCov">         72 :                     build_from(x);</span></a>
+<a name="754"><span class="lineNum">     754 </span><span class="lineCov">         72 :                 } template&lt;class A1_T1, class A1_T2, class A1_OP &gt; inline active_type&amp; operator=(const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt; &amp;x) {</span></a>
 <a name="755"><span class="lineNum">     755 </span><span class="lineNoCov">          0 :                     build_from(x);</span></a>
 <a name="756"><span class="lineNum">     756 </span><span class="lineNoCov">          0 :                     return *this;</span></a>
 <a name="757"><span class="lineNum">     757 </span>            :                 }</a>
@@ -840,13 +840,13 @@
 <a name="778"><span class="lineNum">     778 </span>            :                     return *this;</a>
 <a name="779"><span class="lineNum">     779 </span>            :                 }</a>
 <a name="780"><span class="lineNum">     780 </span>            :             private:</a>
-<a name="781"><span class="lineNum">     781 </span><span class="lineNoCov">          0 :                 template&lt;class A1_T, class A1_OP &gt; inline void build_from(const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt; &amp;x) {</span></a>
-<a name="782"><span class="lineNum">     782 </span><span class="lineNoCov">          0 :                     DATA_HANDLER::handle(x, *this);</span></a>
-<a name="783"><span class="lineNum">     783 </span><span class="lineNoCov">          0 :                     this-&gt;_value_ = x._value_;</span></a>
-<a name="784"><span class="lineNum">     784 </span><span class="lineNoCov">          0 :                 } public:</span></a>
-<a name="785"><span class="lineNum">     785 </span><span class="lineNoCov">          0 :                 template&lt;class A1_T, class A1_OP &gt; active_type(const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt; &amp;x) {</span></a>
-<a name="786"><span class="lineNum">     786 </span><span class="lineNoCov">          0 :                     build_from(x);</span></a>
-<a name="787"><span class="lineNum">     787 </span><span class="lineNoCov">          0 :                 } template&lt;class A1_T, class A1_OP &gt; inline active_type&amp; operator=(const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt; &amp;x) {</span></a>
+<a name="781"><span class="lineNum">     781 </span><span class="lineCov">        212 :                 template&lt;class A1_T, class A1_OP &gt; inline void build_from(const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt; &amp;x) {</span></a>
+<a name="782"><span class="lineNum">     782 </span><span class="lineCov">        212 :                     DATA_HANDLER::handle(x, *this);</span></a>
+<a name="783"><span class="lineNum">     783 </span><span class="lineCov">        212 :                     this-&gt;_value_ = x._value_;</span></a>
+<a name="784"><span class="lineNum">     784 </span><span class="lineCov">        212 :                 } public:</span></a>
+<a name="785"><span class="lineNum">     785 </span><span class="lineCov">        212 :                 template&lt;class A1_T, class A1_OP &gt; active_type(const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt; &amp;x) {</span></a>
+<a name="786"><span class="lineNum">     786 </span><span class="lineCov">        212 :                     build_from(x);</span></a>
+<a name="787"><span class="lineNum">     787 </span><span class="lineCov">        212 :                 } template&lt;class A1_T, class A1_OP &gt; inline active_type&amp; operator=(const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt; &amp;x) {</span></a>
 <a name="788"><span class="lineNum">     788 </span>            :                     build_from(x);</a>
 <a name="789"><span class="lineNum">     789 </span>            :                     return *this;</a>
 <a name="790"><span class="lineNum">     790 </span>            :                 }</a>
@@ -950,10 +950,10 @@
 <a name="888"><span class="lineNum">     888 </span>            :             typedef typename passive_value_type_of&lt;AD_TAPE_REAL&gt;::TYPE TYPE;</a>
 <a name="889"><span class="lineNum">     889 </span>            :         };</a>
 <a name="890"><span class="lineNum">     890 </span>            : </a>
-<a name="891"><span class="lineNum">     891 </span><span class="lineNoCov">          0 :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::operations::ad_minus&lt;AD_TAPE_REAL&gt; &gt; operator -( const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x1) {</span></a>
-<a name="892"><span class="lineNum">     892 </span><span class="lineNoCov">          0 :             return ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;,ad::operations::ad_minus&lt;AD_TAPE_REAL&gt; &gt;(x1);</span></a>
-<a name="893"><span class="lineNum">     893 </span>            :         } template&lt;class AD_TAPE_REAL, class A1_T1, class A1_T2, class A1_OP &gt; ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;, ad::operations::ad_minus&lt;AD_TAPE_REAL&gt; &gt; operator -( const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt; &amp;x1) {</a>
-<a name="894"><span class="lineNum">     894 </span>            :             return ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;,ad::operations::ad_minus&lt;AD_TAPE_REAL&gt; &gt;(x1);</a>
+<a name="891"><span class="lineNum">     891 </span><span class="lineCov">          8 :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::operations::ad_minus&lt;AD_TAPE_REAL&gt; &gt; operator -( const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x1) {</span></a>
+<a name="892"><span class="lineNum">     892 </span><span class="lineCov">          8 :             return ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;,ad::operations::ad_minus&lt;AD_TAPE_REAL&gt; &gt;(x1);</span></a>
+<a name="893"><span class="lineNum">     893 </span><span class="lineCov">         84 :         } template&lt;class AD_TAPE_REAL, class A1_T1, class A1_T2, class A1_OP &gt; ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;, ad::operations::ad_minus&lt;AD_TAPE_REAL&gt; &gt; operator -( const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt; &amp;x1) {</span></a>
+<a name="894"><span class="lineNum">     894 </span><span class="lineCov">         84 :             return ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;,ad::operations::ad_minus&lt;AD_TAPE_REAL&gt; &gt;(x1);</span></a>
 <a name="895"><span class="lineNum">     895 </span>            :         } template&lt;class AD_TAPE_REAL, class A1_T1, class A1_OP &gt; ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_ap&lt;AD_TAPE_REAL, A1_T1, A1_OP&gt;, ad::operations::ad_minus&lt;AD_TAPE_REAL&gt; &gt; operator -( const ad::internal::binary_intermediate_ap&lt;AD_TAPE_REAL, A1_T1, A1_OP&gt; &amp;x1) {</a>
 <a name="896"><span class="lineNum">     896 </span>            :             return ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_ap&lt;AD_TAPE_REAL, A1_T1, A1_OP&gt;,ad::operations::ad_minus&lt;AD_TAPE_REAL&gt; &gt;(x1);</a>
 <a name="897"><span class="lineNum">     897 </span>            :         } template&lt;class AD_TAPE_REAL, class A1_T2, class A1_OP &gt; ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A1_T2, A1_OP&gt;, ad::operations::ad_minus&lt;AD_TAPE_REAL&gt; &gt; operator -( const ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A1_T2, A1_OP&gt; &amp;x1) {</a>
@@ -1203,10 +1203,10 @@
 <a name="1141"><span class="lineNum">    1141 </span>            :         } template&lt;class AD_TAPE_REAL, class A1_T, class A1_OP &gt; ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt;, ad::operations::ad_fabs&lt;AD_TAPE_REAL&gt; &gt; fabs( const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt; &amp;x1) {</a>
 <a name="1142"><span class="lineNum">    1142 </span>            :             return ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt;,ad::operations::ad_fabs&lt;AD_TAPE_REAL&gt; &gt;(x1);</a>
 <a name="1143"><span class="lineNum">    1143 </span>            :         }</a>
-<a name="1144"><span class="lineNum">    1144 </span><span class="lineNoCov">          0 :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::operations::ad_fabs&lt;AD_TAPE_REAL&gt; &gt; abs( const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x1) {</span></a>
-<a name="1145"><span class="lineNum">    1145 </span><span class="lineNoCov">          0 :             return ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;,ad::operations::ad_fabs&lt;AD_TAPE_REAL&gt; &gt;(x1);</span></a>
-<a name="1146"><span class="lineNum">    1146 </span>            :         } template&lt;class AD_TAPE_REAL, class A1_T1, class A1_T2, class A1_OP &gt; ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;, ad::operations::ad_fabs&lt;AD_TAPE_REAL&gt; &gt; abs( const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt; &amp;x1) {</a>
-<a name="1147"><span class="lineNum">    1147 </span>            :             return ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;,ad::operations::ad_fabs&lt;AD_TAPE_REAL&gt; &gt;(x1);</a>
+<a name="1144"><span class="lineNum">    1144 </span><span class="lineCov">        204 :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::operations::ad_fabs&lt;AD_TAPE_REAL&gt; &gt; abs( const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x1) {</span></a>
+<a name="1145"><span class="lineNum">    1145 </span><span class="lineCov">        204 :             return ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;,ad::operations::ad_fabs&lt;AD_TAPE_REAL&gt; &gt;(x1);</span></a>
+<a name="1146"><span class="lineNum">    1146 </span><span class="lineCov">         21 :         } template&lt;class AD_TAPE_REAL, class A1_T1, class A1_T2, class A1_OP &gt; ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;, ad::operations::ad_fabs&lt;AD_TAPE_REAL&gt; &gt; abs( const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt; &amp;x1) {</span></a>
+<a name="1147"><span class="lineNum">    1147 </span><span class="lineCov">         21 :             return ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;,ad::operations::ad_fabs&lt;AD_TAPE_REAL&gt; &gt;(x1);</span></a>
 <a name="1148"><span class="lineNum">    1148 </span>            :         } template&lt;class AD_TAPE_REAL, class A1_T1, class A1_OP &gt; ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_ap&lt;AD_TAPE_REAL, A1_T1, A1_OP&gt;, ad::operations::ad_fabs&lt;AD_TAPE_REAL&gt; &gt; abs( const ad::internal::binary_intermediate_ap&lt;AD_TAPE_REAL, A1_T1, A1_OP&gt; &amp;x1) {</a>
 <a name="1149"><span class="lineNum">    1149 </span>            :             return ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_ap&lt;AD_TAPE_REAL, A1_T1, A1_OP&gt;,ad::operations::ad_fabs&lt;AD_TAPE_REAL&gt; &gt;(x1);</a>
 <a name="1150"><span class="lineNum">    1150 </span>            :         } template&lt;class AD_TAPE_REAL, class A1_T2, class A1_OP &gt; ad::internal::unary_intermediate&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A1_T2, A1_OP&gt;, ad::operations::ad_fabs&lt;AD_TAPE_REAL&gt; &gt; abs( const ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A1_T2, A1_OP&gt; &amp;x1) {</a>
@@ -1218,8 +1218,8 @@
 <a name="1156"><span class="lineNum">    1156 </span><span class="lineNoCov">          0 :             return ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;,ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::operations::ad_add_aa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</span></a>
 <a name="1157"><span class="lineNum">    1157 </span>            :         } template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1, class A2_T, class A2_OP &gt; ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;, ad::operations::ad_add_aa&lt;AD_TAPE_REAL&gt; &gt; operator + (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x1, const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt; &amp;x2) {</a>
 <a name="1158"><span class="lineNum">    1158 </span>            :             return ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;,ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;, ad::operations::ad_add_aa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</a>
-<a name="1159"><span class="lineNum">    1159 </span><span class="lineNoCov">          0 :         } template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1, class A2_T1, class A2_T2, class A2_OP &gt; ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A2_T1, A2_T2, A2_OP&gt;, ad::operations::ad_add_aa&lt;AD_TAPE_REAL&gt; &gt; operator + (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x1, const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A2_T1, A2_T2, A2_OP&gt; &amp;x2) {</span></a>
-<a name="1160"><span class="lineNum">    1160 </span><span class="lineNoCov">          0 :             return ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;,ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A2_T1, A2_T2, A2_OP&gt;, ad::operations::ad_add_aa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</span></a>
+<a name="1159"><span class="lineNum">    1159 </span><span class="lineCov">         84 :         } template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1, class A2_T1, class A2_T2, class A2_OP &gt; ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A2_T1, A2_T2, A2_OP&gt;, ad::operations::ad_add_aa&lt;AD_TAPE_REAL&gt; &gt; operator + (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x1, const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A2_T1, A2_T2, A2_OP&gt; &amp;x2) {</span></a>
+<a name="1160"><span class="lineNum">    1160 </span><span class="lineCov">         84 :             return ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;,ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A2_T1, A2_T2, A2_OP&gt;, ad::operations::ad_add_aa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</span></a>
 <a name="1161"><span class="lineNum">    1161 </span>            :         } template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1, class A2_T1, class A2_OP &gt; ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::internal::binary_intermediate_ap&lt;AD_TAPE_REAL, A2_T1, A2_OP&gt;, ad::operations::ad_add_aa&lt;AD_TAPE_REAL&gt; &gt; operator + (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x1, const ad::internal::binary_intermediate_ap&lt;AD_TAPE_REAL, A2_T1, A2_OP&gt; &amp;x2) {</a>
 <a name="1162"><span class="lineNum">    1162 </span>            :             return ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;,ad::internal::binary_intermediate_ap&lt;AD_TAPE_REAL, A2_T1, A2_OP&gt;, ad::operations::ad_add_aa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</a>
 <a name="1163"><span class="lineNum">    1163 </span>            :         } template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1, class A2_T2, class A2_OP &gt; ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A2_T2, A2_OP&gt;, ad::operations::ad_add_aa&lt;AD_TAPE_REAL&gt; &gt; operator + (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x1, const ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A2_T2, A2_OP&gt; &amp;x2) {</a>
@@ -1305,8 +1305,8 @@
 <a name="1243"><span class="lineNum">    1243 </span>            :         } template&lt;class AD_TAPE_REAL, class A1_T2, class A1_OP &gt; typename std::enable_if&lt;!std::is_same&lt;typename ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A1_T2, A1_OP&gt;::VALUE_TYPE, typename ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A1_T2, A1_OP&gt;::PASSIVE_VALUE_TYPE&gt;::value, ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A1_T2, A1_OP&gt;, ad::operations::ad_add_pa&lt;AD_TAPE_REAL&gt; &gt; &gt;::type operator + (const typename ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A1_T2, A1_OP&gt;::PASSIVE_VALUE_TYPE &amp;x1, const ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A1_T2, A1_OP&gt; &amp;x2) {</a>
 <a name="1244"><span class="lineNum">    1244 </span>            :             return ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A1_T2, A1_OP&gt;, ad::operations::ad_add_pa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</a>
 <a name="1245"><span class="lineNum">    1245 </span>            :         }</a>
-<a name="1246"><span class="lineNum">    1246 </span><span class="lineNoCov">          0 :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::operations::ad_sub_aa&lt;AD_TAPE_REAL&gt; &gt; operator - (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x2) {</span></a>
-<a name="1247"><span class="lineNum">    1247 </span><span class="lineNoCov">          0 :             return ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;,ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::operations::ad_sub_aa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</span></a>
+<a name="1246"><span class="lineNum">    1246 </span><span class="lineCov">        117 :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::operations::ad_sub_aa&lt;AD_TAPE_REAL&gt; &gt; operator - (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x2) {</span></a>
+<a name="1247"><span class="lineNum">    1247 </span><span class="lineCov">        117 :             return ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;,ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::operations::ad_sub_aa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</span></a>
 <a name="1248"><span class="lineNum">    1248 </span>            :         } template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1, class A2_T, class A2_OP &gt; ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;, ad::operations::ad_sub_aa&lt;AD_TAPE_REAL&gt; &gt; operator - (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x1, const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt; &amp;x2) {</a>
 <a name="1249"><span class="lineNum">    1249 </span>            :             return ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;,ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;, ad::operations::ad_sub_aa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</a>
 <a name="1250"><span class="lineNum">    1250 </span><span class="lineNoCov">          0 :         } template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1, class A2_T1, class A2_T2, class A2_OP &gt; ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A2_T1, A2_T2, A2_OP&gt;, ad::operations::ad_sub_aa&lt;AD_TAPE_REAL&gt; &gt; operator - (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x1, const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A2_T1, A2_T2, A2_OP&gt; &amp;x2) {</span></a>
@@ -1396,8 +1396,8 @@
 <a name="1334"><span class="lineNum">    1334 </span>            :         } template&lt;class AD_TAPE_REAL, class A1_T2, class A1_OP &gt; typename std::enable_if&lt;!std::is_same&lt;typename ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A1_T2, A1_OP&gt;::VALUE_TYPE, typename ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A1_T2, A1_OP&gt;::PASSIVE_VALUE_TYPE&gt;::value, ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A1_T2, A1_OP&gt;, ad::operations::ad_sub_pa&lt;AD_TAPE_REAL&gt; &gt; &gt;::type operator - (const typename ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A1_T2, A1_OP&gt;::PASSIVE_VALUE_TYPE &amp;x1, const ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A1_T2, A1_OP&gt; &amp;x2) {</a>
 <a name="1335"><span class="lineNum">    1335 </span>            :             return ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A1_T2, A1_OP&gt;, ad::operations::ad_sub_pa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</a>
 <a name="1336"><span class="lineNum">    1336 </span>            :         }</a>
-<a name="1337"><span class="lineNum">    1337 </span><span class="lineNoCov">          0 :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::operations::ad_mul_aa&lt;AD_TAPE_REAL&gt; &gt; operator * (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x2) {</span></a>
-<a name="1338"><span class="lineNum">    1338 </span><span class="lineNoCov">          0 :             return ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;,ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::operations::ad_mul_aa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</span></a>
+<a name="1337"><span class="lineNum">    1337 </span><span class="lineCov">        154 :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::operations::ad_mul_aa&lt;AD_TAPE_REAL&gt; &gt; operator * (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x2) {</span></a>
+<a name="1338"><span class="lineNum">    1338 </span><span class="lineCov">        154 :             return ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;,ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::operations::ad_mul_aa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</span></a>
 <a name="1339"><span class="lineNum">    1339 </span><span class="lineNoCov">          0 :         } template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1, class A2_T, class A2_OP &gt; ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;, ad::operations::ad_mul_aa&lt;AD_TAPE_REAL&gt; &gt; operator * (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x1, const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt; &amp;x2) {</span></a>
 <a name="1340"><span class="lineNum">    1340 </span><span class="lineNoCov">          0 :             return ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;,ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;, ad::operations::ad_mul_aa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</span></a>
 <a name="1341"><span class="lineNum">    1341 </span><span class="lineNoCov">          0 :         } template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1, class A2_T1, class A2_T2, class A2_OP &gt; ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A2_T1, A2_T2, A2_OP&gt;, ad::operations::ad_mul_aa&lt;AD_TAPE_REAL&gt; &gt; operator * (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x1, const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A2_T1, A2_T2, A2_OP&gt; &amp;x2) {</span></a>
@@ -1507,8 +1507,8 @@
 <a name="1445"><span class="lineNum">    1445 </span>            :             return ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt;,ad::internal::binary_intermediate_ap&lt;AD_TAPE_REAL, A2_T1, A2_OP&gt;, ad::operations::ad_div_aa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</a>
 <a name="1446"><span class="lineNum">    1446 </span>            :         } template&lt;class AD_TAPE_REAL, class A1_T, class A1_OP, class A2_T2, class A2_OP &gt; ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt;, ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A2_T2, A2_OP&gt;, ad::operations::ad_div_aa&lt;AD_TAPE_REAL&gt; &gt; operator / (const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt; &amp;x1, const ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A2_T2, A2_OP&gt; &amp;x2) {</a>
 <a name="1447"><span class="lineNum">    1447 </span>            :             return ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt;,ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A2_T2, A2_OP&gt;, ad::operations::ad_div_aa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</a>
-<a name="1448"><span class="lineNum">    1448 </span><span class="lineNoCov">          0 :         } template&lt;class AD_TAPE_REAL, class A1_T1, class A1_T2, class A1_OP, class DATA_HANDLER_2 &gt; ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_2&gt;, ad::operations::ad_div_aa&lt;AD_TAPE_REAL&gt; &gt; operator / (const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt; &amp;x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_2&gt; &amp;x2) {</span></a>
-<a name="1449"><span class="lineNum">    1449 </span><span class="lineNoCov">          0 :             return ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;,ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_2&gt;, ad::operations::ad_div_aa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</span></a>
+<a name="1448"><span class="lineNum">    1448 </span><span class="lineCov">          6 :         } template&lt;class AD_TAPE_REAL, class A1_T1, class A1_T2, class A1_OP, class DATA_HANDLER_2 &gt; ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;, ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_2&gt;, ad::operations::ad_div_aa&lt;AD_TAPE_REAL&gt; &gt; operator / (const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt; &amp;x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_2&gt; &amp;x2) {</span></a>
+<a name="1449"><span class="lineNum">    1449 </span><span class="lineCov">          6 :             return ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;,ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_2&gt;, ad::operations::ad_div_aa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</span></a>
 <a name="1450"><span class="lineNum">    1450 </span>            :         } template&lt;class AD_TAPE_REAL, class A1_T1, class A1_T2, class A1_OP, class A2_T, class A2_OP &gt; ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;, ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;, ad::operations::ad_div_aa&lt;AD_TAPE_REAL&gt; &gt; operator / (const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt; &amp;x1, const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt; &amp;x2) {</a>
 <a name="1451"><span class="lineNum">    1451 </span>            :             return ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;,ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;, ad::operations::ad_div_aa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</a>
 <a name="1452"><span class="lineNum">    1452 </span><span class="lineNoCov">          0 :         } template&lt;class AD_TAPE_REAL, class A1_T1, class A1_T2, class A1_OP, class A2_T1, class A2_T2, class A2_OP &gt; ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;, ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A2_T1, A2_T2, A2_OP&gt;, ad::operations::ad_div_aa&lt;AD_TAPE_REAL&gt; &gt; operator / (const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt; &amp;x1, const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A2_T1, A2_T2, A2_OP&gt; &amp;x2) {</span></a>
@@ -1852,8 +1852,8 @@
 <a name="1790"><span class="lineNum">    1790 </span>            :             return ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A1_T2, A1_OP&gt;, ad::operations::ad_hypot_pa&lt;AD_TAPE_REAL&gt; &gt;(x1,x2);</a>
 <a name="1791"><span class="lineNum">    1791 </span>            :         }</a>
 <a name="1792"><span class="lineNum">    1792 </span>            :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; static inline bool operator == (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x2) ;</a>
-<a name="1793"><span class="lineNum">    1793 </span>            :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; static inline bool operator == (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x2) {</a>
-<a name="1794"><span class="lineNum">    1794 </span>            :             return x1._value() == x2._value();</a>
+<a name="1793"><span class="lineNum">    1793 </span><span class="lineCov">          8 :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; static inline bool operator == (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x2) {</span></a>
+<a name="1794"><span class="lineNum">    1794 </span><span class="lineCov">          8 :             return x1._value() == x2._value();</span></a>
 <a name="1795"><span class="lineNum">    1795 </span>            :         } template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1, class A2_T, class A2_OP &gt; static inline bool operator == (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;&amp; x2) ;</a>
 <a name="1796"><span class="lineNum">    1796 </span>            :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1, class A2_T, class A2_OP &gt; static inline bool operator == (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;&amp; x2) {</a>
 <a name="1797"><span class="lineNum">    1797 </span>            :             return x1._value() == x2._value();</a>
@@ -2064,8 +2064,8 @@
 <a name="2002"><span class="lineNum">    2002 </span>            :             return x1 != x2._value();</a>
 <a name="2003"><span class="lineNum">    2003 </span>            :         }</a>
 <a name="2004"><span class="lineNum">    2004 </span>            :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; static inline bool operator &lt; (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x2) ;</a>
-<a name="2005"><span class="lineNum">    2005 </span><span class="lineNoCov">          0 :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; static inline bool operator &lt; (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x2) {</span></a>
-<a name="2006"><span class="lineNum">    2006 </span><span class="lineNoCov">          0 :             return x1._value() &lt; x2._value();</span></a>
+<a name="2005"><span class="lineNum">    2005 </span><span class="lineCov">        107 :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1 &gt; static inline bool operator &lt; (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x2) {</span></a>
+<a name="2006"><span class="lineNum">    2006 </span><span class="lineCov">        107 :             return x1._value() &lt; x2._value();</span></a>
 <a name="2007"><span class="lineNum">    2007 </span>            :         } template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1, class A2_T, class A2_OP &gt; static inline bool operator &lt; (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;&amp; x2) ;</a>
 <a name="2008"><span class="lineNum">    2008 </span>            :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1, class A2_T, class A2_OP &gt; static inline bool operator &lt; (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;&amp; x2) {</a>
 <a name="2009"><span class="lineNum">    2009 </span>            :             return x1._value() &lt; x2._value();</a>
@@ -2097,8 +2097,8 @@
 <a name="2035"><span class="lineNum">    2035 </span>            :         template&lt;class AD_TAPE_REAL, class A1_T1, class A1_T2, class A1_OP, class DATA_HANDLER_2 &gt; static inline bool operator &lt; (const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;&amp; x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_2&gt;&amp; x2) {</a>
 <a name="2036"><span class="lineNum">    2036 </span>            :             return x1._value() &lt; x2._value();</a>
 <a name="2037"><span class="lineNum">    2037 </span>            :         } template&lt;class AD_TAPE_REAL, class A1_T1, class A1_T2, class A1_OP, class A2_T, class A2_OP &gt; static inline bool operator &lt; (const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;&amp; x1, const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;&amp; x2) ;</a>
-<a name="2038"><span class="lineNum">    2038 </span>            :         template&lt;class AD_TAPE_REAL, class A1_T1, class A1_T2, class A1_OP, class A2_T, class A2_OP &gt; static inline bool operator &lt; (const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;&amp; x1, const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;&amp; x2) {</a>
-<a name="2039"><span class="lineNum">    2039 </span>            :             return x1._value() &lt; x2._value();</a>
+<a name="2038"><span class="lineNum">    2038 </span><span class="lineCov">         84 :         template&lt;class AD_TAPE_REAL, class A1_T1, class A1_T2, class A1_OP, class A2_T, class A2_OP &gt; static inline bool operator &lt; (const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;&amp; x1, const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;&amp; x2) {</span></a>
+<a name="2039"><span class="lineNum">    2039 </span><span class="lineCov">         84 :             return x1._value() &lt; x2._value();</span></a>
 <a name="2040"><span class="lineNum">    2040 </span>            :         } template&lt;class AD_TAPE_REAL, class A1_T1, class A1_T2, class A1_OP, class A2_T1, class A2_T2, class A2_OP &gt; static inline bool operator &lt; (const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;&amp; x1, const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A2_T1, A2_T2, A2_OP&gt;&amp; x2) ;</a>
 <a name="2041"><span class="lineNum">    2041 </span>            :         template&lt;class AD_TAPE_REAL, class A1_T1, class A1_T2, class A1_OP, class A2_T1, class A2_T2, class A2_OP &gt; static inline bool operator &lt; (const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt;&amp; x1, const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A2_T1, A2_T2, A2_OP&gt;&amp; x2) {</a>
 <a name="2042"><span class="lineNum">    2042 </span>            :             return x1._value() &lt; x2._value();</a>
@@ -2185,14 +2185,14 @@
 <a name="2123"><span class="lineNum">    2123 </span>            :         template&lt;class AD_TAPE_REAL, class DATA_HANDLER_1, class A2_T2, class A2_OP &gt; static inline bool operator &lt;= (const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt;&amp; x1, const ad::internal::binary_intermediate_pa&lt;AD_TAPE_REAL, A2_T2, A2_OP&gt;&amp; x2) {</a>
 <a name="2124"><span class="lineNum">    2124 </span>            :             return x1._value() &lt;= x2._value();</a>
 <a name="2125"><span class="lineNum">    2125 </span>            :         } template&lt;class AD_TAPE_REAL, class A1_T, class A1_OP, class DATA_HANDLER_2 &gt; static inline bool operator &lt;= (const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt;&amp; x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_2&gt;&amp; x2) ;</a>
-<a name="2126"><span class="lineNum">    2126 </span>            :         template&lt;class AD_TAPE_REAL, class A1_T, class A1_OP, class DATA_HANDLER_2 &gt; static inline bool operator &lt;= (const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt;&amp; x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_2&gt;&amp; x2) {</a>
-<a name="2127"><span class="lineNum">    2127 </span>            :             return x1._value() &lt;= x2._value();</a>
+<a name="2126"><span class="lineNum">    2126 </span><span class="lineCov">         21 :         template&lt;class AD_TAPE_REAL, class A1_T, class A1_OP, class DATA_HANDLER_2 &gt; static inline bool operator &lt;= (const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt;&amp; x1, const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_2&gt;&amp; x2) {</span></a>
+<a name="2127"><span class="lineNum">    2127 </span><span class="lineCov">         21 :             return x1._value() &lt;= x2._value();</span></a>
 <a name="2128"><span class="lineNum">    2128 </span>            :         } template&lt;class AD_TAPE_REAL, class A1_T, class A1_OP, class A2_T, class A2_OP &gt; static inline bool operator &lt;= (const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt;&amp; x1, const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;&amp; x2) ;</a>
 <a name="2129"><span class="lineNum">    2129 </span>            :         template&lt;class AD_TAPE_REAL, class A1_T, class A1_OP, class A2_T, class A2_OP &gt; static inline bool operator &lt;= (const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt;&amp; x1, const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A2_T, A2_OP&gt;&amp; x2) {</a>
 <a name="2130"><span class="lineNum">    2130 </span>            :             return x1._value() &lt;= x2._value();</a>
 <a name="2131"><span class="lineNum">    2131 </span>            :         } template&lt;class AD_TAPE_REAL, class A1_T, class A1_OP, class A2_T1, class A2_T2, class A2_OP &gt; static inline bool operator &lt;= (const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt;&amp; x1, const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A2_T1, A2_T2, A2_OP&gt;&amp; x2) ;</a>
-<a name="2132"><span class="lineNum">    2132 </span>            :         template&lt;class AD_TAPE_REAL, class A1_T, class A1_OP, class A2_T1, class A2_T2, class A2_OP &gt; static inline bool operator &lt;= (const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt;&amp; x1, const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A2_T1, A2_T2, A2_OP&gt;&amp; x2) {</a>
-<a name="2133"><span class="lineNum">    2133 </span>            :             return x1._value() &lt;= x2._value();</a>
+<a name="2132"><span class="lineNum">    2132 </span><span class="lineCov">         10 :         template&lt;class AD_TAPE_REAL, class A1_T, class A1_OP, class A2_T1, class A2_T2, class A2_OP &gt; static inline bool operator &lt;= (const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt;&amp; x1, const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A2_T1, A2_T2, A2_OP&gt;&amp; x2) {</span></a>
+<a name="2133"><span class="lineNum">    2133 </span><span class="lineCov">         10 :             return x1._value() &lt;= x2._value();</span></a>
 <a name="2134"><span class="lineNum">    2134 </span>            :         } template&lt;class AD_TAPE_REAL, class A1_T, class A1_OP, class A2_T1, class A2_OP &gt; static inline bool operator &lt;= (const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt;&amp; x1, const ad::internal::binary_intermediate_ap&lt;AD_TAPE_REAL, A2_T1, A2_OP&gt;&amp; x2) ;</a>
 <a name="2135"><span class="lineNum">    2135 </span>            :         template&lt;class AD_TAPE_REAL, class A1_T, class A1_OP, class A2_T1, class A2_OP &gt; static inline bool operator &lt;= (const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt;&amp; x1, const ad::internal::binary_intermediate_ap&lt;AD_TAPE_REAL, A2_T1, A2_OP&gt;&amp; x2) {</a>
 <a name="2136"><span class="lineNum">    2136 </span>            :             return x1._value() &lt;= x2._value();</a>
@@ -2912,7 +2912,7 @@
 <a name="2850"><span class="lineNum">    2850 </span>            :         struct ts_data {</a>
 <a name="2851"><span class="lineNum">    2851 </span>            :             typedef AD_TAPE_REAL DERIVATIVE_T;</a>
 <a name="2852"><span class="lineNum">    2852 </span>            :             AD_TAPE_REAL tlm;</a>
-<a name="2853"><span class="lineNum">    2853 </span><span class="lineNoCov">          0 :             ts_data() : tlm(0) {}</span></a>
+<a name="2853"><span class="lineNum">    2853 </span><span class="lineCov">        314 :             ts_data() : tlm(0) {}</span></a>
 <a name="2854"><span class="lineNum">    2854 </span><span class="lineNoCov">          0 :             ts_data &amp;operator = (const ts_data &amp;b) {</span></a>
 <a name="2855"><span class="lineNum">    2855 </span><span class="lineNoCov">          0 :                 tlm = b.tlm;</span></a>
 <a name="2856"><span class="lineNum">    2856 </span><span class="lineNoCov">          0 :                 return *this;</span></a>
@@ -2931,21 +2931,21 @@
 <a name="2869"><span class="lineNum">    2869 </span><span class="lineNoCov">          0 :                 return tlm;</span></a>
 <a name="2870"><span class="lineNum">    2870 </span>            :             }</a>
 <a name="2871"><span class="lineNum">    2871 </span>            :             template&lt;class AD_INTERMEDIATE, class AD_ACTIVE_TYPE&gt;</a>
-<a name="2872"><span class="lineNum">    2872 </span><span class="lineNoCov">          0 :             static inline void handle(const AD_INTERMEDIATE &amp;vneu, AD_ACTIVE_TYPE &amp;target) {</span></a>
-<a name="2873"><span class="lineNum">    2873 </span><span class="lineNoCov">          0 :                 ts_data &amp;data = const_cast&lt;ts_data &amp;&gt;(target._data());</span></a>
-<a name="2874"><span class="lineNum">    2874 </span><span class="lineNoCov">          0 :                 data.tlm = get_tlm(vneu, 1.0);</span></a>
-<a name="2875"><span class="lineNum">    2875 </span><span class="lineNoCov">          0 :             }</span></a>
+<a name="2872"><span class="lineNum">    2872 </span><span class="lineCov">        284 :             static inline void handle(const AD_INTERMEDIATE &amp;vneu, AD_ACTIVE_TYPE &amp;target) {</span></a>
+<a name="2873"><span class="lineNum">    2873 </span><span class="lineCov">        284 :                 ts_data &amp;data = const_cast&lt;ts_data &amp;&gt;(target._data());</span></a>
+<a name="2874"><span class="lineNum">    2874 </span><span class="lineCov">        284 :                 data.tlm = get_tlm(vneu, 1.0);</span></a>
+<a name="2875"><span class="lineNum">    2875 </span><span class="lineCov">        284 :             }</span></a>
 <a name="2876"><span class="lineNum">    2876 </span>            :             template&lt;class DATA_HANDLER_1 &gt;</a>
-<a name="2877"><span class="lineNum">    2877 </span><span class="lineNoCov">          0 :             static inline AD_TAPE_REAL get_tlm(const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x, const AD_TAPE_REAL &amp;pval) {</span></a>
-<a name="2878"><span class="lineNum">    2878 </span><span class="lineNoCov">          0 :                 return x._data().tlm * pval;</span></a>
+<a name="2877"><span class="lineNum">    2877 </span><span class="lineCov">        362 :             static inline AD_TAPE_REAL get_tlm(const ad::internal::active_type&lt;AD_TAPE_REAL, DATA_HANDLER_1&gt; &amp;x, const AD_TAPE_REAL &amp;pval) {</span></a>
+<a name="2878"><span class="lineNum">    2878 </span><span class="lineCov">        362 :                 return x._data().tlm * pval;</span></a>
 <a name="2879"><span class="lineNum">    2879 </span>            :             }</a>
 <a name="2880"><span class="lineNum">    2880 </span>            :             template&lt;class A1_T1, class A1_T2, class A1_OP &gt;</a>
-<a name="2881"><span class="lineNum">    2881 </span><span class="lineNoCov">          0 :             static inline AD_TAPE_REAL get_tlm(const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt; &amp;x, const AD_TAPE_REAL &amp;pval) {</span></a>
-<a name="2882"><span class="lineNum">    2882 </span><span class="lineNoCov">          0 :                 return get_tlm(x._arg1, x.pval1() * pval) + get_tlm(x._arg2, x.pval2() * pval);</span></a>
+<a name="2881"><span class="lineNum">    2881 </span><span class="lineCov">         78 :             static inline AD_TAPE_REAL get_tlm(const ad::internal::binary_intermediate_aa&lt;AD_TAPE_REAL, A1_T1, A1_T2, A1_OP&gt; &amp;x, const AD_TAPE_REAL &amp;pval) {</span></a>
+<a name="2882"><span class="lineNum">    2882 </span><span class="lineCov">         78 :                 return get_tlm(x._arg1, x.pval1() * pval) + get_tlm(x._arg2, x.pval2() * pval);</span></a>
 <a name="2883"><span class="lineNum">    2883 </span>            :             }</a>
 <a name="2884"><span class="lineNum">    2884 </span>            :             template&lt;class A1_T, class A1_OP &gt;</a>
-<a name="2885"><span class="lineNum">    2885 </span><span class="lineNoCov">          0 :             static inline AD_TAPE_REAL get_tlm(const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt; &amp;x, const AD_TAPE_REAL &amp;pval) {</span></a>
-<a name="2886"><span class="lineNum">    2886 </span><span class="lineNoCov">          0 :                 return get_tlm(x._arg, x.pval() * pval);</span></a>
+<a name="2885"><span class="lineNum">    2885 </span><span class="lineCov">        212 :             static inline AD_TAPE_REAL get_tlm(const ad::internal::unary_intermediate&lt;AD_TAPE_REAL, A1_T, A1_OP&gt; &amp;x, const AD_TAPE_REAL &amp;pval) {</span></a>
+<a name="2886"><span class="lineNum">    2886 </span><span class="lineCov">        212 :                 return get_tlm(x._arg, x.pval() * pval);</span></a>
 <a name="2887"><span class="lineNum">    2887 </span>            :             }</a>
 <a name="2888"><span class="lineNum">    2888 </span>            :             template&lt;class A1_T1, class A1_OP &gt;</a>
 <a name="2889"><span class="lineNum">    2889 </span><span class="lineNoCov">          0 :             static inline AD_TAPE_REAL get_tlm(const ad::internal::binary_intermediate_ap&lt;AD_TAPE_REAL, A1_T1, A1_OP&gt; &amp;x, const AD_TAPE_REAL &amp;pval) {</span></a>

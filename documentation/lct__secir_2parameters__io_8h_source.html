@@ -120,7 +120,7 @@ $(function() {
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">using</span> LctState = <span class="keyword">typename</span> <a class="code" href="classmio_1_1lsecir_1_1Model.html#a317ebd354e298a750604c24485892561">Model::LctState</a>;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="comment">// Try to get rki data from path.</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    BOOST_OUTCOME_TRY(rki_data, mio::read_confirmed_cases_noage(path));</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    BOOST_OUTCOME_TRY(<span class="keyword">auto</span>&amp;&amp; rki_data, mio::read_confirmed_cases_noage(path));</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">auto</span> max_date_entry = std::max_element(rki_data.begin(), rki_data.end(), [](<span class="keyword">auto</span>&amp;&amp; a, <span class="keyword">auto</span>&amp;&amp; b) {</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        return a.date &lt; b.date;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    });</div>
@@ -170,8 +170,8 @@ $(function() {
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <span class="keywordtype">int</span> idxInfectedNoSymptoms_last =</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                    LctState::template get_first_index&lt;InfectionState::InfectedNoSymptoms&gt;() +</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                    LctState::template get_num_subcompartments&lt;InfectionState::InfectedNoSymptoms&gt;() - 1;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                     i &lt; (int)LctState::template get_num_subcompartments&lt;InfectionState::InfectedNoSymptoms&gt;(); i++) {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; LctState::template get_num_subcompartments&lt;InfectionState::InfectedNoSymptoms&gt;();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                     i++) {</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                    <span class="keywordflow">if</span> (offset == <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(i * timeInfectedNoSymptoms_i)) {</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[idxInfectedNoSymptoms_last - i] -=</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                            (1 - (i * timeInfectedNoSymptoms_i - <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(i * timeInfectedNoSymptoms_i))) *</div>
@@ -204,7 +204,7 @@ $(function() {
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                <span class="comment">// Index of the last subcompartment of Exposed.</span></div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                <span class="keywordtype">int</span> idxExposed_last = LctState::template get_first_index&lt;InfectionState::Exposed&gt;() +</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                                      LctState::template get_num_subcompartments&lt;InfectionState::Exposed&gt;() - 1;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; (int)LctState::template get_num_subcompartments&lt;InfectionState::Exposed&gt;(); i++) {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; LctState::template get_num_subcompartments&lt;InfectionState::Exposed&gt;(); i++) {</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                    <span class="keywordflow">if</span> (offset == <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(timeInfectedNoSymptoms + i * timeExposed_i)) {</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[idxExposed_last - i] -= (1 - (timeInfectedNoSymptoms + i * timeExposed_i -</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                                                           <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(timeInfectedNoSymptoms + i * timeExposed_i))) *</div>
@@ -237,7 +237,7 @@ $(function() {
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                    (<a class="code" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>)LctState::template get_num_subcompartments&lt;InfectionState::InfectedSymptoms&gt;();</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                <span class="comment">// Index of the first subcompartment of InfectedSymptoms.</span></div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                <span class="keywordtype">int</span> idxInfectedSymptoms_first = LctState::template get_first_index&lt;InfectionState::InfectedSymptoms&gt;();</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; (int)LctState::template get_num_subcompartments&lt;InfectionState::InfectedSymptoms&gt;();</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; LctState::template get_num_subcompartments&lt;InfectionState::InfectedSymptoms&gt;();</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                     i++) {</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                    <span class="keywordflow">if</span> (offset == <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms_i * (i + 1))) {</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[idxInfectedSymptoms_first + i] -=</div>
@@ -273,139 +273,138 @@ $(function() {
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                <a class="code" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> prob_SeverePerInfectedSymptoms = model.parameters.template get&lt;SeverePerInfectedSymptoms&gt;();</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                <span class="comment">// Index of the first subcompartment of InfectedSevere.</span></div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                <span class="keywordtype">int</span> idxInfectedSevere_first = LctState::template get_first_index&lt;InfectionState::InfectedSevere&gt;();</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; (int)LctState::template get_num_subcompartments&lt;InfectionState::InfectedSevere&gt;();</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                     i++) {</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                    <span class="keywordflow">if</span> (offset == <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere_i * (i + 1))) {</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[idxInfectedSevere_first + i] -=</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                            prob_SeverePerInfectedSymptoms *</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                            (1 - (-timeInfectedSymptoms - (i + 1) * timeInfectedSevere_i -</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                                  <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - (i + 1) * timeInfectedSevere_i))) *</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                            scale_confirmed_cases * entry.num_confirmed;</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                    }</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                    <span class="keywordflow">if</span> (offset == <a class="code" href="namespacead_1_1internal.html#ad5dbf314d7bbaad0e934ab8008dbbec3">std::ceil</a>(-timeInfectedSymptoms - timeInfectedSevere_i * (i + 1))) {</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[idxInfectedSevere_first + i] -=</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                            prob_SeverePerInfectedSymptoms *</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                            (-timeInfectedSymptoms - (i + 1) * timeInfectedSevere_i -</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                             <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - (i + 1) * timeInfectedSevere_i)) *</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                            scale_confirmed_cases * entry.num_confirmed;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                    }</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                    <span class="keywordflow">if</span> (offset == <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere_i * i)) {</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[idxInfectedSevere_first + i] +=</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                            prob_SeverePerInfectedSymptoms *</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                            (1 - (-timeInfectedSymptoms - i * timeInfectedSevere_i -</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                                  <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - i * timeInfectedSevere_i))) *</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                            scale_confirmed_cases * entry.num_confirmed;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                    }</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                    <span class="keywordflow">if</span> (offset == <a class="code" href="namespacead_1_1internal.html#ad5dbf314d7bbaad0e934ab8008dbbec3">std::ceil</a>(-timeInfectedSymptoms - timeInfectedSevere_i * i)) {</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[idxInfectedSevere_first + i] +=</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                            prob_SeverePerInfectedSymptoms *</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                            (-timeInfectedSymptoms - i * timeInfectedSevere_i -</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                             <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - i * timeInfectedSevere_i)) *</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                            scale_confirmed_cases * entry.num_confirmed;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                    }</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                }</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            }</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="comment">// Compute initial values for compartment InfectedCritical.</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordflow">if</span> (offset &gt;= min_offset_needed &amp;&amp; offset &lt;= <a class="code" href="namespacead_1_1internal.html#ad5dbf314d7bbaad0e934ab8008dbbec3">std::ceil</a>(-timeInfectedSymptoms - timeInfectedSevere)) {</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                <span class="comment">// Mean stay time in each subcompartment.</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                <a class="code" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> timeInfectedCritical_i =</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                    timeInfectedCritical /</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                    LctState::template get_num_subcompartments&lt;InfectionState::InfectedCritical&gt;();</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                <span class="comment">// Transmission probabilities.</span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                <a class="code" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> prob_SeverePerInfectedSymptoms = model.parameters.template get&lt;SeverePerInfectedSymptoms&gt;();</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                <a class="code" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> prob_CriticalPerSevere         = model.parameters.template get&lt;CriticalPerSevere&gt;();</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                <span class="comment">// Index of the first subcompartment of InfectedCritical.</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                <span class="keywordtype">int</span> idxInfectedCritical_first = LctState::template get_first_index&lt;InfectionState::InfectedCritical&gt;();</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; (int)LctState::template get_num_subcompartments&lt;InfectionState::InfectedCritical&gt;();</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                     i++) {</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                    <span class="keywordflow">if</span> (offset ==</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                        <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical_i * (i + 1))) {</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[idxInfectedCritical_first + i] -=</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                            prob_SeverePerInfectedSymptoms * prob_CriticalPerSevere *</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                            (1 - (-timeInfectedSymptoms - timeInfectedSevere - (i + 1) * timeInfectedCritical_i -</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                  <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere -</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                                             (i + 1) * timeInfectedCritical_i))) *</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                            scale_confirmed_cases * entry.num_confirmed;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                    }</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                    <span class="keywordflow">if</span> (offset ==</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                        <a class="code" href="namespacead_1_1internal.html#ad5dbf314d7bbaad0e934ab8008dbbec3">std::ceil</a>(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical_i * (i + 1))) {</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[idxInfectedCritical_first + i] -=</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                            prob_SeverePerInfectedSymptoms * prob_CriticalPerSevere *</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                            (-timeInfectedSymptoms - timeInfectedSevere - (i + 1) * timeInfectedCritical_i -</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                             <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere -</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                                        (i + 1) * timeInfectedCritical_i)) *</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                            scale_confirmed_cases * entry.num_confirmed;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                    }</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                    <span class="keywordflow">if</span> (offset == <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical_i * i)) {</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[idxInfectedCritical_first + i] +=</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                            prob_SeverePerInfectedSymptoms * prob_CriticalPerSevere *</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                            (1 -</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                             (-timeInfectedSymptoms - timeInfectedSevere - i * timeInfectedCritical_i -</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                              <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere - i * timeInfectedCritical_i))) *</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                            scale_confirmed_cases * entry.num_confirmed;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                    }</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                    <span class="keywordflow">if</span> (offset == <a class="code" href="namespacead_1_1internal.html#ad5dbf314d7bbaad0e934ab8008dbbec3">std::ceil</a>(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical_i * i)) {</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[idxInfectedCritical_first + i] +=</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                            prob_SeverePerInfectedSymptoms * prob_CriticalPerSevere *</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                            (-timeInfectedSymptoms - timeInfectedSevere - i * timeInfectedCritical_i -</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                             <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere - i * timeInfectedCritical_i)) *</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                            scale_confirmed_cases * entry.num_confirmed;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                    }</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                }</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            }</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            <span class="comment">// Compute Dead.</span></div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            <span class="keywordflow">if</span> (offset == min_offset_needed) {</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                min_offset_needed_avail = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[LctState::template get_first_index&lt;InfectionState::Dead&gt;()] +=</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                    (1 - (-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical -</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                          <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical))) *</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                    entry.num_deaths;</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            }</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            <span class="keywordflow">if</span> (offset == <a class="code" href="namespacead_1_1internal.html#ad5dbf314d7bbaad0e934ab8008dbbec3">std::ceil</a>(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical)) {</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[LctState::template get_first_index&lt;InfectionState::Dead&gt;()] +=</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                    (-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical -</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                     <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical)) *</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                    entry.num_deaths;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            }</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            <span class="keywordflow">if</span> (offset == max_offset_needed) {</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                max_offset_needed_avail = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            }</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        }</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    }</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="comment">// Compute Recovered.</span></div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[LctState::template get_first_index&lt;InfectionState::Recovered&gt;()] -=</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>.segment(LctState::template get_first_index&lt;InfectionState::InfectedSymptoms&gt;(),</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                     LctState::template get_num_subcompartments&lt;InfectionState::InfectedSymptoms&gt;() +</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                         LctState::template get_num_subcompartments&lt;InfectionState::InfectedSevere&gt;() +</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                         LctState::template get_num_subcompartments&lt;InfectionState::InfectedCritical&gt;())</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            .sum();</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[LctState::template get_first_index&lt;InfectionState::Recovered&gt;()] -=</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[LctState::template get_first_index&lt;InfectionState::Dead&gt;()];</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="comment">// Compute Susceptibles.</span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[LctState::template get_first_index&lt;InfectionState::Susceptible&gt;()] =</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        total_population - <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>.segment(1, LctState::Count - 1).sum();</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <span class="comment">// Check whether all necessary dates are available.</span></div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keywordflow">if</span> (!max_offset_needed_avail || !min_offset_needed_avail) {</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        <a class="code" href="namespacemio.html#a89afc3ebfa2c5ab994ec3c76dcad85d1">log_error</a>(<span class="stringliteral">&quot;Necessary range of dates needed to compute initial values does not exist in RKI data.&quot;</span>);</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespacemio.html#a23604adfeac7ebc8418d741959e80906">failure</a>(<a class="code" href="namespacemio.html#a2799d348d433018d5b183d75bfbdd699a365b2699d38b61ef4b4c8a1066c8468f">StatusCode::OutOfRange</a>, path + <span class="stringliteral">&quot;, necessary range of dates does not exist in RKI data.&quot;</span>);</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    }</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <span class="comment">// Set computed initial value vector.</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    model.set_initial_values(std::move(<a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>));</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespacemio.html#a80d7fd30c9669e05b537b2caedd82bb8">mio::success</a>();</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;}</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;} <span class="comment">// namespace lsecir</span></div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;} <span class="comment">// namespace mio</span></div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// MEMILIO_HAS_JSONCPP</span></div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// LCTSECIR_PARAMETERS_IO_H</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; LctState::template get_num_subcompartments&lt;InfectionState::InfectedSevere&gt;(); i++) {</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                    <span class="keywordflow">if</span> (offset == <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere_i * (i + 1))) {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[idxInfectedSevere_first + i] -=</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                            prob_SeverePerInfectedSymptoms *</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                            (1 - (-timeInfectedSymptoms - (i + 1) * timeInfectedSevere_i -</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                                  <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - (i + 1) * timeInfectedSevere_i))) *</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                            scale_confirmed_cases * entry.num_confirmed;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                    }</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                    <span class="keywordflow">if</span> (offset == <a class="code" href="namespacead_1_1internal.html#ad5dbf314d7bbaad0e934ab8008dbbec3">std::ceil</a>(-timeInfectedSymptoms - timeInfectedSevere_i * (i + 1))) {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[idxInfectedSevere_first + i] -=</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                            prob_SeverePerInfectedSymptoms *</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                            (-timeInfectedSymptoms - (i + 1) * timeInfectedSevere_i -</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                             <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - (i + 1) * timeInfectedSevere_i)) *</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                            scale_confirmed_cases * entry.num_confirmed;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                    }</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                    <span class="keywordflow">if</span> (offset == <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere_i * i)) {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[idxInfectedSevere_first + i] +=</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                            prob_SeverePerInfectedSymptoms *</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                            (1 - (-timeInfectedSymptoms - i * timeInfectedSevere_i -</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                                  <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - i * timeInfectedSevere_i))) *</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                            scale_confirmed_cases * entry.num_confirmed;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                    }</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                    <span class="keywordflow">if</span> (offset == <a class="code" href="namespacead_1_1internal.html#ad5dbf314d7bbaad0e934ab8008dbbec3">std::ceil</a>(-timeInfectedSymptoms - timeInfectedSevere_i * i)) {</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[idxInfectedSevere_first + i] +=</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                            prob_SeverePerInfectedSymptoms *</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                            (-timeInfectedSymptoms - i * timeInfectedSevere_i -</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                             <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - i * timeInfectedSevere_i)) *</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                            scale_confirmed_cases * entry.num_confirmed;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                    }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                }</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            }</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            <span class="comment">// Compute initial values for compartment InfectedCritical.</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="keywordflow">if</span> (offset &gt;= min_offset_needed &amp;&amp; offset &lt;= <a class="code" href="namespacead_1_1internal.html#ad5dbf314d7bbaad0e934ab8008dbbec3">std::ceil</a>(-timeInfectedSymptoms - timeInfectedSevere)) {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                <span class="comment">// Mean stay time in each subcompartment.</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                <a class="code" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> timeInfectedCritical_i =</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                    timeInfectedCritical /</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                    LctState::template get_num_subcompartments&lt;InfectionState::InfectedCritical&gt;();</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                <span class="comment">// Transmission probabilities.</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                <a class="code" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> prob_SeverePerInfectedSymptoms = model.parameters.template get&lt;SeverePerInfectedSymptoms&gt;();</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                <a class="code" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> prob_CriticalPerSevere         = model.parameters.template get&lt;CriticalPerSevere&gt;();</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                <span class="comment">// Index of the first subcompartment of InfectedCritical.</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                <span class="keywordtype">int</span> idxInfectedCritical_first = LctState::template get_first_index&lt;InfectionState::InfectedCritical&gt;();</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; LctState::template get_num_subcompartments&lt;InfectionState::InfectedCritical&gt;();</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                     i++) {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                    <span class="keywordflow">if</span> (offset ==</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                        <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical_i * (i + 1))) {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[idxInfectedCritical_first + i] -=</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                            prob_SeverePerInfectedSymptoms * prob_CriticalPerSevere *</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                            (1 - (-timeInfectedSymptoms - timeInfectedSevere - (i + 1) * timeInfectedCritical_i -</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                                  <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere -</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                             (i + 1) * timeInfectedCritical_i))) *</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                            scale_confirmed_cases * entry.num_confirmed;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                    }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                    <span class="keywordflow">if</span> (offset ==</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                        <a class="code" href="namespacead_1_1internal.html#ad5dbf314d7bbaad0e934ab8008dbbec3">std::ceil</a>(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical_i * (i + 1))) {</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[idxInfectedCritical_first + i] -=</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                            prob_SeverePerInfectedSymptoms * prob_CriticalPerSevere *</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                            (-timeInfectedSymptoms - timeInfectedSevere - (i + 1) * timeInfectedCritical_i -</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                             <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere -</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                                        (i + 1) * timeInfectedCritical_i)) *</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                            scale_confirmed_cases * entry.num_confirmed;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                    }</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                    <span class="keywordflow">if</span> (offset == <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical_i * i)) {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[idxInfectedCritical_first + i] +=</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                            prob_SeverePerInfectedSymptoms * prob_CriticalPerSevere *</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                            (1 -</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                             (-timeInfectedSymptoms - timeInfectedSevere - i * timeInfectedCritical_i -</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                              <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere - i * timeInfectedCritical_i))) *</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                            scale_confirmed_cases * entry.num_confirmed;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                    }</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                    <span class="keywordflow">if</span> (offset == <a class="code" href="namespacead_1_1internal.html#ad5dbf314d7bbaad0e934ab8008dbbec3">std::ceil</a>(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical_i * i)) {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[idxInfectedCritical_first + i] +=</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                            prob_SeverePerInfectedSymptoms * prob_CriticalPerSevere *</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                            (-timeInfectedSymptoms - timeInfectedSevere - i * timeInfectedCritical_i -</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                             <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere - i * timeInfectedCritical_i)) *</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                            scale_confirmed_cases * entry.num_confirmed;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                    }</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                }</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            <span class="comment">// Compute Dead.</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            <span class="keywordflow">if</span> (offset == min_offset_needed) {</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                min_offset_needed_avail = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[LctState::template get_first_index&lt;InfectionState::Dead&gt;()] +=</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                    (1 - (-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical -</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                          <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical))) *</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                    entry.num_deaths;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            }</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <span class="keywordflow">if</span> (offset == <a class="code" href="namespacead_1_1internal.html#ad5dbf314d7bbaad0e934ab8008dbbec3">std::ceil</a>(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical)) {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[LctState::template get_first_index&lt;InfectionState::Dead&gt;()] +=</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                    (-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical -</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                     <a class="code" href="namespacead_1_1internal.html#a73da6e5a789cf313a8639610d7f18c5b">std::floor</a>(-timeInfectedSymptoms - timeInfectedSevere - timeInfectedCritical)) *</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                    entry.num_deaths;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            <span class="keywordflow">if</span> (offset == max_offset_needed) {</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                max_offset_needed_avail = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        }</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    }</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="comment">// Compute Recovered.</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[LctState::template get_first_index&lt;InfectionState::Recovered&gt;()] -=</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>.segment(LctState::template get_first_index&lt;InfectionState::InfectedSymptoms&gt;(),</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                     LctState::template get_num_subcompartments&lt;InfectionState::InfectedSymptoms&gt;() +</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                         LctState::template get_num_subcompartments&lt;InfectionState::InfectedSevere&gt;() +</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                         LctState::template get_num_subcompartments&lt;InfectionState::InfectedCritical&gt;())</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            .sum();</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[LctState::template get_first_index&lt;InfectionState::Recovered&gt;()] -=</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[LctState::template get_first_index&lt;InfectionState::Dead&gt;()];</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="comment">// Compute Susceptibles.</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>[LctState::template get_first_index&lt;InfectionState::Susceptible&gt;()] =</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        total_population - <a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>.segment(1, LctState::Count - 1).sum();</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="comment">// Check whether all necessary dates are available.</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <span class="keywordflow">if</span> (!max_offset_needed_avail || !min_offset_needed_avail) {</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        <a class="code" href="namespacemio.html#a89afc3ebfa2c5ab994ec3c76dcad85d1">log_error</a>(<span class="stringliteral">&quot;Necessary range of dates needed to compute initial values does not exist in RKI data.&quot;</span>);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespacemio.html#a23604adfeac7ebc8418d741959e80906">failure</a>(<a class="code" href="namespacemio.html#a2799d348d433018d5b183d75bfbdd699a365b2699d38b61ef4b4c8a1066c8468f">StatusCode::OutOfRange</a>, path + <span class="stringliteral">&quot;, necessary range of dates does not exist in RKI data.&quot;</span>);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    }</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="comment">// Set computed initial value vector.</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    model.set_initial_values(std::move(<a class="code" href="namespacemio_1_1mpi.html#ac7d19a6d650ab6f785065e552e7221a6">init</a>));</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespacemio.html#a80d7fd30c9669e05b537b2caedd82bb8">mio::success</a>();</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;}</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;} <span class="comment">// namespace lsecir</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;} <span class="comment">// namespace mio</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// MEMILIO_HAS_JSONCPP</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// LCTSECIR_PARAMETERS_IO_H</span></div>
 <div class="ttc" id="aclassmio_1_1lsecir_1_1Model_html_a317ebd354e298a750604c24485892561"><div class="ttname"><a href="classmio_1_1lsecir_1_1Model.html#a317ebd354e298a750604c24485892561">mio::lsecir::Model::LctState</a></div><div class="ttdeci">LctInfectionState&lt; InfectionState, 1, NumExposed, NumInfectedNoSymptoms, NumInfectedSymptoms, NumInfectedSevere, NumInfectedCritical, 1, 1 &gt; LctState</div><div class="ttdoc">This class specifies the number of subcompartments.</div><div class="ttdef"><b>Definition:</b> model.h:54</div></div>
 <div class="ttc" id="adate_8h_html"><div class="ttname"><a href="date_8h.html">date.h</a></div></div>
 <div class="ttc" id="aeigen_8h_html"><div class="ttname"><a href="eigen_8h.html">eigen.h</a></div></div>

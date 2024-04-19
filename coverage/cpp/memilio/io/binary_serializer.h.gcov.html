@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">128</td>
-            <td class="headerCovTableEntry">133</td>
-            <td class="headerCovTableEntryHi">96.2 %</td>
+            <td class="headerCovTableEntry">129</td>
+            <td class="headerCovTableEntry">134</td>
+            <td class="headerCovTableEntryHi">96.3 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-04-08 15:54:10</td>
+            <td class="headerValue">2024-04-19 13:56:46</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">115</td>
@@ -317,27 +317,27 @@
 <a name="255"><span class="lineNum">     255 </span><span class="lineCov">        266 :     BinarySerializerObject create_object(const std::string&amp; type)</span></a>
 <a name="256"><span class="lineNum">     256 </span>            :     {</a>
 <a name="257"><span class="lineNum">     257 </span><span class="lineCov">        532 :         auto obj = BinarySerializerObject(m_stream, m_status, m_flags);</span></a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">        266 :         if (m_flags &amp; IOF_IncludeTypeInfo)</span></a>
-<a name="259"><span class="lineNum">     259 </span>            :         {</a>
-<a name="260"><span class="lineNum">     260 </span><span class="lineCov">          2 :             obj.add_element(&quot;Type&quot;, type);</span></a>
-<a name="261"><span class="lineNum">     261 </span>            :         }</a>
-<a name="262"><span class="lineNum">     262 </span><span class="lineCov">        266 :         return obj;</span></a>
-<a name="263"><span class="lineNum">     263 </span>            :     }</a>
-<a name="264"><span class="lineNum">     264 </span>            : </a>
-<a name="265"><span class="lineNum">     265 </span>            :     /**</a>
-<a name="266"><span class="lineNum">     266 </span>            :     * Begin deserialization of an object.</a>
-<a name="267"><span class="lineNum">     267 </span>            :     * @param type Name of the type of the object. Only used if flag IOF_IncludeTypeInfo is set.</a>
-<a name="268"><span class="lineNum">     268 </span>            :     */</a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">        266 :     BinarySerializerObject expect_object(const std::string&amp; type)</span></a>
-<a name="270"><span class="lineNum">     270 </span>            :     {</a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineCov">        798 :         auto obj = BinarySerializerObject(m_stream, m_status, m_flags);</span></a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">        266 :         if (m_flags &amp; IOF_IncludeTypeInfo)</span></a>
-<a name="273"><span class="lineNum">     273 </span>            :         {</a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineCov">          8 :             auto type_result = obj.expect_element(&quot;Type&quot;, Tag&lt;std::string&gt;{});</span></a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">          2 :             if (!type_result) {</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineNoCov">          0 :                 *m_status = IOStatus(StatusCode::InvalidType, &quot;No TypeInfo in stream.&quot;);</span></a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">          2 :             } else if(type_result.value() != type) {</span></a>
-<a name="278"><span class="lineNum">     278 </span><span class="lineCov">          1 :                 *m_status = IOStatus(StatusCode::InvalidType, &quot;Unexpected type in stream:&quot; + type_result.value() + &quot;. Expected &quot; + type);</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">        266 :         if (m_flags &amp; IOF_IncludeTypeInfo) {</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">          2 :             obj.add_element(&quot;Type&quot;, type);</span></a>
+<a name="260"><span class="lineNum">     260 </span>            :         }</a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineCov">        266 :         return obj;</span></a>
+<a name="262"><span class="lineNum">     262 </span>            :     }</a>
+<a name="263"><span class="lineNum">     263 </span>            : </a>
+<a name="264"><span class="lineNum">     264 </span>            :     /**</a>
+<a name="265"><span class="lineNum">     265 </span>            :     * Begin deserialization of an object.</a>
+<a name="266"><span class="lineNum">     266 </span>            :     * @param type Name of the type of the object. Only used if flag IOF_IncludeTypeInfo is set.</a>
+<a name="267"><span class="lineNum">     267 </span>            :     */</a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">        266 :     BinarySerializerObject expect_object(const std::string&amp; type)</span></a>
+<a name="269"><span class="lineNum">     269 </span>            :     {</a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">        798 :         auto obj = BinarySerializerObject(m_stream, m_status, m_flags);</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">        266 :         if (m_flags &amp; IOF_IncludeTypeInfo) {</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">          8 :             auto type_result = obj.expect_element(&quot;Type&quot;, Tag&lt;std::string&gt;{});</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">          2 :             if (!type_result) {</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineNoCov">          0 :                 *m_status = IOStatus(StatusCode::InvalidType, &quot;No TypeInfo in stream.&quot;);</span></a>
+<a name="275"><span class="lineNum">     275 </span>            :             }</a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">          2 :             else if (type_result.value() != type) {</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">          3 :                 *m_status = IOStatus(StatusCode::InvalidType,</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">          3 :                                      &quot;Unexpected type in stream:&quot; + type_result.value() + &quot;. Expected &quot; + type);</span></a>
 <a name="279"><span class="lineNum">     279 </span>            :             }</a>
 <a name="280"><span class="lineNum">     280 </span>            :         }</a>
 <a name="281"><span class="lineNum">     281 </span><span class="lineCov">        532 :         return BinarySerializerObject(m_stream, m_status, m_flags);</span></a>
@@ -462,11 +462,11 @@
 <a name="400"><span class="lineNum">     400 </span><span class="lineCov">        138 : IOResult&lt;std::vector&lt;T&gt;&gt; BinarySerializerObject::expect_list(const std::string&amp; name, Tag&lt;T&gt;)</span></a>
 <a name="401"><span class="lineNum">     401 </span>            : {</a>
 <a name="402"><span class="lineNum">     402 </span><span class="lineCov">        138 :     mio::unused(name);</span></a>
-<a name="403"><span class="lineNum">     403 </span><span class="lineCov">        275 :     BOOST_OUTCOME_TRY(size, expect_element(&quot;Size&quot;, Tag&lt;size_t&gt;{}));</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">        552 :     BOOST_OUTCOME_TRY(auto&amp;&amp; size, expect_element(&quot;Size&quot;, Tag&lt;size_t&gt;{}));</span></a>
 <a name="404"><span class="lineNum">     404 </span><span class="lineCov">        274 :     std::vector&lt;T&gt; v;</span></a>
 <a name="405"><span class="lineNum">     405 </span><span class="lineCov">        137 :     v.reserve(size);</span></a>
 <a name="406"><span class="lineNum">     406 </span><span class="lineCov">        807 :     for (auto i = size_t(0); i &lt; size; ++i) {</span></a>
-<a name="407"><span class="lineNum">     407 </span><span class="lineCov">        670 :         BOOST_OUTCOME_TRY(t, expect_element(&quot;Item&quot;, Tag&lt;T&gt;{}));</span></a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineCov">       2010 :         BOOST_OUTCOME_TRY(auto&amp;&amp; t, expect_element(&quot;Item&quot;, Tag&lt;T&gt;{}));</span></a>
 <a name="408"><span class="lineNum">     408 </span><span class="lineCov">        670 :         v.emplace_back(std::move(t));</span></a>
 <a name="409"><span class="lineNum">     409 </span>            :     }</a>
 <a name="410"><span class="lineNum">     410 </span><span class="lineCov">        137 :     return success(v);</span></a>
@@ -486,9 +486,9 @@
 <a name="424"><span class="lineNum">     424 </span><span class="lineCov">        123 : IOResult&lt;boost::optional&lt;T&gt;&gt; BinarySerializerObject::expect_optional(const std::string&amp; name, Tag&lt;T&gt;)</span></a>
 <a name="425"><span class="lineNum">     425 </span>            : {</a>
 <a name="426"><span class="lineNum">     426 </span><span class="lineCov">        123 :     mio::unused(name);</span></a>
-<a name="427"><span class="lineNum">     427 </span><span class="lineCov">        245 :     BOOST_OUTCOME_TRY(size, expect_element(&quot;Exists&quot;, Tag&lt;size_t&gt;{}));</span></a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineCov">        492 :     BOOST_OUTCOME_TRY(auto&amp;&amp; size, expect_element(&quot;Exists&quot;, Tag&lt;size_t&gt;{}));</span></a>
 <a name="428"><span class="lineNum">     428 </span><span class="lineCov">        122 :     if (size) {</span></a>
-<a name="429"><span class="lineNum">     429 </span><span class="lineCov">        220 :         BOOST_OUTCOME_TRY(t, expect_element(&quot;Value&quot;, Tag&lt;T&gt;{}));</span></a>
+<a name="429"><span class="lineNum">     429 </span><span class="lineCov">        440 :         BOOST_OUTCOME_TRY(auto&amp;&amp; t, expect_element(&quot;Value&quot;, Tag&lt;T&gt;{}));</span></a>
 <a name="430"><span class="lineNum">     430 </span><span class="lineCov">        111 :         return mio::success(t);</span></a>
 <a name="431"><span class="lineNum">     431 </span>            :     }</a>
 <a name="432"><span class="lineNum">     432 </span><span class="lineCov">         12 :     return mio::success(boost::optional&lt;T&gt;{});</span></a>
@@ -510,24 +510,23 @@
 <a name="448"><span class="lineNum">     448 </span><span class="lineCov">         20 :     return stream;</span></a>
 <a name="449"><span class="lineNum">     449 </span>            : }</a>
 <a name="450"><span class="lineNum">     450 </span>            : </a>
-<a name="451"><span class="lineNum">     451 </span>            : </a>
-<a name="452"><span class="lineNum">     452 </span>            : /**</a>
-<a name="453"><span class="lineNum">     453 </span>            : * Deserialize an object from binary format.</a>
-<a name="454"><span class="lineNum">     454 </span>            : * @param stream ByteStream that contains the bytes that represent the object.</a>
-<a name="455"><span class="lineNum">     455 </span>            : * @param tag Tag that carries the type of the object to be deserialized.</a>
-<a name="456"><span class="lineNum">     456 </span>            : * @return The deserialized object if succesful, an error otherwise.</a>
-<a name="457"><span class="lineNum">     457 </span>            : * @tparam T the type of the object to be serialized.</a>
-<a name="458"><span class="lineNum">     458 </span>            : */</a>
-<a name="459"><span class="lineNum">     459 </span>            : template &lt;class T&gt;</a>
-<a name="460"><span class="lineNum">     460 </span><span class="lineCov">         10 : IOResult&lt;T&gt; deserialize_binary(ByteStream&amp; stream, Tag&lt;T&gt;, int flags = 0)</span></a>
-<a name="461"><span class="lineNum">     461 </span>            : {</a>
-<a name="462"><span class="lineNum">     462 </span><span class="lineCov">         30 :     BinarySerializerContext ctxt(stream, std::make_shared&lt;IOStatus&gt;(), flags);</span></a>
-<a name="463"><span class="lineNum">     463 </span><span class="lineCov">         20 :     return mio::deserialize(ctxt, Tag&lt;T&gt;{});</span></a>
-<a name="464"><span class="lineNum">     464 </span>            : }</a>
-<a name="465"><span class="lineNum">     465 </span>            : </a>
-<a name="466"><span class="lineNum">     466 </span>            : } // namespace mio</a>
-<a name="467"><span class="lineNum">     467 </span>            : </a>
-<a name="468"><span class="lineNum">     468 </span>            : #endif</a>
+<a name="451"><span class="lineNum">     451 </span>            : /**</a>
+<a name="452"><span class="lineNum">     452 </span>            : * Deserialize an object from binary format.</a>
+<a name="453"><span class="lineNum">     453 </span>            : * @param stream ByteStream that contains the bytes that represent the object.</a>
+<a name="454"><span class="lineNum">     454 </span>            : * @param tag Tag that carries the type of the object to be deserialized.</a>
+<a name="455"><span class="lineNum">     455 </span>            : * @return The deserialized object if succesful, an error otherwise.</a>
+<a name="456"><span class="lineNum">     456 </span>            : * @tparam T the type of the object to be serialized.</a>
+<a name="457"><span class="lineNum">     457 </span>            : */</a>
+<a name="458"><span class="lineNum">     458 </span>            : template &lt;class T&gt;</a>
+<a name="459"><span class="lineNum">     459 </span><span class="lineCov">         10 : IOResult&lt;T&gt; deserialize_binary(ByteStream&amp; stream, Tag&lt;T&gt;, int flags = 0)</span></a>
+<a name="460"><span class="lineNum">     460 </span>            : {</a>
+<a name="461"><span class="lineNum">     461 </span><span class="lineCov">         30 :     BinarySerializerContext ctxt(stream, std::make_shared&lt;IOStatus&gt;(), flags);</span></a>
+<a name="462"><span class="lineNum">     462 </span><span class="lineCov">         20 :     return mio::deserialize(ctxt, Tag&lt;T&gt;{});</span></a>
+<a name="463"><span class="lineNum">     463 </span>            : }</a>
+<a name="464"><span class="lineNum">     464 </span>            : </a>
+<a name="465"><span class="lineNum">     465 </span>            : } // namespace mio</a>
+<a name="466"><span class="lineNum">     466 </span>            : </a>
+<a name="467"><span class="lineNum">     467 </span>            : #endif</a>
 </pre>
       </td>
     </tr>

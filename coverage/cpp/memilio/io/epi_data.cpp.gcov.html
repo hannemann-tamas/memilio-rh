@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-04-08 15:54:10</td>
+            <td class="headerValue">2024-04-19 13:56:46</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -98,7 +98,7 @@
 <a name="36"><span class="lineNum">      36 </span>            : </a>
 <a name="37"><span class="lineNum">      37 </span><span class="lineCov">          3 : IOResult&lt;std::vector&lt;int&gt;&gt; get_node_ids(const std::string&amp; path, bool is_node_for_county, bool rki_age_groups)</span></a>
 <a name="38"><span class="lineNum">      38 </span>            : {</a>
-<a name="39"><span class="lineNum">      39 </span><span class="lineCov">          6 :     BOOST_OUTCOME_TRY(population_data, read_population_data(path, rki_age_groups));</span></a>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">          6 :     BOOST_OUTCOME_TRY(auto&amp;&amp; population_data, read_population_data(path, rki_age_groups));</span></a>
 <a name="40"><span class="lineNum">      40 </span><span class="lineCov">          6 :     std::vector&lt;int&gt; id;</span></a>
 <a name="41"><span class="lineNum">      41 </span><span class="lineCov">          3 :     id.reserve(population_data.size());</span></a>
 <a name="42"><span class="lineNum">      42 </span><span class="lineCov">        408 :     for (auto&amp;&amp; entry : population_data) {</span></a>
