@@ -243,7 +243,7 @@ private:
     DampingType m_type;
     SimulationTime m_time;
     std::vector<size_t> m_matrices;
-    Eigen::VectorXd m_groups;
+    Eigen::Matrix<FP, Eigen::Dynamic, 1> m_groups;
 };
 
 /**

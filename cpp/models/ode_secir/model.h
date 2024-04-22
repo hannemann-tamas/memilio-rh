@@ -80,8 +80,8 @@ public:
 
         ContactMatrixGroup const& contact_matrix = params.template get<ContactPatterns<FP>>();
 
-        auto icu_occupancy           = 0.0;
-        auto test_and_trace_required = 0.0;
+        FP icu_occupancy           = 0.0;
+        FP test_and_trace_required = 0.0;
         for (auto i = AgeGroup(0); i < n_agegroups; ++i) {
             test_and_trace_required += (1 - params.template get<RecoveredPerInfectedNoSymptoms<FP>>()[i]) /
                                        params.template get<TimeInfectedNoSymptoms<FP>>()[i] *
@@ -110,11 +110,11 @@ public:
                 size_t Rj    = this->populations.get_flat_index({j, InfectionState::Recovered});
 
                 //symptomatic are less well quarantined when testing and tracing is overwhelmed so they infect more people
-                auto riskFromInfectedSymptomatic =
-                    smoother_cosine(test_and_trace_required, params.template get<TestAndTraceCapacity<FP>>(),
-                                    params.template get<TestAndTraceCapacity<FP>>() * 5,
-                                    params.template get<RiskOfInfectionFromSymptomatic<FP>>()[j],
-                                    params.template get<MaxRiskOfInfectionFromSymptomatic<FP>>()[j]);
+                FP riskFromInfectedSymptomatic =
+                    smoother_cosine(test_and_trace_required, params.template get<TestAndTraceCapacity<FP>>().value(),
+                                    params.template get<TestAndTraceCapacity<FP>>().value() * 5,
+                                    params.template get<RiskOfInfectionFromSymptomatic<FP>>()[j].value(),
+                                    params.template get<MaxRiskOfInfectionFromSymptomatic<FP>>()[j].value());
 
                 // effective contact rate by contact rate between groups i and j and damping j
                 double season_val =
@@ -138,7 +138,7 @@ public:
             }
 
             // ICU capacity shortage is close
-            double criticalPerSevereAdjusted = smoother_cosine(
+            FP criticalPerSevereAdjusted = smoother_cosine<FP>(
                 icu_occupancy, 0.90 * params.template get<ICUCapacity<FP>>(), params.template get<ICUCapacity<FP>>(),
                 params.template get<CriticalPerSevere<FP>>()[i], 0);
 
@@ -453,10 +453,10 @@ IOResult<FP> get_reproduction_number(size_t t_idx, const Simulation<FP, Base>& s
         divN[(size_t)k] = 1 / temp;
 
         riskFromInfectedSymptomatic[(size_t)k] =
-            smoother_cosine(test_and_trace_required, params.template get<TestAndTraceCapacity<FP>>(),
-                            (params.template get<TestAndTraceCapacity<FP>>()) * 5,
-                            params.template get<RiskOfInfectionFromSymptomatic<FP>>()[k],
-                            params.template get<MaxRiskOfInfectionFromSymptomatic<FP>>()[k]);
+            smoother_cosine<double>(test_and_trace_required, params.template get<TestAndTraceCapacity<FP>>(),
+                                    (params.template get<TestAndTraceCapacity<FP>>()) * 5,
+                                    params.template get<RiskOfInfectionFromSymptomatic<FP>>()[k],
+                                    params.template get<MaxRiskOfInfectionFromSymptomatic<FP>>()[k]);
 
         for (mio::AgeGroup l = 0; l < (mio::AgeGroup)num_groups; l++) {
             if (test_and_trace_required < params.template get<TestAndTraceCapacity<FP>>() ||
@@ -539,7 +539,7 @@ IOResult<FP> get_reproduction_number(size_t t_idx, const Simulation<FP, Base>& s
 
     //Initialize the matrix V
     for (Eigen::Index i = 0; i < (Eigen::Index)num_groups; i++) {
-        double criticalPerSevereAdjusted = smoother_cosine(
+        double criticalPerSevereAdjusted = smoother_cosine<FP>(
             icu_occupancy, 0.90 * params.template get<ICUCapacity<FP>>(), params.template get<ICUCapacity<FP>>(),
             params.template get<CriticalPerSevere<FP>>()[(mio::AgeGroup)i], 0);
 

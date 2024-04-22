@@ -51,8 +51,8 @@ public:
     UncertainContactMatrix(const ContactMatrixGroup& cont_freq)
         : m_cont_freq(cont_freq)
         , m_dampings()
-        , m_school_holiday_damping(0.0, mio::DampingLevel(0), mio::DampingType(0), mio::SimulationTime(0), {},
-                                   Eigen::VectorXd::Zero(cont_freq.get_num_groups()))
+        , m_school_holiday_damping(FP(0.0), mio::DampingLevel(0), mio::DampingType(0), mio::SimulationTime(0), {},
+                                   Eigen::Matrix<FP, Eigen::Dynamic, 1>::Zero(cont_freq.get_num_groups()))
         , m_school_holidays()
     {
     }

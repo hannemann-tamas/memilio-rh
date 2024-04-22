@@ -114,10 +114,13 @@ public:
      * @return total population of the group
      */
     template <class T>
-    ScalarType get_group_total(mio::Index<T> group_idx) const
+    FP get_group_total(mio::Index<T> group_idx) const
     {
         auto const s = this->template slice<T>({(size_t)group_idx, 1});
-        return std::accumulate(s.begin(), s.end(), 0.);
+        auto op      = [](const FP& a, const UncertainValue<FP>& b) {
+            return a + b.value();
+        };
+        return std::accumulate(s.begin(), s.end(), FP(0.), op);
     }
 
     /**
@@ -169,13 +172,13 @@ public:
      * @param group_idx The enum of the group within the category
      */
     template <class T>
-    void set_difference_from_group_total(Index const& midx, ScalarType total_group_population)
+    void set_difference_from_group_total(Index const& midx, FP total_group_population)
 
     {
         auto group_idx                = mio::get<T>(midx);
-        ScalarType current_population = get_group_total(group_idx);
+        FP current_population         = get_group_total(group_idx);
         size_t idx                    = this->get_flat_index(midx);
-        current_population -= this->array()[idx];
+        current_population -= FP(this->array()[idx]);
 
         assert(current_population <= total_group_population + 1e-10);
 
@@ -240,9 +243,9 @@ public:
     void apply_constraints()
     {
         for (int i = 0; i < this->array().size(); i++) {
-            if (this->array()[i] < 0) {
-                log_warning("Constraint check: Compartment size {:d} changed from {:.4f} to {:d}", i, this->array()[i],
-                            0);
+            if ((this->array()[i]).value() < 0) {
+                log_warning("Constraint check: Compartment size {:d} changed from {:.4f} to {:d}", i,
+                            (this->array()[i]).value(), 0);
                 this->array()[i] = 0;
             }
         }

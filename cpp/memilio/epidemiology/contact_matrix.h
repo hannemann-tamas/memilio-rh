@@ -23,6 +23,7 @@
 #include "memilio/math/eigen.h"
 #include "memilio/epidemiology/damping.h"
 #include "memilio/utils/stl_util.h"
+#include "ad/ad.hpp"
 
 #include <vector>
 #include <numeric>
@@ -189,9 +190,17 @@ public:
     {
         return m_baseline - (m_dampings.get_matrix_at(t).array() * (m_baseline - m_minimum).array()).matrix();
     }
+
     auto get_matrix_at(double t) const
     {
         return get_matrix_at(SimulationTime(t));
+    }
+
+    //overload for AD data types
+    template <typename FP>
+    auto get_matrix_at(FP t) const
+    {
+        return get_matrix_at(SimulationTime(ad::value(t)));
     }
 
     /**

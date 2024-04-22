@@ -143,16 +143,16 @@ public:
             double reducTimeInfectedMild = params.get<osecirvvs::ReducTimeInfectedMild<ScalarType>>()[i];
 
             //symptomatic are less well quarantined when testing and tracing is overwhelmed so they infect more people
-            auto riskFromInfectedSymptomatic =
-                smoother_cosine(test_and_trace_required, params.get<osecirvvs::TestAndTraceCapacity<ScalarType>>(),
-                                params.get<osecirvvs::TestAndTraceCapacity<ScalarType>>() * 15,
-                                params.get<osecirvvs::RiskOfInfectionFromSymptomatic<ScalarType>>()[i],
-                                params.get<osecirvvs::MaxRiskOfInfectionFromSymptomatic<ScalarType>>()[i]);
+            auto riskFromInfectedSymptomatic = smoother_cosine<ScalarType>(
+                test_and_trace_required, params.get<osecirvvs::TestAndTraceCapacity<ScalarType>>(),
+                params.get<osecirvvs::TestAndTraceCapacity<ScalarType>>() * 15,
+                params.get<osecirvvs::RiskOfInfectionFromSymptomatic<ScalarType>>()[i],
+                params.get<osecirvvs::MaxRiskOfInfectionFromSymptomatic<ScalarType>>()[i]);
 
-            auto riskFromInfectedNoSymptoms =
-                smoother_cosine(test_and_trace_required, params.get<osecirvvs::TestAndTraceCapacity<ScalarType>>(),
-                                params.get<osecirvvs::TestAndTraceCapacity<ScalarType>>() * 2,
-                                params.get<osecirvvs::RelativeTransmissionNoSymptoms<ScalarType>>()[i], 1.0);
+            auto riskFromInfectedNoSymptoms = smoother_cosine<ScalarType>(
+                test_and_trace_required, params.get<osecirvvs::TestAndTraceCapacity<ScalarType>>(),
+                params.get<osecirvvs::TestAndTraceCapacity<ScalarType>>() * 2,
+                params.get<osecirvvs::RelativeTransmissionNoSymptoms<ScalarType>>()[i], 1.0);
 
             for (auto j = AgeGroup(0); j < n_agegroups; j++) {
                 size_t SNj    = this->populations.get_flat_index({j, InfectionState::SusceptibleNaive});
@@ -234,9 +234,9 @@ public:
             // is different for different vaccination status. This is not the case here and in addition, ICUCapacity
             // is set to infinity and this functionality is deactivated, so this is OK for the moment.
             double criticalPerSevereAdjusted =
-                smoother_cosine(icu_occupancy, 0.90 * params.get<osecirvvs::ICUCapacity<ScalarType>>(),
-                                params.get<osecirvvs::ICUCapacity<ScalarType>>(),
-                                params.get<osecirvvs::CriticalPerSevere<ScalarType>>()[i], 0);
+                smoother_cosine<ScalarType>(icu_occupancy, 0.90 * params.get<osecirvvs::ICUCapacity<ScalarType>>(),
+                                            params.get<osecirvvs::ICUCapacity<ScalarType>>(),
+                                            params.get<osecirvvs::CriticalPerSevere<ScalarType>>()[i], 0);
 
             double deathsPerSevereAdjusted =
                 params.get<osecirvvs::CriticalPerSevere<ScalarType>>()[i] - criticalPerSevereAdjusted;

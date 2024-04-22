@@ -38,10 +38,13 @@ namespace mio
  * @param xright right boundary of independent variable
  * @param yleft function value at left boundary
  * @param yright function value at right boundary
+ * @tparam FP floating point type, e.g., double
  * @return double cosine-smoothed evaluation of discrete step function
  */
-inline double smoother_cosine(double x, double xleft, double xright, double yleft, double yright)
+template <typename FP = double>
+inline FP smoother_cosine(FP x, FP xleft, FP xright, FP yleft, FP yright)
 {
+    using std::cos;
     if (x <= xleft) {
         return yleft;
     }
@@ -49,7 +52,7 @@ inline double smoother_cosine(double x, double xleft, double xright, double ylef
         return yright;
     }
 
-    return 0.5 * (yleft - yright) * std::cos(3.14159265358979323846 / (xright - xleft) * (x - xleft)) +
+    return 0.5 * (yleft - yright) * cos(3.14159265358979323846 / (xright - xleft) * (x - xleft)) +
            0.5 * (yleft + yright);
 }
 
