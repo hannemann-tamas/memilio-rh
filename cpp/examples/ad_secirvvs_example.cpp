@@ -70,6 +70,12 @@ int main()
         model.populations[{(mio::AgeGroup)0, mio::osecirvvs::InfectionState::DeadNaive}]                    = 0;
         model.populations[{(mio::AgeGroup)0, mio::osecirvvs::InfectionState::DeadPartialImmunity}]          = 0;
         model.populations[{(mio::AgeGroup)0, mio::osecirvvs::InfectionState::DeadImprovedImmunity}]         = 0;
+
+        // set seed
+        FP value              = model.populations[{i, mio::osecirvvs::InfectionState::ExposedNaive}];
+        ad::derivative(value) = 1.0;
+        model.populations[{i, mio::osecirvvs::InfectionState::ExposedNaive}] = value;
+
         model.populations.set_difference_from_group_total<mio::AgeGroup>(
             {i, mio::osecirvvs::InfectionState::SusceptibleNaive}, FP(1000));
     }
@@ -143,6 +149,10 @@ int main()
         printf("\n%.14f ", ad::value(result.get_last_time()));
         for (size_t j = 0; j < (size_t)mio::osecirvvs::InfectionState::Count; j++) {
             printf("compartment %d: %.14f\n", (int)j, ad::value(result.get_last_value()[j]));
+        }
+        std::cout << "Derivatives:" << std::endl;
+        for (size_t j = 0; j < (size_t)mio::osecirvvs::InfectionState::Count; j++) {
+            printf("compartment %d: %.14f\n", (int)j, ad::derivative(result.get_last_value()[j]));
         }
     }
 
