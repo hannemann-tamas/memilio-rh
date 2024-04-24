@@ -61,8 +61,8 @@ TEST(TestOdeSir, compareWithPreviousRun)
     model.parameters.set<mio::osir::TransmissionProbabilityOnContact<double>>(1.0);
     model.parameters.set<mio::osir::TimeInfected<double>>(2);
 
-    model.parameters.get<mio::osir::ContactPatterns>().get_baseline()(0, 0) = 2.7;
-    model.parameters.get<mio::osir::ContactPatterns>().add_damping(0.6, mio::SimulationTime(12.5));
+    model.parameters.get<mio::osir::ContactPatterns<>>().get_baseline()(0, 0) = 2.7;
+    model.parameters.get<mio::osir::ContactPatterns<>>().add_damping(0.6, mio::SimulationTime<>(12.5));
 
     std::vector<std::vector<double>> refData = load_test_data_csv<double>("ode-sir-compare.csv");
     auto integrator                          = std::make_shared<mio::EulerIntegratorCore<double>>();
@@ -116,8 +116,8 @@ TEST(TestOdeSir, checkPopulationConservation)
     model.parameters.set<mio::osir::TransmissionProbabilityOnContact<double>>(1.0);
     model.parameters.set<mio::osir::TimeInfected<double>>(2);
 
-    model.parameters.get<mio::osir::ContactPatterns>().get_baseline()(0, 0) = 2.7;
-    model.parameters.get<mio::osir::ContactPatterns>().add_damping(0.6, mio::SimulationTime(12.5));
+    model.parameters.get<mio::osir::ContactPatterns<>>().get_baseline()(0, 0) = 2.7;
+    model.parameters.get<mio::osir::ContactPatterns<>>().add_damping(0.6, mio::SimulationTime<>(12.5));
     auto result        = mio::simulate<double, mio::osir::Model<double>>(t0, tmax, dt, model);
     double num_persons = 0.0;
     for (auto i = 0; i < result.get_last_value().size(); i++) {
@@ -131,7 +131,7 @@ TEST(TestOdeSir, check_constraints_parameters)
     mio::osir::Model<double> model;
     model.parameters.set<mio::osir::TimeInfected<double>>(6);
     model.parameters.set<mio::osir::TransmissionProbabilityOnContact<double>>(0.04);
-    model.parameters.get<mio::osir::ContactPatterns>().get_baseline()(0, 0) = 10;
+    model.parameters.get<mio::osir::ContactPatterns<>>().get_baseline()(0, 0) = 10;
 
     // model.check_constraints() combines the functions from population and parameters.
     // We only want to test the functions for the parameters defined in parameters.h
@@ -154,7 +154,7 @@ TEST(TestOdeSir, apply_constraints_parameters)
     mio::osir::Model<double> model;
     model.parameters.set<mio::osir::TimeInfected<double>>(6);
     model.parameters.set<mio::osir::TransmissionProbabilityOnContact<double>>(0.04);
-    model.parameters.get<mio::osir::ContactPatterns>().get_baseline()(0, 0) = 10;
+    model.parameters.get<mio::osir::ContactPatterns<>>().get_baseline()(0, 0) = 10;
 
     EXPECT_EQ(model.parameters.apply_constraints(), 0);
 

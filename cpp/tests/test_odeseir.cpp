@@ -66,8 +66,8 @@ protected:
         model.parameters.set<mio::oseir::TimeExposed<double>>(5.2);
         model.parameters.set<mio::oseir::TimeInfected<double>>(2);
 
-        model.parameters.get<mio::oseir::ContactPatterns>().get_baseline()(0, 0) = 2.7;
-        model.parameters.get<mio::oseir::ContactPatterns>().add_damping(0.6, mio::SimulationTime(12.5));
+        model.parameters.get<mio::oseir::ContactPatterns<>>().get_baseline()(0, 0) = 2.7;
+        model.parameters.get<mio::oseir::ContactPatterns<>>().add_damping(0.6, mio::SimulationTime<>(12.5));
     }
 
 public:
@@ -132,7 +132,7 @@ TEST_F(ModelTestOdeSeir, check_constraints_parameters)
     model.parameters.set<mio::oseir::TimeInfected<double>>(6);
     model.parameters.set<mio::oseir::TransmissionProbabilityOnContact<double>>(0.04);
 
-    model.parameters.get<mio::oseir::ContactPatterns>().get_baseline()(0, 0) = 10;
+    model.parameters.get<mio::oseir::ContactPatterns<>>().get_baseline()(0, 0) = 10;
 
     // model.check_constraints() combines the functions from population and parameters.
     // We only want to test the functions for the parameters defined in parameters.h
@@ -159,7 +159,7 @@ TEST(TestOdeSeir, apply_constraints_parameters)
     model.parameters.set<mio::oseir::TimeExposed<double>>(5.2);
     model.parameters.set<mio::oseir::TimeInfected<double>>(6);
     model.parameters.set<mio::oseir::TransmissionProbabilityOnContact<double>>(0.04);
-    model.parameters.get<mio::oseir::ContactPatterns>().get_baseline()(0, 0) = 10;
+    model.parameters.get<mio::oseir::ContactPatterns<>>().get_baseline()(0, 0) = 10;
 
     EXPECT_EQ(model.parameters.apply_constraints(), 0);
 
@@ -194,7 +194,7 @@ TEST(TestOdeSeir, get_reproduction_numbers)
 
     model.parameters.set<mio::oseir::TimeInfected<double>>(6);
     model.parameters.set<mio::oseir::TransmissionProbabilityOnContact<double>>(0.04);
-    model.parameters.get<mio::oseir::ContactPatterns>().get_baseline()(0, 0) = 10;
+    model.parameters.get<mio::oseir::ContactPatterns<>>().get_baseline()(0, 0) = 10;
 
     model.apply_constraints();
 
@@ -241,7 +241,7 @@ TEST(TestOdeSeir, get_reproduction_numbers)
         EXPECT_NEAR(reproduction_numbers[i], checkReproductionNumbers[i], 1e-12);
     }
 
-    model.parameters.get<mio::oseir::ContactPatterns>().get_baseline()(0, 0) = 9;
+    model.parameters.get<mio::oseir::ContactPatterns<>>().get_baseline()(0, 0) = 9;
 
     auto reproduction_numbers2 = model.get_reproduction_numbers(result);
 
@@ -249,7 +249,7 @@ TEST(TestOdeSeir, get_reproduction_numbers)
         EXPECT_NEAR(reproduction_numbers2[i], checkReproductionNumbers2[i], 1e-12);
     }
 
-    model.parameters.get<mio::oseir::ContactPatterns>().get_baseline()(0, 0) = 8;
+    model.parameters.get<mio::oseir::ContactPatterns<>>().get_baseline()(0, 0) = 8;
 
     auto reproduction_numbers3 = model.get_reproduction_numbers(result);
 
@@ -277,7 +277,7 @@ TEST(TestOdeSeir, get_reproduction_number)
 
     model.parameters.set<mio::oseir::TimeInfected<double>>(6);
     model.parameters.set<mio::oseir::TransmissionProbabilityOnContact<double>>(0.04);
-    model.parameters.get<mio::oseir::ContactPatterns>().get_baseline()(0, 0) = 10;
+    model.parameters.get<mio::oseir::ContactPatterns<>>().get_baseline()(0, 0) = 10;
 
     model.apply_constraints();
 
@@ -320,11 +320,11 @@ TEST(TestOdeSeir, get_reproduction_number)
     EXPECT_NEAR(model.get_reproduction_number(0.7, result).value(), 2.3242860858116172196, 1e-12);
     EXPECT_NEAR(model.get_reproduction_number(0.0, result).value(), 2.3280000000000002913, 1e-12);
 
-    model.parameters.get<mio::oseir::ContactPatterns>().get_baseline()(0, 0) = 9;
+    model.parameters.get<mio::oseir::ContactPatterns<>>().get_baseline()(0, 0) = 9;
     EXPECT_NEAR(model.get_reproduction_number(0.1, result).value(), 2.0946073086586665113, 1e-12);
     EXPECT_NEAR(model.get_reproduction_number(0.3, result).value(), 2.0936545545126947765, 1e-12);
 
-    model.parameters.get<mio::oseir::ContactPatterns>().get_baseline()(0, 0) = 8;
+    model.parameters.get<mio::oseir::ContactPatterns<>>().get_baseline()(0, 0) = 8;
     EXPECT_NEAR(model.get_reproduction_number(0.2, result).value(), 1.8614409729718137676, 1e-12);
     EXPECT_NEAR(model.get_reproduction_number(0.9, result).value(), 1.858670429549998504, 1e-12);
 }
