@@ -231,17 +231,18 @@ void apply_migration(StochasticEdge& migrationEdge, size_t event, SimulationNode
  */
 template <typename FP, class Sim>
 GraphSimulationStochastic<Graph<SimulationNode<Sim>, MigrationEdgeStochastic<FP>>>
-make_migration_sim(double t0, double dt, const Graph<SimulationNode<Sim>, MigrationEdgeStochastic<FP>>& graph)
+make_migration_sim(FP t0, FP dt, const Graph<SimulationNode<Sim>, MigrationEdgeStochastic<FP>>& graph)
 {
-    return make_graph_sim_stochastic(t0, dt, graph, &evolve_model<Sim>, &apply_migration<Sim, MigrationEdgeStochastic>);
+    return make_graph_sim_stochastic(t0, dt, graph, &evolve_model<Sim>,
+                                     &apply_migration<FP, Sim, MigrationEdgeStochastic<FP>>);
 }
 
 template <typename FP, class Sim>
 GraphSimulationStochastic<Graph<SimulationNode<Sim>, MigrationEdgeStochastic<FP>>>
-make_migration_sim(double t0, double dt, Graph<SimulationNode<Sim>, MigrationEdgeStochastic<FP>>&& graph)
+make_migration_sim(FP t0, FP dt, Graph<SimulationNode<Sim>, MigrationEdgeStochastic<FP>>&& graph)
 {
     return make_graph_sim_stochastic(t0, dt, std::move(graph), &evolve_model<Sim>,
-                                     &apply_migration<Sim, MigrationEdgeStochastic, true>);
+                                     &apply_migration<FP, Sim, MigrationEdgeStochastic<FP>, true>);
 }
 
 /** @} */
