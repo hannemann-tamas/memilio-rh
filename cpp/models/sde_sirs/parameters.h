@@ -83,7 +83,7 @@ struct TimeImmune {
  * @brief the contact patterns within the society are modelled using a ContactMatrix
  */
 struct ContactPatterns {
-    using Type = ContactMatrix;
+    using Type = ContactMatrix<>;
     static Type get_default()
     {
         return Type{1};

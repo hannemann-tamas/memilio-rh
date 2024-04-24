@@ -85,11 +85,11 @@ int main()
 
     model.apply_constraints();
 
-    mio::ContactMatrixGroup& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
+    mio::ContactMatrixGroup<>& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
     contact_matrix[0] =
-        mio::ContactMatrix(Eigen::MatrixXd::Constant((size_t)nb_groups, (size_t)nb_groups, fact * cont_freq));
+        mio::ContactMatrix<>(Eigen::MatrixXd::Constant((size_t)nb_groups, (size_t)nb_groups, fact * cont_freq));
     contact_matrix.add_damping(Eigen::MatrixXd::Constant((size_t)nb_groups, (size_t)nb_groups, 0.7),
-                               mio::SimulationTime(30.));
+                               mio::SimulationTime<>(30.));
 
     mio::TimeSeries<double> secir = mio::simulate<double, mio::osecir::Model<double>>(t0, tmax, dt, model);
     bool print_to_terminal        = true;

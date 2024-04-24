@@ -120,7 +120,7 @@ mio::IOResult<void> set_edges(mio::Graph<mio::osecir::Model<double>, mio::Migrat
     for (size_t node_i = 0; node_i < params_graph.nodes().size(); ++node_i) {
         for (size_t node_j = 0; node_j < params_graph.nodes().size(); ++node_j) {
             auto& populations    = params_graph.nodes()[node_i].property.populations;
-            auto mobility_coeffs = mio::MigrationCoefficientGroup(1, populations.numel());
+            auto mobility_coeffs = mio::MigrationCoefficientGroup<>(1, populations.numel());
 
             auto coeff =
                 mobility_data(node_i, node_j) < 1 ? 0 : mobility_data(node_i, node_j) / populations.get_total();

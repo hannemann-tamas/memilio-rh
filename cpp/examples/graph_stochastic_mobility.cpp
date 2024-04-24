@@ -74,11 +74,11 @@ int main(int /*argc*/, char** /*argv*/)
     }
 
     //add contact pattern and contact damping
-    mio::ContactMatrixGroup& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
+    mio::ContactMatrixGroup<>& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
     contact_matrix[0] =
-        mio::ContactMatrix(Eigen::MatrixXd::Constant((size_t)num_age_groups, (size_t)num_age_groups, fact * 10));
+        mio::ContactMatrix<>(Eigen::MatrixXd::Constant((size_t)num_age_groups, (size_t)num_age_groups, fact * 10));
     contact_matrix.add_damping(Eigen::MatrixXd::Constant((size_t)num_age_groups, (size_t)num_age_groups, 0.6),
-                               mio::SimulationTime(5.));
+                               mio::SimulationTime<>(5.));
 
     model.apply_constraints();
 
@@ -94,12 +94,12 @@ int main(int /*argc*/, char** /*argv*/)
                                                                           fact * num_total);
     }
 
-    mio::Graph<mio::SimulationNode<mio::Simulation<double, mio::osecir::Model<double>>>, mio::MigrationEdgeStochastic>
+    mio::Graph<mio::SimulationNode<mio::Simulation<double, mio::osecir::Model<double>>>, mio::MigrationEdgeStochastic<>>
         graph;
     graph.add_node(1001, model, t0);
     graph.add_node(1002, model2, t0);
 
-    auto transition_rates = mio::MigrationCoefficients(model.populations.numel());
+    auto transition_rates = mio::MigrationCoefficients<>(model.populations.numel());
     ScalarType kappa      = 0.01;
 
     for (auto age = mio::AgeGroup(0); age < num_age_groups; age++) {

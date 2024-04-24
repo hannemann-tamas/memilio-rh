@@ -51,7 +51,7 @@ public:
                          Eigen::Ref<Vector<FP>> dydt) const override
     {
         auto& params     = this->parameters;
-        double coeffStoI = params.template get<ContactPatterns>().get_matrix_at(t)(0, 0) *
+        double coeffStoI = params.template get<ContactPatterns<FP>>().get_matrix_at(t)(0, 0) *
                            params.template get<TransmissionProbabilityOnContact<FP>>() / this->populations.get_total();
 
         dydt[(size_t)InfectionState::Susceptible] =

@@ -109,7 +109,7 @@ public:
         auto const& params   = this->parameters;
         AgeGroup n_agegroups = params.get_num_groups();
 
-        ContactMatrixGroup const& contact_matrix = params.template get<ContactPatterns<FP>>();
+        ContactMatrixGroup<FP> const& contact_matrix = params.template get<ContactPatterns<FP>>();
 
         FP icu_occupancy           = 0.0;
         FP test_and_trace_required = 0.0;
@@ -178,13 +178,13 @@ public:
             FP reducTimeInfectedMild = params.template get<ReducTimeInfectedMild<FP>>()[i].value();
 
             //symptomatic are less well quarantined when testing and tracing is overwhelmed so they infect more people
-            auto riskFromInfectedSymptomatic =
+            FP riskFromInfectedSymptomatic =
                 smoother_cosine<FP>(test_and_trace_required, params.template get<TestAndTraceCapacity<FP>>().value(),
                                     params.template get<TestAndTraceCapacity<FP>>().value() * 15,
                                     params.template get<RiskOfInfectionFromSymptomatic<FP>>()[i].value(),
                                     params.template get<MaxRiskOfInfectionFromSymptomatic<FP>>()[i].value());
 
-            auto riskFromInfectedNoSymptoms =
+            FP riskFromInfectedNoSymptoms =
                 smoother_cosine<FP>(test_and_trace_required, params.template get<TestAndTraceCapacity<FP>>().value(),
                                     params.template get<TestAndTraceCapacity<FP>>().value() * 2,
                                     params.template get<RelativeTransmissionNoSymptoms<FP>>()[i].value(), 1.0);
@@ -231,9 +231,12 @@ public:
                     (1 + params.template get<Seasonality<FP>>().value() *
                              sin(3.141592653589793 *
                                  (std::fmod((params.template get<StartDay>() + ad::value(t)), 365.0) / 182.5 + 0.5)));
+
                 FP cont_freq_eff = season_val * contact_matrix.get_matrix_at(t)(static_cast<Eigen::Index>((size_t)i),
                                                                                 static_cast<Eigen::Index>((size_t)j));
+
                 // without died people
+
                 FP Nj = pop[SNj] + pop[ENj] + pop[INSNj] + pop[ISyNj] + pop[ISevNj] + pop[ICrNj] + pop[INSNCj] +
                         pop[ISyNCj] + pop[SPIj] + pop[EPIj] + pop[INSPIj] + pop[ISyPIj] + pop[ISevPIj] + pop[ICrPIj] +
                         pop[INSPICj] + pop[ISyPICj] + pop[SIIj] + pop[EIIj] + pop[INSIIj] + pop[ISyIIj] + pop[ISevIIj] +
@@ -588,28 +591,28 @@ public:
     * @param [in] t The current time.
     * @param [in] base_infectiousness The base infectiousness of the old variant for each age group.
     */
-    void apply_variant(const double t, const CustomIndexArray<UncertainValue<FP>, AgeGroup> base_infectiousness)
+    void apply_variant(const FP t, const CustomIndexArray<UncertainValue<FP>, AgeGroup> base_infectiousness)
     {
+        using std::min;
         auto start_day             = this->get_model().parameters.template get<StartDay>();
         auto start_day_new_variant = this->get_model().parameters.template get<StartDayNewVariant>();
 
         if (start_day + t >= start_day_new_variant - 1e-10) {
-            const double days_variant      = t - (start_day_new_variant - start_day);
-            const double share_new_variant = std::min(1.0, 0.01 * pow(2, (1. / 7) * days_variant));
+            const FP days_variant          = t - (start_day_new_variant - start_day);
+            const FP share_new_variant     = min(1.0, 0.01 * pow(2, (1. / 7) * days_variant));
             const auto num_groups          = this->get_model().parameters.get_num_groups();
             for (auto i = AgeGroup(0); i < num_groups; ++i) {
-                double new_transmission =
-                    (1 - share_new_variant) * base_infectiousness[i] +
-                    share_new_variant * base_infectiousness[i] *
-                        this->get_model().parameters.template get<InfectiousnessNewVariant<FP>>()[i];
+                FP new_transmission = (1 - share_new_variant) * base_infectiousness[i].value() +
+                                      share_new_variant * base_infectiousness[i].value() *
+                                          this->get_model().parameters.template get<InfectiousnessNewVariant<FP>>()[i];
                 this->get_model().parameters.template get<TransmissionProbabilityOnContact<FP>>()[i] = new_transmission;
             }
         }
     }
 
-    void apply_vaccination(double t)
+    void apply_vaccination(FP t)
     {
-        auto t_idx        = SimulationDay((size_t)t);
+        auto t_idx        = SimulationDay((size_t)ad::value(t));
         auto& params      = this->get_model().parameters;
         size_t num_groups = (size_t)params.get_num_groups();
         auto last_value   = this->get_result().get_last_value();
@@ -621,8 +624,8 @@ public:
 
         for (size_t i = 0; i < num_groups; ++i) {
 
-            double first_vacc;
-            double full_vacc;
+            FP first_vacc;
+            FP full_vacc;
             if (t_idx == SimulationDay(0)) {
                 first_vacc = params.template get<DailyFirstVaccination<FP>>()[{(AgeGroup)i, t_idx}];
                 full_vacc  = params.template get<DailyFullVaccination<FP>>()[{(AgeGroup)i, t_idx}];
@@ -635,7 +638,7 @@ public:
             }
 
             if (last_value(count * i + S) - first_vacc < 0) {
-                auto corrected = 0.99 * last_value(count * i + S);
+                FP corrected = 0.99 * last_value(count * i + S);
                 log_warning("too many first vaccinated at time {}: setting first_vacc from {} to {}", t, first_vacc,
                             corrected);
                 first_vacc = corrected;
@@ -645,7 +648,7 @@ public:
             last_value(count * i + SV) += first_vacc;
 
             if (last_value(count * i + SV) - full_vacc < 0) {
-                auto corrected = 0.99 * last_value(count * i + SV);
+                FP corrected = 0.99 * last_value(count * i + SV);
                 log_warning("too many fully vaccinated at time {}: setting full_vacc from {} to {}", t, full_vacc,
                             corrected);
                 full_vacc = corrected;
@@ -665,6 +668,8 @@ public:
      */
     Eigen::Ref<Vector<FP>> advance(FP tmax)
     {
+        using std::floor;
+        using std::min;
         auto& t_end_dyn_npis   = this->get_model().parameters.get_end_dynamic_npis();
         auto& dyn_npis         = this->get_model().parameters.template get<DynamicNPIsInfectedSymptoms<FP>>();
         auto& contact_patterns = this->get_model().parameters.template get<ContactPatterns<FP>>();
@@ -674,12 +679,12 @@ public:
         // the base value to use it in the apply_variant function and also to reset the parameter after the simulation.
         auto base_infectiousness = this->get_model().parameters.template get<TransmissionProbabilityOnContact<FP>>();
 
-        double delay_lockdown;
+        FP delay_lockdown;
         auto t        = BaseT::get_result().get_last_time();
         const auto dt = dyn_npis.get_interval().get();
         while (t < tmax) {
 
-            auto dt_eff = std::min({dt, tmax - t, m_t_last_npi_check + dt - t});
+            auto dt_eff = min(min(dt, tmax - t), m_t_last_npi_check + dt - t);
             if (dt_eff >= 1.0) {
                 dt_eff = 1.0;
             }
@@ -689,7 +694,7 @@ public:
                 this->apply_variant(t, base_infectiousness);
             }
             BaseT::advance(t + dt_eff);
-            if (t + 0.5 + dt_eff - std::floor(t + 0.5) >= 1) {
+            if (t + 0.5 + dt_eff - floor(t + 0.5) >= 1) {
                 this->apply_vaccination(t + 0.5 + dt_eff);
                 this->apply_variant(t, base_infectiousness);
             }
@@ -703,19 +708,19 @@ public:
             t = t + dt_eff;
 
             if (dyn_npis.get_thresholds().size() > 0) {
-                if (floating_point_greater_equal(t, m_t_last_npi_check + dt)) {
+                if (floating_point_greater_equal(t, static_cast<FP>(m_t_last_npi_check + dt))) {
                     if (t < t_end_dyn_npis) {
                         auto inf_rel = get_infections_relative<FP>(*this, t, this->get_result().get_last_value()) *
                                        dyn_npis.get_base_value();
                         auto exceeded_threshold = dyn_npis.get_max_exceeded_threshold(inf_rel);
                         if (exceeded_threshold != dyn_npis.get_thresholds().end() &&
                             (exceeded_threshold->first > m_dynamic_npi.first ||
-                             t > double(m_dynamic_npi.second))) { //old npi was weaker or is expired
+                             t > FP(m_dynamic_npi.second))) { //old npi was weaker or is expired
 
-                            auto t_start = SimulationTime(t + delay_lockdown);
-                            auto t_end   = t_start + SimulationTime(dyn_npis.get_duration());
-                            this->get_model().parameters.get_start_commuter_detection() = (double)t_start;
-                            this->get_model().parameters.get_end_commuter_detection()   = (double)t_end;
+                            auto t_start = SimulationTime<FP>(t + delay_lockdown);
+                            auto t_end   = t_start + SimulationTime<FP>(dyn_npis.get_duration());
+                            this->get_model().parameters.get_start_commuter_detection() = (FP)t_start;
+                            this->get_model().parameters.get_end_commuter_detection()   = (FP)t_end;
                             m_dynamic_npi = std::make_pair(exceeded_threshold->first, t_end);
                             implement_dynamic_npis(contact_patterns.get_cont_freq_mat(), exceeded_threshold->second,
                                                    t_start, t_end, [](auto& g) {
@@ -738,8 +743,8 @@ public:
     }
 
 private:
-    double m_t_last_npi_check;
-    std::pair<double, SimulationTime> m_dynamic_npi = {-std::numeric_limits<double>::max(), SimulationTime(0)};
+    FP m_t_last_npi_check;
+    std::pair<FP, SimulationTime<FP>> m_dynamic_npi = {-std::numeric_limits<double>::max(), SimulationTime<FP>(0)};
 };
 
 /**
@@ -796,7 +801,7 @@ FP get_infections_relative(const Simulation<FP, Base>& sim, FP /*t*/, const Eige
         sum_inf +=
             sim.get_model().populations.get_from(y, {i, InfectionState::InfectedSymptomsImprovedImmunityConfirmed});
     }
-    auto inf_rel = sum_inf / sim.get_model().populations.get_total();
+    FP inf_rel = sum_inf / sim.get_model().populations.get_total();
 
     return inf_rel;
 }

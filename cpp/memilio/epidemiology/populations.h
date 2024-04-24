@@ -156,9 +156,9 @@ public:
      * @brief get_total returns the total population of all compartments
      * @return total population
      */
-    ScalarType get_total() const
+    FP get_total() const
     {
-        return this->array().template cast<ScalarType>().sum();
+        return this->array().template cast<FP>().sum();
     }
 
     /**

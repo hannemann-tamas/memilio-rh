@@ -65,8 +65,8 @@ inline FP smoother_cosine(FP x, FP xleft, FP xright, FP yleft, FP yright)
  * @param yright matrix expression, function value at right boundary
  * @return a matrix expression with yij = smoother_cosine(x, xleft, xright, yleftij, yrightij)
  */
-template <class LeftExpr, class RightExpr>
-auto smoother_cosine(double x, double xleft, double xright, const Eigen::MatrixBase<LeftExpr>& yleft_expr,
+template <typename FP, class LeftExpr, class RightExpr>
+auto smoother_cosine(FP x, FP xleft, FP xright, const Eigen::MatrixBase<LeftExpr>& yleft_expr,
                      const Eigen::MatrixBase<RightExpr>& yright_expr)
 {
     return yleft_expr.binaryExpr(yright_expr, [=](auto yleft, auto yright) {

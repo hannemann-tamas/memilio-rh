@@ -407,7 +407,7 @@ struct BasicShoppingRate {
  * @brief Percentage of Person%s of the respective age going to work.
  */
 struct WorkRatio {
-    using Type = DampingMatrixExpression<Dampings<Damping<ColumnVectorShape>>>;
+    using Type = DampingMatrixExpression<Dampings<double, Damping<double, ColumnVectorShape>>>;
     static auto get_default(AgeGroup /*size*/)
     {
         return Type(Eigen::VectorXd::Constant(1, 1.0));
@@ -422,7 +422,7 @@ struct WorkRatio {
  * @brief Percentage of Person%s of the respective age going to school.
  */
 struct SchoolRatio {
-    using Type = DampingMatrixExpression<Dampings<Damping<ColumnVectorShape>>>;
+    using Type = DampingMatrixExpression<Dampings<double, Damping<double, ColumnVectorShape>>>;
     static auto get_default(AgeGroup /*size*/)
     {
         return Type(Eigen::VectorXd::Constant(1, 1.0));
@@ -437,7 +437,7 @@ struct SchoolRatio {
  * @brief Parameter for the exponential distribution to decide if a Person goes to a social event.
  */
 struct SocialEventRate {
-    using Type = DampingMatrixExpression<Dampings<Damping<ColumnVectorShape>>>;
+    using Type = DampingMatrixExpression<Dampings<double, Damping<double, ColumnVectorShape>>>;
     static auto get_default(AgeGroup size)
     {
         return Type(Eigen::VectorXd::Constant((size_t)size, 1.0));

@@ -98,7 +98,7 @@ int main()
     auto& contact_matrix = contacts.get_cont_freq_mat();
     contact_matrix[0].get_baseline().setConstant(0.5);
     contact_matrix[0].get_baseline().diagonal().setConstant(5.0);
-    contact_matrix[0].add_damping(0.3, mio::SimulationTime(5.0));
+    contact_matrix[0].add_damping(0.3, mio::SimulationTime<FP>(5.0));
 
     //times
     model.parameters.get<mio::osecirvvs::TimeExposed<FP>>()[mio::AgeGroup(0)]            = 3.33;
@@ -141,20 +141,41 @@ int main()
     // mio::TimeSeries<FP> secir = simulate(t0, tmax, dt, model, integrator);
 
     // use default Cash-Karp adaptive integrator
-    mio::TimeSeries<FP> result = mio::simulate<FP, mio::osecirvvs::Model<FP>>(t0, tmax, dt, model);
+
+    mio::osecirvvs::Model<FP> model1(model);
+    mio::osecirvvs::Model<FP> model2(model);
+    const double h = 0.1;
+    FP value       = model2.populations[{mio::AgeGroup(0), mio::osecirvvs::InfectionState::ExposedNaive}];
+    ad::value(value) += h;
+    model2.populations[{mio::AgeGroup(0), mio::osecirvvs::InfectionState::ExposedNaive}] = value;
+    model2.populations.set_difference_from_group_total<mio::AgeGroup>(
+        {mio::AgeGroup(0), mio::osecirvvs::InfectionState::SusceptibleNaive}, FP(1000));
+
+    mio::TimeSeries<FP> result1 = mio::osecirvvs::simulate<FP>(t0, tmax, dt, model1);
+
+    // model2.populations.set_difference_from_group_total<mio::AgeGroup>(
+    //     {mio::AgeGroup(0), mio::osecirvvs::InfectionState::SusceptibleNaive}, FP(1000));
+    mio::TimeSeries<FP> result2 = mio::simulate<FP, mio::osecirvvs::Model<FP>>(t0, tmax, dt, model2);
 
     bool print_to_terminal = true;
 
     if (print_to_terminal) {
-        printf("\n%.14f ", ad::value(result.get_last_time()));
+        printf("\n%.14f ", ad::value(result1.get_last_time()));
         for (size_t j = 0; j < (size_t)mio::osecirvvs::InfectionState::Count; j++) {
-            printf("compartment %d: %.14f\n", (int)j, ad::value(result.get_last_value()[j]));
+            printf("compartment %d: %.14f\n", (int)j, ad::value(result1.get_last_value()[j]));
+            printf("model2      %d: %.14f\n", (int)j, ad::value(result2.get_last_value()[j]));
         }
         std::cout << "Derivatives:" << std::endl;
         for (size_t j = 0; j < (size_t)mio::osecirvvs::InfectionState::Count; j++) {
-            printf("compartment %d: %.14f\n", (int)j, ad::derivative(result.get_last_value()[j]));
+            printf("compartment %d: %.14f\n", (int)j, ad::derivative(result1.get_last_value()[j]));
+            printf("FD          %d: %.14f\n", (int)j,
+                   (ad::value(result2.get_last_value()[j]) - ad::value(result1.get_last_value()[j])) / h);
         }
     }
+
+    std::cout << "ExposedNaive:" << std::endl;
+    std::cout << ad::value(model2.populations[{mio::AgeGroup{0}, mio::osecirvvs::InfectionState::ExposedNaive}].value())
+              << std::endl;
 
     return 0;
 }

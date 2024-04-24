@@ -107,13 +107,15 @@ private:
 /**
  * time dependent migration coefficients.
  */
-using MigrationCoefficients = DampingMatrixExpression<VectorDampings>;
+template <typename FP = double>
+using MigrationCoefficients = DampingMatrixExpression<VectorDampings<FP>>;
 
 /**
  * sum of time dependent migration coefficients.
  * differentiate between sources of migration.
  */
-using MigrationCoefficientGroup = DampingMatrixExpressionGroup<MigrationCoefficients>;
+template <typename FP = double>
+using MigrationCoefficientGroup = DampingMatrixExpressionGroup<MigrationCoefficients<FP>>;
 
 /**
  * parameters that influence migration.
@@ -127,7 +129,7 @@ public:
      * constructor from migration coefficients.
      * @param coeffs migration coefficients
      */
-    MigrationParameters(const MigrationCoefficientGroup& coeffs)
+    MigrationParameters(const MigrationCoefficientGroup<FP>& coeffs)
         : m_coefficients(coeffs)
     {
     }
@@ -137,7 +139,7 @@ public:
      * @param coeffs migration coefficients
      */
     MigrationParameters(const Eigen::VectorXd& coeffs)
-        : m_coefficients({MigrationCoefficients(coeffs)})
+        : m_coefficients({MigrationCoefficients<FP>(coeffs)})
     {
     }
 
@@ -164,18 +166,18 @@ public:
     /**
      * @return the migration coefficients.
      */
-    const MigrationCoefficientGroup& get_coefficients() const
+    const MigrationCoefficientGroup<FP>& get_coefficients() const
     {
         return m_coefficients;
     }
-    MigrationCoefficientGroup& get_coefficients()
+    MigrationCoefficientGroup<FP>& get_coefficients()
     {
         return m_coefficients;
     }
     /**
      * @param coeffs the migration coefficients.
      */
-    void set_coefficients(const MigrationCoefficientGroup& coeffs)
+    void set_coefficients(const MigrationCoefficientGroup<FP>& coeffs)
     {
         m_coefficients = coeffs;
     }
@@ -226,7 +228,7 @@ public:
     static IOResult<MigrationParameters> deserialize(IOContext& io)
     {
         auto obj = io.expect_object("MigrationParameters");
-        auto c   = obj.expect_element("Coefficients", Tag<MigrationCoefficientGroup>{});
+        auto c   = obj.expect_element("Coefficients", Tag<MigrationCoefficientGroup<FP>>{});
         auto d   = obj.expect_element("DynamicNPIs", Tag<DynamicNPIs<FP>>{});
         return apply(
             io,
@@ -239,7 +241,7 @@ public:
     }
 
 private:
-    MigrationCoefficientGroup m_coefficients; //one per group and compartment
+    MigrationCoefficientGroup<FP> m_coefficients; //one per group and compartment
     DynamicNPIs<FP> m_dynamic_npis;
 };
 
@@ -301,7 +303,7 @@ private:
     TimeSeries<double> m_return_times;
     bool m_return_migrated;
     double m_t_last_dynamic_npi_check               = -std::numeric_limits<double>::infinity();
-    std::pair<double, SimulationTime> m_dynamic_npi = {-std::numeric_limits<double>::max(), SimulationTime(0)};
+    std::pair<FP, SimulationTime<FP>> m_dynamic_npi = {-std::numeric_limits<double>::max(), SimulationTime<FP>(0)};
 };
 
 /**
@@ -432,12 +434,13 @@ void MigrationEdge<FP>::apply_migration(FP t, FP dt, SimulationNode<Sim>& node_f
         if (exceeded_threshold != dyn_npis.get_thresholds().end() &&
             (exceeded_threshold->first > m_dynamic_npi.first ||
              t > double(m_dynamic_npi.second))) { //old NPI was weaker or is expired
-            auto t_end    = SimulationTime(t + double(dyn_npis.get_duration()));
+            auto t_end    = SimulationTime<FP>(t + double(dyn_npis.get_duration()));
             m_dynamic_npi = std::make_pair(exceeded_threshold->first, t_end);
-            implement_dynamic_npis(
-                m_parameters.get_coefficients(), exceeded_threshold->second, SimulationTime(t), t_end, [this](auto& g) {
-                    return make_migration_damping_vector(m_parameters.get_coefficients().get_shape(), g);
-                });
+            implement_dynamic_npis(m_parameters.get_coefficients(), exceeded_threshold->second, SimulationTime<FP>(t),
+                                   t_end, [this](auto& g) {
+                                       return make_migration_damping_vector(m_parameters.get_coefficients().get_shape(),
+                                                                            g);
+                                   });
         }
         m_t_last_dynamic_npi_check = t;
     }

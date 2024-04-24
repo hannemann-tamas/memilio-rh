@@ -79,11 +79,11 @@ mio::osecir::Model<ScalarType> make_model(int num)
         params.get<mio::osecir::DeathsPerCritical<ScalarType>>()[i]                = 0.3;
     }
 
-    mio::ContactMatrixGroup& contact_matrix = params.get<mio::osecir::ContactPatterns<ScalarType>>();
-    contact_matrix[0] =
-        mio::ContactMatrix(Eigen::MatrixXd::Constant((size_t)nb_groups, (size_t)nb_groups, fact * cont_freq));
+    mio::ContactMatrixGroup<ScalarType>& contact_matrix = params.get<mio::osecir::ContactPatterns<ScalarType>>();
+    contact_matrix[0]                                   = mio::ContactMatrix<ScalarType>(
+        Eigen::MatrixXd::Constant((size_t)nb_groups, (size_t)nb_groups, fact * cont_freq));
     contact_matrix.add_damping(Eigen::MatrixXd::Constant((size_t)nb_groups, (size_t)nb_groups, 0.7),
-                               mio::SimulationTime(30.));
+                               mio::SimulationTime<ScalarType>(30.));
 
     model.apply_constraints();
 

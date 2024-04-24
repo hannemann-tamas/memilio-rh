@@ -61,7 +61,7 @@ public:
                    Eigen::Ref<Vector<FP>> flows) const override
     {
         auto& params     = this->parameters;
-        double coeffStoE = params.template get<ContactPatterns>().get_matrix_at(t)(0, 0) *
+        double coeffStoE = params.template get<ContactPatterns<FP>>().get_matrix_at(t)(0, 0) *
                            params.template get<TransmissionProbabilityOnContact<FP>>() / this->populations.get_total();
 
         flows[Base::template get_flat_flow_index<InfectionState::Susceptible, InfectionState::Exposed>()] =

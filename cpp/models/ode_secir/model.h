@@ -78,7 +78,7 @@ public:
         auto const& params   = this->parameters;
         AgeGroup n_agegroups = params.get_num_groups();
 
-        ContactMatrixGroup const& contact_matrix = params.template get<ContactPatterns<FP>>();
+        ContactMatrixGroup<FP> const& contact_matrix = params.template get<ContactPatterns<FP>>();
 
         FP icu_occupancy           = 0.0;
         FP test_and_trace_required = 0.0;
@@ -301,10 +301,10 @@ public:
                     if (exceeded_threshold != dyn_npis.get_thresholds().end() &&
                         (exceeded_threshold->first > m_dynamic_npi.first ||
                          t > double(m_dynamic_npi.second))) { //old npi was weaker or is expired
-                        auto t_end    = mio::SimulationTime(t + double(dyn_npis.get_duration()));
+                        auto t_end    = mio::SimulationTime<FP>(t + double(dyn_npis.get_duration()));
                         m_dynamic_npi = std::make_pair(exceeded_threshold->first, t_end);
                         mio::implement_dynamic_npis(contact_patterns.get_cont_freq_mat(), exceeded_threshold->second,
-                                                    SimulationTime(t), t_end, [](auto& g) {
+                                                    SimulationTime<FP>(t), t_end, [](auto& g) {
                                                         return mio::make_contact_damping_matrix(g);
                                                     });
                     }
@@ -322,7 +322,7 @@ public:
 
 private:
     double m_t_last_npi_check;
-    std::pair<double, SimulationTime> m_dynamic_npi = {-std::numeric_limits<double>::max(), mio::SimulationTime(0)};
+    std::pair<FP, SimulationTime<FP>> m_dynamic_npi = {-std::numeric_limits<double>::max(), mio::SimulationTime<FP>(0)};
 };
 
 /**
@@ -425,7 +425,7 @@ IOResult<FP> get_reproduction_number(size_t t_idx, const Simulation<FP, Base>& s
                                                                             365.0) /
                                                182.5 +
                                            0.5)));
-    ContactMatrixGroup const& contact_matrix = sim.get_model().parameters.template get<ContactPatterns<FP>>();
+    ContactMatrixGroup<FP> const& contact_matrix = sim.get_model().parameters.template get<ContactPatterns<FP>>();
 
     Eigen::MatrixXd cont_freq_eff(num_groups, num_groups);
     Eigen::MatrixXd riskFromInfectedSymptomatic_derivatives(num_groups, num_groups);

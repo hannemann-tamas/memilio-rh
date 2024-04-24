@@ -35,7 +35,8 @@ namespace mio
 template <class T>
 T abs_max(T v1, T v2)
 {
-    return std::max(std::abs(v1), std::abs(v2));
+    using std::fabs;
+    return (fabs(v1) >= fabs(v2)) ? fabs(v1) : fabs(v2);
 }
 
 /**
@@ -51,7 +52,8 @@ T abs_max(T v1, T v2)
 template <class T>
 bool floating_point_equal(T v1, T v2, T abs_tol = 0, T rel_tol = std::numeric_limits<T>::min())
 {
-    auto diff = std::abs(v1 - v2);
+    using std::fabs;
+    auto diff = fabs(v1 - v2);
     return diff <= abs_tol || diff <= abs_max(v1, v2) * rel_tol;
 }
 

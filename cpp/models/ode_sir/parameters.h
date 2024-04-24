@@ -71,8 +71,9 @@ struct TimeInfected {
 /**
      * @brief the contact patterns within the society are modelled using a ContactMatrix
      */
+template <typename FP = double>
 struct ContactPatterns {
-    using Type = ContactMatrix;
+    using Type = ContactMatrix<FP>;
     static Type get_default()
     {
         return Type{1};
@@ -84,7 +85,7 @@ struct ContactPatterns {
 };
 
 template <typename FP = double>
-using ParametersBase = ParameterSet<TransmissionProbabilityOnContact<FP>, TimeInfected<FP>, ContactPatterns>;
+using ParametersBase = ParameterSet<TransmissionProbabilityOnContact<FP>, TimeInfected<FP>, ContactPatterns<FP>>;
 
 /**
  * @brief Parameters of SIR model.

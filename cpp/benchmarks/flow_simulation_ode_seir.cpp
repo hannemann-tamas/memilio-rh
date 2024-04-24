@@ -53,7 +53,7 @@ public:
                          Eigen::Ref<Eigen::VectorXd> dydt) const override
     {
         auto& params     = this->parameters;
-        double coeffStoE = params.get<ContactPatterns>().get_matrix_at(t)(0, 0) *
+        double coeffStoE = params.get<ContactPatterns<>>().get_matrix_at(t)(0, 0) *
                            params.get<TransmissionProbabilityOnContact<ScalarType>>() / populations.get_total();
 
         dydt[(size_t)InfectionState::Susceptible] =
@@ -86,7 +86,7 @@ void setup_model(Model& model)
     model.parameters.template set<mio::oseir::TimeExposed<ScalarType>>(5.2);
     model.parameters.template set<mio::oseir::TimeInfected<ScalarType>>(6);
     model.parameters.template set<mio::oseir::TransmissionProbabilityOnContact<ScalarType>>(0.04);
-    model.parameters.template get<mio::oseir::ContactPatterns>().get_baseline()(0, 0) = 10;
+    model.parameters.template get<mio::oseir::ContactPatterns<>>().get_baseline()(0, 0) = 10;
 }
 
 } // namespace benchmark

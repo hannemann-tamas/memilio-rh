@@ -212,7 +212,7 @@ static const std::map<ContactLocation, std::string> contact_locations = {{Contac
 mio::IOResult<void> set_contact_matrices(const fs::path& data_dir, mio::osecir::Parameters<double>& params)
 {
     //TODO: io error handling
-    auto contact_matrices = mio::ContactMatrixGroup(contact_locations.size(), size_t(params.get_num_groups()));
+    auto contact_matrices = mio::ContactMatrixGroup<>(contact_locations.size(), size_t(params.get_num_groups()));
     for (auto&& contact_location : contact_locations) {
         BOOST_OUTCOME_TRY(baseline,
                           mio::read_mobility_plain(
@@ -310,7 +310,7 @@ mio::IOResult<void> set_npis(mio::Date start_date, mio::Date end_date, mio::osec
     //SPRING 2020 LOCKDOWN SCENARIO
     auto start_spring_date = mio::Date(2020, 3, 18);
     if (start_spring_date < end_date) {
-        auto start_spring = mio::SimulationTime(mio::get_offset_in_days(start_spring_date, start_date));
+        auto start_spring = mio::SimulationTime<>(mio::get_offset_in_days(start_spring_date, start_date));
         contact_dampings.push_back(contacts_at_home(start_spring, 0.6, 0.8));
         contact_dampings.push_back(school_closure(start_spring, 1.0, 1.0));
         contact_dampings.push_back(home_office(start_spring, 0.2, 0.3));
@@ -324,8 +324,8 @@ mio::IOResult<void> set_npis(mio::Date start_date, mio::Date end_date, mio::osec
     // SUMMER 2020 SCENARIO
     auto start_summer_date = mio::Date(2020, 5, 15);
     if (start_summer_date < end_date) {
-        auto start_summer       = mio::SimulationTime(mio::get_offset_in_days(start_summer_date, start_date));
-        auto school_reopen_time = mio::SimulationTime(mio::get_offset_in_days(mio::Date(2020, 6, 15), start_date));
+        auto start_summer       = mio::SimulationTime<>(mio::get_offset_in_days(start_summer_date, start_date));
+        auto school_reopen_time = mio::SimulationTime<>(mio::get_offset_in_days(mio::Date(2020, 6, 15), start_date));
         contact_dampings.push_back(contacts_at_home(start_summer, 0.0, 0.2));
         contact_dampings.push_back(school_closure(start_summer, 0.5, 0.5)); //schools partially reopened
         contact_dampings.push_back(school_closure(school_reopen_time, 0.0, 0.0)); //school fully reopened
@@ -340,7 +340,7 @@ mio::IOResult<void> set_npis(mio::Date start_date, mio::Date end_date, mio::osec
     //autumn enforced attention
     auto start_autumn_date = mio::Date(2020, 10, 1);
     if (start_autumn_date < end_date) {
-        auto start_autumn = mio::SimulationTime(mio::get_offset_in_days(start_autumn_date, start_date));
+        auto start_autumn = mio::SimulationTime<>(mio::get_offset_in_days(start_autumn_date, start_date));
         contact_dampings.push_back(contacts_at_home(start_autumn, 0.2, 0.4));
         contact_dampings.push_back(physical_distancing_home_school(start_autumn, 0.2, 0.4));
         contact_dampings.push_back(physical_distancing_work_other(start_autumn, 0.2, 0.4));
@@ -350,7 +350,7 @@ mio::IOResult<void> set_npis(mio::Date start_date, mio::Date end_date, mio::osec
     auto start_autumn_lockdown_date = mio::Date(2020, 11, 1);
     if (start_autumn_lockdown_date < end_date) {
         auto start_autumn_lockdown =
-            mio::SimulationTime(mio::get_offset_in_days(start_autumn_lockdown_date, start_date));
+            mio::SimulationTime<>(mio::get_offset_in_days(start_autumn_lockdown_date, start_date));
         contact_dampings.push_back(contacts_at_home(start_autumn_lockdown, 0.4, 0.6));
         contact_dampings.push_back(school_closure(start_autumn_lockdown, 0.0, 0.0));
         contact_dampings.push_back(home_office(start_autumn_lockdown, 0.2, 0.3));
@@ -366,7 +366,7 @@ mio::IOResult<void> set_npis(mio::Date start_date, mio::Date end_date, mio::osec
     if (start_winter_lockdown_date < end_date) {
         double min = 0.6, max = 0.8; //for strictest scenario: 0.8 - 1.0
         auto start_winter_lockdown =
-            mio::SimulationTime(mio::get_offset_in_days(start_winter_lockdown_date, start_date));
+            mio::SimulationTime<>(mio::get_offset_in_days(start_winter_lockdown_date, start_date));
         contact_dampings.push_back(contacts_at_home(start_winter_lockdown, min, max));
         contact_dampings.push_back(school_closure(start_winter_lockdown, 1.0, 1.0));
         contact_dampings.push_back(home_office(start_winter_lockdown, 0.2, 0.3));
@@ -378,7 +378,7 @@ mio::IOResult<void> set_npis(mio::Date start_date, mio::Date end_date, mio::osec
 
         //relaxing of restrictions over christmas days
         auto xmas_date = mio::Date(2020, 12, 24);
-        auto xmas      = mio::SimulationTime(mio::get_offset_in_days(xmas_date, start_date));
+        auto xmas      = mio::SimulationTime<>(mio::get_offset_in_days(xmas_date, start_date));
         contact_dampings.push_back(contacts_at_home(xmas, 0.0, 0.0));
         contact_dampings.push_back(home_office(xmas, 0.4, 0.5));
         contact_dampings.push_back(social_events(xmas, 0.4, 0.6));
@@ -387,7 +387,7 @@ mio::IOResult<void> set_npis(mio::Date start_date, mio::Date end_date, mio::osec
 
         // after christmas
         auto after_xmas_date = mio::Date(2020, 12, 27);
-        auto after_xmas      = mio::SimulationTime(mio::get_offset_in_days(after_xmas_date, start_date));
+        auto after_xmas      = mio::SimulationTime<>(mio::get_offset_in_days(after_xmas_date, start_date));
         contact_dampings.push_back(contacts_at_home(after_xmas, min, max));
         contact_dampings.push_back(home_office(after_xmas, 0.2, 0.3));
         contact_dampings.push_back(social_events(after_xmas, 0.6, 0.8));
@@ -399,16 +399,16 @@ mio::IOResult<void> set_npis(mio::Date start_date, mio::Date end_date, mio::osec
     auto& dynamic_npis        = params.get<mio::osecir::DynamicNPIsInfectedSymptoms<double>>();
     auto dynamic_npi_dampings = std::vector<mio::DampingSampling<double>>();
     dynamic_npi_dampings.push_back(
-        contacts_at_home(mio::SimulationTime(0), 0.6, 0.8)); // increased from [0.4, 0.6] in Nov
-    dynamic_npi_dampings.push_back(school_closure(mio::SimulationTime(0), 0.25, 0.25)); // see paper
-    dynamic_npi_dampings.push_back(home_office(mio::SimulationTime(0), 0.2, 0.3)); // ...
-    dynamic_npi_dampings.push_back(social_events(mio::SimulationTime(0), 0.6, 0.8));
-    dynamic_npi_dampings.push_back(social_events_work(mio::SimulationTime(0), 0.1, 0.2));
-    dynamic_npi_dampings.push_back(physical_distancing_home_school(mio::SimulationTime(0), 0.6, 0.8));
-    dynamic_npi_dampings.push_back(physical_distancing_work_other(mio::SimulationTime(0), 0.6, 0.8));
-    dynamic_npi_dampings.push_back(senior_awareness(mio::SimulationTime(0), 0.0, 0.0));
-    dynamic_npis.set_interval(mio::SimulationTime(3.0));
-    dynamic_npis.set_duration(mio::SimulationTime(14.0));
+        contacts_at_home(mio::SimulationTime<>(0), 0.6, 0.8)); // increased from [0.4, 0.6] in Nov
+    dynamic_npi_dampings.push_back(school_closure(mio::SimulationTime<>(0), 0.25, 0.25)); // see paper
+    dynamic_npi_dampings.push_back(home_office(mio::SimulationTime<>(0), 0.2, 0.3)); // ...
+    dynamic_npi_dampings.push_back(social_events(mio::SimulationTime<>(0), 0.6, 0.8));
+    dynamic_npi_dampings.push_back(social_events_work(mio::SimulationTime<>(0), 0.1, 0.2));
+    dynamic_npi_dampings.push_back(physical_distancing_home_school(mio::SimulationTime<>(0), 0.6, 0.8));
+    dynamic_npi_dampings.push_back(physical_distancing_work_other(mio::SimulationTime<>(0), 0.6, 0.8));
+    dynamic_npi_dampings.push_back(senior_awareness(mio::SimulationTime<>(0), 0.0, 0.0));
+    dynamic_npis.set_interval(mio::SimulationTime<>(3.0));
+    dynamic_npis.set_duration(mio::SimulationTime<>(14.0));
     dynamic_npis.set_base_value(100'000);
     dynamic_npis.set_threshold(200.0, dynamic_npi_dampings);
 
@@ -417,7 +417,7 @@ mio::IOResult<void> set_npis(mio::Date start_date, mio::Date end_date, mio::osec
     assign_uniform_distribution(school_holiday_value, 1.0, 1.0);
     contacts.get_school_holiday_damping() =
         mio::DampingSampling<double>(school_holiday_value, mio::DampingLevel(int(InterventionLevel::Holidays)),
-                                     mio::DampingType(int(Intervention::SchoolClosure)), mio::SimulationTime(0.0),
+                                     mio::DampingType(int(Intervention::SchoolClosure)), mio::SimulationTime<>(0.0),
                                      {size_t(ContactLocation::School)}, group_weights_all);
 
     return mio::success();
@@ -492,7 +492,7 @@ get_graph(mio::Date start_date, mio::Date end_date, const fs::path& data_dir)
                        decltype(read_function_nodes), decltype(node_id_function)>;
     const auto& set_edge_function =
         mio::set_edges<ContactLocation, mio::osecir::Model<double>, mio::MigrationParameters<double>,
-                       mio::MigrationCoefficientGroup, mio::osecir::InfectionState, decltype(read_function_edges)>;
+                       mio::MigrationCoefficientGroup<>, mio::osecir::InfectionState, decltype(read_function_edges)>;
     BOOST_OUTCOME_TRY(
         set_node_function(params, start_date, end_date, data_dir,
                           mio::path_join((data_dir / "pydata" / "Germany").string(), "county_current_population.json"),

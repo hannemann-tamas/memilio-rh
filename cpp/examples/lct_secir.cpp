@@ -115,10 +115,10 @@ int main()
 
     model.parameters.get<mio::lsecir::TransmissionProbabilityOnContact>() = 0.05;
 
-    mio::ContactMatrixGroup& contact_matrix = model.parameters.get<mio::lsecir::ContactPatterns>();
-    contact_matrix[0]                       = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, 10));
+    mio::ContactMatrixGroup<>& contact_matrix = model.parameters.get<mio::lsecir::ContactPatterns>();
+    contact_matrix[0]                         = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, 10));
     // From SimulationTime 5, the contact pattern is reduced to 30% of the initial value.
-    contact_matrix[0].add_damping(0.7, mio::SimulationTime(5.));
+    contact_matrix[0].add_damping(0.7, mio::SimulationTime<>(5.));
 
     model.parameters.get<mio::lsecir::RelativeTransmissionNoSymptoms>() = 0.7;
     model.parameters.get<mio::lsecir::RiskOfInfectionFromSymptomatic>() = 0.25;

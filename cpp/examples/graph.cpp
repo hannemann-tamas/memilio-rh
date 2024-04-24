@@ -33,14 +33,14 @@ int main()
     mio::oseir::Model<FP> model;
     model.populations[{mio::Index<mio::oseir::InfectionState>(mio::oseir::InfectionState::Susceptible)}] = 10000;
     model.parameters.set<mio::oseir::TimeExposed<FP>>(1);
-    model.parameters.get<mio::oseir::ContactPatterns>().get_baseline()(0, 0) = 2.7;
+    model.parameters.get<mio::oseir::ContactPatterns<FP>>().get_baseline()(0, 0) = 2.7;
     model.parameters.set<mio::oseir::TimeInfected<FP>>(1);
 
     //two mostly identical groups
     auto model_group1 = model;
     auto model_group2 = model;
     //some contact restrictions in group 1
-    model_group1.parameters.get<mio::oseir::ContactPatterns>().add_damping(0.5, mio::SimulationTime(5));
+    model_group1.parameters.get<mio::oseir::ContactPatterns<FP>>().add_damping(0.5, mio::SimulationTime<FP>(5));
     //infection starts in group 1
     model_group1.populations[{mio::Index<mio::oseir::InfectionState>(mio::oseir::InfectionState::Susceptible)}] = 9990;
     model_group1.populations[{mio::Index<mio::oseir::InfectionState>(mio::oseir::InfectionState::Exposed)}]     = 10;

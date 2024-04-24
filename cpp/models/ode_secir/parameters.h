@@ -382,11 +382,11 @@ public:
     /**
      * Percentage of infected commuters that are not detected.
      */
-    double& get_commuter_nondetection()
+    FP& get_commuter_nondetection()
     {
         return m_commuter_nondetection;
     }
-    double get_commuter_nondetection() const
+    FP get_commuter_nondetection() const
     {
         return m_commuter_nondetection;
     }
@@ -394,12 +394,12 @@ public:
     /**
      * Time in simulation before which no infected commuters are detected.
      */
-    double& get_start_commuter_detection()
+    FP& get_start_commuter_detection()
     {
         return m_start_commuter_detection;
     }
 
-    double get_start_commuter_detection() const
+    FP get_start_commuter_detection() const
     {
         return m_start_commuter_detection;
     }
@@ -407,12 +407,12 @@ public:
     /**
      * Time in simulation after which no infected commuters are detected.
      */
-    double& get_end_commuter_detection()
+    FP& get_end_commuter_detection()
     {
         return m_end_commuter_detection;
     }
 
-    double get_end_commuter_detection() const
+    FP get_end_commuter_detection() const
     {
         return m_end_commuter_detection;
     }
@@ -682,9 +682,9 @@ public:
 
 private:
     AgeGroup m_num_groups;
-    double m_commuter_nondetection    = 0.0;
-    double m_start_commuter_detection = 0.0;
-    double m_end_commuter_detection   = 0.0;
+    FP m_commuter_nondetection    = 0.0;
+    FP m_start_commuter_detection = 0.0;
+    FP m_end_commuter_detection   = 0.0;
 };
 
 /**

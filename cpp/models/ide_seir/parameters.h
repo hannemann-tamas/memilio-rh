@@ -87,8 +87,8 @@ struct ContactFrequency {
     using Type = UncertainContactMatrix<FP>;
     static Type get_default()
     {
-        ContactMatrixGroup contact_matrix = ContactMatrixGroup(1, 1);
-        contact_matrix[0]                 = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, 10.));
+        ContactMatrixGroup contact_matrix = ContactMatrixGroup<FP>(1, 1);
+        contact_matrix[0]                 = mio::ContactMatrix<FP>(Eigen::MatrixXd::Constant(1, 1, 10.));
         return Type(contact_matrix);
     }
 };

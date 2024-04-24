@@ -50,10 +50,10 @@ int main()
     model.parameters.set<mio::oseir::TimeExposed<double>>(5.2);
     model.parameters.set<mio::oseir::TimeInfected<double>>(2);
 
-    model.parameters.get<mio::oseir::ContactPatterns>().get_baseline()(0, 0) = 2.7;
+    model.parameters.get<mio::oseir::ContactPatterns<>>().get_baseline()(0, 0) = 2.7;
 
     // contacts increase by 100% after 12.5 days
-    model.parameters.get<mio::oseir::ContactPatterns>().add_damping(-1., mio::SimulationTime(12.5));
+    model.parameters.get<mio::oseir::ContactPatterns<>>().add_damping(-1., mio::SimulationTime<>(12.5));
 
     model.check_constraints();
 

@@ -45,7 +45,7 @@ int main()
     model.parameters.set<mio::ssir::TimeInfected>(10);
     model.parameters.set<mio::ssir::TransmissionProbabilityOnContact>(1);
     model.parameters.get<mio::ssir::ContactPatterns>().get_baseline()(0, 0) = 2.7;
-    model.parameters.get<mio::ssir::ContactPatterns>().add_damping(0.6, mio::SimulationTime(12.5));
+    model.parameters.get<mio::ssir::ContactPatterns>().add_damping(0.6, mio::SimulationTime<>(12.5));
 
     model.check_constraints();
 

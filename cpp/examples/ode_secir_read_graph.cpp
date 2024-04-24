@@ -102,9 +102,9 @@ int main(int argc, char** argv)
 
     params.apply_constraints();
 
-    mio::ContactMatrixGroup& contact_matrix = params.get<mio::osecir::ContactPatterns<FP>>();
+    mio::ContactMatrixGroup<FP>& contact_matrix = params.get<mio::osecir::ContactPatterns<FP>>();
     contact_matrix[0] =
-        mio::ContactMatrix(Eigen::MatrixXd::Constant((size_t)nb_groups, (size_t)nb_groups, fact * cont_freq));
+        mio::ContactMatrix<FP>(Eigen::MatrixXd::Constant((size_t)nb_groups, (size_t)nb_groups, fact * cont_freq));
 
     mio::osecir::set_params_distributions_normal(model, t0, tmax, 0.2);
 
