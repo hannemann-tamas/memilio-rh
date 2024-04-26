@@ -151,10 +151,10 @@ get_graph(mio::Date start_date, const fs::path& data_dir)
 
     BOOST_OUTCOME_TRY(set_covid_parameters(params));
     double contact_freq                     = 10;
-    mio::ContactMatrixGroup& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
-    contact_matrix[0]                       = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, contact_freq));
-    contact_matrix.add_damping(0.7, mio::SimulationTime(30));
-    contact_matrix.add_damping(0.1, mio::SimulationTime(50));
+    mio::ContactMatrixGroup<>& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
+    contact_matrix[0]                         = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, contact_freq));
+    contact_matrix.add_damping(0.7, mio::SimulationTime<>(30));
+    contact_matrix.add_damping(0.1, mio::SimulationTime<>(50));
 
     mio::Graph<mio::osecir::Model<double>, mio::MigrationParameters<double>> params_graph;
     BOOST_OUTCOME_TRY(set_nodes(params_graph, params, data_dir, start_date));

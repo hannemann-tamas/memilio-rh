@@ -77,8 +77,8 @@ protected:
         vec_prob[Eigen::Index(mio::isecir::InfectionTransition::ExposedToInfectedNoSymptoms)] = 1;
         model->parameters.set<mio::isecir::TransitionProbabilities>(vec_prob);
 
-        mio::ContactMatrixGroup contact_matrix = mio::ContactMatrixGroup(1, 1);
-        contact_matrix[0]                      = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, 10.));
+        mio::ContactMatrixGroup<> contact_matrix = mio::ContactMatrixGroup<>(1, 1);
+        contact_matrix[0]                        = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, 10.));
         model->parameters.get<mio::isecir::ContactPatterns>() = mio::UncertainContactMatrix(contact_matrix);
 
         mio::ExponentialDecay expdecay(0.5);
@@ -209,8 +209,8 @@ TEST(IdeSecir, checkSimulationFunctions)
     vec_prob[Eigen::Index(mio::isecir::InfectionTransition::ExposedToInfectedNoSymptoms)] = 1;
     model.parameters.set<mio::isecir::TransitionProbabilities>(vec_prob);
 
-    mio::ContactMatrixGroup contact_matrix               = mio::ContactMatrixGroup(1, 1);
-    contact_matrix[0]                                    = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, 4.));
+    mio::ContactMatrixGroup<> contact_matrix             = mio::ContactMatrixGroup<>(1, 1);
+    contact_matrix[0]                                    = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, 4.));
     model.parameters.get<mio::isecir::ContactPatterns>() = mio::UncertainContactMatrix(contact_matrix);
 
     mio::SmootherCosine smoothcos_prob(1.0);
@@ -289,8 +289,8 @@ TEST(IdeSecir, checkInitializations)
     /* !! For the other tests, the contact rate is set to 0 so that the force of infection is zero.
      The forceofinfection initialization method is therefore not used for these tests.*/
     mio::isecir::Parameters parameters;
-    mio::ContactMatrixGroup contact_matrix         = mio::ContactMatrixGroup(1, 1);
-    contact_matrix[0]                              = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, 0));
+    mio::ContactMatrixGroup<> contact_matrix       = mio::ContactMatrixGroup<>(1, 1);
+    contact_matrix[0]                              = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, 0));
     parameters.get<mio::isecir::ContactPatterns>() = mio::UncertainContactMatrix(contact_matrix);
 
     mio::TimeSeries<ScalarType> init_copy2(init);
@@ -638,8 +638,8 @@ TEST(IdeSecir, checkProportionRecoveredDeath)
     vec_prob[Eigen::Index(mio::isecir::InfectionTransition::InfectedCriticalToDead)]        = 0.6;
     model.parameters.set<mio::isecir::TransitionProbabilities>(vec_prob);
 
-    mio::ContactMatrixGroup contact_matrix               = mio::ContactMatrixGroup(1, 1);
-    contact_matrix[0]                                    = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, 1.));
+    mio::ContactMatrixGroup<> contact_matrix             = mio::ContactMatrixGroup<>(1, 1);
+    contact_matrix[0]                                    = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, 1.));
     model.parameters.get<mio::isecir::ContactPatterns>() = mio::UncertainContactMatrix(contact_matrix);
 
     mio::ExponentialDecay expdecay2(0.5);
@@ -741,8 +741,8 @@ TEST(IdeSecir, compareEquilibria)
     model.parameters.set<mio::isecir::TransitionProbabilities>(vec_prob);
     model2.parameters.set<mio::isecir::TransitionProbabilities>(vec_prob);
 
-    mio::ContactMatrixGroup contact_matrix                = mio::ContactMatrixGroup(1, 1);
-    contact_matrix[0]                                     = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, 1.));
+    mio::ContactMatrixGroup<> contact_matrix              = mio::ContactMatrixGroup<>(1, 1);
+    contact_matrix[0]                                     = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, 1.));
     model.parameters.get<mio::isecir::ContactPatterns>()  = mio::UncertainContactMatrix(contact_matrix);
     model2.parameters.get<mio::isecir::ContactPatterns>() = mio::UncertainContactMatrix(contact_matrix);
 

@@ -81,9 +81,9 @@ TEST(TestLCTSecir, compareWithOdeSecir)
 
     model_lct.parameters.get<mio::lsecir::TransmissionProbabilityOnContact>() = 0.05;
 
-    mio::ContactMatrixGroup& contact_matrix_lct = model_lct.parameters.get<mio::lsecir::ContactPatterns>();
-    contact_matrix_lct[0]                       = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, 10));
-    contact_matrix_lct[0].add_damping(0.7, mio::SimulationTime(2.));
+    mio::ContactMatrixGroup<>& contact_matrix_lct = model_lct.parameters.get<mio::lsecir::ContactPatterns>();
+    contact_matrix_lct[0]                         = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, 10));
+    contact_matrix_lct[0].add_damping(0.7, mio::SimulationTime<>(2.));
 
     model_lct.parameters.get<mio::lsecir::RelativeTransmissionNoSymptoms>() = 0.7;
     model_lct.parameters.get<mio::lsecir::RiskOfInfectionFromSymptomatic>() = 0.25;
@@ -134,9 +134,9 @@ TEST(TestLCTSecir, compareWithOdeSecir)
     model_ode.parameters.get<mio::osecir::TimeInfectedSevere<double>>()[(mio::AgeGroup)0]     = 9.5;
     model_ode.parameters.get<mio::osecir::TimeInfectedCritical<double>>()[(mio::AgeGroup)0]   = 7.1;
 
-    mio::ContactMatrixGroup& contact_matrix_ode = model_ode.parameters.get<mio::osecir::ContactPatterns<double>>();
-    contact_matrix_ode[0]                       = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, 10));
-    contact_matrix_ode[0].add_damping(0.7, mio::SimulationTime(2.));
+    mio::ContactMatrixGroup<>& contact_matrix_ode = model_ode.parameters.get<mio::osecir::ContactPatterns<double>>();
+    contact_matrix_ode[0]                         = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, 10));
+    contact_matrix_ode[0].add_damping(0.7, mio::SimulationTime<>(2.));
 
     model_ode.parameters.get<mio::osecir::TransmissionProbabilityOnContact<double>>()[(mio::AgeGroup)0] = 0.05;
     model_ode.parameters.get<mio::osecir::RelativeTransmissionNoSymptoms<double>>()[(mio::AgeGroup)0]   = 0.7;
@@ -213,8 +213,8 @@ TEST(TestLCTSecir, testEvalRightHandSide)
 
     model.parameters.get<mio::lsecir::TransmissionProbabilityOnContact>() = 0.05;
 
-    mio::ContactMatrixGroup& contact_matrix = model.parameters.get<mio::lsecir::ContactPatterns>();
-    contact_matrix[0]                       = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, 10));
+    mio::ContactMatrixGroup<>& contact_matrix = model.parameters.get<mio::lsecir::ContactPatterns>();
+    contact_matrix[0]                         = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, 10));
 
     model.parameters.get<mio::lsecir::RelativeTransmissionNoSymptoms>() = 0.7;
     model.parameters.get<mio::lsecir::RiskOfInfectionFromSymptomatic>() = 0.25;
@@ -276,9 +276,9 @@ protected:
         model->parameters.get<mio::lsecir::TimeInfectedCritical>()             = 7.1;
         model->parameters.get<mio::lsecir::TransmissionProbabilityOnContact>() = 0.05;
 
-        mio::ContactMatrixGroup& contact_matrix = model->parameters.get<mio::lsecir::ContactPatterns>();
-        contact_matrix[0]                       = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, 10));
-        contact_matrix[0].add_damping(0.7, mio::SimulationTime(2.));
+        mio::ContactMatrixGroup<>& contact_matrix = model->parameters.get<mio::lsecir::ContactPatterns>();
+        contact_matrix[0]                         = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, 10));
+        contact_matrix[0].add_damping(0.7, mio::SimulationTime<>(2.));
 
         model->parameters.get<mio::lsecir::RelativeTransmissionNoSymptoms>() = 0.7;
         model->parameters.get<mio::lsecir::RiskOfInfectionFromSymptomatic>() = 0.25;
@@ -364,7 +364,7 @@ TEST(TestLCTSecir, testConstraints)
     parameters_lct.get<mio::lsecir::TimeInfectedSevere>()               = 11.1;
     parameters_lct.get<mio::lsecir::TimeInfectedCritical>()             = 17.1;
     parameters_lct.get<mio::lsecir::TransmissionProbabilityOnContact>() = 0.01;
-    mio::ContactMatrixGroup contact_matrix                              = mio::ContactMatrixGroup(1, 1);
+    mio::ContactMatrixGroup<> contact_matrix                            = mio::ContactMatrixGroup<>(1, 1);
     parameters_lct.get<mio::lsecir::ContactPatterns>()                  = mio::UncertainContactMatrix(contact_matrix);
 
     parameters_lct.get<mio::lsecir::RelativeTransmissionNoSymptoms>() = 1;

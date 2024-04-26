@@ -55,9 +55,9 @@ TEST(TestOdeSecir, compareWithPreviousRun)
     model.parameters.get<mio::osecir::TimeInfectedSevere<double>>()[(mio::AgeGroup)0]     = 9.5;
     model.parameters.get<mio::osecir::TimeInfectedCritical<double>>()[(mio::AgeGroup)0]   = 7.1;
 
-    mio::ContactMatrixGroup& contact_matrix = model.parameters.get<mio::osecir::ContactPatterns<double>>();
-    contact_matrix[0]                       = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, cont_freq));
-    contact_matrix[0].add_damping(0.7, mio::SimulationTime(30.));
+    mio::ContactMatrixGroup<>& contact_matrix = model.parameters.get<mio::osecir::ContactPatterns<double>>();
+    contact_matrix[0]                         = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, cont_freq));
+    contact_matrix[0].add_damping(0.7, mio::SimulationTime<>(30.));
 
     model.populations.set_total(nb_total_t0);
     model.populations[{mio::AgeGroup(0), mio::osecir::InfectionState::Exposed}]                     = nb_exp_t0;
@@ -136,9 +136,9 @@ TEST(TestOdeSecir, checkPopulationConservation)
     model.parameters.get<mio::osecir::TimeInfectedSevere<double>>()[(mio::AgeGroup)0]     = 9.5;
     model.parameters.get<mio::osecir::TimeInfectedCritical<double>>()[(mio::AgeGroup)0]   = 7.1;
 
-    mio::ContactMatrixGroup& contact_matrix = model.parameters.get<mio::osecir::ContactPatterns<double>>();
-    contact_matrix[0]                       = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, cont_freq));
-    contact_matrix[0].add_damping(0.7, mio::SimulationTime(30.));
+    mio::ContactMatrixGroup<>& contact_matrix = model.parameters.get<mio::osecir::ContactPatterns<double>>();
+    contact_matrix[0]                         = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, cont_freq));
+    contact_matrix[0].add_damping(0.7, mio::SimulationTime<>(30.));
 
     model.populations.set_total(nb_total_t0);
     model.populations[{mio::AgeGroup(0), mio::osecir::InfectionState::Exposed}]                     = 10;
@@ -216,9 +216,9 @@ TEST(TestOdeSecir, testParamConstructors)
     model.parameters.get<mio::osecir::CriticalPerSevere<double>>()[(mio::AgeGroup)0]                = 0.24;
     model.parameters.get<mio::osecir::DeathsPerCritical<double>>()[(mio::AgeGroup)0]                = 0.3;
 
-    mio::ContactMatrixGroup& contact_matrix = model.parameters.get<mio::osecir::ContactPatterns<double>>();
-    contact_matrix[0]                       = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, cont_freq));
-    contact_matrix[0].add_damping(0.7, mio::SimulationTime(30.));
+    mio::ContactMatrixGroup<>& contact_matrix = model.parameters.get<mio::osecir::ContactPatterns<double>>();
+    contact_matrix[0]                         = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, cont_freq));
+    contact_matrix[0].add_damping(0.7, mio::SimulationTime<>(30.));
 
     mio::osecir::Model<double> model2{model}; // copy constructor
 
@@ -593,8 +593,8 @@ TEST(TestOdeSecir, testDamping)
     model_a.populations[{mio::AgeGroup(0), mio::osecir::InfectionState::InfectedSymptoms}] = nb_inf_t0;
     model_a.populations.set_difference_from_total({mio::AgeGroup(0), mio::osecir::InfectionState::Susceptible},
                                                   nb_total_t0);
-    mio::ContactMatrixGroup& contact_matrix_a = model_a.parameters.get<mio::osecir::ContactPatterns<ScalarType>>();
-    contact_matrix_a[0]                       = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, cont_freq));
+    mio::ContactMatrixGroup<>& contact_matrix_a = model_a.parameters.get<mio::osecir::ContactPatterns<ScalarType>>();
+    contact_matrix_a[0]                         = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, cont_freq));
     // set probability of transmission and risk of infection to 1.
     model_a.parameters.get<mio::osecir::TransmissionProbabilityOnContact<ScalarType>>() = 1.0;
     model_a.parameters.get<mio::osecir::RiskOfInfectionFromSymptomatic<ScalarType>>()   = 1.0;
@@ -606,9 +606,9 @@ TEST(TestOdeSecir, testDamping)
     model_b.populations[{mio::AgeGroup(0), mio::osecir::InfectionState::InfectedSymptoms}] = nb_inf_t0;
     model_b.populations.set_difference_from_total({mio::AgeGroup(0), mio::osecir::InfectionState::Susceptible},
                                                   nb_total_t0);
-    mio::ContactMatrixGroup& contact_matrix_b = model_b.parameters.get<mio::osecir::ContactPatterns<ScalarType>>();
-    contact_matrix_b[0]                       = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, cont_freq));
-    contact_matrix_b[0].add_damping(0.5, mio::SimulationTime(0.));
+    mio::ContactMatrixGroup<>& contact_matrix_b = model_b.parameters.get<mio::osecir::ContactPatterns<ScalarType>>();
+    contact_matrix_b[0]                         = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, cont_freq));
+    contact_matrix_b[0].add_damping(0.5, mio::SimulationTime<>(0.));
     auto result_b = mio::simulate_flows<ScalarType>(t0, tmax, dt, model_b, integrator);
     EXPECT_EQ(2 * result_b[1].get_last_value()[0], result_a[1].get_last_value()[0]);
 
@@ -618,9 +618,9 @@ TEST(TestOdeSecir, testDamping)
     model_c.populations[{mio::AgeGroup(0), mio::osecir::InfectionState::InfectedSymptoms}] = nb_inf_t0;
     model_c.populations.set_difference_from_total({mio::AgeGroup(0), mio::osecir::InfectionState::Susceptible},
                                                   nb_total_t0);
-    mio::ContactMatrixGroup& contact_matrix_c = model_c.parameters.get<mio::osecir::ContactPatterns<ScalarType>>();
-    contact_matrix_c[0]                       = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, cont_freq));
-    contact_matrix_c[0].add_damping(1., mio::SimulationTime(0.));
+    mio::ContactMatrixGroup<>& contact_matrix_c = model_c.parameters.get<mio::osecir::ContactPatterns<ScalarType>>();
+    contact_matrix_c[0]                         = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, cont_freq));
+    contact_matrix_c[0].add_damping(1., mio::SimulationTime<>(0.));
     auto result_c = mio::simulate_flows<ScalarType>(t0, tmax, dt, model_c, integrator);
     EXPECT_EQ(result_c[1].get_last_value()[0], 0.0);
 
@@ -630,9 +630,9 @@ TEST(TestOdeSecir, testDamping)
     model_d.populations[{mio::AgeGroup(0), mio::osecir::InfectionState::InfectedSymptoms}] = nb_inf_t0;
     model_d.populations.set_difference_from_total({mio::AgeGroup(0), mio::osecir::InfectionState::Susceptible},
                                                   nb_total_t0);
-    mio::ContactMatrixGroup& contact_matrix_d = model_d.parameters.get<mio::osecir::ContactPatterns<ScalarType>>();
-    contact_matrix_d[0]                       = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, cont_freq));
-    contact_matrix_d[0].add_damping(-1., mio::SimulationTime(0.));
+    mio::ContactMatrixGroup<>& contact_matrix_d = model_d.parameters.get<mio::osecir::ContactPatterns<>>();
+    contact_matrix_d[0]                         = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, cont_freq));
+    contact_matrix_d[0].add_damping(-1., mio::SimulationTime<>(0.));
     auto result_d = mio::simulate_flows<ScalarType>(t0, tmax, dt, model_d, integrator);
     EXPECT_EQ(2 * result_a[1].get_last_value()[0], result_d[1].get_last_value()[0]);
 }
@@ -681,8 +681,8 @@ TEST(TestOdeSecir, testModelConstraints)
     model.parameters.get<mio::osecir::CriticalPerSevere<double>>()[(mio::AgeGroup)0]                = 0.25;
     model.parameters.get<mio::osecir::DeathsPerCritical<double>>()[(mio::AgeGroup)0]                = 0.3;
 
-    mio::ContactMatrixGroup& contact_matrix = model.parameters.get<mio::osecir::ContactPatterns<double>>();
-    contact_matrix[0]                       = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, cont_freq));
+    mio::ContactMatrixGroup<>& contact_matrix = model.parameters.get<mio::osecir::ContactPatterns<double>>();
+    contact_matrix[0]                         = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, cont_freq));
 
     model.apply_constraints();
 
@@ -742,8 +742,8 @@ TEST(Secir, testAndTraceCapacity)
     params.get<mio::osecir::TimeInfectedNoSymptoms<double>>()[(mio::AgeGroup)0] = 2.0;
     params.get<mio::osecir::TimeInfectedSymptoms<double>>()[(mio::AgeGroup)0]   = 6.;
 
-    mio::ContactMatrixGroup& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
-    contact_matrix[0]                       = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, cont_freq));
+    mio::ContactMatrixGroup<>& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
+    contact_matrix[0]                         = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, cont_freq));
 
     model.populations[{mio::AgeGroup(0), mio::osecir::InfectionState::Exposed}]            = nb_exp_t0;
     model.populations[{mio::AgeGroup(0), mio::osecir::InfectionState::InfectedNoSymptoms}] = nb_car_t0;
@@ -803,8 +803,8 @@ TEST(Secir, get_reproduction_number)
     const size_t num_groups = 3;
     mio::osecir::Model model((int)num_groups);
 
-    mio::ContactMatrixGroup& contact_matrix = model.parameters.get<mio::osecir::ContactPatterns<double>>();
-    contact_matrix[0]                       = mio::ContactMatrix(Eigen::MatrixXd::Constant(3, 3, 10));
+    mio::ContactMatrixGroup<>& contact_matrix = model.parameters.get<mio::osecir::ContactPatterns<double>>();
+    contact_matrix[0]                         = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(3, 3, 10));
 
     model.parameters.set<mio::osecir::StartDay>(60);
     model.parameters.set<mio::osecir::Seasonality<double>>(0.2);

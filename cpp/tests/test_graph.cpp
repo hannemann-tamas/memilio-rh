@@ -229,7 +229,7 @@ TEST(TestGraph, set_edges)
 
     auto result =
         mio::set_edges<MockContactLocation, mio::osecir::Model<double>, mio::MigrationParameters<double>,
-                       mio::MigrationCoefficientGroup, mio::osecir::InfectionState, decltype(read_function_edges)>(
+                       mio::MigrationCoefficientGroup<>, mio::osecir::InfectionState, decltype(read_function_edges)>(
             dir, params_graph, migrating_compartments, size_t(2), read_function_edges,
             std::vector<ScalarType>{0., 0., 1.0, 1.0, 0.33, 0., 0.});
 

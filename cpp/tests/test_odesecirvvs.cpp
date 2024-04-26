@@ -121,8 +121,8 @@ TEST(TestOdeSECIRVVS, reduceToSecirAndCompareWithPreviousRun)
 
     auto& contacts       = model.parameters.get<mio::osecirvvs::ContactPatterns<double>>();
     auto& contact_matrix = contacts.get_cont_freq_mat();
-    contact_matrix[0]    = mio::ContactMatrix(Eigen::MatrixXd::Constant(1, 1, 10));
-    contact_matrix[0].add_damping(0.7, mio::SimulationTime(30.));
+    contact_matrix[0]    = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(1, 1, 10));
+    contact_matrix[0].add_damping(0.7, mio::SimulationTime<>(30.));
 
     //times
     model.parameters.get<mio::osecirvvs::TimeExposed<double>>()[mio::AgeGroup(0)]            = 3.2;
@@ -283,17 +283,17 @@ void set_contact_parameters(mio::osecirvvs::Model<double>::ParameterSet& paramet
     auto& contact_matrix = contacts.get_cont_freq_mat();
     contact_matrix[0].get_baseline().setConstant(0.5);
     contact_matrix[0].get_baseline().diagonal().setConstant(5.0);
-    contact_matrix[0].add_damping(0.3, mio::SimulationTime(5.0));
+    contact_matrix[0].add_damping(0.3, mio::SimulationTime<>(5.0));
 
     auto& npis      = parameters.get<mio::osecirvvs::DynamicNPIsInfectedSymptoms<double>>();
     auto npi_groups = Eigen::VectorXd::Ones(contact_matrix[0].get_num_groups());
     auto npi_value  = mio::UncertainValue<double>(0.5);
     assign_uniform_distribution(npi_value, 0.25, 0.75, set_invalid_initial_value);
     npis.set_threshold(10.0, {mio::DampingSampling<double>(npi_value, mio::DampingLevel(0), mio::DampingType(0),
-                                                           mio::SimulationTime(0), {0}, npi_groups)});
+                                                           mio::SimulationTime<>(0), {0}, npi_groups)});
     npis.set_base_value(100'000);
-    npis.set_interval(mio::SimulationTime(3.0));
-    npis.set_duration(mio::SimulationTime(14.0));
+    npis.set_interval(mio::SimulationTime<>(3.0));
+    npis.set_duration(mio::SimulationTime<>(14.0));
     parameters.get_end_dynamic_npis() = 10.0; //required for dynamic NPIs to have effect in this model
 }
 

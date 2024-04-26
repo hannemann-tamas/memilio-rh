@@ -42,7 +42,7 @@ TEST(TestMobility, compareNoMigrationWithSingleIntegration)
     model1.populations[{mio::Index<mio::oseir::InfectionState>(mio::oseir::InfectionState::Susceptible)}] = 0.9;
     model1.populations[{mio::Index<mio::oseir::InfectionState>(mio::oseir::InfectionState::Exposed)}]     = 0.1;
     model1.populations.set_total(1000);
-    model1.parameters.get<mio::oseir::ContactPatterns>().get_baseline()(0, 0) = 10;
+    model1.parameters.get<mio::oseir::ContactPatterns<>>().get_baseline()(0, 0) = 10;
     model1.parameters.set<mio::oseir::TransmissionProbabilityOnContact<double>>(0.4);
     model1.parameters.set<mio::oseir::TimeExposed<double>>(4);
     model1.parameters.set<mio::oseir::TimeInfected<double>>(10);
@@ -92,7 +92,7 @@ TEST(TestMobility, nodeEvolve)
     Model model(1);
     auto& params = model.parameters;
 
-    auto& cm = static_cast<mio::ContactMatrixGroup&>(model.parameters.get<mio::osecir::ContactPatterns<double>>());
+    auto& cm = static_cast<mio::ContactMatrixGroup<>&>(model.parameters.get<mio::osecir::ContactPatterns<double>>());
     cm[0].get_minimum()(0, 0) = 5.0;
 
     model.populations[{mio::AgeGroup(0), mio::osecir::InfectionState::Exposed}] = 100;
@@ -117,7 +117,7 @@ TEST(TestMobility, edgeApplyMigration)
     //setup nodes
     Model model(1);
     auto& params = model.parameters;
-    auto& cm     = static_cast<mio::ContactMatrixGroup&>(model.parameters.get<mio::osecir::ContactPatterns<double>>());
+    auto& cm = static_cast<mio::ContactMatrixGroup<>&>(model.parameters.get<mio::osecir::ContactPatterns<double>>());
     cm[0].get_baseline()(0, 0) = 5.0;
 
     model.populations[{mio::AgeGroup(0), mio::osecir::InfectionState::InfectedSymptoms}]            = 10;

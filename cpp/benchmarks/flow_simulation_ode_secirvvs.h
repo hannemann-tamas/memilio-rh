@@ -62,7 +62,7 @@ public:
         auto const& params   = this->parameters;
         AgeGroup n_agegroups = params.get_num_groups();
 
-        ContactMatrixGroup const& contact_matrix = params.get<osecirvvs::ContactPatterns<ScalarType>>();
+        ContactMatrixGroup<ScalarType> const& contact_matrix = params.get<osecirvvs::ContactPatterns<ScalarType>>();
 
         auto icu_occupancy           = 0.0;
         auto test_and_trace_required = 0.0;
@@ -578,8 +578,8 @@ public:
                             (exceeded_threshold->first > m_dynamic_npi.first ||
                              t > double(m_dynamic_npi.second))) { //old npi was weaker or is expired
 
-                            auto t_start = SimulationTime(t + delay_lockdown);
-                            auto t_end   = t_start + SimulationTime(dyn_npis.get_duration());
+                            auto t_start = SimulationTime<>(t + delay_lockdown);
+                            auto t_end   = t_start + SimulationTime<>(dyn_npis.get_duration());
                             this->get_model().parameters.get_start_commuter_detection() = (double)t_start;
                             this->get_model().parameters.get_end_commuter_detection()   = (double)t_end;
                             m_dynamic_npi = std::make_pair(exceeded_threshold->first, t_end);
@@ -605,7 +605,8 @@ public:
 
 private:
     double m_t_last_npi_check;
-    std::pair<double, SimulationTime> m_dynamic_npi = {-std::numeric_limits<double>::max(), SimulationTime(0)};
+    std::pair<double, SimulationTime<double>> m_dynamic_npi = {-std::numeric_limits<double>::max(),
+                                                               SimulationTime<double>(0)};
 };
 
 template <class Base>
@@ -676,7 +677,7 @@ void setup_model(Model& model)
     auto& contact_matrix = contacts.get_cont_freq_mat();
     contact_matrix[0].get_baseline().setConstant(0.5);
     contact_matrix[0].get_baseline().diagonal().setConstant(5.0);
-    contact_matrix[0].add_damping(0.3, SimulationTime(5.0));
+    contact_matrix[0].add_damping(0.3, SimulationTime<>(5.0));
 
     //times
     model.parameters.template get<osecirvvs::TimeExposed<ScalarType>>()[AgeGroup(0)]            = 3.33;

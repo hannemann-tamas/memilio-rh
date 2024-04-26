@@ -79,13 +79,13 @@ TEST(TestSaveParameters, json_single_sim_write_read_compare)
         model.parameters.get<mio::osecir::DeathsPerCritical<double>>()[i]                = delta;
     }
 
-    mio::ContactMatrixGroup& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
+    mio::ContactMatrixGroup<>& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
     contact_matrix[0] =
-        mio::ContactMatrix(Eigen::MatrixXd::Constant((size_t)num_groups, (size_t)num_groups, fact * cont_freq));
-    contact_matrix.add_damping(0.7, mio::SimulationTime(30.));
+        mio::ContactMatrix<>(Eigen::MatrixXd::Constant((size_t)num_groups, (size_t)num_groups, fact * cont_freq));
+    contact_matrix.add_damping(0.7, mio::SimulationTime<>(30.));
     auto damping2  = Eigen::MatrixXd::Zero((size_t)num_groups, (size_t)num_groups).eval();
     damping2(0, 0) = 0.8;
-    contact_matrix.add_damping(damping2, mio::SimulationTime(35));
+    contact_matrix.add_damping(damping2, mio::SimulationTime<>(35));
 
     mio::osecir::set_params_distributions_normal(model, t0, tmax, 0.2);
 
@@ -240,8 +240,8 @@ TEST(TestSaveParameters, read_graph_without_edges)
         params.get<mio::osecir::DeathsPerCritical<double>>()[i]                = 0.3;
     }
 
-    mio::ContactMatrixGroup& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
-    contact_matrix[0] = mio::ContactMatrix(Eigen::MatrixXd::Constant(num_groups, num_groups, fact * cont_freq));
+    mio::ContactMatrixGroup<>& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
+    contact_matrix[0] = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(num_groups, num_groups, fact * cont_freq));
 
     auto graph = mio::Graph<mio::osecir::Model<double>, mio::MigrationParameters<double>>();
     graph.add_node(0, model);
@@ -320,8 +320,8 @@ TEST(TestSaveParameters, json_uncertain_matrix_write_read_compare)
     };
 
     const auto start_date = mio::Date(2020, 12, 12);
-    auto damping_time1    = mio::SimulationTime(mio::get_offset_in_days(mio::Date(2020, 12, 1), start_date));
-    auto damping_time2    = mio::SimulationTime(mio::get_offset_in_days(mio::Date(2020, 12, 24), start_date));
+    auto damping_time1    = mio::SimulationTime<>(mio::get_offset_in_days(mio::Date(2020, 12, 1), start_date));
+    auto damping_time2    = mio::SimulationTime<>(mio::get_offset_in_days(mio::Date(2020, 12, 24), start_date));
     mio::osecir::Model<double> model(2);
     auto& contacts         = model.parameters.get<mio::osecir::ContactPatterns<double>>();
     auto& contact_dampings = contacts.get_dampings();
@@ -344,12 +344,12 @@ TEST(TestSaveParameters, json_uncertain_matrix_write_read_compare)
     school_holiday_value.set_distribution(mio::ParameterDistributionUniform(1, 1));
     contacts.get_school_holiday_damping() =
         mio::DampingSampling<double>(school_holiday_value, mio::DampingLevel(int(InterventionLevelMock::level)),
-                                     mio::DampingType(int(InterventionMock::intervention)), mio::SimulationTime(0.0),
+                                     mio::DampingType(int(InterventionMock::intervention)), mio::SimulationTime<>(0.0),
                                      {size_t(ContactLocationMock::location)}, group_weights);
 
     //add school holidays
-    auto holiday_start_time        = mio::SimulationTime(mio::get_offset_in_days(mio::Date(2020, 12, 23), start_date));
-    auto holiday_end_time          = mio::SimulationTime(mio::get_offset_in_days(mio::Date(2021, 1, 6), start_date));
+    auto holiday_start_time = mio::SimulationTime<>(mio::get_offset_in_days(mio::Date(2020, 12, 23), start_date));
+    auto holiday_end_time   = mio::SimulationTime<>(mio::get_offset_in_days(mio::Date(2021, 1, 6), start_date));
     contacts.get_school_holidays() = {std::make_pair(holiday_start_time, holiday_end_time)};
 
     //write json
@@ -417,12 +417,12 @@ TEST(TestSaveParameters, json_graphs_write_read_compare)
         model.parameters.get<mio::osecir::DeathsPerCritical<double>>()[i]                 = delta;
     }
 
-    mio::ContactMatrixGroup& contact_matrix = model.parameters.get<mio::osecir::ContactPatterns<double>>();
+    mio::ContactMatrixGroup<>& contact_matrix = model.parameters.get<mio::osecir::ContactPatterns<double>>();
     contact_matrix[0] =
-        mio::ContactMatrix(Eigen::MatrixXd::Constant((size_t)num_groups, (size_t)num_groups, fact * cont_freq));
+        mio::ContactMatrix<>(Eigen::MatrixXd::Constant((size_t)num_groups, (size_t)num_groups, fact * cont_freq));
     Eigen::MatrixXd m =
         Eigen::MatrixXd::Constant((size_t)num_groups, (size_t)num_groups, 0.7).triangularView<Eigen::Upper>();
-    contact_matrix.add_damping(m, mio::SimulationTime(30.));
+    contact_matrix.add_damping(m, mio::SimulationTime<>(30.));
 
     mio::osecir::set_params_distributions_normal(model, t0, tmax, 0.15);
 
@@ -449,10 +449,11 @@ TEST(TestSaveParameters, json_graphs_write_read_compare)
 
     for (size_t node = 0; node < num_nodes; node++) {
         mio::osecir::Model<double> graph_model     = graph.nodes()[0].property;
-        mio::ContactMatrixGroup& graph_cont_matrix = graph_model.parameters.get<mio::osecir::ContactPatterns<double>>();
+        mio::ContactMatrixGroup<>& graph_cont_matrix =
+            graph_model.parameters.get<mio::osecir::ContactPatterns<double>>();
 
         mio::osecir::Model<double> graph_read_model = graph_read.nodes()[0].property;
-        mio::ContactMatrixGroup& graph_read_cont_matrix =
+        mio::ContactMatrixGroup<>& graph_read_cont_matrix =
             graph_read_model.parameters.get<mio::osecir::ContactPatterns<double>>();
 
         ASSERT_EQ(graph_read_cont_matrix.get_num_groups(), static_cast<Eigen::Index>((size_t)num_groups));
@@ -922,13 +923,13 @@ TEST(TestSaveParameters, json_write_read_parameters_secirvvs)
         model.parameters.get<mio::osecirvvs::ReducTimeInfectedMild<double>>()[i]                           = 0.5;
     }
 
-    mio::ContactMatrixGroup& contact_matrix = params.get<mio::osecirvvs::ContactPatterns<double>>();
+    mio::ContactMatrixGroup<>& contact_matrix = params.get<mio::osecirvvs::ContactPatterns<double>>();
     contact_matrix[0] =
-        mio::ContactMatrix(Eigen::MatrixXd::Constant((size_t)num_groups, (size_t)num_groups, fact * 10));
-    contact_matrix.add_damping(0.7, mio::SimulationTime(30.));
+        mio::ContactMatrix<>(Eigen::MatrixXd::Constant((size_t)num_groups, (size_t)num_groups, fact * 10));
+    contact_matrix.add_damping(0.7, mio::SimulationTime<>(30.));
     auto damping2  = Eigen::MatrixXd::Zero((size_t)num_groups, (size_t)num_groups).eval();
     damping2(0, 0) = 0.8;
-    contact_matrix.add_damping(damping2, mio::SimulationTime(35));
+    contact_matrix.add_damping(damping2, mio::SimulationTime<>(35));
 
     TempFileRegister file_register;
     auto filename     = file_register.get_unique_path("TestParameters-%%%%-%%%%.json");

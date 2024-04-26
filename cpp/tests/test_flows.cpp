@@ -121,7 +121,7 @@ TEST(TestFlows, FlowSimulation)
     model.parameters.set<mio::oseir::TimeExposed<double>>(5.2);
     model.parameters.set<mio::oseir::TimeInfected<double>>(6);
     model.parameters.set<mio::oseir::TransmissionProbabilityOnContact<double>>(0.04);
-    model.parameters.get<mio::oseir::ContactPatterns>().get_baseline()(0, 0) = 10;
+    model.parameters.get<mio::oseir::ContactPatterns<>>().get_baseline()(0, 0) = 10;
 
     model.check_constraints();
     auto IC   = std::make_shared<mio::DefaultIntegratorCore<double>>();
@@ -163,7 +163,7 @@ TEST(TestFlows, CompareSimulations)
     model.parameters.set<mio::oseir::TimeExposed<double>>(5.2);
     model.parameters.set<mio::oseir::TimeInfected<double>>(6);
     model.parameters.set<mio::oseir::TransmissionProbabilityOnContact<double>>(0.04);
-    model.parameters.get<mio::oseir::ContactPatterns>().get_baseline()(0, 0) = 10;
+    model.parameters.get<mio::oseir::ContactPatterns<>>().get_baseline()(0, 0) = 10;
 
     model.check_constraints();
     auto seir_sim_flows = simulate_flows(t0, tmax, dt, model);

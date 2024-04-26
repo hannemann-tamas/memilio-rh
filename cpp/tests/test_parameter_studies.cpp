@@ -74,9 +74,9 @@ TEST(ParameterStudies, sample_from_secir_params)
         params.get<mio::osecir::DeathsPerCritical<double>>()[i]                = 0.3;
     }
 
-    mio::ContactMatrixGroup& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
+    mio::ContactMatrixGroup<>& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
     contact_matrix[0] =
-        mio::ContactMatrix(Eigen::MatrixXd::Constant((size_t)num_groups, (size_t)num_groups, fact * cont_freq));
+        mio::ContactMatrix<>(Eigen::MatrixXd::Constant((size_t)num_groups, (size_t)num_groups, fact * cont_freq));
 
     mio::osecir::set_params_distributions_normal(model, t0, tmax, 0.2);
 
@@ -97,7 +97,7 @@ TEST(ParameterStudies, sample_from_secir_params)
         EXPECT_GE(params.get<mio::osecir::TransmissionProbabilityOnContact<double>>()[i], 0);
     }
 
-    mio::ContactMatrixGroup& contact_matrix_sample = params.get<mio::osecir::ContactPatterns<double>>();
+    mio::ContactMatrixGroup<>& contact_matrix_sample = params.get<mio::osecir::ContactPatterns<double>>();
     EXPECT_EQ(contact_matrix_sample[0].get_dampings().size(), 1);
 }
 
@@ -147,8 +147,8 @@ TEST(ParameterStudies, sample_graph)
         params.get<mio::osecir::DeathsPerCritical<double>>()[i]                = 0.3;
     }
 
-    mio::ContactMatrixGroup& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
-    contact_matrix[0] = mio::ContactMatrix(Eigen::MatrixXd::Constant(num_groups, num_groups, fact * cont_freq));
+    mio::ContactMatrixGroup<>& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
+    contact_matrix[0] = mio::ContactMatrix<>(Eigen::MatrixXd::Constant(num_groups, num_groups, fact * cont_freq));
 
     mio::osecir::set_params_distributions_normal(model, t0, tmax, 0.2);
 
@@ -313,9 +313,9 @@ TEST(ParameterStudies, check_ensemble_run_result)
         params.get<mio::osecir::DeathsPerCritical<double>>()[i]                = 0.3;
     }
 
-    mio::ContactMatrixGroup& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
+    mio::ContactMatrixGroup<>& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
     contact_matrix[0] =
-        mio::ContactMatrix(Eigen::MatrixXd::Constant((size_t)num_groups, (size_t)num_groups, fact * cont_freq));
+        mio::ContactMatrix<>(Eigen::MatrixXd::Constant((size_t)num_groups, (size_t)num_groups, fact * cont_freq));
 
     mio::osecir::set_params_distributions_normal(model, t0, tmax, 0.2);
     mio::ParameterStudy<mio::osecir::Simulation<>> parameter_study(model, t0, tmax, 1);

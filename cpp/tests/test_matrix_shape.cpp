@@ -24,7 +24,7 @@ TEST(TestMatrixShape, Rect)
 {
     EXPECT_EQ(mio::RectMatrixShape(3, 2).rows(), 3);
     EXPECT_EQ(mio::RectMatrixShape(3, 2).cols(), 2);
-    EXPECT_EQ(mio::RectMatrixShape::get_shape_of(Eigen::MatrixXd::Zero(2, 3)), mio::RectMatrixShape(2, 3));
+    EXPECT_EQ(mio::RectMatrixShape<>::get_shape_of(Eigen::MatrixXd::Zero(2, 3)), mio::RectMatrixShape(2, 3));
 }
 
 TEST(TestMatrixShape, Square)
@@ -32,7 +32,7 @@ TEST(TestMatrixShape, Square)
     EXPECT_EQ(mio::SquareMatrixShape(3).rows(), 3);
     EXPECT_EQ(mio::SquareMatrixShape(3).cols(), 3);
     EXPECT_EQ(mio::SquareMatrixShape(3).size(), 3);
-    EXPECT_EQ(mio::SquareMatrixShape::get_shape_of(Eigen::MatrixXd::Zero(3, 3)), mio::SquareMatrixShape(3));
+    EXPECT_EQ(mio::SquareMatrixShape<>::get_shape_of(Eigen::MatrixXd::Zero(3, 3)), mio::SquareMatrixShape<>(3));
 }
 
 TEST(TestMatrixShape, Vector)

@@ -200,7 +200,7 @@ public:
      */
     friend void PrintTo(const Damping& self, std::ostream* os)
     {
-        *os << '[' << std::get<SimulationTime>(self) << ',' << std::get<DampingType>(self) << ','
+        *os << '[' << std::get<SimulationTime<FP>>(self) << ',' << std::get<DampingType>(self) << ','
             << std::get<DampingLevel>(self) << ']';
         *os << '\n' << std::get<Matrix>(self);
     }

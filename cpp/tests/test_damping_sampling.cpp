@@ -30,32 +30,32 @@ TEST(TestDampingSampling, apply)
         std::vector<mio::DampingSampling<double>>{mio::DampingSampling<double>{mio::UncertainValue<double>(0.5),
                                                                                mio::DampingLevel(0),
                                                                                mio::DampingType(0),
-                                                                               mio::SimulationTime(0.0),
+                                                                               mio::SimulationTime<>(0.0),
                                                                                {0},
                                                                                Eigen::VectorXd::Constant(2, 1.0)},
                                                   mio::DampingSampling<double>{mio::UncertainValue<double>(0.25),
                                                                                mio::DampingLevel(1),
                                                                                mio::DampingType(0),
-                                                                               mio::SimulationTime(1.0),
+                                                                               mio::SimulationTime<>(1.0),
                                                                                {
                                                                                    0,
                                                                                    1,
                                                                                },
                                                                                Eigen::VectorXd::Constant(2, 1.0)}};
-    auto cmg = mio::ContactMatrixGroup(2, 2);
+    auto cmg = mio::ContactMatrixGroup<>(2, 2);
 
     mio::apply_dampings(cmg, ds, [](auto&& v) {
         return mio::make_contact_damping_matrix(v);
     });
 
     ASSERT_THAT(cmg[0].get_dampings(),
-                testing::ElementsAre(mio::SquareDamping(Eigen::MatrixXd::Constant(2, 2, 0.5), mio::DampingLevel(0),
-                                                        mio::DampingType(0), mio::SimulationTime(0.0)),
-                                     mio::SquareDamping(Eigen::MatrixXd::Constant(2, 2, 0.25), mio::DampingLevel(1),
-                                                        mio::DampingType(0), mio::SimulationTime(1.0))));
+                testing::ElementsAre(mio::SquareDamping<>(Eigen::MatrixXd::Constant(2, 2, 0.5), mio::DampingLevel(0),
+                                                          mio::DampingType(0), mio::SimulationTime<>(0.0)),
+                                     mio::SquareDamping<>(Eigen::MatrixXd::Constant(2, 2, 0.25), mio::DampingLevel(1),
+                                                          mio::DampingType(0), mio::SimulationTime<>(1.0))));
     ASSERT_THAT(cmg[1].get_dampings(),
-                testing::ElementsAre(mio::SquareDamping(Eigen::MatrixXd::Constant(2, 2, 0.25), mio::DampingLevel(1),
-                                                        mio::DampingType(0), mio::SimulationTime(1.0))));
+                testing::ElementsAre(mio::SquareDamping<>(Eigen::MatrixXd::Constant(2, 2, 0.25), mio::DampingLevel(1),
+                                                          mio::DampingType(0), mio::SimulationTime<>(1.0))));
 }
 
 TEST(TestDampingSampling, contactMask)

@@ -78,10 +78,10 @@ TEST(TestOdeSecir, compareAgeResWithPreviousRun)
 
     params.apply_constraints();
 
-    mio::ContactMatrixGroup& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
+    mio::ContactMatrixGroup<>& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
     contact_matrix[0] =
-        mio::ContactMatrix(Eigen::MatrixXd::Constant((size_t)nb_groups, (size_t)nb_groups, fact * cont_freq));
-    contact_matrix[0].add_damping(0.7, mio::SimulationTime(30.));
+        mio::ContactMatrix<>(Eigen::MatrixXd::Constant((size_t)nb_groups, (size_t)nb_groups, fact * cont_freq));
+    contact_matrix[0].add_damping(0.7, mio::SimulationTime<>(30.));
 
     auto integrator = std::make_shared<mio::RKIntegratorCore<double>>();
     integrator->set_dt_min(0.3);
@@ -158,10 +158,10 @@ TEST(TestOdeSecir, compareAgeResWithPreviousRunCashKarp)
 
     params.apply_constraints();
 
-    mio::ContactMatrixGroup& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
+    mio::ContactMatrixGroup<>& contact_matrix = params.get<mio::osecir::ContactPatterns<double>>();
     contact_matrix[0] =
-        mio::ContactMatrix(Eigen::MatrixXd::Constant((size_t)nb_groups, (size_t)nb_groups, fact * cont_freq));
-    contact_matrix[0].add_damping(0.7, mio::SimulationTime(30.));
+        mio::ContactMatrix<>(Eigen::MatrixXd::Constant((size_t)nb_groups, (size_t)nb_groups, fact * cont_freq));
+    contact_matrix[0].add_damping(0.7, mio::SimulationTime<>(30.));
 
     auto integrator =
         std::make_shared<mio::ControlledStepperWrapper<double, boost::numeric::odeint::runge_kutta_cash_karp54>>();
