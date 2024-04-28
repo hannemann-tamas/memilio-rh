@@ -228,12 +228,15 @@ public:
 
                 // effective contact rate by contact rate between groups i and j and damping j
                 FP season_val =
-                    (1 + params.template get<Seasonality<FP>>().value() *
-                             sin(3.141592653589793 *
-                                 (std::fmod((params.template get<StartDay>() + ad::value(t)), 365.0) / 182.5 + 0.5)));
+                    (1. + params.template get<Seasonality<FP>>().value() *
+                              sin(3.141592653589793 * ((params.template get<StartDay>() + t) / 182.5 + 0.5)));
 
-                FP cont_freq_eff = season_val * contact_matrix.get_matrix_at(t)(static_cast<Eigen::Index>((size_t)i),
-                                                                                static_cast<Eigen::Index>((size_t)j));
+                FP contact_matrix_entry = contact_matrix.get_matrix_at(t)(static_cast<Eigen::Index>((size_t)i),
+                                                                          static_cast<Eigen::Index>((size_t)j));
+
+                std::cout << ad::derivative(season_val) << " " << ad::derivative(contact_matrix_entry) << std::endl;
+
+                FP cont_freq_eff = season_val * contact_matrix_entry;
 
                 // without died people
 

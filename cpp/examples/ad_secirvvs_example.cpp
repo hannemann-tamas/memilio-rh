@@ -153,9 +153,9 @@ int main()
 
     mio::TimeSeries<FP> result1 = mio::osecirvvs::simulate<FP>(t0, tmax, dt, model1);
 
-    // model2.populations.set_difference_from_group_total<mio::AgeGroup>(
-    //     {mio::AgeGroup(0), mio::osecirvvs::InfectionState::SusceptibleNaive}, FP(1000));
-    mio::TimeSeries<FP> result2 = mio::simulate<FP, mio::osecirvvs::Model<FP>>(t0, tmax, dt, model2);
+    model2.populations.set_difference_from_group_total<mio::AgeGroup>(
+        {mio::AgeGroup(0), mio::osecirvvs::InfectionState::SusceptibleNaive}, FP(1000));
+    mio::TimeSeries<FP> result2 = mio::osecirvvs::simulate<FP>(t0, tmax, dt, model2);
 
     bool print_to_terminal = true;
 

@@ -198,13 +198,6 @@ public:
         return get_matrix_at(SimulationTime<FP>(t));
     }
 
-    // //overload for AD data types
-    // template <typename FP>
-    // auto get_matrix_at(FP t) const
-    // {
-    //     return get_matrix_at(SimulationTime(ad::value(t)));
-    // }
-
     /**
      * gtest printer.
      */
@@ -408,6 +401,18 @@ public:
                     return s + m.get_matrix_at(t)(i, j);
                 });
             });
+    }
+
+    // overload for AD type
+    auto get_matrix_at(typename ad::gt1s<double>::type t) const
+    {
+        using FP                                                 = typename ad::gt1s<double>::type;
+        Eigen::Matrix<FP, Eigen::Dynamic, Eigen::Dynamic> result = m_matrices[0].get_matrix_at(t);
+
+        for (size_t i = 1; i < m_matrices.size(); ++i) {
+            result = result + m_matrices[i].get_matrix_at(t);
+        }
+        return result;
     }
 
     /**
