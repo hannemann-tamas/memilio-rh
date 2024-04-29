@@ -397,22 +397,12 @@ public:
     {
         return Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic>::NullaryExpr(
             get_shape().rows(), get_shape().cols(), [t, this](Eigen::Index i, Eigen::Index j) {
-                return std::accumulate(m_matrices.begin(), m_matrices.end(), T(0.0), [t, i, j](auto s, auto& m) {
-                    return s + m.get_matrix_at(t)(i, j);
-                });
+                T sum(0.0);
+                for (size_t k = 0; k < m_matrices.size(); ++k) {
+                    sum += m_matrices[k].get_matrix_at(t)(i, j);
+                }
+                return sum;
             });
-    }
-
-    // overload for AD type
-    auto get_matrix_at(typename ad::gt1s<double>::type t) const
-    {
-        using FP                                                 = typename ad::gt1s<double>::type;
-        Eigen::Matrix<FP, Eigen::Dynamic, Eigen::Dynamic> result = m_matrices[0].get_matrix_at(t);
-
-        for (size_t i = 1; i < m_matrices.size(); ++i) {
-            result = result + m_matrices[i].get_matrix_at(t);
-        }
-        return result;
     }
 
     /**
