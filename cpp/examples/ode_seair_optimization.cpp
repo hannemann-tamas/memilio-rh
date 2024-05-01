@@ -379,6 +379,9 @@ void Seair_NLP::finalize_solution(Ipopt::SolverReturn status, Ipopt::Index n, co
                                   const Ipopt::IpoptData* ip_data, Ipopt::IpoptCalculatedQuantities* ip_cq)
 {
     std::cout << "optimal solution is\n";
+    for (Ipopt::Index i = 0; i < n; ++i) {
+        std::cout << x[i] << std::endl;
+    }
     std::cout << "Writing output to text files" << std::endl;
     using FP  = double;
     using IS  = mio::oseair::InfectionState;

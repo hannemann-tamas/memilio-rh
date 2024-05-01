@@ -26,6 +26,7 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 if(APPLE)
     set(CMAKE_OSX_DEPLOYMENT_TARGET 14) # avoid linker warnings (built for newer OSX version than being linked)
+    string(APPEND CMAKE_CXX_FLAGS_RELEASE " -O1") # some functionality of AD breaks  on Apple if higher optimization is used
 endif()
 
 if(NOT CMAKE_BUILD_TYPE)
@@ -85,6 +86,8 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug" OR CMAKE_BUILD_TYPE STREQUAL "DEBUG")
         )
 endif()
 endif()
+
+
 
 # set sanitizer compiler flags
 if((CMAKE_CXX_COMPILER_ID STREQUAL "GNU") AND(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 7))

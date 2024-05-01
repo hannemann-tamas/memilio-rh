@@ -63,6 +63,7 @@ public:
  * represent interventions or effects that affect contact frequencies between multiple groups.
  * Dampings have a level and a type and are active from a certain point in time forward.
  * Dampings are square matrix valued, coefficient d_ij affects the contacts from group i to group j.
+ * @tparam FP Floating point type, e.g., double
  * @tparam S Matrix shape type
  */
 template <typename FP, class S>

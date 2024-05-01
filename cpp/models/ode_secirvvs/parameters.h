@@ -92,6 +92,23 @@ struct Seasonality {
 };
 
 /**
+* @brief Control parameter for dynamic optimization.
+* Coefficient for the contact rates.
+*/
+template <typename FP = double>
+struct ContactControl {
+    using Type = UncertainValue<FP>;
+    static Type get_default(AgeGroup)
+    {
+        return Type(1.);
+    }
+    static std::string name()
+    {
+        return "ContactControl";
+    }
+};
+
+/**
 * @brief the icu capacity in the SECIR model
 */
 template <typename FP = double>
@@ -589,7 +606,7 @@ using ParametersBase =
                  ReducExposedImprovedImmunity<FP>, ReducInfectedSymptomsPartialImmunity<FP>,
                  ReducInfectedSymptomsImprovedImmunity<FP>, ReducInfectedSevereCriticalDeadPartialImmunity<FP>,
                  ReducInfectedSevereCriticalDeadImprovedImmunity<FP>, ReducTimeInfectedMild<FP>,
-                 InfectiousnessNewVariant<FP>, StartDayNewVariant>;
+                 InfectiousnessNewVariant<FP>, StartDayNewVariant, ContactControl<FP>>;
 
 /**
  * @brief Parameters of an age-resolved SECIR/SECIHURD model with paths for partial and improved immunity through vaccination.

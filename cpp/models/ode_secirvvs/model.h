@@ -234,9 +234,8 @@ public:
                 FP contact_matrix_entry = contact_matrix.get_matrix_at(t)(static_cast<Eigen::Index>((size_t)i),
                                                                           static_cast<Eigen::Index>((size_t)j));
 
-                std::cout << ad::derivative(season_val) << " " << ad::derivative(contact_matrix_entry) << std::endl;
-
-                FP cont_freq_eff = season_val * contact_matrix_entry;
+                FP cont_freq_eff =
+                    params.template get<ContactControl<FP>>().value() * season_val * contact_matrix_entry;
 
                 // without died people
 

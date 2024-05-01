@@ -36,8 +36,8 @@ int main()
     using FP = typename ad::gt1s<double>::type; // algorithmic differentiation data type: scalar tangent-linear mode
 
     FP t0   = 0;
-    FP tmax = 30;
-    FP dt   = 0.1;
+    FP tmax = 70;
+    FP dt   = 0.2;
 
     mio::log_info("Simulating SECIRVVS; t={} ... {} with dt = {}.", t0, tmax, dt);
 
@@ -131,16 +131,6 @@ int main()
     model.parameters.get<mio::osecirvvs::Seasonality<FP>>() = 0.2;
 
     model.apply_constraints();
-
-    // use adaptive Runge-Kutta-Fehlberg45 scheme as integrator
-    // auto integrator = std::make_shared<mio::RKIntegratorCore>();
-    // integrator->set_dt_min(0.3);
-    // integrator->set_dt_max(1.0);
-    // integrator->set_rel_tolerance(1e-4);
-    // integrator->set_abs_tolerance(1e-1);
-    // mio::TimeSeries<FP> secir = simulate(t0, tmax, dt, model, integrator);
-
-    // use default Cash-Karp adaptive integrator
 
     mio::osecirvvs::Model<FP> model1(model);
     mio::osecirvvs::Model<FP> model2(model);
