@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-05-02 14:36:03</td>
+            <td class="headerValue">2024-05-02 14:38:05</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -286,8 +286,8 @@
 <a name="224"><span class="lineNum">     224 </span><span class="lineCov">         24 :             auto&amp; current_state_vec = std::get&lt;index_of_type_v&lt;Logger, Loggers...&gt;&gt;(data).front();</span></a>
 <a name="225"><span class="lineNum">     225 </span><span class="lineCov">         96 :             for (auto i = 0; i &lt; (int)current_state_vec.size(); i++) {</span></a>
 <a name="226"><span class="lineNum">     226 </span><span class="lineCov">         72 :                 if (std::get&lt;1&gt;(t[i]) != std::get&lt;1&gt;(current_state_vec[i])) {</span></a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">         14 :                     std::get&lt;1&gt;(current_state_vec[i]) = std::get&lt;1&gt;(t[i]);</span></a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">         14 :                     diff_vector.push_back(t[i]);</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">         13 :                     std::get&lt;1&gt;(current_state_vec[i]) = std::get&lt;1&gt;(t[i]);</span></a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">         13 :                     diff_vector.push_back(t[i]);</span></a>
 <a name="229"><span class="lineNum">     229 </span>            :                 }</a>
 <a name="230"><span class="lineNum">     230 </span>            :             }</a>
 <a name="231"><span class="lineNum">     231 </span><span class="lineCov">         24 :             std::get&lt;index_of_type_v&lt;Logger, Loggers...&gt;&gt;(data).push_back(diff_vector);</span></a>
