@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-05-02 12:22:35</td>
+            <td class="headerValue">2024-05-02 13:20:54</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">12</td>
@@ -193,26 +193,26 @@
 <a name="131"><span class="lineNum">     131 </span>            :     }</a>
 <a name="132"><span class="lineNum">     132 </span><span class="lineCov">        405 : }</span></a>
 <a name="133"><span class="lineNum">     133 </span>            : </a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">        195 : void Location::add_person(Person&amp; p, std::vector&lt;uint32_t&gt; cells)</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">        197 : void Location::add_person(Person&amp; p, std::vector&lt;uint32_t&gt; cells)</span></a>
 <a name="135"><span class="lineNum">     135 </span>            : {</a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">        390 :     std::lock_guard&lt;std::mutex&gt; lk(m_mut);</span></a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">        195 :     m_persons.push_back(&amp;p);</span></a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">        395 :     for (uint32_t cell_idx : cells)</span></a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">        200 :         m_cells[cell_idx].m_persons.push_back(&amp;p);</span></a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">        195 : }</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">        394 :     std::lock_guard&lt;std::mutex&gt; lk(m_mut);</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">        197 :     m_persons.push_back(&amp;p);</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">        399 :     for (uint32_t cell_idx : cells)</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">        202 :         m_cells[cell_idx].m_persons.push_back(&amp;p);</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">        197 : }</span></a>
 <a name="141"><span class="lineNum">     141 </span>            : </a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">         45 : void Location::remove_person(Person&amp; p)</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">         47 : void Location::remove_person(Person&amp; p)</span></a>
 <a name="143"><span class="lineNum">     143 </span>            : {</a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         90 :     std::lock_guard&lt;std::mutex&gt; lk(m_mut);</span></a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">         45 :     m_persons.erase(std::remove(m_persons.begin(), m_persons.end(), &amp;p), m_persons.end());</span></a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">         92 :     for (auto&amp;&amp; cell : m_cells) {</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">         47 :         cell.m_persons.erase(std::remove(cell.m_persons.begin(), cell.m_persons.end(), &amp;p), cell.m_persons.end());</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         94 :     std::lock_guard&lt;std::mutex&gt; lk(m_mut);</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">         47 :     m_persons.erase(std::remove(m_persons.begin(), m_persons.end(), &amp;p), m_persons.end());</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">         96 :     for (auto&amp;&amp; cell : m_cells) {</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">         49 :         cell.m_persons.erase(std::remove(cell.m_persons.begin(), cell.m_persons.end(), &amp;p), cell.m_persons.end());</span></a>
 <a name="148"><span class="lineNum">     148 </span>            :     }</a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">         45 : }</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">         47 : }</span></a>
 <a name="150"><span class="lineNum">     150 </span>            : </a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">         41 : size_t Location::get_number_persons() const</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">         43 : size_t Location::get_number_persons() const</span></a>
 <a name="152"><span class="lineNum">     152 </span>            : {</a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">         41 :     return m_persons.size();</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">         43 :     return m_persons.size();</span></a>
 <a name="154"><span class="lineNum">     154 </span>            : }</a>
 <a name="155"><span class="lineNum">     155 </span>            : </a>
 <a name="156"><span class="lineNum">     156 </span>            : /*</a>
