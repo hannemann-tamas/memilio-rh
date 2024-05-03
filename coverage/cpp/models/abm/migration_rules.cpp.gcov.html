@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-05-03 12:11:04</td>
+            <td class="headerValue">2024-05-03 13:02:59</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -116,8 +116,8 @@
 <a name="54"><span class="lineNum">      54 </span><span class="lineCov">         90 :     auto current_loc = person.get_location().get_type();</span></a>
 <a name="55"><span class="lineNum">      55 </span>            : </a>
 <a name="56"><span class="lineNum">      56 </span><span class="lineCov">        268 :     if (current_loc == LocationType::Home &amp;&amp; t &lt; params.get&lt;LockdownDate&gt;() &amp;&amp; t.day_of_week() &lt; 5 &amp;&amp;</span></a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">        233 :         person.get_go_to_school_time(params) &gt;= t.time_since_midnight() &amp;&amp;</span></a>
-<a name="58"><span class="lineNum">      58 </span><span class="lineCov">        126 :         person.get_go_to_school_time(params) &lt; t.time_since_midnight() + dt &amp;&amp;</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">        234 :         person.get_go_to_school_time(params) &gt;= t.time_since_midnight() &amp;&amp;</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">        127 :         person.get_go_to_school_time(params) &lt; t.time_since_midnight() + dt &amp;&amp;</span></a>
 <a name="59"><span class="lineNum">      59 </span><span class="lineCov">        170 :         params.get&lt;mio::abm::AgeGroupGotoSchool&gt;()[person.get_age()] &amp;&amp; person.goes_to_school(t, params) &amp;&amp;</span></a>
 <a name="60"><span class="lineNum">      60 </span><span class="lineCov">          9 :         !person.is_in_quarantine(t, params)) {</span></a>
 <a name="61"><span class="lineNum">      61 </span><span class="lineCov">          9 :         return LocationType::School;</span></a>
