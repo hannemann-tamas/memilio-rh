@@ -162,6 +162,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab4e93d1acee334d2cf613ba6bf7b1767"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classmio_1_1CustomIndexArray.html#ab4e93d1acee334d2cf613ba6bf7b1767">serialize</a> (IOContext &amp;io) const</td></tr>
 <tr class="memdesc:ab4e93d1acee334d2cf613ba6bf7b1767"><td class="mdescLeft">&#160;</td><td class="mdescRight">serialize this.  <a href="classmio_1_1CustomIndexArray.html#ab4e93d1acee334d2cf613ba6bf7b1767">More...</a><br /></td></tr>
 <tr class="separator:ab4e93d1acee334d2cf613ba6bf7b1767"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f4a51258826cea40e237dbb87c1e572"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1CustomIndexArray.html#a6f4a51258826cea40e237dbb87c1e572">set_multiple</a> (const std::vector&lt; typename <a class="el" href="classmio_1_1CustomIndexArray.html">CustomIndexArray</a>&lt; Typ, Tags... &gt;::<a class="el" href="classmio_1_1CustomIndexArray.html#abd7df97abfc73fff6ab38b53d1fddc10">Index</a> &gt; &amp;indices, const Typ &amp;value)</td></tr>
+<tr class="memdesc:a6f4a51258826cea40e237dbb87c1e572"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set multiple entries to the same value.  <a href="classmio_1_1CustomIndexArray.html#a6f4a51258826cea40e237dbb87c1e572">More...</a><br /></td></tr>
+<tr class="separator:a6f4a51258826cea40e237dbb87c1e572"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ce79374c68db1e5bb5fdd4a9c1a997c"><td class="memTemplParams" colspan="2">template&lt;typename Tag &gt; </td></tr>
 <tr class="memitem:a4ce79374c68db1e5bb5fdd4a9c1a997c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classmio_1_1Index.html">mio::Index</a>&lt; <a class="el" href="namespacemio.html#a2f858e287c3935240954cf75cf53cfeb">Tag</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classmio_1_1CustomIndexArray.html#a4ce79374c68db1e5bb5fdd4a9c1a997c">size</a> () const</td></tr>
 <tr class="memdesc:a4ce79374c68db1e5bb5fdd4a9c1a997c"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the size along the dimension provided as template parameter  <a href="classmio_1_1CustomIndexArray.html#a4ce79374c68db1e5bb5fdd4a9c1a997c">More...</a><br /></td></tr>
@@ -931,6 +934,45 @@ template&lt;class IOContext &gt; </div>
 
 <p>serialize this. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacemio.html#a27a24b9e6cb629e04e9613446f07d6ba" title="Save data that describes an object in a format determined by the given context.">mio::serialize</a> </dd></dl>
+
+</div>
+</div>
+<a id="a6f4a51258826cea40e237dbb87c1e572"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f4a51258826cea40e237dbb87c1e572">&#9670;&nbsp;</a></span>set_multiple()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Typ , class... Tags&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classmio_1_1CustomIndexArray.html">mio::CustomIndexArray</a>&lt; Typ, Tags &gt;::set_multiple </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; typename <a class="el" href="classmio_1_1CustomIndexArray.html">CustomIndexArray</a>&lt; Typ, Tags... &gt;::<a class="el" href="classmio_1_1CustomIndexArray.html#abd7df97abfc73fff6ab38b53d1fddc10">Index</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>indices</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Typ &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set multiple entries to the same value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">indices</td><td>A list of indices to be set to the same value. </td></tr>
+    <tr><td class="paramname">value</td><td>The value to set. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

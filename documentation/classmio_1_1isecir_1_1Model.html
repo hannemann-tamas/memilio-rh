@@ -70,6 +70,7 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classmio_1_1isecir_1_1Model-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -84,48 +85,54 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a31ac84e9be3c2fa27d9e4915daa2f744"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#a31ac84e9be3c2fa27d9e4915daa2f744">check_constraints</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt) const</td></tr>
 <tr class="memdesc:a31ac84e9be3c2fa27d9e4915daa2f744"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks constraints on model parameters and initial data.  <a href="classmio_1_1isecir_1_1Model.html#a31ac84e9be3c2fa27d9e4915daa2f744">More...</a><br /></td></tr>
 <tr class="separator:a31ac84e9be3c2fa27d9e4915daa2f744"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f5f94598b8ee34ade217c5974827692"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#a5f5f94598b8ee34ade217c5974827692">compute_compartment</a> (Eigen::Index idx_InfectionState, Eigen::Index idx_IncomingFlow, int idx_TransitionDistribution1, int idx_TransitionDistribution2, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt)</td></tr>
-<tr class="memdesc:a5f5f94598b8ee34ade217c5974827692"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of the compartment specified in idx_InfectionState at the current last time in m_populations.  <a href="classmio_1_1isecir_1_1Model.html#a5f5f94598b8ee34ade217c5974827692">More...</a><br /></td></tr>
-<tr class="separator:a5f5f94598b8ee34ade217c5974827692"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae228da1f77cd5a8cc5426a78a40ad92d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#ae228da1f77cd5a8cc5426a78a40ad92d">compute_deaths</a> ()</td></tr>
-<tr class="memdesc:ae228da1f77cd5a8cc5426a78a40ad92d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes total number of people in the #Dead compartment for the current last time in m_populations.  <a href="classmio_1_1isecir_1_1Model.html#ae228da1f77cd5a8cc5426a78a40ad92d">More...</a><br /></td></tr>
-<tr class="separator:ae228da1f77cd5a8cc5426a78a40ad92d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab112d14ab65173d7025150a61274c0de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#ab112d14ab65173d7025150a61274c0de">compute_flow</a> (int idx_InfectionTransitions, Eigen::Index idx_IncomingFlow, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt)</td></tr>
-<tr class="memdesc:ab112d14ab65173d7025150a61274c0de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes size of a flow.  <a href="classmio_1_1isecir_1_1Model.html#ab112d14ab65173d7025150a61274c0de">More...</a><br /></td></tr>
-<tr class="separator:ab112d14ab65173d7025150a61274c0de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6f8eef0b3e7d96a8105ed82c362e399"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#ac6f8eef0b3e7d96a8105ed82c362e399">compute_recovered</a> ()</td></tr>
-<tr class="memdesc:ac6f8eef0b3e7d96a8105ed82c362e399"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes total number of #Recovered for the current last time in m_populations.  <a href="classmio_1_1isecir_1_1Model.html#ac6f8eef0b3e7d96a8105ed82c362e399">More...</a><br /></td></tr>
-<tr class="separator:ac6f8eef0b3e7d96a8105ed82c362e399"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affa8f3510cb2af19a98ba7462a012cfc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#affa8f3510cb2af19a98ba7462a012cfc">compute_compartment_from_flows</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt, Eigen::Index idx_InfectionState, Eigen::Index idx_IncomingFlow, int idx_TransitionDistribution1, int idx_TransitionDistribution2=0)</td></tr>
+<tr class="memdesc:affa8f3510cb2af19a98ba7462a012cfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the compartment specified in idx_InfectionState at the current time &ndash; only using historic flow values and disrespecting potential, previous compartment value.  <a href="classmio_1_1isecir_1_1Model.html#affa8f3510cb2af19a98ba7462a012cfc">More...</a><br /></td></tr>
+<tr class="separator:affa8f3510cb2af19a98ba7462a012cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fff197d7a79731b63365ddcd5997515"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#a0fff197d7a79731b63365ddcd5997515">compute_flow</a> (Eigen::Index idx_InfectionTransitions, Eigen::Index idx_IncomingFlow, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt)</td></tr>
+<tr class="memdesc:a0fff197d7a79731b63365ddcd5997515"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes size of a flow for the current last time value in m_transitions.  <a href="classmio_1_1isecir_1_1Model.html#a0fff197d7a79731b63365ddcd5997515">More...</a><br /></td></tr>
+<tr class="separator:a0fff197d7a79731b63365ddcd5997515"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8305f12712589c2ac54315184634494f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#a8305f12712589c2ac54315184634494f">compute_flow</a> (Eigen::Index idx_InfectionTransitions, Eigen::Index idx_IncomingFlow, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt, Eigen::Index current_time_index)</td></tr>
+<tr class="memdesc:a8305f12712589c2ac54315184634494f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes size of a flow.  <a href="classmio_1_1isecir_1_1Model.html#a8305f12712589c2ac54315184634494f">More...</a><br /></td></tr>
+<tr class="separator:a8305f12712589c2ac54315184634494f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30d7fd6262353820a642c5a0ee96a38f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#a30d7fd6262353820a642c5a0ee96a38f">compute_forceofinfection</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt, bool initialization=false)</td></tr>
+<tr class="memdesc:a30d7fd6262353820a642c5a0ee96a38f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes force of infection for the current last time in m_transitions.  <a href="classmio_1_1isecir_1_1Model.html#a30d7fd6262353820a642c5a0ee96a38f">More...</a><br /></td></tr>
+<tr class="separator:a30d7fd6262353820a642c5a0ee96a38f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5c41f6043348cce0b18a97269653728"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#ac5c41f6043348cce0b18a97269653728">compute_susceptibles</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt)</td></tr>
-<tr class="memdesc:ac5c41f6043348cce0b18a97269653728"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes number of #Susceptibles for the current last time in m_populations.  <a href="classmio_1_1isecir_1_1Model.html#ac5c41f6043348cce0b18a97269653728">More...</a><br /></td></tr>
+<tr class="memdesc:ac5c41f6043348cce0b18a97269653728"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes number of Susceptibles for the current last time in m_populations.  <a href="classmio_1_1isecir_1_1Model.html#ac5c41f6043348cce0b18a97269653728">More...</a><br /></td></tr>
 <tr class="separator:ac5c41f6043348cce0b18a97269653728"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07c3eb1454c4145b3870110cf618fc0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#a07c3eb1454c4145b3870110cf618fc0e">flows_current_timestep</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt)</td></tr>
 <tr class="memdesc:a07c3eb1454c4145b3870110cf618fc0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets all required flows for the current last timestep in m_transitions.  <a href="classmio_1_1isecir_1_1Model.html#a07c3eb1454c4145b3870110cf618fc0e">More...</a><br /></td></tr>
 <tr class="separator:a07c3eb1454c4145b3870110cf618fc0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b45a9bde3d8d71a753101af77ab03ae"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#a6b45a9bde3d8d71a753101af77ab03ae">get_initialization_method</a> ()</td></tr>
-<tr class="memdesc:a6b45a9bde3d8d71a753101af77ab03ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number associated with the method selected automatically for initialization.  <a href="classmio_1_1isecir_1_1Model.html#a6b45a9bde3d8d71a753101af77ab03ae">More...</a><br /></td></tr>
-<tr class="separator:a6b45a9bde3d8d71a753101af77ab03ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86795e6d06058104311acd10d57d622d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#a86795e6d06058104311acd10d57d622d">initialize</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt)</td></tr>
-<tr class="memdesc:a86795e6d06058104311acd10d57d622d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the model and sets compartment values at start time t0.  <a href="classmio_1_1isecir_1_1Model.html#a86795e6d06058104311acd10d57d622d">More...</a><br /></td></tr>
-<tr class="separator:a86795e6d06058104311acd10d57d622d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfb1dd465cb563a4a190cd7c0eac9cde"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#abfb1dd465cb563a4a190cd7c0eac9cde">get_global_support_max</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt) const</td></tr>
+<tr class="memdesc:abfb1dd465cb563a4a190cd7c0eac9cde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the global support_max, i.e.  <a href="classmio_1_1isecir_1_1Model.html#abfb1dd465cb563a4a190cd7c0eac9cde">More...</a><br /></td></tr>
+<tr class="separator:abfb1dd465cb563a4a190cd7c0eac9cde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59cea760ab24c0e18e509ad90eedebe2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#a59cea760ab24c0e18e509ad90eedebe2">get_initialization_method_compartments</a> ()</td></tr>
+<tr class="memdesc:a59cea760ab24c0e18e509ad90eedebe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the index of the automatically selected initialization method.  <a href="classmio_1_1isecir_1_1Model.html#a59cea760ab24c0e18e509ad90eedebe2">More...</a><br /></td></tr>
+<tr class="separator:a59cea760ab24c0e18e509ad90eedebe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bb9e12cd1e8a8e51c9fdba2d641cb4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#a5bb9e12cd1e8a8e51c9fdba2d641cb4f">initial_compute_compartments</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt)</td></tr>
+<tr class="memdesc:a5bb9e12cd1e8a8e51c9fdba2d641cb4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the values of compartments at initialization.  <a href="classmio_1_1isecir_1_1Model.html#a5bb9e12cd1e8a8e51c9fdba2d641cb4f">More...</a><br /></td></tr>
+<tr class="separator:a5bb9e12cd1e8a8e51c9fdba2d641cb4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0646e30cd06199868d07ab35523734a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#a0646e30cd06199868d07ab35523734a4">initial_compute_compartments_infection</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt)</td></tr>
+<tr class="memdesc:a0646e30cd06199868d07ab35523734a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the values of the infection compartments subset at initialization.  <a href="classmio_1_1isecir_1_1Model.html#a0646e30cd06199868d07ab35523734a4">More...</a><br /></td></tr>
+<tr class="separator:a0646e30cd06199868d07ab35523734a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5552b1cfa2077bfb2097d502a706d37f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#a5552b1cfa2077bfb2097d502a706d37f">Model</a> (<a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt; &amp;&amp;init, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> N_init, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> deaths, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> total_confirmed_cases=0, const <a class="el" href="classmio_1_1isecir_1_1Model.html#aeaa245527257d77cc8a2247decc03485">ParameterSet</a> &amp;Parameterset_init=<a class="el" href="classmio_1_1isecir_1_1Model.html#aeaa245527257d77cc8a2247decc03485">ParameterSet</a>())</td></tr>
-<tr class="memdesc:a5552b1cfa2077bfb2097d502a706d37f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor to create an IDE SECIR model.  <a href="classmio_1_1isecir_1_1Model.html#a5552b1cfa2077bfb2097d502a706d37f">More...</a><br /></td></tr>
+<tr class="memdesc:a5552b1cfa2077bfb2097d502a706d37f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor to create an IDE-SECIR model.  <a href="classmio_1_1isecir_1_1Model.html#a5552b1cfa2077bfb2097d502a706d37f">More...</a><br /></td></tr>
 <tr class="separator:a5552b1cfa2077bfb2097d502a706d37f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d865d661bcd4e727c462667a8546e63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#a5d865d661bcd4e727c462667a8546e63">other_compartments_current_timestep</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt)</td></tr>
-<tr class="memdesc:a5d865d661bcd4e727c462667a8546e63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets all values of remaining compartments (compartments apart from #Susceptible, #Recovered, #Dead) for the current last timestep in m_populations.  <a href="classmio_1_1isecir_1_1Model.html#a5d865d661bcd4e727c462667a8546e63">More...</a><br /></td></tr>
-<tr class="separator:a5d865d661bcd4e727c462667a8546e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a21dc62481c194f9923fbcc4343e6a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#a7a21dc62481c194f9923fbcc4343e6a2">set_tol_for_support_max</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> new_tol)</td></tr>
 <tr class="memdesc:a7a21dc62481c194f9923fbcc4343e6a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter for the tolerance used to calculate the maximum support of the <a class="el" href="structmio_1_1isecir_1_1TransitionDistributions.html" title="Transition distribution for each transition in InfectionTransition.">TransitionDistributions</a>.  <a href="classmio_1_1isecir_1_1Model.html#a7a21dc62481c194f9923fbcc4343e6a2">More...</a><br /></td></tr>
 <tr class="separator:a7a21dc62481c194f9923fbcc4343e6a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e8fbb324b5afbc4e69d8435ddf0b61b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#a0e8fbb324b5afbc4e69d8435ddf0b61b">update_forceofinfection</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt, bool initialization=false)</td></tr>
-<tr class="memdesc:a0e8fbb324b5afbc4e69d8435ddf0b61b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes force of infection for the current last time in m_transitions.  <a href="classmio_1_1isecir_1_1Model.html#a0e8fbb324b5afbc4e69d8435ddf0b61b">More...</a><br /></td></tr>
-<tr class="separator:a0e8fbb324b5afbc4e69d8435ddf0b61b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd3d00e0db0910b3e1826236bed8a0f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#acd3d00e0db0910b3e1826236bed8a0f7">update_compartments</a> ()</td></tr>
+<tr class="memdesc:acd3d00e0db0910b3e1826236bed8a0f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the values of all compartments except Susceptible at initialization.  <a href="classmio_1_1isecir_1_1Model.html#acd3d00e0db0910b3e1826236bed8a0f7">More...</a><br /></td></tr>
+<tr class="separator:acd3d00e0db0910b3e1826236bed8a0f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a5f910fdb0dfda9b7eea8f1f0b4849a47"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#a5f910fdb0dfda9b7eea8f1f0b4849a47">m_populations</a></td></tr>
-<tr class="memdesc:a5f910fdb0dfda9b7eea8f1f0b4849a47"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classmio_1_1TimeSeries.html" title="stores vectors of values at time points (or some other abstract variable) the value at each time poin...">TimeSeries</a> containing points of time and the corresponding number of people in defined <a class="el" href="namespacemio_1_1isecir.html#a4765e077a33191fc1125ca33a6ad8697" title="The InfectionState enum describes the possible categories for the infectious state of persons.">InfectionState</a>s.  <a href="classmio_1_1isecir_1_1Model.html#a5f910fdb0dfda9b7eea8f1f0b4849a47">More...</a><br /></td></tr>
+<tr class="memdesc:a5f910fdb0dfda9b7eea8f1f0b4849a47"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classmio_1_1TimeSeries.html" title="stores vectors of values at time points (or some other abstract variable) the value at each time poin...">TimeSeries</a> containing points of time and the corresponding number of.  <a href="classmio_1_1isecir_1_1Model.html#a5f910fdb0dfda9b7eea8f1f0b4849a47">More...</a><br /></td></tr>
 <tr class="separator:a5f910fdb0dfda9b7eea8f1f0b4849a47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbddfc3905c086df0cf1e51c021f6e0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#adbddfc3905c086df0cf1e51c021f6e0c">m_total_confirmed_cases</a> {0}</td></tr>
+<tr class="memdesc:adbddfc3905c086df0cf1e51c021f6e0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of confirmed cases at time t0.  <a href="classmio_1_1isecir_1_1Model.html#adbddfc3905c086df0cf1e51c021f6e0c">More...</a><br /></td></tr>
+<tr class="separator:adbddfc3905c086df0cf1e51c021f6e0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7c1cbb3d211fbfb6392f126519e23ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmio_1_1TimeSeries.html">TimeSeries</a>&lt; <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#ac7c1cbb3d211fbfb6392f126519e23ae">m_transitions</a></td></tr>
 <tr class="memdesc:ac7c1cbb3d211fbfb6392f126519e23ae"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classmio_1_1TimeSeries.html" title="stores vectors of values at time points (or some other abstract variable) the value at each time poin...">TimeSeries</a> containing points of time and the corresponding number of transitions.  <a href="classmio_1_1isecir_1_1Model.html#ac7c1cbb3d211fbfb6392f126519e23ae">More...</a><br /></td></tr>
 <tr class="separator:ac7c1cbb3d211fbfb6392f126519e23ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -138,16 +145,19 @@ Private Types</h2></td></tr>
 <tr class="memitem:aeaa245527257d77cc8a2247decc03485"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#aeaa245527257d77cc8a2247decc03485">ParameterSet</a> = <a class="el" href="classmio_1_1isecir_1_1Parameters.html">Parameters</a></td></tr>
 <tr class="separator:aeaa245527257d77cc8a2247decc03485"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a065fbcd241696d9aaa02eccef8f2df86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#a065fbcd241696d9aaa02eccef8f2df86">update_compartment_from_flow</a> (<a class="el" href="namespacemio_1_1isecir.html#a4765e077a33191fc1125ca33a6ad8697">InfectionState</a> infectionState, std::vector&lt; <a class="el" href="namespacemio_1_1isecir.html#a4aa9050dca2db281bd2063a108869f73">InfectionTransition</a> &gt; const &amp;IncomingFlows, std::vector&lt; <a class="el" href="namespacemio_1_1isecir.html#a4aa9050dca2db281bd2063a108869f73">InfectionTransition</a> &gt; const &amp;OutgoingFlows)</td></tr>
+<tr class="memdesc:a065fbcd241696d9aaa02eccef8f2df86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the values of one compartment using flows.  <a href="classmio_1_1isecir_1_1Model.html#a065fbcd241696d9aaa02eccef8f2df86">More...</a><br /></td></tr>
+<tr class="separator:a065fbcd241696d9aaa02eccef8f2df86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:ab1fd31564b09f4d36a5b06f481c06537"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#ab1fd31564b09f4d36a5b06f481c06537">m_deaths_before</a> {0}</td></tr>
-<tr class="memdesc:ab1fd31564b09f4d36a5b06f481c06537"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of deaths at the time point t0 - dt.  <a href="classmio_1_1isecir_1_1Model.html#ab1fd31564b09f4d36a5b06f481c06537">More...</a><br /></td></tr>
-<tr class="separator:ab1fd31564b09f4d36a5b06f481c06537"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24e9fd04784fd77bab8424fd8d2599dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#a24e9fd04784fd77bab8424fd8d2599dd">m_forceofinfection</a> {0}</td></tr>
 <tr class="memdesc:a24e9fd04784fd77bab8424fd8d2599dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force of infection term needed for numerical scheme.  <a href="classmio_1_1isecir_1_1Model.html#a24e9fd04784fd77bab8424fd8d2599dd">More...</a><br /></td></tr>
 <tr class="separator:a24e9fd04784fd77bab8424fd8d2599dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8488a4c5ad81d8f90f061df29c19a6e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#af8488a4c5ad81d8f90f061df29c19a6e">m_initialization_method</a></td></tr>
-<tr class="memdesc:af8488a4c5ad81d8f90f061df29c19a6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives the index of the method used for the initialization of the model. See also <a class="el" href="classmio_1_1isecir_1_1Model.html#a6b45a9bde3d8d71a753101af77ab03ae" title="Returns the number associated with the method selected automatically for initialization.">get_initialization_method()</a> for the number code.  <a href="classmio_1_1isecir_1_1Model.html#af8488a4c5ad81d8f90f061df29c19a6e">More...</a><br /></td></tr>
+<tr class="memitem:af8488a4c5ad81d8f90f061df29c19a6e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#af8488a4c5ad81d8f90f061df29c19a6e">m_initialization_method</a> {0}</td></tr>
+<tr class="memdesc:af8488a4c5ad81d8f90f061df29c19a6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives the index of the method used for the initialization of the model.  <a href="classmio_1_1isecir_1_1Model.html#af8488a4c5ad81d8f90f061df29c19a6e">More...</a><br /></td></tr>
 <tr class="separator:af8488a4c5ad81d8f90f061df29c19a6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2153efbcfbed7df8ab91ca9ead82175"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#aa2153efbcfbed7df8ab91ca9ead82175">m_N</a> {0}</td></tr>
 <tr class="memdesc:aa2153efbcfbed7df8ab91ca9ead82175"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total population size of the considered region.  <a href="classmio_1_1isecir_1_1Model.html#aa2153efbcfbed7df8ab91ca9ead82175">More...</a><br /></td></tr>
@@ -155,9 +165,6 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a16e97568761d0af6818194a93f1b51c7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#a16e97568761d0af6818194a93f1b51c7">m_tol</a> {1e-10}</td></tr>
 <tr class="memdesc:a16e97568761d0af6818194a93f1b51c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tolerance used to calculate the maximum support of the <a class="el" href="structmio_1_1isecir_1_1TransitionDistributions.html" title="Transition distribution for each transition in InfectionTransition.">TransitionDistributions</a>.  <a href="classmio_1_1isecir_1_1Model.html#a16e97568761d0af6818194a93f1b51c7">More...</a><br /></td></tr>
 <tr class="separator:a16e97568761d0af6818194a93f1b51c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbddfc3905c086df0cf1e51c021f6e0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1isecir_1_1Model.html#adbddfc3905c086df0cf1e51c021f6e0c">m_total_confirmed_cases</a> {0}</td></tr>
-<tr class="memdesc:adbddfc3905c086df0cf1e51c021f6e0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of confirmed cases at time t0.  <a href="classmio_1_1isecir_1_1Model.html#adbddfc3905c086df0cf1e51c021f6e0c">More...</a><br /></td></tr>
-<tr class="separator:adbddfc3905c086df0cf1e51c021f6e0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="aeaa245527257d77cc8a2247decc03485"></a>
@@ -227,13 +234,13 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructor to create an IDE SECIR model. </p>
+<p>Constructor to create an IDE-SECIR model. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">init</td><td><a class="el" href="classmio_1_1TimeSeries.html" title="stores vectors of values at time points (or some other abstract variable) the value at each time poin...">TimeSeries</a> with the initial values of the number of individuals, which transit within one timestep dt from one compartment to another. Possible transitions are specified in <a class="el" href="namespacemio_1_1isecir.html#a4aa9050dca2db281bd2063a108869f73" title="The InfectionTransition enum describes the possible transitions of the infectious state of persons.">InfectionTransition</a>s. Considered time points should have the distance dt. The last time point determines the start time t0 of the simulation. The time history must reach a certain point in the past so that the simulation can be performed. A warning is displayed if the condition is violated. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">N_init</td><td>The population of the considered region. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">deaths</td><td>The total number of deaths at time t0. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">total_confirmed_cases</td><td>Total confirmed cases at time t0 can be set if it should be used for initialisation. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">total_confirmed_cases</td><td>Total confirmed cases at time t0 can be set if it should be used for initialization. </td></tr>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">Parameterset_init</td><td>Used <a class="el" href="classmio_1_1isecir_1_1Parameters.html" title="Parameters of an age-resolved SECIR/SECIHURD model.">Parameters</a> for simulation. </td></tr>
   </table>
   </dd>
@@ -263,15 +270,21 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5f5f94598b8ee34ade217c5974827692"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f5f94598b8ee34ade217c5974827692">&#9670;&nbsp;</a></span>compute_compartment()</h2>
+<a id="affa8f3510cb2af19a98ba7462a012cfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affa8f3510cb2af19a98ba7462a012cfc">&#9670;&nbsp;</a></span>compute_compartment_from_flows()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void mio::isecir::Model::compute_compartment </td>
+          <td class="memname">void mio::isecir::Model::compute_compartment_from_flows </td>
           <td>(</td>
+          <td class="paramtype"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td>
+          <td class="paramname"><em>dt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">Eigen::Index&#160;</td>
           <td class="paramname"><em>idx_InfectionState</em>, </td>
         </tr>
@@ -291,13 +304,7 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>idx_TransitionDistribution2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td>
-          <td class="paramname"><em>dt</em>&#160;</td>
+          <td class="paramname"><em>idx_TransitionDistribution2</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -307,43 +314,23 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the size of the compartment specified in idx_InfectionState at the current last time in m_populations. </p>
-<p>Calculation is reasonable for all compartments except #Susceptible, #Recovered and #Dead. Therefore, we have alternative functions for those compartments.</p>
+<p>Compute the compartment specified in idx_InfectionState at the current time &ndash; only using historic flow values and disrespecting potential, previous compartment value. </p>
+<p>The computation is meaningful for all compartments except Susceptible, Recovered and #Death and mostly needed for initialization. For Susceptible, Recovered and Dead, use corresponding alternative functions.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>Time discretization step size. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">idx_InfectionState</td><td>Specifies the considered <a class="el" href="namespacemio_1_1isecir.html#a4765e077a33191fc1125ca33a6ad8697" title="The InfectionState enum describes the possible categories for the infectious state of persons.">InfectionState</a> </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">idx_IncomingFlow</td><td>Specifies the index of the infoming flow to <a class="el" href="namespacemio_1_1isecir.html#a4765e077a33191fc1125ca33a6ad8697" title="The InfectionState enum describes the possible categories for the infectious state of persons.">InfectionState</a> in m_transitions. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">idx_TransitionDistribution1</td><td>Specifies the index of the first relevant TransitionDistribution, related to a flow from the considered <a class="el" href="namespacemio_1_1isecir.html#a4765e077a33191fc1125ca33a6ad8697" title="The InfectionState enum describes the possible categories for the infectious state of persons.">InfectionState</a> to any other <a class="el" href="namespacemio_1_1isecir.html#a4765e077a33191fc1125ca33a6ad8697" title="The InfectionState enum describes the possible categories for the infectious state of persons.">InfectionState</a>. This index is also used for related probability. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">idx_TransitionDistribution2</td><td>Specifies the index of the second relevant TransitionDistribution, related to a flow from the considered <a class="el" href="namespacemio_1_1isecir.html#a4765e077a33191fc1125ca33a6ad8697" title="The InfectionState enum describes the possible categories for the infectious state of persons.">InfectionState</a> to any other <a class="el" href="namespacemio_1_1isecir.html#a4765e077a33191fc1125ca33a6ad8697" title="The InfectionState enum describes the possible categories for the infectious state of persons.">InfectionState</a> (in most cases to #Recovered). Necessary related probability is calculated via 1-probability[idx_TransitionDistribution1]. If the second index is not needed, eg if probability[idx_TransitionDistribution1]=1, just use an arbitrary legal index. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>Time discretization step size. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">idx_TransitionDistribution2</td><td>Specifies the index of the second relevant TransitionDistribution, related to a flow from the considered <a class="el" href="namespacemio_1_1isecir.html#a4765e077a33191fc1125ca33a6ad8697" title="The InfectionState enum describes the possible categories for the infectious state of persons.">InfectionState</a> to any other <a class="el" href="namespacemio_1_1isecir.html#a4765e077a33191fc1125ca33a6ad8697" title="The InfectionState enum describes the possible categories for the infectious state of persons.">InfectionState</a> (in most cases to Recovered). Related probability is calculated via 1-probability[idx_TransitionDistribution1]. Sometimes the second index is not needed, e.g., if probability[idx_TransitionDistribution1]=1. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="ae228da1f77cd5a8cc5426a78a40ad92d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae228da1f77cd5a8cc5426a78a40ad92d">&#9670;&nbsp;</a></span>compute_deaths()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void mio::isecir::Model::compute_deaths </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Computes total number of people in the #Dead compartment for the current last time in m_populations. </p>
-<p>Number is stored in m_populations. </p>
-
-</div>
-</div>
-<a id="ab112d14ab65173d7025150a61274c0de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab112d14ab65173d7025150a61274c0de">&#9670;&nbsp;</a></span>compute_flow()</h2>
+<a id="a0fff197d7a79731b63365ddcd5997515"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fff197d7a79731b63365ddcd5997515">&#9670;&nbsp;</a></span>compute_flow() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -351,7 +338,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void mio::isecir::Model::compute_flow </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">Eigen::Index&#160;</td>
           <td class="paramname"><em>idx_InfectionTransitions</em>, </td>
         </tr>
         <tr>
@@ -374,7 +361,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes size of a flow. </p>
+<p>Computes size of a flow for the current last time value in m_transitions. </p>
 <p>Computes size of one flow from <a class="el" href="namespacemio_1_1isecir.html#a4aa9050dca2db281bd2063a108869f73" title="The InfectionTransition enum describes the possible transitions of the infectious state of persons.">InfectionTransition</a>, specified in idx_InfectionTransitions, for the current last time value in m_transitions.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -387,23 +374,94 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ac6f8eef0b3e7d96a8105ed82c362e399"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac6f8eef0b3e7d96a8105ed82c362e399">&#9670;&nbsp;</a></span>compute_recovered()</h2>
+<a id="a8305f12712589c2ac54315184634494f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8305f12712589c2ac54315184634494f">&#9670;&nbsp;</a></span>compute_flow() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void mio::isecir::Model::compute_recovered </td>
+          <td class="memname">void mio::isecir::Model::compute_flow </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">Eigen::Index&#160;</td>
+          <td class="paramname"><em>idx_InfectionTransitions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">Eigen::Index&#160;</td>
+          <td class="paramname"><em>idx_IncomingFlow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td>
+          <td class="paramname"><em>dt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Index&#160;</td>
+          <td class="paramname"><em>current_time_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes total number of #Recovered for the current last time in m_populations. </p>
-<p>Number is stored in m_populations. </p>
+<p>Computes size of a flow. </p>
+<p>Computes size of one flow from <a class="el" href="namespacemio_1_1isecir.html#a4aa9050dca2db281bd2063a108869f73" title="The InfectionTransition enum describes the possible transitions of the infectious state of persons.">InfectionTransition</a>, specified in idx_InfectionTransitions, for the time index current_time_index.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">idx_InfectionTransitions</td><td>Specifies the considered flow from <a class="el" href="namespacemio_1_1isecir.html#a4aa9050dca2db281bd2063a108869f73" title="The InfectionTransition enum describes the possible transitions of the infectious state of persons.">InfectionTransition</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">idx_IncomingFlow</td><td><a class="el" href="classmio_1_1Index.html" title="An Index with more than one template parameter combines several Index objects.">Index</a> of the flow in <a class="el" href="namespacemio_1_1isecir.html#a4aa9050dca2db281bd2063a108869f73" title="The InfectionTransition enum describes the possible transitions of the infectious state of persons.">InfectionTransition</a>, which goes to the considered starting compartment of the flow specified in idx_InfectionTransitions. Size of considered flow is calculated via the value of this incoming flow. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>Time step to compute flow for. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">current_time_index</td><td>The time index the flow should be computed for. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a30d7fd6262353820a642c5a0ee96a38f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30d7fd6262353820a642c5a0ee96a38f">&#9670;&nbsp;</a></span>compute_forceofinfection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mio::isecir::Model::compute_forceofinfection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td>
+          <td class="paramname"><em>dt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>initialization</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes force of infection for the current last time in m_transitions. </p>
+<p>Computed value is stored in m_forceofinfection.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>Time discretization step size. <br  />
+ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">initialization</td><td>If true we are in the case of the initialization of the model. For this we need forceofinfection at time point t0-dt and not at the current last time (given by m_transitions) as in the other time steps. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -423,8 +481,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes number of #Susceptibles for the current last time in m_populations. </p>
-<p>Number is computed using previous number of #Susceptibles and the force of infection (also from previous timestep). Number is stored at the matching index in m_populations. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Computes number of Susceptibles for the current last time in m_populations. </p>
+<p>Number is computed using previous number of Susceptibles and the force of infection (also from previous timestep). Number is stored at the matching index in m_populations. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>Time discretization step size. <br  />
  </td></tr>
@@ -451,7 +509,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sets all required flows for the current last timestep in m_transitions. </p>
-<p>New values are stored in m_transitions. Most values are computed via the function <a class="el" href="classmio_1_1isecir_1_1Model.html#ab112d14ab65173d7025150a61274c0de" title="Computes size of a flow.">compute_flow()</a>.</p>
+<p>New values are stored in m_transitions. Most values are computed via the function <a class="el" href="classmio_1_1isecir_1_1Model.html#a8305f12712589c2ac54315184634494f" title="Computes size of a flow.">compute_flow()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>Time step. </td></tr>
@@ -461,14 +519,43 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a6b45a9bde3d8d71a753101af77ab03ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b45a9bde3d8d71a753101af77ab03ae">&#9670;&nbsp;</a></span>get_initialization_method()</h2>
+<a id="abfb1dd465cb563a4a190cd7c0eac9cde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfb1dd465cb563a4a190cd7c0eac9cde">&#9670;&nbsp;</a></span>get_global_support_max()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int mio::isecir::Model::get_initialization_method </td>
+          <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> mio::isecir::Model::get_global_support_max </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td>
+          <td class="paramname"><em>dt</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Getter for the global support_max, i.e. </p>
+<p>the maximum of support_max over all <a class="el" href="structmio_1_1isecir_1_1TransitionDistributions.html" title="Transition distribution for each transition in InfectionTransition.">TransitionDistributions</a>.</p>
+<p>This determines how many inital values we need for the flows. It may be possible to run the simulation with fewer time points than the value of the global support_max, but this number ensures that it is possible.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>Time step size.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Global support_max. </dd></dl>
+
+</div>
+</div>
+<a id="a59cea760ab24c0e18e509ad90eedebe2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59cea760ab24c0e18e509ad90eedebe2">&#9670;&nbsp;</a></span>get_initialization_method_compartments()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int mio::isecir::Model::get_initialization_method_compartments </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -476,19 +563,20 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns the number associated with the method selected automatically for initialization. </p>
-<dl class="section return"><dt>Returns</dt><dd>0 if the model has not yet been initialized and the method has not yet been selected, 1 if the method using the total number of confirmed cases at time t0 is used, 2 if the initialization is calculated using a beforehand set value for #Susceptible, 3 if the initialization is calculated using a beforehand set value for #Recovered, 4 if the force of infection method is used, -1 if the initialization was not possible using any of the methods and -2 if the initialization was possible using one of the provided methods but the result is not appropriate. </dd></dl>
+<p>Returns the index of the automatically selected initialization method. </p>
+<p>The initialization method is selected automatically based on the different values that need to be set beforehand. Infection compartments are always computed through historic flow. Initialization methods for Susceptible and Recovered are tested in the following order: 1.) If a positive number for the total number of confirmed cases is set, Recovered is set according to that value and Susceptibles are derived. 2.) If Susceptibles are set, Recovered will be derived. 3.) If Recovered are set directly, Susceptibles are derived. 4.) If none of the above is set with positive value, the force of infection is used as in Messina et al (2021) to set the Susceptibles.</p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classmio_1_1Index.html" title="An Index with more than one template parameter combines several Index objects.">Index</a> representing the initialization method. </dd></dl>
 
 </div>
 </div>
-<a id="a86795e6d06058104311acd10d57d622d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86795e6d06058104311acd10d57d622d">&#9670;&nbsp;</a></span>initialize()</h2>
+<a id="a5bb9e12cd1e8a8e51c9fdba2d641cb4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bb9e12cd1e8a8e51c9fdba2d641cb4f">&#9670;&nbsp;</a></span>initial_compute_compartments()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void mio::isecir::Model::initialize </td>
+          <td class="memname">void mio::isecir::Model::initial_compute_compartments </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td>
           <td class="paramname"><em>dt</em></td><td>)</td>
@@ -497,8 +585,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initializes the model and sets compartment values at start time t0. </p>
-<p>The initialization method is selected automatically based on the different values that need to be set beforehand. Infection compartments are always computed through historic flow. Initialization methods for #Susceptible and #Recovered are tested in the following order: 1.) If a positive number for the total number of confirmed cases is set, #Recovered is set according to that value and #Susceptibles are derived. 2.) If #Susceptibles are set, #Recovered will be derived. 3.) If #Recovered are set directly, #Susceptibles are derived. 4.) If none of the above is set with positive value, the force of infection is used as in Messina et al (2021) to set the #Susceptibles.</p>
+<p>Computes the values of compartments at initialization. </p>
+<p>The initialization method is selected automatically based on the different values that need to be set beforehand. Infection compartments are always computed through historic flows. Initialization methods for Susceptible and Recovered are tested in the following order: 1.) If a positive number for the total number of confirmed cases is set, Recovered is set according to that value and Susceptibles are derived. 2.) If Susceptibles are set, Recovered will be derived. 3.) If Recovered are set directly, Susceptibles are derived. 4.) If none of the above is set with positive value, the force of infection is used as in Messina et al (2021) to set the Susceptibles.</p>
+<p>The function calculate_compartments_initialization() is used in every method for the compartments Exposed, InfectedNoSymptoms, InfectedSymptoms, InfectedSevere and InfectedCritical. In addition, the force of infection is calculated for start time t_0.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>Time discretization step size. <br  />
@@ -509,14 +598,14 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5d865d661bcd4e727c462667a8546e63"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d865d661bcd4e727c462667a8546e63">&#9670;&nbsp;</a></span>other_compartments_current_timestep()</h2>
+<a id="a0646e30cd06199868d07ab35523734a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0646e30cd06199868d07ab35523734a4">&#9670;&nbsp;</a></span>initial_compute_compartments_infection()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void mio::isecir::Model::other_compartments_current_timestep </td>
+          <td class="memname">void mio::isecir::Model::initial_compute_compartments_infection </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td>
           <td class="paramname"><em>dt</em></td><td>)</td>
@@ -525,8 +614,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets all values of remaining compartments (compartments apart from #Susceptible, #Recovered, #Dead) for the current last timestep in m_populations. </p>
-<p>New values are stored in m_populations. Most values are computed via the function get_size_of_compartments().</p>
+<p>Computes the values of the infection compartments subset at initialization. </p>
+<p>The values for the compartments Exposed, InfectedNoSymptoms, InfectedSymptoms, InfectedSevere and InfectedCritical for time t_0 are calculated using the initial data in form of flows. Calculated values are stored in m_populations.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>Time discretization step size. </td></tr>
@@ -562,48 +651,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a0e8fbb324b5afbc4e69d8435ddf0b61b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0e8fbb324b5afbc4e69d8435ddf0b61b">&#9670;&nbsp;</a></span>update_forceofinfection()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void mio::isecir::Model::update_forceofinfection </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td>
-          <td class="paramname"><em>dt</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>initialization</em> = <code>false</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Computes force of infection for the current last time in m_transitions. </p>
-<p>Computed value is stored in m_forceofinfection.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>Time discretization step size. <br  />
- </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">initialization</td><td>If true we are in the case of the initialization of the model. For this we need forceofinfection at time point t0-dt and not at the current last time (given by m_transitions) as in the other time steps. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="ab1fd31564b09f4d36a5b06f481c06537"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1fd31564b09f4d36a5b06f481c06537">&#9670;&nbsp;</a></span>m_deaths_before</h2>
+<a id="a065fbcd241696d9aaa02eccef8f2df86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a065fbcd241696d9aaa02eccef8f2df86">&#9670;&nbsp;</a></span>update_compartment_from_flow()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -612,7 +661,27 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> mio::isecir::Model::m_deaths_before {0}</td>
+          <td class="memname">void mio::isecir::Model::update_compartment_from_flow </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemio_1_1isecir.html#a4765e077a33191fc1125ca33a6ad8697">InfectionState</a>&#160;</td>
+          <td class="paramname"><em>infectionState</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="namespacemio_1_1isecir.html#a4aa9050dca2db281bd2063a108869f73">InfectionTransition</a> &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>IncomingFlows</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="namespacemio_1_1isecir.html#a4aa9050dca2db281bd2063a108869f73">InfectionTransition</a> &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>OutgoingFlows</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -622,10 +691,32 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Total number of deaths at the time point t0 - dt. </p>
+<p>Updates the values of one compartment using flows. </p>
+<p>New value is stored in m_populations. The value is calculated using the compartment size in the previous time step and the related flows of the current time step. Therefore the flows of the current time step should be calculated before using this function. </p>
 
 </div>
 </div>
+<a id="acd3d00e0db0910b3e1826236bed8a0f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd3d00e0db0910b3e1826236bed8a0f7">&#9670;&nbsp;</a></span>update_compartments()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mio::isecir::Model::update_compartments </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates the values of all compartments except Susceptible at initialization. </p>
+<p>New values are stored in m_populations. The values are calculated using the compartment size in the previous time step and the related flows of the current time step. Therefore the flows of the current time step should be calculated before using this function. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
 <a id="a24e9fd04784fd77bab8424fd8d2599dd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a24e9fd04784fd77bab8424fd8d2599dd">&#9670;&nbsp;</a></span>m_forceofinfection</h2>
 
@@ -660,7 +751,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int mio::isecir::Model::m_initialization_method</td>
+          <td class="memname">int mio::isecir::Model::m_initialization_method {0}</td>
         </tr>
       </table>
   </td>
@@ -669,10 +760,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{</div>
-<div class="line">        0}</div>
-</div><!-- fragment -->
-<p>Gives the index of the method used for the initialization of the model. See also <a class="el" href="classmio_1_1isecir_1_1Model.html#a6b45a9bde3d8d71a753101af77ab03ae" title="Returns the number associated with the method selected automatically for initialization.">get_initialization_method()</a> for the number code. </p>
+
+<p>Gives the index of the method used for the initialization of the model. </p>
 
 </div>
 </div>
@@ -712,7 +801,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="classmio_1_1TimeSeries.html" title="stores vectors of values at time points (or some other abstract variable) the value at each time poin...">TimeSeries</a> containing points of time and the corresponding number of people in defined <a class="el" href="namespacemio_1_1isecir.html#a4765e077a33191fc1125ca33a6ad8697" title="The InfectionState enum describes the possible categories for the infectious state of persons.">InfectionState</a>s. </p>
+<p><a class="el" href="classmio_1_1TimeSeries.html" title="stores vectors of values at time points (or some other abstract variable) the value at each time poin...">TimeSeries</a> containing points of time and the corresponding number of. </p>
 
 </div>
 </div>
@@ -745,19 +834,11 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> mio::isecir::Model::m_total_confirmed_cases {0}</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Total number of confirmed cases at time t0. </p>

@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">184</td>
-            <td class="headerCovTableEntry">184</td>
+            <td class="headerCovTableEntry">211</td>
+            <td class="headerCovTableEntry">211</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-05-02 14:38:05</td>
+            <td class="headerValue">2024-05-03 07:44:09</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">10</td>
-            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntry">12</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -60,44 +60,52 @@
       <td width="20%" class="tableHead">Hit count <span class="tableHeadSort"><img src="../../glass.png" width=10 height=14 alt="Sort by hit count" title="Sort by hit count" border=0></span></td>
     </tr>
     <tr>
-              <td class="coverFn"><a href="model.cpp.gcov.html#47">mio::isecir::Model::initialize(double)</a></td>
+              <td class="coverFn"><a href="model.cpp.gcov.html#424">mio::isecir::Model::get_global_support_max(double) const</a></td>
+              <td class="coverFnHi">9</td>
+            </tr>
+    <tr>
+              <td class="coverFn"><a href="model.cpp.gcov.html#114">mio::isecir::Model::initial_compute_compartments(double)</a></td>
               <td class="coverFnHi">14</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="model.cpp.gcov.html#30">mio::isecir::Model::Model(mio::TimeSeries&lt;double&gt;&amp;&amp;, double, double, double, mio::isecir::Parameters const&amp;)</a></td>
-              <td class="coverFnHi">16</td>
+              <td class="coverFn"><a href="model.cpp.gcov.html#86">mio::isecir::Model::initial_compute_compartments_infection(double)</a></td>
+              <td class="coverFnHi">14</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="model.cpp.gcov.html#229">mio::isecir::Model::compute_deaths()</a></td>
+              <td class="coverFn"><a href="model.cpp.gcov.html#32">mio::isecir::Model::Model(mio::TimeSeries&lt;double&gt;&amp;&amp;, double, double, double, mio::isecir::Parameters const&amp;)</a></td>
+              <td class="coverFnHi">20</td>
+            </tr>
+    <tr>
+              <td class="coverFn"><a href="model.cpp.gcov.html#57">mio::isecir::Model::compute_compartment_from_flows(double, long, long, int, int)</a></td>
+              <td class="coverFnHi">70</td>
+            </tr>
+    <tr>
+              <td class="coverFn"><a href="model.cpp.gcov.html#298">mio::isecir::Model::update_compartments()</a></td>
               <td class="coverFnHi">103</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="model.cpp.gcov.html#365">mio::isecir::Model::compute_recovered()</a></td>
+              <td class="coverFn"><a href="model.cpp.gcov.html#219">mio::isecir::Model::compute_susceptibles(double)</a></td>
               <td class="coverFnHi">103</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="model.cpp.gcov.html#155">mio::isecir::Model::compute_susceptibles(double)</a></td>
+              <td class="coverFn"><a href="model.cpp.gcov.html#262">mio::isecir::Model::flows_current_timestep(double)</a></td>
               <td class="coverFnHi">103</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="model.cpp.gcov.html#194">mio::isecir::Model::flows_current_timestep(double)</a></td>
-              <td class="coverFnHi">103</td>
-            </tr>
-    <tr>
-              <td class="coverFn"><a href="model.cpp.gcov.html#336">mio::isecir::Model::other_compartments_current_timestep(double)</a></td>
-              <td class="coverFnHi">115</td>
-            </tr>
-    <tr>
-              <td class="coverFn"><a href="model.cpp.gcov.html#238">mio::isecir::Model::update_forceofinfection(double, bool)</a></td>
+              <td class="coverFn"><a href="model.cpp.gcov.html#351">mio::isecir::Model::compute_forceofinfection(double, bool)</a></td>
               <td class="coverFnHi">128</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="model.cpp.gcov.html#308">mio::isecir::Model::compute_compartment(long, long, int, int, double)</a></td>
-              <td class="coverFnHi">575</td>
+              <td class="coverFn"><a href="model.cpp.gcov.html#336">mio::isecir::Model::update_compartment_from_flow(mio::isecir::InfectionState, std::vector&lt;mio::isecir::InfectionTransition, std::allocator&lt;mio::isecir::InfectionTransition&gt; &gt; const&amp;, std::vector&lt;mio::isecir::InfectionTransition, std::allocator&lt;mio::isecir::InfectionTransition&gt; &gt; const&amp;)</a></td>
+              <td class="coverFnHi">721</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="model.cpp.gcov.html#164">mio::isecir::Model::compute_flow(int, long, double)</a></td>
+              <td class="coverFn"><a href="model.cpp.gcov.html#256">mio::isecir::Model::compute_flow(long, long, double)</a></td>
               <td class="coverFnHi">927</td>
+            </tr>
+    <tr>
+              <td class="coverFn"><a href="model.cpp.gcov.html#228">mio::isecir::Model::compute_flow(long, long, double, long)</a></td>
+              <td class="coverFnHi">974</td>
             </tr>
   </table>
   <br>

@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">15</td>
-            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntry">25</td>
+            <td class="headerCovTableEntry">25</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-05-02 14:38:05</td>
+            <td class="headerValue">2024-05-03 07:44:09</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -99,37 +99,57 @@
 <a name="37"><span class="lineNum">      37 </span>            :     * define the model *</a>
 <a name="38"><span class="lineNum">      38 </span>            :     ********************/</a>
 <a name="39"><span class="lineNum">      39 </span>            : template &lt;typename FP = ScalarType&gt;</a>
-<a name="40"><span class="lineNum">      40 </span>            : class Model : public mio::CompartmentalModel&lt;FP, InfectionState, mio::Populations&lt;FP, InfectionState&gt;, Parameters&lt;FP&gt;&gt;</a>
-<a name="41"><span class="lineNum">      41 </span>            : {</a>
-<a name="42"><span class="lineNum">      42 </span>            :     using Base = mio::CompartmentalModel&lt;FP, InfectionState, mio::Populations&lt;FP, InfectionState&gt;, Parameters&lt;FP&gt;&gt;;</a>
-<a name="43"><span class="lineNum">      43 </span>            : </a>
-<a name="44"><span class="lineNum">      44 </span>            : public:</a>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">          5 :     Model()</span></a>
-<a name="46"><span class="lineNum">      46 </span><span class="lineCov">          5 :         : Base(mio::Populations&lt;FP, InfectionState&gt;({InfectionState::Count}, 0.), typename Base::ParameterSet())</span></a>
-<a name="47"><span class="lineNum">      47 </span>            :     {</a>
-<a name="48"><span class="lineNum">      48 </span><span class="lineCov">          5 :     }</span></a>
-<a name="49"><span class="lineNum">      49 </span>            : </a>
-<a name="50"><span class="lineNum">      50 </span><span class="lineCov">        492 :     void get_derivatives(Eigen::Ref&lt;const Vector&lt;FP&gt;&gt; pop, Eigen::Ref&lt;const Vector&lt;FP&gt;&gt; y, FP t,</span></a>
-<a name="51"><span class="lineNum">      51 </span>            :                          Eigen::Ref&lt;Vector&lt;FP&gt;&gt; dydt) const override</a>
-<a name="52"><span class="lineNum">      52 </span>            :     {</a>
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">        492 :         auto&amp; params     = this-&gt;parameters;</span></a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">        984 :         double coeffStoI = params.template get&lt;ContactPatterns&gt;().get_matrix_at(t)(0, 0) *</span></a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">        984 :                            params.template get&lt;TransmissionProbabilityOnContact&lt;FP&gt;&gt;() / this-&gt;populations.get_total();</span></a>
-<a name="56"><span class="lineNum">      56 </span>            : </a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">        492 :         dydt[(size_t)InfectionState::Susceptible] =</span></a>
-<a name="58"><span class="lineNum">      58 </span><span class="lineCov">        492 :             -coeffStoI * y[(size_t)InfectionState::Susceptible] * pop[(size_t)InfectionState::Infected];</span></a>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">        492 :         dydt[(size_t)InfectionState::Infected] =</span></a>
-<a name="60"><span class="lineNum">      60 </span><span class="lineCov">        492 :             coeffStoI * y[(size_t)InfectionState::Susceptible] * pop[(size_t)InfectionState::Infected] -</span></a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">        492 :             (1.0 / params.template get&lt;TimeInfected&lt;FP&gt;&gt;()) * y[(size_t)InfectionState::Infected];</span></a>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">        492 :         dydt[(size_t)InfectionState::Recovered] =</span></a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">        492 :             (1.0 / params.template get&lt;TimeInfected&lt;FP&gt;&gt;()) * y[(size_t)InfectionState::Infected];</span></a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">        492 :     }</span></a>
-<a name="65"><span class="lineNum">      65 </span>            : };</a>
-<a name="66"><span class="lineNum">      66 </span>            : </a>
-<a name="67"><span class="lineNum">      67 </span>            : } // namespace osir</a>
-<a name="68"><span class="lineNum">      68 </span>            : } // namespace mio</a>
-<a name="69"><span class="lineNum">      69 </span>            : </a>
-<a name="70"><span class="lineNum">      70 </span>            : #endif // ODESIR_MODEL_H</a>
+<a name="40"><span class="lineNum">      40 </span>            : class Model</a>
+<a name="41"><span class="lineNum">      41 </span>            :     : public mio::CompartmentalModel&lt;FP, InfectionState, mio::Populations&lt;FP, AgeGroup, InfectionState&gt;, Parameters&lt;FP&gt;&gt;</a>
+<a name="42"><span class="lineNum">      42 </span>            : {</a>
+<a name="43"><span class="lineNum">      43 </span>            :     using Base =</a>
+<a name="44"><span class="lineNum">      44 </span>            :         mio::CompartmentalModel&lt;FP, InfectionState, mio::Populations&lt;FP, AgeGroup, InfectionState&gt;, Parameters&lt;FP&gt;&gt;;</a>
+<a name="45"><span class="lineNum">      45 </span>            : </a>
+<a name="46"><span class="lineNum">      46 </span>            : public:</a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">          7 :     Model(int num_agegroups)</span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineCov">         14 :         : Base(mio::Populations&lt;FP, AgeGroup, InfectionState&gt;({AgeGroup(num_agegroups), InfectionState::Count}),</span></a>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">         21 :                typename Base::ParameterSet(AgeGroup(num_agegroups)))</span></a>
+<a name="50"><span class="lineNum">      50 </span>            :     {</a>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">          7 :     }</span></a>
+<a name="52"><span class="lineNum">      52 </span>            : </a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">        494 :     void get_derivatives(Eigen::Ref&lt;const Vector&lt;FP&gt;&gt; pop, Eigen::Ref&lt;const Vector&lt;FP&gt;&gt; y, FP t,</span></a>
+<a name="54"><span class="lineNum">      54 </span>            :                          Eigen::Ref&lt;Vector&lt;FP&gt;&gt; dydt) const override</a>
+<a name="55"><span class="lineNum">      55 </span>            :     {</a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">        988 :         auto params                              = this-&gt;parameters;</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">        494 :         AgeGroup n_agegroups                     = params.get_num_groups();</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">        494 :         ContactMatrixGroup const&amp; contact_matrix = params.template get&lt;ContactPatterns&lt;FP&gt;&gt;();</span></a>
+<a name="59"><span class="lineNum">      59 </span>            : </a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">        988 :         for (auto i = AgeGroup(0); i &lt; n_agegroups; i++) {</span></a>
+<a name="61"><span class="lineNum">      61 </span>            : </a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">        494 :             size_t Si = this-&gt;populations.get_flat_index({i, InfectionState::Susceptible});</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">        494 :             size_t Ii = this-&gt;populations.get_flat_index({i, InfectionState::Infected});</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">        494 :             size_t Ri = this-&gt;populations.get_flat_index({i, InfectionState::Recovered});</span></a>
+<a name="65"><span class="lineNum">      65 </span>            : </a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">        988 :             for (auto j = AgeGroup(0); j &lt; n_agegroups; j++) {</span></a>
+<a name="67"><span class="lineNum">      67 </span>            : </a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">        494 :                 size_t Sj = this-&gt;populations.get_flat_index({j, InfectionState::Susceptible});</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">        494 :                 size_t Ij = this-&gt;populations.get_flat_index({j, InfectionState::Infected});</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">        494 :                 size_t Rj = this-&gt;populations.get_flat_index({j, InfectionState::Recovered});</span></a>
+<a name="71"><span class="lineNum">      71 </span>            : </a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        494 :                 double Nj = pop[Sj] + pop[Ij] + pop[Rj];</span></a>
+<a name="73"><span class="lineNum">      73 </span>            : </a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        988 :                 double coeffStoI = contact_matrix.get_matrix_at(t)(static_cast&lt;Eigen::Index&gt;((size_t)i),</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">        988 :                                                                    static_cast&lt;Eigen::Index&gt;((size_t)j)) *</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">        988 :                                    params.template get&lt;TransmissionProbabilityOnContact&lt;FP&gt;&gt;()[i] / Nj;</span></a>
+<a name="77"><span class="lineNum">      77 </span>            : </a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">        494 :                 dydt[Si] += -coeffStoI * y[Si] * pop[Ij];</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">        494 :                 dydt[Ii] += coeffStoI * y[Si] * pop[Ij];</span></a>
+<a name="80"><span class="lineNum">      80 </span>            :             }</a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">        494 :             dydt[Ii] -= (1.0 / params.template get&lt;TimeInfected&lt;FP&gt;&gt;()[i]) * y[Ii];</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">        494 :             dydt[Ri] = (1.0 / params.template get&lt;TimeInfected&lt;FP&gt;&gt;()[i]) * y[Ii];</span></a>
+<a name="83"><span class="lineNum">      83 </span>            :         }</a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineCov">        494 :     }</span></a>
+<a name="85"><span class="lineNum">      85 </span>            : };</a>
+<a name="86"><span class="lineNum">      86 </span>            : </a>
+<a name="87"><span class="lineNum">      87 </span>            : } // namespace osir</a>
+<a name="88"><span class="lineNum">      88 </span>            : } // namespace mio</a>
+<a name="89"><span class="lineNum">      89 </span>            : </a>
+<a name="90"><span class="lineNum">      90 </span>            : #endif // ODESIR_MODEL_H</a>
 </pre>
       </td>
     </tr>

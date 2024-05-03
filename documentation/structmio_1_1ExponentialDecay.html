@@ -97,6 +97,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a20f3c76354cc9a75b67e83e57857eef5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1ExponentialDecay.html#a20f3c76354cc9a75b67e83e57857eef5">ExponentialDecay</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> init_parameter)</td></tr>
 <tr class="memdesc:a20f3c76354cc9a75b67e83e57857eef5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="structmio_1_1ExponentialDecay.html" title="Class that defines an exponential decay function depending on the state age.">ExponentialDecay</a> object.  <a href="structmio_1_1ExponentialDecay.html#a20f3c76354cc9a75b67e83e57857eef5">More...</a><br /></td></tr>
 <tr class="separator:a20f3c76354cc9a75b67e83e57857eef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c72ebf9f9e78ad242b588e493cf4c5e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1ExponentialDecay.html#a0c72ebf9f9e78ad242b588e493cf4c5e">get_mean</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt=1., <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> tol=1e-10) override</td></tr>
+<tr class="memdesc:a0c72ebf9f9e78ad242b588e493cf4c5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the mean value of the function.  <a href="structmio_1_1ExponentialDecay.html#a0c72ebf9f9e78ad242b588e493cf4c5e">More...</a><br /></td></tr>
+<tr class="separator:a0c72ebf9f9e78ad242b588e493cf4c5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_structmio_1_1StateAgeFunction"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_structmio_1_1StateAgeFunction')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="structmio_1_1StateAgeFunction.html">mio::StateAgeFunction</a></td></tr>
 <tr class="memitem:af3926102b25a096f11f7773454ea96c4 inherit pub_methods_structmio_1_1StateAgeFunction"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="structmio_1_1StateAgeFunction.html">StateAgeFunction</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#af3926102b25a096f11f7773454ea96c4">clone</a> () const</td></tr>
 <tr class="memdesc:af3926102b25a096f11f7773454ea96c4 inherit pub_methods_structmio_1_1StateAgeFunction"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clones unique pointer to a <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a>.  <a href="structmio_1_1StateAgeFunction.html#af3926102b25a096f11f7773454ea96c4">More...</a><br /></td></tr>
@@ -144,6 +147,12 @@ Protected Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_structmio_1_1StateAgeFunction"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_structmio_1_1StateAgeFunction')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="structmio_1_1StateAgeFunction.html">mio::StateAgeFunction</a></td></tr>
+<tr class="memitem:a56698106d1b0c274550ef5c0fa18e6f2 inherit pro_attribs_structmio_1_1StateAgeFunction"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a56698106d1b0c274550ef5c0fa18e6f2">m_mean</a></td></tr>
+<tr class="memdesc:a56698106d1b0c274550ef5c0fa18e6f2 inherit pro_attribs_structmio_1_1StateAgeFunction"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mean value of the function.  <a href="structmio_1_1StateAgeFunction.html#a56698106d1b0c274550ef5c0fa18e6f2">More...</a><br /></td></tr>
+<tr class="separator:a56698106d1b0c274550ef5c0fa18e6f2 inherit pro_attribs_structmio_1_1StateAgeFunction"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e90ea547398820417c76826c4351e6d inherit pro_attribs_structmio_1_1StateAgeFunction"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a9e90ea547398820417c76826c4351e6d">m_mean_tol</a></td></tr>
+<tr class="memdesc:a9e90ea547398820417c76826c4351e6d inherit pro_attribs_structmio_1_1StateAgeFunction"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tolerance for computation of the mean.  <a href="structmio_1_1StateAgeFunction.html#a9e90ea547398820417c76826c4351e6d">More...</a><br /></td></tr>
+<tr class="separator:a9e90ea547398820417c76826c4351e6d inherit pro_attribs_structmio_1_1StateAgeFunction"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a469c9cc2424038fd50fb0573f67634d5 inherit pro_attribs_structmio_1_1StateAgeFunction"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a469c9cc2424038fd50fb0573f67634d5">m_parameter</a></td></tr>
 <tr class="memdesc:a469c9cc2424038fd50fb0573f67634d5 inherit pro_attribs_structmio_1_1StateAgeFunction"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameter for function in derived class.  <a href="structmio_1_1StateAgeFunction.html#a469c9cc2424038fd50fb0573f67634d5">More...</a><br /></td></tr>
 <tr class="separator:a469c9cc2424038fd50fb0573f67634d5 inherit pro_attribs_structmio_1_1StateAgeFunction"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -249,6 +258,55 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Evaluation of the function at state_age. </dd></dl>
 
 <p>Implements <a class="el" href="structmio_1_1StateAgeFunction.html#a1a2443f3db02f7983221b801482e9a1e">mio::StateAgeFunction</a>.</p>
+
+</div>
+</div>
+<a id="a0c72ebf9f9e78ad242b588e493cf4c5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c72ebf9f9e78ad242b588e493cf4c5e">&#9670;&nbsp;</a></span>get_mean()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> mio::ExponentialDecay::get_mean </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td>
+          <td class="paramname"><em>dt</em> = <code>1.</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td>
+          <td class="paramname"><em>tol</em> = <code>1e-10</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the mean value of the function. </p>
+<p>For <a class="el" href="structmio_1_1ExponentialDecay.html" title="Class that defines an exponential decay function depending on the state age.">ExponentialDecay</a>, the mean value is the reciprocal of the function parameter.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>Time step size used for the numerical integration (unused for <a class="el" href="structmio_1_1ExponentialDecay.html" title="Class that defines an exponential decay function depending on the state age.">ExponentialDecay</a>). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tol</td><td>The maximum support used for numerical integration is calculated using this tolerance (unused for <a class="el" href="structmio_1_1ExponentialDecay.html" title="Class that defines an exponential decay function depending on the state age.">ExponentialDecay</a>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ScalarType mean value. </dd></dl>
+
+<p>Reimplemented from <a class="el" href="structmio_1_1StateAgeFunction.html#af82f4d6a76e5ecdc38f385176f7d7140">mio::StateAgeFunction</a>.</p>
 
 </div>
 </div>

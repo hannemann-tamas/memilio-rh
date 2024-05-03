@@ -70,6 +70,7 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classmio_1_1oseir_1_1Parameters-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">mio::oseir::Parameters&lt; FP &gt; Class Template Reference</div>  </div>
@@ -98,8 +99,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac8ccbb2c80d86307f73f00823fab8adc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1oseir_1_1Parameters.html#ac8ccbb2c80d86307f73f00823fab8adc">check_constraints</a> () const</td></tr>
 <tr class="memdesc:ac8ccbb2c80d86307f73f00823fab8adc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether all <a class="el" href="classmio_1_1oseir_1_1Parameters.html" title="Parameters of an age-resolved SECIR/SECIHURD model.">Parameters</a> satisfy their corresponding constraints and logs an error if constraints are not satisfied.  <a href="classmio_1_1oseir_1_1Parameters.html#ac8ccbb2c80d86307f73f00823fab8adc">More...</a><br /></td></tr>
 <tr class="separator:ac8ccbb2c80d86307f73f00823fab8adc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f555c919218f6b7a483aed88c3100fd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1oseir_1_1Parameters.html#a0f555c919218f6b7a483aed88c3100fd">Parameters</a> ()</td></tr>
-<tr class="separator:a0f555c919218f6b7a483aed88c3100fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2da87ada50e765704d22590440a1ad88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmio_1_1AgeGroup.html">AgeGroup</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1oseir_1_1Parameters.html#a2da87ada50e765704d22590440a1ad88">get_num_groups</a> () const</td></tr>
+<tr class="separator:a2da87ada50e765704d22590440a1ad88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f432568796c3640808ea6e01680c649"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1oseir_1_1Parameters.html#a9f432568796c3640808ea6e01680c649">Parameters</a> (<a class="el" href="structmio_1_1AgeGroup.html">AgeGroup</a> num_agegroups)</td></tr>
+<tr class="separator:a9f432568796c3640808ea6e01680c649"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classmio_1_1ParameterSet"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classmio_1_1ParameterSet')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classmio_1_1ParameterSet.html">mio::ParameterSet&lt; Tags &gt;</a></td></tr>
 <tr class="memitem:adde2986ef82600cd703d3b2c54040e54 inherit pub_methods_classmio_1_1ParameterSet"><td class="memTemplParams" colspan="2">template&lt;class Tag &gt; </td></tr>
 <tr class="memitem:adde2986ef82600cd703d3b2c54040e54 inherit pub_methods_classmio_1_1ParameterSet"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structmio_1_1ParameterTagTraits.html">ParameterTagTraits</a>&lt; <a class="el" href="namespacemio.html#a2f858e287c3935240954cf75cf53cfeb">Tag</a> &gt;::Type &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classmio_1_1ParameterSet.html#adde2986ef82600cd703d3b2c54040e54">get</a> ()</td></tr>
@@ -159,8 +162,13 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:ab17fa523f14db1e400e96e56e4c45055"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1oseir_1_1Parameters.html#ab17fa523f14db1e400e96e56e4c45055">Parameters</a> (<a class="el" href="namespacemio_1_1oseir.html#a8a64083875d215f4f23e0a1fad4b5db3">ParametersBase</a>&lt; FP &gt; &amp;&amp;base)</td></tr>
+<tr class="memitem:ab17fa523f14db1e400e96e56e4c45055"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1oseir_1_1Parameters.html#ab17fa523f14db1e400e96e56e4c45055">Parameters</a> (<a class="el" href="namespacemio_1_1oseir.html#a79a10385428066ecde1117fba43235e1">ParametersBase</a>&lt; FP &gt; &amp;&amp;base)</td></tr>
 <tr class="separator:ab17fa523f14db1e400e96e56e4c45055"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ae842fa842914b9aa3b4649848a44a13b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmio_1_1AgeGroup.html">AgeGroup</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1oseir_1_1Parameters.html#ae842fa842914b9aa3b4649848a44a13b">m_num_groups</a></td></tr>
+<tr class="separator:ae842fa842914b9aa3b4649848a44a13b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename FP = double&gt;<br />
@@ -168,8 +176,8 @@ class mio::oseir::Parameters&lt; FP &gt;</h3>
 
 <p><a class="el" href="classmio_1_1oseir_1_1Parameters.html" title="Parameters of an age-resolved SECIR/SECIHURD model.">Parameters</a> of an age-resolved SECIR/SECIHURD model. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a0f555c919218f6b7a483aed88c3100fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f555c919218f6b7a483aed88c3100fd">&#9670;&nbsp;</a></span>Parameters() <span class="overload">[1/2]</span></h2>
+<a id="a9f432568796c3640808ea6e01680c649"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f432568796c3640808ea6e01680c649">&#9670;&nbsp;</a></span>Parameters() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -179,7 +187,8 @@ template&lt;typename FP  = double&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classmio_1_1oseir_1_1Parameters.html">mio::oseir::Parameters</a>&lt; FP &gt;::<a class="el" href="classmio_1_1oseir_1_1Parameters.html">Parameters</a> </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structmio_1_1AgeGroup.html">AgeGroup</a>&#160;</td>
+          <td class="paramname"><em>num_agegroups</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -201,7 +210,7 @@ template&lt;typename FP  = double&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classmio_1_1oseir_1_1Parameters.html">mio::oseir::Parameters</a>&lt; FP &gt;::<a class="el" href="classmio_1_1oseir_1_1Parameters.html">Parameters</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacemio_1_1oseir.html#a8a64083875d215f4f23e0a1fad4b5db3">ParametersBase</a>&lt; FP &gt; &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacemio_1_1oseir.html#a79a10385428066ecde1117fba43235e1">ParametersBase</a>&lt; FP &gt; &amp;&amp;&#160;</td>
           <td class="paramname"><em>base</em></td><td>)</td>
           <td></td>
         </tr>
@@ -294,6 +303,50 @@ template&lt;class IOContext &gt; </div>
 
 <p>deserialize an object of this class. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacemio.html#a1eecf99ef3a231d628f968aeb2136865" title="Restores an object from the data stored in an IO context.">mio::deserialize</a> </dd></dl>
+
+</div>
+</div>
+<a id="a2da87ada50e765704d22590440a1ad88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2da87ada50e765704d22590440a1ad88">&#9670;&nbsp;</a></span>get_num_groups()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename FP  = double&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structmio_1_1AgeGroup.html">AgeGroup</a> <a class="el" href="classmio_1_1oseir_1_1Parameters.html">mio::oseir::Parameters</a>&lt; FP &gt;::get_num_groups </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ae842fa842914b9aa3b4649848a44a13b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae842fa842914b9aa3b4649848a44a13b">&#9670;&nbsp;</a></span>m_num_groups</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename FP  = double&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structmio_1_1AgeGroup.html">AgeGroup</a> <a class="el" href="classmio_1_1oseir_1_1Parameters.html">mio::oseir::Parameters</a>&lt; FP &gt;::m_num_groups</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
