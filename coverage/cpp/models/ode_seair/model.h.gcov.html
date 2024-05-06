@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-05-06 08:46:19</td>
+            <td class="headerValue">2024-05-06 08:49:29</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -113,12 +113,12 @@
 <a name="51"><span class="lineNum">      51 </span>            :     {</a>
 <a name="52"><span class="lineNum">      52 </span><span class="lineCov">          5 :     }</span></a>
 <a name="53"><span class="lineNum">      53 </span>            : </a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">        422 :     void get_derivatives(Eigen::Ref&lt;const Vector&lt;FP&gt;&gt; /* pop */, Eigen::Ref&lt;const Vector&lt;FP&gt;&gt; y, FP /* t */,</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">        422 :     void get_derivatives(Eigen::Ref&lt;const Vector&lt;FP&gt;&gt; pop, Eigen::Ref&lt;const Vector&lt;FP&gt;&gt; y, FP /* t */,</span></a>
 <a name="55"><span class="lineNum">      55 </span>            :                          Eigen::Ref&lt;Vector&lt;FP&gt;&gt; dydt) const override</a>
 <a name="56"><span class="lineNum">      56 </span>            :     {</a>
 <a name="57"><span class="lineNum">      57 </span><span class="lineCov">        422 :         auto&amp; params = this-&gt;parameters;</span></a>
 <a name="58"><span class="lineNum">      58 </span>            : </a>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">        422 :         const auto pop_total = y.sum() - y[(size_t)InfectionState::ObjectiveFunction];</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">        422 :         const auto pop_total = pop.sum() - pop[(size_t)InfectionState::ObjectiveFunction];</span></a>
 <a name="60"><span class="lineNum">      60 </span>            : </a>
 <a name="61"><span class="lineNum">      61 </span><span class="lineCov">        422 :         auto&amp; alpha_a          = params.template get&lt;AlphaA&lt;FP&gt;&gt;();</span></a>
 <a name="62"><span class="lineNum">      62 </span><span class="lineCov">        422 :         auto&amp; alpha_i          = params.template get&lt;AlphaI&lt;FP&gt;&gt;();</span></a>
