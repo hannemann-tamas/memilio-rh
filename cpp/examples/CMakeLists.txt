@@ -43,10 +43,10 @@ endif()
 
 add_executable(ad_square_example ad_square_example.cpp)
 target_link_libraries(ad_square_example PRIVATE AD::AD)
-set_target_properties(ad_square_example PROPERTIES CXX_STANDARD 14)
 
 add_executable(ad_odeint_example ad_odeint_example.cpp)
-target_link_libraries(ad_odeint_example PRIVATE AD::AD Boost::boost memilio)
+target_link_libraries(ad_odeint_example PRIVATE AD::AD Boost::boost)
+# On Apple machines, boost uses std::unary_function which removed in c+17 therefore set standard to 14
 set_property(TARGET ad_odeint_example PROPERTY CXX_STANDARD 14)
 
 add_executable(ad_secirvvs_example ad_secirvvs_example.cpp)
