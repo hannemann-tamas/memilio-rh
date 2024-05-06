@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">29</td>
-            <td class="headerCovTableEntry">29</td>
+            <td class="headerCovTableEntry">31</td>
+            <td class="headerCovTableEntry">31</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-05-06 09:48:40</td>
+            <td class="headerValue">2024-05-06 12:00:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -81,7 +81,7 @@
 <a name="19"><span class="lineNum">      19 </span>            : */</a>
 <a name="20"><span class="lineNum">      20 </span>            : </a>
 <a name="21"><span class="lineNum">      21 </span>            : /* This model is an extented SEIR type model of the COVID-19 pandemic in the US</a>
-<a name="22"><span class="lineNum">      22 </span>            :  * that also includes asymptomatic and perished people.</a>
+<a name="22"><span class="lineNum">      22 </span>            :  * that also includes asymptomatic and dead people.</a>
 <a name="23"><span class="lineNum">      23 </span>            :  * A detailed description of the model can be found in the publication</a>
 <a name="24"><span class="lineNum">      24 </span>            :  * Tsay et al. (2020), Modeling, state estimation, and optimal control for the US COVID-19 outbreak */</a>
 <a name="25"><span class="lineNum">      25 </span>            : </a>
@@ -118,7 +118,7 @@
 <a name="56"><span class="lineNum">      56 </span>            :     {</a>
 <a name="57"><span class="lineNum">      57 </span><span class="lineCov">        422 :         auto&amp; params = this-&gt;parameters;</span></a>
 <a name="58"><span class="lineNum">      58 </span>            : </a>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">        422 :         const auto pop_total = pop.sum() - pop[(size_t)InfectionState::ObjectiveFunction];</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">        422 :         const auto pop_total = pop.sum();</span></a>
 <a name="60"><span class="lineNum">      60 </span>            : </a>
 <a name="61"><span class="lineNum">      61 </span><span class="lineCov">        422 :         auto&amp; alpha_a          = params.template get&lt;AlphaA&lt;FP&gt;&gt;();</span></a>
 <a name="62"><span class="lineNum">      62 </span><span class="lineCov">        422 :         auto&amp; alpha_i          = params.template get&lt;AlphaI&lt;FP&gt;&gt;();</span></a>
@@ -129,28 +129,30 @@
 <a name="67"><span class="lineNum">      67 </span><span class="lineCov">        422 :         auto&amp; rho              = params.template get&lt;Rho&lt;FP&gt;&gt;();</span></a>
 <a name="68"><span class="lineNum">      68 </span><span class="lineCov">        422 :         auto&amp; gamma            = params.template get&lt;Gamma&lt;FP&gt;&gt;();</span></a>
 <a name="69"><span class="lineNum">      69 </span>            : </a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">        422 :         const auto&amp; s = y[(size_t)InfectionState::Susceptible];</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">        422 :         const auto&amp; e = y[(size_t)InfectionState::Exposed];</span></a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        422 :         const auto&amp; a = y[(size_t)InfectionState::Asymptomatic];</span></a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">        422 :         const auto&amp; i = y[(size_t)InfectionState::Infected];</span></a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        422 :         const auto&amp; r = y[(size_t)InfectionState::Recovered];</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">        422 :         dydt[(size_t)InfectionState::Susceptible] =</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">        422 :             -alpha_a / pop_total * y[(size_t)InfectionState::Susceptible] * pop[(size_t)InfectionState::Asymptomatic] -</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        422 :             alpha_i / pop_total * y[(size_t)InfectionState::Susceptible] * pop[(size_t)InfectionState::Infected] +</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">        422 :             gamma * y[(size_t)InfectionState::Recovered];</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        422 :         dydt[(size_t)InfectionState::Exposed] =</span></a>
 <a name="75"><span class="lineNum">      75 </span>            : </a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">        422 :         dydt[(size_t)InfectionState::Susceptible] =</span></a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">        422 :             -alpha_a / pop_total * s * a - alpha_i / pop_total * s * i + gamma * r;</span></a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">        422 :         dydt[(size_t)InfectionState::Exposed] =</span></a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">        422 :             alpha_a / pop_total * s * a + alpha_i / pop_total * s * i - t_latent_inverse * e;</span></a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">        422 :         dydt[(size_t)InfectionState::Asymptomatic]      = t_latent_inverse * e - kappa * a - rho * a;</span></a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">        422 :         dydt[(size_t)InfectionState::Infected]          = kappa * a - beta * i - mu * i;</span></a>
-<a name="82"><span class="lineNum">      82 </span><span class="lineCov">        422 :         dydt[(size_t)InfectionState::Recovered]         = rho * a + beta * i - gamma * r;</span></a>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">        422 :         dydt[(size_t)InfectionState::Perished]          = mu * i;</span></a>
-<a name="84"><span class="lineNum">      84 </span><span class="lineCov">        422 :         dydt[(size_t)InfectionState::ObjectiveFunction] = 1 - alpha_i - alpha_a + 0.1 * kappa;</span></a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">        422 :     }</span></a>
-<a name="86"><span class="lineNum">      86 </span>            : };</a>
-<a name="87"><span class="lineNum">      87 </span>            : </a>
-<a name="88"><span class="lineNum">      88 </span>            : } // namespace oseair</a>
-<a name="89"><span class="lineNum">      89 </span>            : } // namespace mio</a>
-<a name="90"><span class="lineNum">      90 </span>            : </a>
-<a name="91"><span class="lineNum">      91 </span>            : #endif // ODESEAIR_MODEL_H</a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">        422 :             alpha_a / pop_total * y[(size_t)InfectionState::Susceptible] * pop[(size_t)InfectionState::Asymptomatic] +</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">        422 :             alpha_i / pop_total * y[(size_t)InfectionState::Susceptible] * pop[(size_t)InfectionState::Infected] -</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">        422 :             t_latent_inverse * y[(size_t)InfectionState::Exposed];</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">        844 :         dydt[(size_t)InfectionState::Asymptomatic] = t_latent_inverse * y[(size_t)InfectionState::Exposed] -</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">        422 :                                                      (kappa + rho) * y[(size_t)InfectionState::Asymptomatic];</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">        422 :         dydt[(size_t)InfectionState::Infected] =</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">        422 :             kappa * y[(size_t)InfectionState::Asymptomatic] - (beta + mu) * y[(size_t)InfectionState::Infected];</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">        844 :         dydt[(size_t)InfectionState::Recovered] = rho * y[(size_t)InfectionState::Asymptomatic] +</span></a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineCov">        422 :                                                   beta * y[(size_t)InfectionState::Infected] -</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">        422 :                                                   gamma * y[(size_t)InfectionState::Recovered];</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">        422 :         dydt[(size_t)InfectionState::Dead] = mu * y[(size_t)InfectionState::Infected];</span></a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineCov">        422 :     }</span></a>
+<a name="88"><span class="lineNum">      88 </span>            : };</a>
+<a name="89"><span class="lineNum">      89 </span>            : </a>
+<a name="90"><span class="lineNum">      90 </span>            : } // namespace oseair</a>
+<a name="91"><span class="lineNum">      91 </span>            : } // namespace mio</a>
+<a name="92"><span class="lineNum">      92 </span>            : </a>
+<a name="93"><span class="lineNum">      93 </span>            : #endif // ODESEAIR_MODEL_H</a>
 </pre>
       </td>
     </tr>
