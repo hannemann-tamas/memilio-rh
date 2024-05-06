@@ -66,7 +66,7 @@ $(function() {
 <div class="title">ODE SEAIR compartment model </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This model is an extented SEIR type model of the COVID-19 pandemic in the US that also includes asymptomatic and dead people. The six compartments</p><ul>
+<div class="textblock"><p>This model is an extented ODE type model. The six compartments</p><ul>
 <li><code>Susceptible</code> ($S$), may become Exposed at any time</li>
 <li><code>Exposed</code> ($E$), becomes Asymptomatic after some time</li>
 <li><code>Asymptomatic</code> ($A$), becomes Infected or Recovered after some time</li>
@@ -82,7 +82,10 @@ $(function() {
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">$\alpha_{a}$   </td><td class="markdownTableBodyNone"><code>\ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt; . \ilinebr &lt;/td&gt; &lt;/tr&gt; &lt;tr class="markdownTableRowEven"&gt; &lt;td class="markdownTableBodyNone"&gt; $\alpha_{i}$ \ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt;</code>   </td><td class="markdownTableBodyNone">.   </td></tr>
 </table>
-<p>An example can be found in <a href="../../examples/ode_seair.cpp">examples/ode_seair.cpp</a> </p>
+<ul>
+<li>An example can be found in <a href="../../examples/ode_seair.cpp">examples/ode_seair.cpp</a>.</li>
+<li>For an example of using this model to define an optimization problem, see <a href="../../examples/ode_seair_optimization.cpp">examples/ode_seair_optimization.cpp</a>. </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
