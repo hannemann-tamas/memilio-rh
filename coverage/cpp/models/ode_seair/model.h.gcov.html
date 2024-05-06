@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">26</td>
-            <td class="headerCovTableEntry">26</td>
+            <td class="headerCovTableEntry">29</td>
+            <td class="headerCovTableEntry">29</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-05-03 14:34:07</td>
+            <td class="headerValue">2024-05-06 08:46:19</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -113,40 +113,44 @@
 <a name="51"><span class="lineNum">      51 </span>            :     {</a>
 <a name="52"><span class="lineNum">      52 </span><span class="lineCov">          5 :     }</span></a>
 <a name="53"><span class="lineNum">      53 </span>            : </a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">        434 :     void get_derivatives(Eigen::Ref&lt;const Vector&lt;FP&gt;&gt; /* pop */, Eigen::Ref&lt;const Vector&lt;FP&gt;&gt; y, FP /* t */,</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">        422 :     void get_derivatives(Eigen::Ref&lt;const Vector&lt;FP&gt;&gt; /* pop */, Eigen::Ref&lt;const Vector&lt;FP&gt;&gt; y, FP /* t */,</span></a>
 <a name="55"><span class="lineNum">      55 </span>            :                          Eigen::Ref&lt;Vector&lt;FP&gt;&gt; dydt) const override</a>
 <a name="56"><span class="lineNum">      56 </span>            :     {</a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">        434 :         auto&amp; params = this-&gt;parameters;</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">        422 :         auto&amp; params = this-&gt;parameters;</span></a>
 <a name="58"><span class="lineNum">      58 </span>            : </a>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">        434 :         auto&amp; alpha_a          = params.template get&lt;AlphaA&lt;FP&gt;&gt;();</span></a>
-<a name="60"><span class="lineNum">      60 </span><span class="lineCov">        434 :         auto&amp; alpha_i          = params.template get&lt;AlphaI&lt;FP&gt;&gt;();</span></a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">        434 :         auto&amp; kappa            = params.template get&lt;Kappa&lt;FP&gt;&gt;();</span></a>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">        434 :         auto&amp; beta             = params.template get&lt;Beta&lt;FP&gt;&gt;();</span></a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">        434 :         auto&amp; mu               = params.template get&lt;Mu&lt;FP&gt;&gt;();</span></a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">        434 :         auto&amp; t_latent_inverse = params.template get&lt;TLatentInverse&lt;FP&gt;&gt;();</span></a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">        434 :         auto&amp; rho              = params.template get&lt;Rho&lt;FP&gt;&gt;();</span></a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">        434 :         auto&amp; gamma            = params.template get&lt;Gamma&lt;FP&gt;&gt;();</span></a>
-<a name="67"><span class="lineNum">      67 </span>            : </a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">        434 :         const auto&amp; s = y[(size_t)InfectionState::Susceptible];</span></a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">        434 :         const auto&amp; e = y[(size_t)InfectionState::Exposed];</span></a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">        434 :         const auto&amp; a = y[(size_t)InfectionState::Asymptomatic];</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">        434 :         const auto&amp; i = y[(size_t)InfectionState::Infected];</span></a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        434 :         const auto&amp; r = y[(size_t)InfectionState::Recovered];</span></a>
-<a name="73"><span class="lineNum">      73 </span>            : </a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        434 :         dydt[(size_t)InfectionState::Susceptible]       = -alpha_a * s * a - alpha_i * s * i + gamma * r;</span></a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">        434 :         dydt[(size_t)InfectionState::Exposed]           = alpha_a * s * a + alpha_i * s * i - t_latent_inverse * e;</span></a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">        434 :         dydt[(size_t)InfectionState::Asymptomatic]      = t_latent_inverse * e - kappa * a - rho * a;</span></a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">        434 :         dydt[(size_t)InfectionState::Infected]          = kappa * a - beta * i - mu * i;</span></a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">        434 :         dydt[(size_t)InfectionState::Recovered]         = rho * a + beta * i - gamma * r;</span></a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">        434 :         dydt[(size_t)InfectionState::Perished]          = mu * i;</span></a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">        434 :         dydt[(size_t)InfectionState::ObjectiveFunction] = 1 - alpha_i - alpha_a + 0.1 * kappa;</span></a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">        434 :     }</span></a>
-<a name="82"><span class="lineNum">      82 </span>            : };</a>
-<a name="83"><span class="lineNum">      83 </span>            : </a>
-<a name="84"><span class="lineNum">      84 </span>            : } // namespace oseair</a>
-<a name="85"><span class="lineNum">      85 </span>            : } // namespace mio</a>
-<a name="86"><span class="lineNum">      86 </span>            : </a>
-<a name="87"><span class="lineNum">      87 </span>            : #endif // ODESEAIR_MODEL_H</a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">        422 :         const auto pop_total = y.sum() - y[(size_t)InfectionState::ObjectiveFunction];</span></a>
+<a name="60"><span class="lineNum">      60 </span>            : </a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">        422 :         auto&amp; alpha_a          = params.template get&lt;AlphaA&lt;FP&gt;&gt;();</span></a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">        422 :         auto&amp; alpha_i          = params.template get&lt;AlphaI&lt;FP&gt;&gt;();</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">        422 :         auto&amp; kappa            = params.template get&lt;Kappa&lt;FP&gt;&gt;();</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">        422 :         auto&amp; beta             = params.template get&lt;Beta&lt;FP&gt;&gt;();</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">        422 :         auto&amp; mu               = params.template get&lt;Mu&lt;FP&gt;&gt;();</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">        422 :         auto&amp; t_latent_inverse = params.template get&lt;TLatentInverse&lt;FP&gt;&gt;();</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">        422 :         auto&amp; rho              = params.template get&lt;Rho&lt;FP&gt;&gt;();</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">        422 :         auto&amp; gamma            = params.template get&lt;Gamma&lt;FP&gt;&gt;();</span></a>
+<a name="69"><span class="lineNum">      69 </span>            : </a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">        422 :         const auto&amp; s = y[(size_t)InfectionState::Susceptible];</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">        422 :         const auto&amp; e = y[(size_t)InfectionState::Exposed];</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        422 :         const auto&amp; a = y[(size_t)InfectionState::Asymptomatic];</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">        422 :         const auto&amp; i = y[(size_t)InfectionState::Infected];</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        422 :         const auto&amp; r = y[(size_t)InfectionState::Recovered];</span></a>
+<a name="75"><span class="lineNum">      75 </span>            : </a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">        422 :         dydt[(size_t)InfectionState::Susceptible] =</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">        422 :             -alpha_a / pop_total * s * a - alpha_i / pop_total * s * i + gamma * r;</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">        422 :         dydt[(size_t)InfectionState::Exposed] =</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">        422 :             alpha_a / pop_total * s * a + alpha_i / pop_total * s * i - t_latent_inverse * e;</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">        422 :         dydt[(size_t)InfectionState::Asymptomatic]      = t_latent_inverse * e - kappa * a - rho * a;</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">        422 :         dydt[(size_t)InfectionState::Infected]          = kappa * a - beta * i - mu * i;</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">        422 :         dydt[(size_t)InfectionState::Recovered]         = rho * a + beta * i - gamma * r;</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">        422 :         dydt[(size_t)InfectionState::Perished]          = mu * i;</span></a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineCov">        422 :         dydt[(size_t)InfectionState::ObjectiveFunction] = 1 - alpha_i - alpha_a + 0.1 * kappa;</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">        422 :     }</span></a>
+<a name="86"><span class="lineNum">      86 </span>            : };</a>
+<a name="87"><span class="lineNum">      87 </span>            : </a>
+<a name="88"><span class="lineNum">      88 </span>            : } // namespace oseair</a>
+<a name="89"><span class="lineNum">      89 </span>            : } // namespace mio</a>
+<a name="90"><span class="lineNum">      90 </span>            : </a>
+<a name="91"><span class="lineNum">      91 </span>            : #endif // ODESEAIR_MODEL_H</a>
 </pre>
       </td>
     </tr>
