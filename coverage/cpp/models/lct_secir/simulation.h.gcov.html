@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-05-07 11:03:07</td>
+            <td class="headerValue">2024-05-07 11:10:14</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">14</td>
@@ -242,22 +242,21 @@
 <a name="180"><span class="lineNum">     180 </span>            :  */</a>
 <a name="181"><span class="lineNum">     181 </span>            : template &lt;class Model, class Sim = Simulation&lt;Model&gt;&gt;</a>
 <a name="182"><span class="lineNum">     182 </span><span class="lineCov">          3 : TimeSeries&lt;ScalarType&gt; simulate(ScalarType t0, ScalarType tmax, ScalarType dt, Model const&amp; model,</span></a>
-<a name="183"><span class="lineNum">     183 </span>            : </a>
-<a name="184"><span class="lineNum">     184 </span>            :                                 std::shared_ptr&lt;IntegratorCore&lt;ScalarType&gt;&gt; integrator = nullptr)</a>
-<a name="185"><span class="lineNum">     185 </span>            : {</a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          3 :     model.check_constraints();</span></a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">          6 :     Sim sim(model, t0, dt);</span></a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          3 :     if (integrator) {</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          2 :         sim.set_integrator(integrator);</span></a>
-<a name="190"><span class="lineNum">     190 </span>            :     }</a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          3 :     sim.advance(tmax);</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          6 :     return sim.get_result();</span></a>
-<a name="193"><span class="lineNum">     193 </span>            : }</a>
-<a name="194"><span class="lineNum">     194 </span>            : </a>
-<a name="195"><span class="lineNum">     195 </span>            : } // namespace lsecir</a>
-<a name="196"><span class="lineNum">     196 </span>            : } // namespace mio</a>
-<a name="197"><span class="lineNum">     197 </span>            : </a>
-<a name="198"><span class="lineNum">     198 </span>            : #endif // LCT_SECIR_SIMULATION_H</a>
+<a name="183"><span class="lineNum">     183 </span>            :                                 std::shared_ptr&lt;IntegratorCore&lt;ScalarType&gt;&gt; integrator = nullptr)</a>
+<a name="184"><span class="lineNum">     184 </span>            : {</a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">          3 :     model.check_constraints();</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          6 :     Sim sim(model, t0, dt);</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">          3 :     if (integrator) {</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          2 :         sim.set_integrator(integrator);</span></a>
+<a name="189"><span class="lineNum">     189 </span>            :     }</a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          3 :     sim.advance(tmax);</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          6 :     return sim.get_result();</span></a>
+<a name="192"><span class="lineNum">     192 </span>            : }</a>
+<a name="193"><span class="lineNum">     193 </span>            : </a>
+<a name="194"><span class="lineNum">     194 </span>            : } // namespace lsecir</a>
+<a name="195"><span class="lineNum">     195 </span>            : } // namespace mio</a>
+<a name="196"><span class="lineNum">     196 </span>            : </a>
+<a name="197"><span class="lineNum">     197 </span>            : #endif // LCT_SECIR_SIMULATION_H</a>
 </pre>
       </td>
     </tr>

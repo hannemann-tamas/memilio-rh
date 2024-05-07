@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-05-07 11:03:07</td>
+            <td class="headerValue">2024-05-07 11:10:14</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -98,13 +98,13 @@
 <a name="36"><span class="lineNum">      36 </span>            : {</a>
 <a name="37"><span class="lineNum">      37 </span>            : namespace osecir</a>
 <a name="38"><span class="lineNum">      38 </span>            : {</a>
-<a name="39"><span class="lineNum">      39 </span>            : /* Sets alls SecirParams parameters normally distributed, </a>
-<a name="40"><span class="lineNum">      40 </span>            : *  using the current value and a given standard deviation</a>
-<a name="41"><span class="lineNum">      41 </span>            : * @param[inout] params SecirParams including contact patterns for alle age groups</a>
-<a name="42"><span class="lineNum">      42 </span>            : * @param[in] t0 start time</a>
-<a name="43"><span class="lineNum">      43 </span>            : * @param[in] tmax end time</a>
-<a name="44"><span class="lineNum">      44 </span>            : * @param[in] dev_rel maximum relative deviation from particular value(s) given in params</a>
-<a name="45"><span class="lineNum">      45 </span>            : */</a>
+<a name="39"><span class="lineNum">      39 </span>            : /** Sets alls SecirParams parameters normally distributed, </a>
+<a name="40"><span class="lineNum">      40 </span>            :  *  using the current value and a given standard deviation</a>
+<a name="41"><span class="lineNum">      41 </span>            :  * @param[inout] params SecirParams including contact patterns for alle age groups</a>
+<a name="42"><span class="lineNum">      42 </span>            :  * @param[in] t0 start time</a>
+<a name="43"><span class="lineNum">      43 </span>            :  * @param[in] tmax end time</a>
+<a name="44"><span class="lineNum">      44 </span>            :  * @param[in] dev_rel maximum relative deviation from particular value(s) given in params</a>
+<a name="45"><span class="lineNum">      45 </span>            :  */</a>
 <a name="46"><span class="lineNum">      46 </span>            : template &lt;typename FP = double&gt;</a>
 <a name="47"><span class="lineNum">      47 </span><span class="lineCov">          9 : void set_params_distributions_normal(Model&lt;FP&gt;&amp; model, double t0, double tmax, double dev_rel)</span></a>
 <a name="48"><span class="lineNum">      48 </span>            : {</a>
@@ -241,9 +241,9 @@
 <a name="179"><span class="lineNum">     179 </span><span class="lineCov">         19 : }</span></a>
 <a name="180"><span class="lineNum">     180 </span>            : </a>
 <a name="181"><span class="lineNum">     181 </span>            : /** Draws a sample from Model parameter distributions and stores sample values</a>
-<a name="182"><span class="lineNum">     182 </span>            : * as SecirParams parameter values (cf. UncertainValue and SecirParams classes)</a>
-<a name="183"><span class="lineNum">     183 </span>            : * @param[inout] model Model including contact patterns for alle age groups</a>
-<a name="184"><span class="lineNum">     184 </span>            : */</a>
+<a name="182"><span class="lineNum">     182 </span>            :  * as SecirParams parameter values (cf. UncertainValue and SecirParams classes).</a>
+<a name="183"><span class="lineNum">     183 </span>            :  * @param[inout] model Model including contact patterns for alle age groups.</a>
+<a name="184"><span class="lineNum">     184 </span>            :  */</a>
 <a name="185"><span class="lineNum">     185 </span>            : template &lt;typename FP = double&gt;</a>
 <a name="186"><span class="lineNum">     186 </span><span class="lineCov">         11 : void draw_sample(Model&lt;FP&gt;&amp; model)</span></a>
 <a name="187"><span class="lineNum">     187 </span>            : {</a>

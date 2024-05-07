@@ -184,22 +184,21 @@ $(function() {
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Model, <span class="keyword">class</span> Sim = Simulation&lt;Model&gt;&gt;</div>
 <div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="namespacemio_1_1lsecir.html#aeaf690e6d4caf1c4425ac894631c7f2f">  182</a></span>&#160;<a class="code" href="classmio_1_1TimeSeries.html">TimeSeries&lt;ScalarType&gt;</a> <a class="code" href="namespacemio_1_1lsecir.html#aeaf690e6d4caf1c4425ac894631c7f2f">simulate</a>(<a class="code" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> t0, <a class="code" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> tmax, <a class="code" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt, <a class="code" href="classmio_1_1lsecir_1_1Model.html">Model</a> <span class="keyword">const</span>&amp; model,</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                                std::shared_ptr&lt;<a class="code" href="classmio_1_1IntegratorCore.html">IntegratorCore&lt;ScalarType&gt;</a>&gt; integrator = <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;{</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    model.<a class="code" href="classmio_1_1lsecir_1_1Model.html#a33b4e9c9a4052c1a3ab819d5eaa7774b">check_constraints</a>();</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    Sim sim(model, t0, dt);</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">if</span> (integrator) {</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        sim.set_integrator(integrator);</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    }</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    sim.advance(tmax);</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">return</span> sim.get_result();</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;}</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;} <span class="comment">// namespace lsecir</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;} <span class="comment">// namespace mio</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// LCT_SECIR_SIMULATION_H</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                                std::shared_ptr&lt;<a class="code" href="classmio_1_1IntegratorCore.html">IntegratorCore&lt;ScalarType&gt;</a>&gt; integrator = <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;{</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    model.<a class="code" href="classmio_1_1lsecir_1_1Model.html#a33b4e9c9a4052c1a3ab819d5eaa7774b">check_constraints</a>();</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    Sim sim(model, t0, dt);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordflow">if</span> (integrator) {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        sim.set_integrator(integrator);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    sim.advance(tmax);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">return</span> sim.get_result();</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;}</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;} <span class="comment">// namespace lsecir</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;} <span class="comment">// namespace mio</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// LCT_SECIR_SIMULATION_H</span></div>
 <div class="ttc" id="aclassmio_1_1ControlledStepperWrapper_html"><div class="ttname"><a href="classmio_1_1ControlledStepperWrapper.html">mio::ControlledStepperWrapper</a></div><div class="ttdoc">Creates and manages an instance of a boost::numeric::odeint::controlled_runge_kutta integrator,...</div><div class="ttdef"><b>Definition:</b> stepper_wrapper.h:43</div></div>
 <div class="ttc" id="aclassmio_1_1IntegratorCore_html"><div class="ttname"><a href="classmio_1_1IntegratorCore.html">mio::IntegratorCore&lt; ScalarType &gt;</a></div></div>
 <div class="ttc" id="aclassmio_1_1OdeIntegrator_html"><div class="ttname"><a href="classmio_1_1OdeIntegrator.html">mio::OdeIntegrator&lt; ScalarType &gt;</a></div></div>

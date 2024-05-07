@@ -216,6 +216,7 @@ Functions</h2></td></tr>
 <tr class="separator:a519b43e5f2e6fcd53674a93b0e26dc07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e6c5f0dc24fd3f8a346376143911c07"><td class="memTemplParams" colspan="2">template&lt;typename FP  = double&gt; </td></tr>
 <tr class="memitem:a1e6c5f0dc24fd3f8a346376143911c07"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemio_1_1osecir.html#a1e6c5f0dc24fd3f8a346376143911c07">set_params_distributions_normal</a> (<a class="el" href="classmio_1_1osecir_1_1Model.html">Model</a>&lt; FP &gt; &amp;model, double t0, double tmax, double dev_rel)</td></tr>
+<tr class="memdesc:a1e6c5f0dc24fd3f8a346376143911c07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets alls SecirParams parameters normally distributed, using the current value and a given standard deviation.  <a href="namespacemio_1_1osecir.html#a1e6c5f0dc24fd3f8a346376143911c07">More...</a><br /></td></tr>
 <tr class="separator:a1e6c5f0dc24fd3f8a346376143911c07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41d6d3b5791724cbe41eee1c5d47b4db"><td class="memTemplParams" colspan="2">template&lt;typename FP  = ScalarType&gt; </td></tr>
 <tr class="memitem:a41d6d3b5791724cbe41eee1c5d47b4db"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemio_1_1osecir.html#a41d6d3b5791724cbe41eee1c5d47b4db">simulate</a> (FP t0, FP tmax, FP dt, const <a class="el" href="classmio_1_1osecir_1_1Model.html">Model</a>&lt; FP &gt; &amp;model, std::shared_ptr&lt; <a class="el" href="classmio_1_1IntegratorCore.html">IntegratorCore</a>&lt; FP &gt;&gt; integrator=nullptr)</td></tr>
@@ -338,9 +339,9 @@ template&lt;typename FP  = double&gt; </div>
 </div><div class="memdoc">
 
 <p>Draws a sample from <a class="el" href="classmio_1_1osecir_1_1Model.html">Model</a> parameter distributions and stores sample values as SecirParams parameter values (cf. </p>
-<p><a class="el" href="classmio_1_1UncertainValue.html" title="The UncertainValue class consists of a scalar value and a Distribution object.">UncertainValue</a> and SecirParams classes) </p><dl class="params"><dt>Parameters</dt><dd>
+<p><a class="el" href="classmio_1_1UncertainValue.html" title="The UncertainValue class consists of a scalar value and a Distribution object.">UncertainValue</a> and SecirParams classes). </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">model</td><td><a class="el" href="classmio_1_1osecir_1_1Model.html">Model</a> including contact patterns for alle age groups </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">model</td><td><a class="el" href="classmio_1_1osecir_1_1Model.html">Model</a> including contact patterns for alle age groups. </td></tr>
   </table>
   </dd>
 </dl>
@@ -716,6 +717,17 @@ template&lt;typename FP  = double&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sets alls SecirParams parameters normally distributed, using the current value and a given standard deviation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">params</td><td>SecirParams including contact patterns for alle age groups </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t0</td><td>start time </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tmax</td><td>end time </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dev_rel</td><td>maximum relative deviation from particular value(s) given in params </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
