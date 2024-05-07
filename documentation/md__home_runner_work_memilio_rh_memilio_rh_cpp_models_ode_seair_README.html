@@ -75,7 +75,8 @@ $(function() {
 <li><code>Dead</code> ($D$)</li>
 </ul>
 <p>are used to simulate the spread of the disease.</p>
-<p>A detailed description of the model can be found in the publication <a href="https://doi.org/10.1038/s41598-020-67459-8">Tsay et al. (2020), Modeling, state estimation, and optimal control for the US COVID-19 outbreak</a>. Some of the variable names are also adapted from the paper.</p>
+<p>A detailed description of the model can be found in the publication <a href="https://doi.org/10.1038/s41598-020-67459-8">Tsay et al. (2020), Modeling, state estimation, and optimal control for the US COVID-19 outbreak</a>.</p>
+<p>Below is an overview of the model architecture and its compartments. <img src="https://github.com/SciCompMod/memilio/assets/69154294/9d1bd9d1-9c6d-484f-aac1-6aead0b34185" alt="secir_model" class="inline"/></p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Mathematical variable   </th><th class="markdownTableHeadNone">C++ variable name   </th><th class="markdownTableHeadNone">Description    </th></tr>
@@ -84,17 +85,19 @@ $(function() {
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">$\alpha_{i}$   </td><td class="markdownTableBodyNone"><code>Quarantined</code>   </td><td class="markdownTableBodyNone">Infectivity of the Infected compartment. This includes ContactPatterns, the TransmissionProbabilityOnContact and the influence of quaratine.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">$t_{latent}$   </td><td class="markdownTableBodyNone"><code>TimeExposed</code>   </td><td class="markdownTableBodyNone">Time in days an individual stays in the Exposed compartment.    </td></tr>
+<td class="markdownTableBodyNone">$N$   </td><td class="markdownTableBodyNone"><code>pop_total</code>   </td><td class="markdownTableBodyNone">Represents the total population.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">$\rho$   </td><td class="markdownTableBodyNone"><code>RecoveryRateFromAsymptomatic</code>   </td><td class="markdownTableBodyNone">The rate at which people recover from the Asymptomatic compartment. This includes the probability of not getting a positive test and the time spent in the Asymptomatic compartment before recovery.    </td></tr>
+<td class="markdownTableBodyNone">$T_{E}$   </td><td class="markdownTableBodyNone"><code>TimeExposed</code>   </td><td class="markdownTableBodyNone">Time in days an individual stays in the Exposed compartment.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">$\kappa$   </td><td class="markdownTableBodyNone"><code>TestingRate</code>   </td><td class="markdownTableBodyNone">The rate at which people transiting from Asymptomatic to Infected compartment. This includes the probability of getting a positive test and the time spent in the Asymptomatic compartment before tested positive.    </td></tr>
+<td class="markdownTableBodyNone">$\frac{\mu_A^R}{T_A}$   </td><td class="markdownTableBodyNone"><code>RecoveryRateFromAsymptomatic</code>   </td><td class="markdownTableBodyNone">The rate at which people recover from the Asymptomatic compartment. This includes the probability of not getting a positive test and the time spent in the Asymptomatic compartment before recovery.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">$\beta$   </td><td class="markdownTableBodyNone"><code>RecoveryRate</code>   </td><td class="markdownTableBodyNone">The rate at which people recover. This includes the probability of not dying and the time spent in the Infected compartment before recovery.    </td></tr>
+<td class="markdownTableBodyNone">$\frac{1- \mu_A^R}{T_A}$   </td><td class="markdownTableBodyNone"><code>TestingRate</code>   </td><td class="markdownTableBodyNone">The rate at which people transiting from Asymptomatic to Infected compartment. This includes the probability of getting a positive test and the time spent in the Asymptomatic compartment before tested positive.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">$\mu$   </td><td class="markdownTableBodyNone"><code>DeathRate</code>   </td><td class="markdownTableBodyNone">The rate at which people die. This includes the probability of dying and the time spent in the Infected compartment before dying.    </td></tr>
+<td class="markdownTableBodyNone">$\frac{\mu_I^R}{T_I}$   </td><td class="markdownTableBodyNone"><code>RecoveryRate</code>   </td><td class="markdownTableBodyNone">The rate at which people recover. This includes the probability of not dying and the time spent in the Infected compartment before recovery.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">$\gamma$   </td><td class="markdownTableBodyNone"><code>TimeRecoveredInv</code>   </td><td class="markdownTableBodyNone">Inverse time in days an individual stays in the Recovered compartment before becoming Susceptible again.   </td></tr>
+<td class="markdownTableBodyNone">$\frac{1 - \mu_I^R}{T_I}$   </td><td class="markdownTableBodyNone"><code>DeathRate</code>   </td><td class="markdownTableBodyNone">The rate at which people die. This includes the probability of dying and the time spent in the Infected compartment before dying.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">$\frac{1}{T_R}$   </td><td class="markdownTableBodyNone"><code>TimeRecoveredInv</code>   </td><td class="markdownTableBodyNone">Inverse time in days an individual stays in the Recovered compartment before becoming Susceptible again.   </td></tr>
 </table>
 <ul>
 <li>An example can be found in <a href="../../examples/ode_seair.cpp">examples/ode_seair.cpp</a>.</li>
