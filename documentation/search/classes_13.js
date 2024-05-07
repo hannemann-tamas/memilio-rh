@@ -1,8 +1,14 @@
 var searchData=
 [
-  ['unary_5fintermediate_2583',['unary_intermediate',['../structad_1_1internal_1_1unary__intermediate.html',1,'ad::internal']]],
-  ['uncertaincontactmatrix_2584',['UncertainContactMatrix',['../classmio_1_1UncertainContactMatrix.html',1,'mio']]],
-  ['uncertainvalue_2585',['UncertainValue',['../classmio_1_1UncertainValue.html',1,'mio']]],
-  ['uncertainvalue_3c_20double_20_3e_2586',['UncertainValue&lt; double &gt;',['../classmio_1_1UncertainValue.html',1,'mio']]],
-  ['userdata_5fobject_5fbase_2587',['userdata_object_base',['../classad_1_1helper_1_1userdata__object__base.html',1,'ad::helper']]]
+  ['vaccination_2583',['Vaccination',['../structmio_1_1abm_1_1Vaccination.html',1,'mio::abm']]],
+  ['vaccinationgap_2584',['VaccinationGap',['../structmio_1_1osecirvvs_1_1VaccinationGap.html',1,'mio::osecirvvs']]],
+  ['verbositylevel_2585',['VerbosityLevel',['../classmemilio_1_1epidata_1_1getDataIntoPandasDataFrame_1_1VerbosityLevel.html',1,'memilio::epidata::getDataIntoPandasDataFrame']]],
+  ['viralload_2586',['ViralLoad',['../structmio_1_1abm_1_1ViralLoad.html',1,'mio::abm']]],
+  ['viralloaddistributions_2587',['ViralLoadDistributions',['../structmio_1_1abm_1_1ViralLoadDistributions.html',1,'mio::abm']]],
+  ['viralloaddistributionsparameters_2588',['ViralLoadDistributionsParameters',['../structmio_1_1abm_1_1ViralLoadDistributionsParameters.html',1,'mio::abm']]],
+  ['visitable_2589',['Visitable',['../structmio_1_1Visitable.html',1,'mio']]],
+  ['visitor_2590',['Visitor',['../structmio_1_1Visitor.html',1,'mio']]],
+  ['visitor_3c_20t_20_3e_2591',['Visitor&lt; T &gt;',['../structmio_1_1Visitor_3_01T_01_4.html',1,'mio']]],
+  ['visitor_3c_20t_2c_20types_2e_2e_2e_20_3e_2592',['Visitor&lt; T, Types... &gt;',['../structmio_1_1Visitor_3_01T_00_01Types_8_8_8_01_4.html',1,'mio']]],
+  ['visitor_3c_20types_2e_2e_2e_20_3e_2593',['Visitor&lt; Types... &gt;',['../structmio_1_1Visitor.html',1,'mio']]]
 ];
