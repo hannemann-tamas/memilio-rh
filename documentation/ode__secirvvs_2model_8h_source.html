@@ -300,9 +300,9 @@ $(function() {
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                    this-&gt;populations.get_flat_index({j, InfectionState::InfectedSymptomsImprovedImmunityConfirmed});</div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                <span class="comment">// effective contact rate by contact rate between groups i and j and damping j</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                FP season_val    = (1 + params.template get&lt;Seasonality&lt;FP&gt;&gt;() *</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                                         <a class="code" href="namespacead_1_1internal.html#a0fd81132bd4b9509ab6744ff9ca11643">sin</a>(3.141592653589793 *</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                                                (std::fmod((params.template get&lt;StartDay&gt;() + t), 365.0) / 182.5 + 0.5)));</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                FP season_val =</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                    (1 + params.template get&lt;Seasonality&lt;FP&gt;&gt;() *</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                             <a class="code" href="namespacead_1_1internal.html#a0fd81132bd4b9509ab6744ff9ca11643">sin</a>(3.141592653589793 * ((params.template get&lt;StartDay&gt;() + t) / 182.5 + 0.5)));</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                FP cont_freq_eff = season_val * contact_matrix.get_matrix_at(t)(<span class="keyword">static_cast&lt;</span>Eigen::Index<span class="keyword">&gt;</span>((size_t)i),</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                                                                                <span class="keyword">static_cast&lt;</span>Eigen::Index<span class="keyword">&gt;</span>((size_t)j));</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                <span class="comment">// without died people</span></div>

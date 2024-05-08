@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-05-08 09:22:52</td>
+            <td class="headerValue">2024-05-08 09:39:09</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">15</td>
@@ -290,9 +290,9 @@
 <a name="228"><span class="lineNum">     228 </span><span class="lineCov">       4776 :                     this-&gt;populations.get_flat_index({j, InfectionState::InfectedSymptomsImprovedImmunityConfirmed});</span></a>
 <a name="229"><span class="lineNum">     229 </span>            : </a>
 <a name="230"><span class="lineNum">     230 </span>            :                 // effective contact rate by contact rate between groups i and j and damping j</a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">       4776 :                 FP season_val    = (1 + params.template get&lt;Seasonality&lt;FP&gt;&gt;() *</span></a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">       4776 :                                          sin(3.141592653589793 *</span></a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       4776 :                                                 (std::fmod((params.template get&lt;StartDay&gt;() + t), 365.0) / 182.5 + 0.5)));</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">       4776 :                 FP season_val =</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">       4776 :                     (1 + params.template get&lt;Seasonality&lt;FP&gt;&gt;() *</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       4776 :                              sin(3.141592653589793 * ((params.template get&lt;StartDay&gt;() + t) / 182.5 + 0.5)));</span></a>
 <a name="234"><span class="lineNum">     234 </span><span class="lineCov">       9552 :                 FP cont_freq_eff = season_val * contact_matrix.get_matrix_at(t)(static_cast&lt;Eigen::Index&gt;((size_t)i),</span></a>
 <a name="235"><span class="lineNum">     235 </span><span class="lineCov">       4776 :                                                                                 static_cast&lt;Eigen::Index&gt;((size_t)j));</span></a>
 <a name="236"><span class="lineNum">     236 </span>            :                 // without died people</a>
