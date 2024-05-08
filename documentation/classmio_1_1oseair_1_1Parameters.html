@@ -92,9 +92,9 @@ Inheritance diagram for mio::oseair::Parameters&lt; FP &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae7730634ae6dd21df8cd676a27c89431"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1oseair_1_1Parameters.html#ae7730634ae6dd21df8cd676a27c89431">check_constraints</a> () const</td></tr>
-<tr class="memdesc:ae7730634ae6dd21df8cd676a27c89431"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether all <a class="el" href="classmio_1_1oseair_1_1Parameters.html" title="Parameters of an SEAIR model.">Parameters</a> satisfy their corresponding constraints and logs an error if constraints are not satisfied.  <a href="classmio_1_1oseair_1_1Parameters.html#ae7730634ae6dd21df8cd676a27c89431">More...</a><br /></td></tr>
-<tr class="separator:ae7730634ae6dd21df8cd676a27c89431"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91241f3a9fb8eaef856bc8d77c9efce6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1oseair_1_1Parameters.html#a91241f3a9fb8eaef856bc8d77c9efce6">check_constraints</a> () const</td></tr>
+<tr class="memdesc:a91241f3a9fb8eaef856bc8d77c9efce6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether all <a class="el" href="classmio_1_1oseair_1_1Parameters.html" title="Parameters of an SEAIR model.">Parameters</a> satisfy their corresponding constraints and logs an error if constraints are not satisfied.  <a href="classmio_1_1oseair_1_1Parameters.html#a91241f3a9fb8eaef856bc8d77c9efce6">More...</a><br /></td></tr>
+<tr class="separator:a91241f3a9fb8eaef856bc8d77c9efce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac808dbfadabf835dd8cf9b70fa2e7bdc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmio_1_1oseair_1_1Parameters.html#ac808dbfadabf835dd8cf9b70fa2e7bdc">Parameters</a> ()</td></tr>
 <tr class="separator:ac808dbfadabf835dd8cf9b70fa2e7bdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classmio_1_1ParameterSet"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classmio_1_1ParameterSet')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classmio_1_1ParameterSet.html">mio::ParameterSet&lt; Tags &gt;</a></td></tr>
@@ -213,8 +213,8 @@ template&lt;typename FP  = double&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ae7730634ae6dd21df8cd676a27c89431"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7730634ae6dd21df8cd676a27c89431">&#9670;&nbsp;</a></span>check_constraints()</h2>
+<a id="a91241f3a9fb8eaef856bc8d77c9efce6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91241f3a9fb8eaef856bc8d77c9efce6">&#9670;&nbsp;</a></span>check_constraints()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -222,7 +222,7 @@ template&lt;typename FP  = double&gt; </div>
 template&lt;typename FP  = double&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">int <a class="el" href="classmio_1_1oseair_1_1Parameters.html">mio::oseair::Parameters</a>&lt; FP &gt;::check_constraints </td>
+          <td class="memname">bool <a class="el" href="classmio_1_1oseair_1_1Parameters.html">mio::oseair::Parameters</a>&lt; FP &gt;::check_constraints </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -231,8 +231,7 @@ template&lt;typename FP  = double&gt; </div>
 </div><div class="memdoc">
 
 <p>Checks whether all <a class="el" href="classmio_1_1oseair_1_1Parameters.html" title="Parameters of an SEAIR model.">Parameters</a> satisfy their corresponding constraints and logs an error if constraints are not satisfied. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns 1 if one constraint is not satisfied, otherwise 0. <br  />
- </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns true if one constraint is not satisfied, otherwise false. </dd></dl>
 
 </div>
 </div>
