@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-05-13 08:39:34</td>
+            <td class="headerValue">2024-05-13 08:44:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">23</td>
@@ -203,32 +203,32 @@
 <a name="141"><span class="lineNum">     141 </span>            :     /**</a>
 <a name="142"><span class="lineNum">     142 </span>            :      * @brief Compare two Location%s.</a>
 <a name="143"><span class="lineNum">     143 </span>            :      */</a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       1034 :     bool operator==(const Location&amp; other) const</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       1030 :     bool operator==(const Location&amp; other) const</span></a>
 <a name="145"><span class="lineNum">     145 </span>            :     {</a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">       1034 :         return (m_id == other.m_id);</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">       1030 :         return (m_id == other.m_id);</span></a>
 <a name="147"><span class="lineNum">     147 </span>            :     }</a>
 <a name="148"><span class="lineNum">     148 </span>            : </a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">        990 :     bool operator!=(const Location&amp; other) const</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">        986 :     bool operator!=(const Location&amp; other) const</span></a>
 <a name="150"><span class="lineNum">     150 </span>            :     {</a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">        990 :         return !(*this == other);</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">        986 :         return !(*this == other);</span></a>
 <a name="152"><span class="lineNum">     152 </span>            :     }</a>
 <a name="153"><span class="lineNum">     153 </span>            : </a>
 <a name="154"><span class="lineNum">     154 </span>            :     /**</a>
 <a name="155"><span class="lineNum">     155 </span>            :      * @brief Get the type of this Location.</a>
 <a name="156"><span class="lineNum">     156 </span>            :      * @return The #LocationType of the Location.</a>
 <a name="157"><span class="lineNum">     157 </span>            :      */</a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">       3283 :     LocationType get_type() const</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">       3299 :     LocationType get_type() const</span></a>
 <a name="159"><span class="lineNum">     159 </span>            :     {</a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">       3283 :         return m_id.type;</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">       3299 :         return m_id.type;</span></a>
 <a name="161"><span class="lineNum">     161 </span>            :     }</a>
 <a name="162"><span class="lineNum">     162 </span>            : </a>
 <a name="163"><span class="lineNum">     163 </span>            :     /**</a>
 <a name="164"><span class="lineNum">     164 </span>            :      * @brief Get the index of this Location.</a>
 <a name="165"><span class="lineNum">     165 </span>            :      * @return The index of the Location.</a>
 <a name="166"><span class="lineNum">     166 </span>            :      */</a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">        738 :     unsigned get_index() const</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">        752 :     unsigned get_index() const</span></a>
 <a name="168"><span class="lineNum">     168 </span>            :     {</a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">        738 :         return m_id.index;</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">        752 :         return m_id.index;</span></a>
 <a name="170"><span class="lineNum">     170 </span>            :     }</a>
 <a name="171"><span class="lineNum">     171 </span>            : </a>
 <a name="172"><span class="lineNum">     172 </span>            :     /**</a>
@@ -361,9 +361,9 @@
 <a name="299"><span class="lineNum">     299 </span>            :      * @param[in] cell_idx The index of the Cell.</a>
 <a name="300"><span class="lineNum">     300 </span>            :      * @return The CellCapacity of the Cell.</a>
 <a name="301"><span class="lineNum">     301 </span>            :      */</a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">         33 :     CellCapacity get_capacity(uint32_t cell_idx = 0) const</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">         37 :     CellCapacity get_capacity(uint32_t cell_idx = 0) const</span></a>
 <a name="303"><span class="lineNum">     303 </span>            :     {</a>
-<a name="304"><span class="lineNum">     304 </span><span class="lineCov">         33 :         return m_cells[cell_idx].m_capacity;</span></a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">         37 :         return m_cells[cell_idx].m_capacity;</span></a>
 <a name="305"><span class="lineNum">     305 </span>            :     }</a>
 <a name="306"><span class="lineNum">     306 </span>            : </a>
 <a name="307"><span class="lineNum">     307 </span>            :     /**</a>
@@ -381,9 +381,9 @@
 <a name="319"><span class="lineNum">     319 </span>            :      * If true requires e.g. Mask%s when entering a Location.</a>
 <a name="320"><span class="lineNum">     320 </span>            :      * @return True if NPIs are active at this Location.</a>
 <a name="321"><span class="lineNum">     321 </span>            :      */</a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">         40 :     bool get_npi_active() const</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">         44 :     bool get_npi_active() const</span></a>
 <a name="323"><span class="lineNum">     323 </span>            :     {</a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineCov">         40 :         return m_npi_active;</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">         44 :         return m_npi_active;</span></a>
 <a name="325"><span class="lineNum">     325 </span>            :     }</a>
 <a name="326"><span class="lineNum">     326 </span>            : </a>
 <a name="327"><span class="lineNum">     327 </span>            :     /**</a>

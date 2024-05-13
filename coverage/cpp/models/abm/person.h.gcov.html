@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-05-13 08:39:34</td>
+            <td class="headerValue">2024-05-13 08:44:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">20</td>
@@ -156,26 +156,26 @@
 <a name="94"><span class="lineNum">      94 </span>            :         /**</a>
 <a name="95"><span class="lineNum">      95 </span>            :         * @return Get the key.</a>
 <a name="96"><span class="lineNum">      96 </span>            :         */</a>
-<a name="97"><span class="lineNum">      97 </span><span class="lineCov">        338 :         Key&lt;uint64_t&gt; get_key() const</span></a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">        333 :         Key&lt;uint64_t&gt; get_key() const</span></a>
 <a name="98"><span class="lineNum">      98 </span>            :         {</a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">        338 :             return m_key;</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">        333 :             return m_key;</span></a>
 <a name="100"><span class="lineNum">     100 </span>            :         }</a>
 <a name="101"><span class="lineNum">     101 </span>            : </a>
 <a name="102"><span class="lineNum">     102 </span>            :         /**</a>
 <a name="103"><span class="lineNum">     103 </span>            :         * @return Get the current counter.</a>
 <a name="104"><span class="lineNum">     104 </span>            :         */</a>
-<a name="105"><span class="lineNum">     105 </span><span class="lineCov">        340 :         Counter&lt;uint64_t&gt; get_counter() const</span></a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineCov">        335 :         Counter&lt;uint64_t&gt; get_counter() const</span></a>
 <a name="106"><span class="lineNum">     106 </span>            :         {</a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineCov">        340 :             return rng_totalsequence_counter&lt;uint64_t&gt;(m_person_id, m_counter);</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">        335 :             return rng_totalsequence_counter&lt;uint64_t&gt;(m_person_id, m_counter);</span></a>
 <a name="108"><span class="lineNum">     108 </span>            :         }</a>
 <a name="109"><span class="lineNum">     109 </span>            : </a>
 <a name="110"><span class="lineNum">     110 </span>            :         /**</a>
 <a name="111"><span class="lineNum">     111 </span>            :         * Increment the counter.</a>
 <a name="112"><span class="lineNum">     112 </span>            :         */</a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">        338 :         void increment_counter()</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">        333 :         void increment_counter()</span></a>
 <a name="114"><span class="lineNum">     114 </span>            :         {</a>
-<a name="115"><span class="lineNum">     115 </span><span class="lineCov">        338 :             ++m_counter;</span></a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">        338 :         }</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">        333 :             ++m_counter;</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">        333 :         }</span></a>
 <a name="117"><span class="lineNum">     117 </span>            : </a>
 <a name="118"><span class="lineNum">     118 </span>            :     private:</a>
 <a name="119"><span class="lineNum">     119 </span>            :         Key&lt;uint64_t&gt; m_key; ///&lt; Global RNG Key</a>
@@ -221,10 +221,10 @@
 <a name="159"><span class="lineNum">     159 </span>            :      * @param[in, out] loc_new The new Location of the Person.</a>
 <a name="160"><span class="lineNum">     160 </span>            :      * @param[in] cells_new The Cell%s that the Person visits at the new Location.</a>
 <a name="161"><span class="lineNum">     161 </span>            :      * */</a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">         24 :     void migrate_to(Location&amp; loc_new, const std::vector&lt;uint32_t&gt;&amp; cells_new = {0})</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">         28 :     void migrate_to(Location&amp; loc_new, const std::vector&lt;uint32_t&gt;&amp; cells_new = {0})</span></a>
 <a name="163"><span class="lineNum">     163 </span>            :     {</a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">         24 :         migrate_to(loc_new, TransportMode::Unknown, cells_new);</span></a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">         24 :     }</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">         28 :         migrate_to(loc_new, TransportMode::Unknown, cells_new);</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">         28 :     }</span></a>
 <a name="166"><span class="lineNum">     166 </span>            : </a>
 <a name="167"><span class="lineNum">     167 </span>            :     /** </a>
 <a name="168"><span class="lineNum">     168 </span>            :      * @brief Migrate to a different Location.</a>
@@ -280,9 +280,9 @@
 <a name="218"><span class="lineNum">     218 </span>            :      * @brief Get the AgeGroup of this Person.</a>
 <a name="219"><span class="lineNum">     219 </span>            :      * @return AgeGroup of the Person.</a>
 <a name="220"><span class="lineNum">     220 </span>            :      */</a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">        641 :     AgeGroup get_age() const</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">        635 :     AgeGroup get_age() const</span></a>
 <a name="222"><span class="lineNum">     222 </span>            :     {</a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">        641 :         return m_age;</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">        635 :         return m_age;</span></a>
 <a name="224"><span class="lineNum">     224 </span>            :     }</a>
 <a name="225"><span class="lineNum">     225 </span>            : </a>
 <a name="226"><span class="lineNum">     226 </span>            :     /**</a>
@@ -297,9 +297,9 @@
 <a name="235"><span class="lineNum">     235 </span>            :      * @brief Get the time the Person has been at its current Location.</a>
 <a name="236"><span class="lineNum">     236 </span>            :      * @return TimeSpan the Person has been at the Location.</a>
 <a name="237"><span class="lineNum">     237 </span>            :      */</a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">          4 :     TimeSpan get_time_at_location() const</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">          6 :     TimeSpan get_time_at_location() const</span></a>
 <a name="239"><span class="lineNum">     239 </span>            :     {</a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          4 :         return m_time_at_location;</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          6 :         return m_time_at_location;</span></a>
 <a name="241"><span class="lineNum">     241 </span>            :     }</a>
 <a name="242"><span class="lineNum">     242 </span>            : </a>
 <a name="243"><span class="lineNum">     243 </span>            :     /**</a>
@@ -387,9 +387,9 @@
 <a name="325"><span class="lineNum">     325 </span>            :      * @param[in] params Parameter that includes the length of a quarantine.</a>
 <a name="326"><span class="lineNum">     326 </span>            :      * @return True if the Person is in quarantine.</a>
 <a name="327"><span class="lineNum">     327 </span>            :      */</a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineCov">        166 :     bool is_in_quarantine(TimePoint t, const Parameters&amp; params) const</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">        158 :     bool is_in_quarantine(TimePoint t, const Parameters&amp; params) const</span></a>
 <a name="329"><span class="lineNum">     329 </span>            :     {</a>
-<a name="330"><span class="lineNum">     330 </span><span class="lineCov">        166 :         return t &lt; m_quarantine_start + params.get&lt;mio::abm::QuarantineDuration&gt;();</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">        158 :         return t &lt; m_quarantine_start + params.get&lt;mio::abm::QuarantineDuration&gt;();</span></a>
 <a name="331"><span class="lineNum">     331 </span>            :     }</a>
 <a name="332"><span class="lineNum">     332 </span>            :     </a>
 <a name="333"><span class="lineNum">     333 </span>            :     /**</a>
@@ -462,9 +462,9 @@
 <a name="400"><span class="lineNum">     400 </span>            :      * @param[in] location The current Location of the Person.</a>
 <a name="401"><span class="lineNum">     401 </span>            :      * @return The probability that the Person does not comply to any Mask duty/wears a Mask even if it is not required.</a>
 <a name="402"><span class="lineNum">     402 </span>            :      */</a>
-<a name="403"><span class="lineNum">     403 </span><span class="lineCov">         40 :     ScalarType get_mask_compliance(LocationType location) const</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">         44 :     ScalarType get_mask_compliance(LocationType location) const</span></a>
 <a name="404"><span class="lineNum">     404 </span>            :     {</a>
-<a name="405"><span class="lineNum">     405 </span><span class="lineCov">         40 :         return m_mask_compliance[static_cast&lt;int&gt;(location)];</span></a>
+<a name="405"><span class="lineNum">     405 </span><span class="lineCov">         44 :         return m_mask_compliance[static_cast&lt;int&gt;(location)];</span></a>
 <a name="406"><span class="lineNum">     406 </span>            :     }</a>
 <a name="407"><span class="lineNum">     407 </span>            : </a>
 <a name="408"><span class="lineNum">     408 </span>            :     /**</a>
