@@ -664,10 +664,10 @@ Functions</h2></td></tr>
 <tr class="memitem:af8c09290697dd3d17e83974c0d2c7e90"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemio.html#af8c09290697dd3d17e83974c0d2c7e90">apply_migration</a> (FP t, FP dt, <a class="el" href="classmio_1_1MigrationEdge.html">MigrationEdge</a>&lt; FP &gt; &amp;migrationEdge, <a class="el" href="classmio_1_1SimulationNode.html">SimulationNode</a>&lt; Sim &gt; &amp;node_from, <a class="el" href="classmio_1_1SimulationNode.html">SimulationNode</a>&lt; Sim &gt; &amp;node_to)</td></tr>
 <tr class="memdesc:af8c09290697dd3d17e83974c0d2c7e90"><td class="mdescLeft">&#160;</td><td class="mdescRight">edge functor for migration simulation.  <a href="namespacemio.html#af8c09290697dd3d17e83974c0d2c7e90">More...</a><br /></td></tr>
 <tr class="separator:af8c09290697dd3d17e83974c0d2c7e90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac11e79d096c1310db8d69bb380dc18ee"><td class="memTemplParams" colspan="2">template&lt;class Sim , class StochasticEdge , std::enable_if_t&lt; std::is_same&lt; StochasticEdge, MigrationEdgeStochastic &gt;::value, bool &gt; tag = true&gt; </td></tr>
-<tr class="memitem:ac11e79d096c1310db8d69bb380dc18ee"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemio.html#ac11e79d096c1310db8d69bb380dc18ee">apply_migration</a> (StochasticEdge &amp;migrationEdge, size_t event, <a class="el" href="classmio_1_1SimulationNode.html">SimulationNode</a>&lt; Sim &gt; &amp;node_from, <a class="el" href="classmio_1_1SimulationNode.html">SimulationNode</a>&lt; Sim &gt; &amp;node_to)</td></tr>
-<tr class="memdesc:ac11e79d096c1310db8d69bb380dc18ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">edge functor for migration simulation.  <a href="namespacemio.html#ac11e79d096c1310db8d69bb380dc18ee">More...</a><br /></td></tr>
-<tr class="separator:ac11e79d096c1310db8d69bb380dc18ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a456698e86179ed8ee48f44e3d9d8d85c"><td class="memTemplParams" colspan="2">template&lt;class Sim , class StochasticEdge &gt; </td></tr>
+<tr class="memitem:a456698e86179ed8ee48f44e3d9d8d85c"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemio.html#a456698e86179ed8ee48f44e3d9d8d85c">apply_migration</a> (StochasticEdge &amp;migrationEdge, size_t event, <a class="el" href="classmio_1_1SimulationNode.html">SimulationNode</a>&lt; Sim &gt; &amp;node_from, <a class="el" href="classmio_1_1SimulationNode.html">SimulationNode</a>&lt; Sim &gt; &amp;node_to)</td></tr>
+<tr class="memdesc:a456698e86179ed8ee48f44e3d9d8d85c"><td class="mdescLeft">&#160;</td><td class="mdescRight">edge functor for migration simulation.  <a href="namespacemio.html#a456698e86179ed8ee48f44e3d9d8d85c">More...</a><br /></td></tr>
+<tr class="separator:a456698e86179ed8ee48f44e3d9d8d85c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac64767b14d2fc4a7495e8401fb171bcd"><td class="memTemplParams" colspan="2">template&lt;class M &gt; </td></tr>
 <tr class="memitem:ac64767b14d2fc4a7495e8401fb171bcd"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt; std::is_base_of&lt; Eigen::EigenBase&lt; M &gt;, M &gt;::value, <a class="el" href="classmio_1_1RowMajorIterator.html">RowMajorIterator</a>&lt; M, true &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemio.html#ac64767b14d2fc4a7495e8401fb171bcd">begin</a> (const M &amp;m)</td></tr>
 <tr class="memdesc:ac64767b14d2fc4a7495e8401fb171bcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a const iterator to first element of the matrix m.  <a href="namespacemio.html#ac64767b14d2fc4a7495e8401fb171bcd">More...</a><br /></td></tr>
@@ -2455,13 +2455,13 @@ template&lt;typename FP , class Sim &gt; </div>
 
 </div>
 </div>
-<a id="ac11e79d096c1310db8d69bb380dc18ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac11e79d096c1310db8d69bb380dc18ee">&#9670;&nbsp;</a></span>apply_migration() <span class="overload">[2/2]</span></h2>
+<a id="a456698e86179ed8ee48f44e3d9d8d85c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a456698e86179ed8ee48f44e3d9d8d85c">&#9670;&nbsp;</a></span>apply_migration() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Sim , class StochasticEdge , std::enable_if_t&lt; std::is_same&lt; StochasticEdge, MigrationEdgeStochastic &gt;::value, bool &gt; tag = true&gt; </div>
+template&lt;class Sim , class StochasticEdge &gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void mio::apply_migration </td>
