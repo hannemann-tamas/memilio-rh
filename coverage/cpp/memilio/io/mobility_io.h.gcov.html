@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-05-13 12:15:30</td>
+            <td class="headerValue">2024-05-15 09:09:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -128,7 +128,7 @@
 <a name="66"><span class="lineNum">      66 </span>            :  * @param directory directory where files should be stored</a>
 <a name="67"><span class="lineNum">      67 </span>            :  * @param ioflags flags that set the behavior of serialization; see mio::IOFlags</a>
 <a name="68"><span class="lineNum">      68 </span>            :  */</a>
-<a name="69"><span class="lineNum">      69 </span>            : template &lt;class Model, typename FP = double&gt;</a>
+<a name="69"><span class="lineNum">      69 </span>            : template &lt;typename FP, class Model&gt;</a>
 <a name="70"><span class="lineNum">      70 </span><span class="lineCov">         10 : IOResult&lt;void&gt; write_graph(const Graph&lt;Model, MigrationParameters&lt;FP&gt;&gt;&amp; graph, const std::string&amp; directory,</span></a>
 <a name="71"><span class="lineNum">      71 </span>            :                            int ioflags = IOF_None)</a>
 <a name="72"><span class="lineNum">      72 </span>            : {</a>
