@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-05-15 09:09:00</td>
+            <td class="headerValue">2024-05-17 08:52:30</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">48</td>
@@ -235,8 +235,8 @@
 <a name="173"><span class="lineNum">     173 </span>            : };</a>
 <a name="174"><span class="lineNum">     174 </span>            : </a>
 <a name="175"><span class="lineNum">     175 </span>            : /**</a>
-<a name="176"><span class="lineNum">     176 </span>            : * @brief probability of getting infected from a contact</a>
-<a name="177"><span class="lineNum">     177 </span>            : */</a>
+<a name="176"><span class="lineNum">     176 </span>            :  * @brief probability of getting infected from a contact</a>
+<a name="177"><span class="lineNum">     177 </span>            :  */</a>
 <a name="178"><span class="lineNum">     178 </span>            : template &lt;typename FP = double&gt;</a>
 <a name="179"><span class="lineNum">     179 </span>            : struct TransmissionProbabilityOnContact {</a>
 <a name="180"><span class="lineNum">     180 </span>            :     using Type = CustomIndexArray&lt;UncertainValue&lt;FP&gt;, AgeGroup&gt;;</a>
@@ -251,8 +251,8 @@
 <a name="189"><span class="lineNum">     189 </span>            : };</a>
 <a name="190"><span class="lineNum">     190 </span>            : </a>
 <a name="191"><span class="lineNum">     191 </span>            : /**</a>
-<a name="192"><span class="lineNum">     192 </span>            : * @brief the relative InfectedNoSymptoms infectability</a>
-<a name="193"><span class="lineNum">     193 </span>            : */</a>
+<a name="192"><span class="lineNum">     192 </span>            :  * @brief the relative InfectedNoSymptoms infectability</a>
+<a name="193"><span class="lineNum">     193 </span>            :  */</a>
 <a name="194"><span class="lineNum">     194 </span>            : template &lt;typename FP = double&gt;</a>
 <a name="195"><span class="lineNum">     195 </span>            : struct RelativeTransmissionNoSymptoms {</a>
 <a name="196"><span class="lineNum">     196 </span>            :     using Type = CustomIndexArray&lt;UncertainValue&lt;FP&gt;, AgeGroup&gt;;</a>
@@ -267,8 +267,8 @@
 <a name="205"><span class="lineNum">     205 </span>            : };</a>
 <a name="206"><span class="lineNum">     206 </span>            : </a>
 <a name="207"><span class="lineNum">     207 </span>            : /**</a>
-<a name="208"><span class="lineNum">     208 </span>            : * @brief the percentage of asymptomatic cases in the SECIR model</a>
-<a name="209"><span class="lineNum">     209 </span>            : */</a>
+<a name="208"><span class="lineNum">     208 </span>            :  * @brief the percentage of asymptomatic cases in the SECIR model</a>
+<a name="209"><span class="lineNum">     209 </span>            :  */</a>
 <a name="210"><span class="lineNum">     210 </span>            : template &lt;typename FP = double&gt;</a>
 <a name="211"><span class="lineNum">     211 </span>            : struct RecoveredPerInfectedNoSymptoms {</a>
 <a name="212"><span class="lineNum">     212 </span>            :     using Type = CustomIndexArray&lt;UncertainValue&lt;FP&gt;, AgeGroup&gt;;</a>
@@ -283,8 +283,8 @@
 <a name="221"><span class="lineNum">     221 </span>            : };</a>
 <a name="222"><span class="lineNum">     222 </span>            : </a>
 <a name="223"><span class="lineNum">     223 </span>            : /**</a>
-<a name="224"><span class="lineNum">     224 </span>            : * @brief the risk of infection from symptomatic cases in the SECIR model</a>
-<a name="225"><span class="lineNum">     225 </span>            : */</a>
+<a name="224"><span class="lineNum">     224 </span>            :  * @brief the risk of infection from symptomatic cases in the SECIR model</a>
+<a name="225"><span class="lineNum">     225 </span>            :  */</a>
 <a name="226"><span class="lineNum">     226 </span>            : template &lt;typename FP = double&gt;</a>
 <a name="227"><span class="lineNum">     227 </span>            : struct RiskOfInfectionFromSymptomatic {</a>
 <a name="228"><span class="lineNum">     228 </span>            :     using Type = CustomIndexArray&lt;UncertainValue&lt;FP&gt;, AgeGroup&gt;;</a>
@@ -299,8 +299,8 @@
 <a name="237"><span class="lineNum">     237 </span>            : };</a>
 <a name="238"><span class="lineNum">     238 </span>            : </a>
 <a name="239"><span class="lineNum">     239 </span>            : /**</a>
-<a name="240"><span class="lineNum">     240 </span>            : * @brief risk of infection from symptomatic cases increases as test and trace capacity is exceeded.</a>
-<a name="241"><span class="lineNum">     241 </span>            : */</a>
+<a name="240"><span class="lineNum">     240 </span>            :  * @brief risk of infection from symptomatic cases increases as test and trace capacity is exceeded.</a>
+<a name="241"><span class="lineNum">     241 </span>            :  */</a>
 <a name="242"><span class="lineNum">     242 </span>            : template &lt;typename FP = double&gt;</a>
 <a name="243"><span class="lineNum">     243 </span>            : struct MaxRiskOfInfectionFromSymptomatic {</a>
 <a name="244"><span class="lineNum">     244 </span>            :     using Type = CustomIndexArray&lt;UncertainValue&lt;FP&gt;, AgeGroup&gt;;</a>
@@ -315,8 +315,8 @@
 <a name="253"><span class="lineNum">     253 </span>            : };</a>
 <a name="254"><span class="lineNum">     254 </span>            : </a>
 <a name="255"><span class="lineNum">     255 </span>            : /**</a>
-<a name="256"><span class="lineNum">     256 </span>            : * @brief the percentage of hospitalized patients per infected patients in the SECIR model</a>
-<a name="257"><span class="lineNum">     257 </span>            : */</a>
+<a name="256"><span class="lineNum">     256 </span>            :  * @brief the percentage of hospitalized patients per infected patients in the SECIR model</a>
+<a name="257"><span class="lineNum">     257 </span>            :  */</a>
 <a name="258"><span class="lineNum">     258 </span>            : template &lt;typename FP = double&gt;</a>
 <a name="259"><span class="lineNum">     259 </span>            : struct SeverePerInfectedSymptoms {</a>
 <a name="260"><span class="lineNum">     260 </span>            :     using Type = CustomIndexArray&lt;UncertainValue&lt;FP&gt;, AgeGroup&gt;;</a>
@@ -331,8 +331,8 @@
 <a name="269"><span class="lineNum">     269 </span>            : };</a>
 <a name="270"><span class="lineNum">     270 </span>            : </a>
 <a name="271"><span class="lineNum">     271 </span>            : /**</a>
-<a name="272"><span class="lineNum">     272 </span>            : * @brief the percentage of ICU patients per hospitalized patients in the SECIR model</a>
-<a name="273"><span class="lineNum">     273 </span>            : */</a>
+<a name="272"><span class="lineNum">     272 </span>            :  * @brief the percentage of ICU patients per hospitalized patients in the SECIR model</a>
+<a name="273"><span class="lineNum">     273 </span>            :  */</a>
 <a name="274"><span class="lineNum">     274 </span>            : template &lt;typename FP = double&gt;</a>
 <a name="275"><span class="lineNum">     275 </span>            : struct CriticalPerSevere {</a>
 <a name="276"><span class="lineNum">     276 </span>            :     using Type = CustomIndexArray&lt;UncertainValue&lt;FP&gt;, AgeGroup&gt;;</a>
@@ -347,8 +347,8 @@
 <a name="285"><span class="lineNum">     285 </span>            : };</a>
 <a name="286"><span class="lineNum">     286 </span>            : </a>
 <a name="287"><span class="lineNum">     287 </span>            : /**</a>
-<a name="288"><span class="lineNum">     288 </span>            : * @brief the percentage of dead patients per ICU patients in the SECIR model</a>
-<a name="289"><span class="lineNum">     289 </span>            : */</a>
+<a name="288"><span class="lineNum">     288 </span>            :  * @brief the percentage of dead patients per ICU patients in the SECIR model</a>
+<a name="289"><span class="lineNum">     289 </span>            :  */</a>
 <a name="290"><span class="lineNum">     290 </span>            : template &lt;typename FP = double&gt;</a>
 <a name="291"><span class="lineNum">     291 </span>            : struct DeathsPerCritical {</a>
 <a name="292"><span class="lineNum">     292 </span>            :     using Type = CustomIndexArray&lt;UncertainValue&lt;FP&gt;, AgeGroup&gt;;</a>
@@ -432,9 +432,9 @@
 <a name="370"><span class="lineNum">     370 </span>            :     {</a>
 <a name="371"><span class="lineNum">     371 </span><span class="lineCov">         52 :     }</span></a>
 <a name="372"><span class="lineNum">     372 </span>            : </a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">      45700 :     AgeGroup get_num_groups() const</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">      43580 :     AgeGroup get_num_groups() const</span></a>
 <a name="374"><span class="lineNum">     374 </span>            :     {</a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">      45700 :         return m_num_groups;</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">      43580 :         return m_num_groups;</span></a>
 <a name="376"><span class="lineNum">     376 </span>            :     }</a>
 <a name="377"><span class="lineNum">     377 </span>            : </a>
 <a name="378"><span class="lineNum">     378 </span>            :     /**</a>

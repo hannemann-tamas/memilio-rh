@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-05-15 09:09:00</td>
+            <td class="headerValue">2024-05-17 08:52:30</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -241,7 +241,7 @@
 <a name="179"><span class="lineNum">     179 </span>            : private:</a>
 <a name="180"><span class="lineNum">     180 </span>            :     Parameters(ParametersBase&lt;FP&gt;&amp;&amp; base)</a>
 <a name="181"><span class="lineNum">     181 </span>            :         : ParametersBase&lt;FP&gt;(std::move(base))</a>
-<a name="182"><span class="lineNum">     182 </span>            :         , m_num_groups(get&lt;ContactPatterns&lt;FP&gt;&gt;().get_cont_freq_mat().get_num_groups())</a>
+<a name="182"><span class="lineNum">     182 </span>            :         , m_num_groups(this-&gt;template get&lt;ContactPatterns&lt;FP&gt;&gt;().get_cont_freq_mat().get_num_groups())</a>
 <a name="183"><span class="lineNum">     183 </span>            :     {</a>
 <a name="184"><span class="lineNum">     184 </span>            :     }</a>
 <a name="185"><span class="lineNum">     185 </span>            : </a>

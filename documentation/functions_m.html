@@ -170,6 +170,9 @@ $(function() {
 : <a class="el" href="classmio_1_1ParameterDistributionNormal.html#a384034f4900615487c5a924131bf39d8">mio::ParameterDistributionNormal</a>
 , <a class="el" href="classmio_1_1ParameterDistributionUniform.html#a40c51f715b07cb5dc559491120f4bb94">mio::ParameterDistributionUniform</a>
 </li>
+<li>m_distribution_parameter
+: <a class="el" href="structmio_1_1StateAgeFunction.html#a96e92e3d84be7e07931c3607c2be3011">mio::StateAgeFunction</a>
+</li>
 <li>m_dt
 : <a class="el" href="classmio_1_1abm_1_1Simulation.html#a15af748eafed0b32a50f1bf9c31b18ec">mio::abm::Simulation</a>
 , <a class="el" href="classmio_1_1GraphSimulationBase.html#a483b9447d2554ad43e5187767ffef24f">mio::GraphSimulationBase&lt; Graph, edge_f &gt;</a>
@@ -329,6 +332,7 @@ $(function() {
 </li>
 <li>m_location
 : <a class="el" href="classmio_1_1abm_1_1Person.html#a154a3dd98fe6ffb62345d093c14f2356">mio::abm::Person</a>
+, <a class="el" href="structmio_1_1StateAgeFunction.html#a9e517fc83faafbe5f8858ef429834204">mio::StateAgeFunction</a>
 </li>
 <li>m_location_to_schemes_map
 : <a class="el" href="classmio_1_1abm_1_1TestingStrategy.html#a88fa438b436ed42cd8e483217733cc6d">mio::abm::TestingStrategy</a>
@@ -435,9 +439,6 @@ $(function() {
 <li>m_numel
 : <a class="el" href="classmio_1_1CustomIndexArray.html#a80ede7410ef3331483695d3f2c5bb615">mio::CustomIndexArray&lt; Typ, Tags &gt;</a>
 </li>
-<li>m_parameter
-: <a class="el" href="structmio_1_1StateAgeFunction.html#a469c9cc2424038fd50fb0573f67634d5">mio::StateAgeFunction</a>
-</li>
 <li>m_parameters
 : <a class="el" href="classmio_1_1abm_1_1Location.html#ad38964b0fd7605c91e2b28568b4408a2">mio::abm::Location</a>
 , <a class="el" href="classmio_1_1MigrationEdge.html#abfff619d3c9c22afbae81d73b6dc9e94">mio::MigrationEdge&lt; FP &gt;</a>
@@ -531,6 +532,9 @@ $(function() {
 : <a class="el" href="classmio_1_1ColumnVectorShape.html#a36a595a0a40133a3f7fa5ec613117e8e">mio::ColumnVectorShape</a>
 , <a class="el" href="classmio_1_1RectMatrixShape.html#ae520a863b74d24d32db14a948e771979">mio::RectMatrixShape</a>
 , <a class="el" href="classmio_1_1SquareMatrixShape.html#af8ede3cd9895db39dfa5359726713255">mio::SquareMatrixShape</a>
+</li>
+<li>m_scale
+: <a class="el" href="structmio_1_1StateAgeFunction.html#aaa69a54bdb187126a5889f45d2072476">mio::StateAgeFunction</a>
 </li>
 <li>m_school_holiday_damping
 : <a class="el" href="classmio_1_1UncertainContactMatrix.html#a835a041d8edee44e03d82d9f127a7055">mio::UncertainContactMatrix&lt; FP &gt;</a>
@@ -717,12 +721,10 @@ $(function() {
 , <a class="el" href="structmio_1_1details_1_1TimeSeriesIterTraits.html#a69228a93aa25f11dd80f4027121dc043">mio::details::TimeSeriesIterTraits&lt; FP, IsConst &gt;</a>
 , <a class="el" href="classmio_1_1RectMatrixShape.html#a01bb164e894c059bd4217d09d70717b9">mio::RectMatrixShape</a>
 , <a class="el" href="classmio_1_1SquareMatrixShape.html#aaf11777e984949cb224ee1cd0ddbfda9">mio::SquareMatrixShape</a>
+, <a class="el" href="classmio_1_1TimeSeries.html#a8ced5fe4230be54a753c9ce8671ae1f6">mio::TimeSeries&lt; FP &gt;</a>
 </li>
 <li>matrix()
-: <a class="el" href="classmio_1_1TimeSeries.html#a15864c9cc3c4abc01153f9f004d5aed1">mio::TimeSeries&lt; FP &gt;</a>
-</li>
-<li>Matrix
-: <a class="el" href="classmio_1_1TimeSeries.html#a8ced5fe4230be54a753c9ce8671ae1f6">mio::TimeSeries&lt; FP &gt;</a>
+: <a class="el" href="classmio_1_1TimeSeries.html#ac6bea94a213508d4893637dd1270f7b8">mio::TimeSeries&lt; FP &gt;</a>
 </li>
 <li>MatrixPtr
 : <a class="el" href="classmio_1_1details_1_1TimeSeriesIteratorBase.html#a77675532232ff83d08398a499b038d11">mio::details::TimeSeriesIteratorBase&lt; Derived, FP, IsConstIter, ValueType, ReferenceType &gt;</a>
@@ -755,7 +757,7 @@ $(function() {
 : <a class="el" href="classmio_1_1MigrationEdgeStochastic.html#afb3c4cb311db01d8c11a6f0962b32c08">mio::MigrationEdgeStochastic</a>
 </li>
 <li>MigrationParameters()
-: <a class="el" href="classmio_1_1MigrationParameters.html#a0d3cd0fe3da3bac4a6c2869b12747d68">mio::MigrationParameters&lt; FP &gt;</a>
+: <a class="el" href="classmio_1_1MigrationParameters.html#a91477c2c01032de523ae0346b9c52d2b">mio::MigrationParameters&lt; FP &gt;</a>
 </li>
 <li>MigrationParametersStochastic()
 : <a class="el" href="classmio_1_1MigrationParametersStochastic.html#a2992e7a6126452428b7c3722065c5bb3">mio::MigrationParametersStochastic</a>
@@ -766,10 +768,10 @@ $(function() {
 , <a class="el" href="classmio_1_1iseir_1_1Model.html#af2becba5aef6ccdbc6589b2a6af879a9">mio::iseir::Model&lt; FP &gt;</a>
 , <a class="el" href="classmio_1_1lsecir_1_1Model.html#aa9c602f740946cbe90c7a9f8e15b670a">mio::lsecir::Model&lt; NumExposed, NumInfectedNoSymptoms, NumInfectedSymptoms, NumInfectedSevere, NumInfectedCritical &gt;</a>
 , <a class="el" href="classmio_1_1oseair_1_1Model.html#a8faf9bb21d6528c8744ec9ce93bcb126">mio::oseair::Model&lt; FP &gt;</a>
-, <a class="el" href="classmio_1_1osecir_1_1Model.html#ae384b8e2de609f630a0709cde7224481">mio::osecir::Model&lt; FP &gt;</a>
-, <a class="el" href="classmio_1_1osecirvvs_1_1Model.html#aa2d3e09936f67cc222a2f419aca8ffea">mio::osecirvvs::Model&lt; FP &gt;</a>
-, <a class="el" href="classmio_1_1oseir_1_1Model.html#a555d56da0bbba5af7de342e5fb298fff">mio::oseir::Model&lt; FP &gt;</a>
-, <a class="el" href="classmio_1_1osir_1_1Model.html#aa959ce2dd54ff8d774e8db32698fd94e">mio::osir::Model&lt; FP &gt;</a>
+, <a class="el" href="classmio_1_1osecir_1_1Model.html#a1445034246cfd1f116a402d2ee43d500">mio::osecir::Model&lt; FP &gt;</a>
+, <a class="el" href="classmio_1_1osecirvvs_1_1Model.html#a362c6f5b886248fee56d6b21b177f087">mio::osecirvvs::Model&lt; FP &gt;</a>
+, <a class="el" href="classmio_1_1oseir_1_1Model.html#aafd2437b5be79a463e86d245494b49a0">mio::oseir::Model&lt; FP &gt;</a>
+, <a class="el" href="classmio_1_1osir_1_1Model.html#a5144c5364cd0c8ffc4a4f824c112fa00">mio::osir::Model&lt; FP &gt;</a>
 , <a class="el" href="classmio_1_1Simulation.html#a5afc88cdb7f1f72b7c62c6a2bf497556">mio::Simulation&lt; FP, M &gt;</a>
 , <a class="el" href="classmio_1_1ssir_1_1Model.html#a82a8d849a7f4282a0d49fd2052053666">mio::ssir::Model</a>
 , <a class="el" href="classmio_1_1ssirs_1_1Model.html#aea5604559913e0aaabcda44f8e9cc56f">mio::ssirs::Model</a>

@@ -86,9 +86,12 @@ Inheritance diagram for mio::StateAgeFunction:</div>
  <div class="center">
   <img src="structmio_1_1StateAgeFunction.png" usemap="#mio::StateAgeFunction_map" alt=""/>
   <map id="mio::StateAgeFunction_map" name="mio::StateAgeFunction_map">
-<area href="structmio_1_1ConstantFunction.html" title="Class that defines a constant function." alt="mio::ConstantFunction" shape="rect" coords="0,56,139,80"/>
-<area href="structmio_1_1ExponentialDecay.html" title="Class that defines an exponential decay function depending on the state age." alt="mio::ExponentialDecay" shape="rect" coords="149,56,288,80"/>
-<area href="structmio_1_1SmootherCosine.html" title="Class that defines an smoother_cosine function depending on the state age." alt="mio::SmootherCosine" shape="rect" coords="298,56,437,80"/>
+<area href="structmio_1_1ConstantFunction.html" title="Class that defines a constant function." alt="mio::ConstantFunction" shape="rect" coords="0,56,198,80"/>
+<area href="structmio_1_1ErlangDensity.html" title="Class that defines the probability density function corresponding to the Erlang distribution with the..." alt="mio::ErlangDensity" shape="rect" coords="208,56,406,80"/>
+<area href="structmio_1_1ExponentialSurvivalFunction.html" title="Class that defines the survival function corresponding to the exponential distribution depending on t..." alt="mio::ExponentialSurvivalFunction" shape="rect" coords="416,56,614,80"/>
+<area href="structmio_1_1GammaSurvivalFunction.html" title="Class that defines an GammaSurvivalFunction function depending on the state age." alt="mio::GammaSurvivalFunction" shape="rect" coords="624,56,822,80"/>
+<area href="structmio_1_1LognormSurvivalFunction.html" title="Class that defines an LognormSurvivalFunction function depending on the state age." alt="mio::LognormSurvivalFunction" shape="rect" coords="832,56,1030,80"/>
+<area href="structmio_1_1SmootherCosine.html" title="Class that defines an smoother_cosine function depending on the state age." alt="mio::SmootherCosine" shape="rect" coords="1040,56,1238,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -100,12 +103,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1a2443f3db02f7983221b801482e9a1e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a1a2443f3db02f7983221b801482e9a1e">eval</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> state_age)=0</td></tr>
 <tr class="memdesc:a1a2443f3db02f7983221b801482e9a1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Here a pure virtual function is defined that depends on the state_age.  <a href="structmio_1_1StateAgeFunction.html#a1a2443f3db02f7983221b801482e9a1e">More...</a><br /></td></tr>
 <tr class="separator:a1a2443f3db02f7983221b801482e9a1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a068028753d6bd6ae50a1975652ca62af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a068028753d6bd6ae50a1975652ca62af">get_distribution_parameter</a> () const</td></tr>
+<tr class="memdesc:a068028753d6bd6ae50a1975652ca62af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the m_distribution_parameter object.  <a href="structmio_1_1StateAgeFunction.html#a068028753d6bd6ae50a1975652ca62af">More...</a><br /></td></tr>
+<tr class="separator:a068028753d6bd6ae50a1975652ca62af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9add3677f112a857aad867e75df1eb24"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a9add3677f112a857aad867e75df1eb24">get_location</a> () const</td></tr>
+<tr class="memdesc:a9add3677f112a857aad867e75df1eb24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the m_location object.  <a href="structmio_1_1StateAgeFunction.html#a9add3677f112a857aad867e75df1eb24">More...</a><br /></td></tr>
+<tr class="separator:a9add3677f112a857aad867e75df1eb24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af82f4d6a76e5ecdc38f385176f7d7140"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#af82f4d6a76e5ecdc38f385176f7d7140">get_mean</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> dt=1., <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> tol=1e-10)</td></tr>
 <tr class="memdesc:af82f4d6a76e5ecdc38f385176f7d7140"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the mean value of the function using the time step size dt and some tolerance tol.  <a href="structmio_1_1StateAgeFunction.html#af82f4d6a76e5ecdc38f385176f7d7140">More...</a><br /></td></tr>
 <tr class="separator:af82f4d6a76e5ecdc38f385176f7d7140"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a256b32f998a32c8fa5641c517a3be1c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a256b32f998a32c8fa5641c517a3be1c9">get_parameter</a> () const</td></tr>
-<tr class="memdesc:a256b32f998a32c8fa5641c517a3be1c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the m_parameter object.  <a href="structmio_1_1StateAgeFunction.html#a256b32f998a32c8fa5641c517a3be1c9">More...</a><br /></td></tr>
-<tr class="separator:a256b32f998a32c8fa5641c517a3be1c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed64ca6c598a2c09c223d974a670c0c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#aed64ca6c598a2c09c223d974a670c0c2">get_scale</a> () const</td></tr>
+<tr class="memdesc:aed64ca6c598a2c09c223d974a670c0c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the m_scale object.  <a href="structmio_1_1StateAgeFunction.html#aed64ca6c598a2c09c223d974a670c0c2">More...</a><br /></td></tr>
+<tr class="separator:aed64ca6c598a2c09c223d974a670c0c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92c7acd88144551cd3fbf30a0b5cd5a9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a92c7acd88144551cd3fbf30a0b5cd5a9">get_state_age_function_type</a> () const</td></tr>
 <tr class="memdesc:a92c7acd88144551cd3fbf30a0b5cd5a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get type of <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a>, i.e.which derived class is used.  <a href="structmio_1_1StateAgeFunction.html#a92c7acd88144551cd3fbf30a0b5cd5a9">More...</a><br /></td></tr>
 <tr class="separator:a92c7acd88144551cd3fbf30a0b5cd5a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,15 +130,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aaceed75fb0f351e40e1893b5b4a0c320"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#aaceed75fb0f351e40e1893b5b4a0c320">operator==</a> (const <a class="el" href="structmio_1_1StateAgeFunction.html">StateAgeFunction</a> &amp;other) const</td></tr>
 <tr class="memdesc:aaceed75fb0f351e40e1893b5b4a0c320"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comparison operator.  <a href="structmio_1_1StateAgeFunction.html#aaceed75fb0f351e40e1893b5b4a0c320">More...</a><br /></td></tr>
 <tr class="separator:aaceed75fb0f351e40e1893b5b4a0c320"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16785c5752b8b585fd951d0cecdd577b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a16785c5752b8b585fd951d0cecdd577b">set_parameter</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> new_parameter)</td></tr>
-<tr class="memdesc:a16785c5752b8b585fd951d0cecdd577b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the m_parameter object.  <a href="structmio_1_1StateAgeFunction.html#a16785c5752b8b585fd951d0cecdd577b">More...</a><br /></td></tr>
-<tr class="separator:a16785c5752b8b585fd951d0cecdd577b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c29c96af18d8605776fbae9e0bef693"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a9c29c96af18d8605776fbae9e0bef693">set_distribution_parameter</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> new_distribution_parameter)</td></tr>
+<tr class="memdesc:a9c29c96af18d8605776fbae9e0bef693"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the m_distribution_parameter object.  <a href="structmio_1_1StateAgeFunction.html#a9c29c96af18d8605776fbae9e0bef693">More...</a><br /></td></tr>
+<tr class="separator:a9c29c96af18d8605776fbae9e0bef693"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dda801d47f25cf5d3dc37293977cf28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a7dda801d47f25cf5d3dc37293977cf28">set_location</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> new_location)</td></tr>
+<tr class="memdesc:a7dda801d47f25cf5d3dc37293977cf28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the m_location object.  <a href="structmio_1_1StateAgeFunction.html#a7dda801d47f25cf5d3dc37293977cf28">More...</a><br /></td></tr>
+<tr class="separator:a7dda801d47f25cf5d3dc37293977cf28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e046ff8e04b40ec84eccef67d649f28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a8e046ff8e04b40ec84eccef67d649f28">set_scale</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> new_scale)</td></tr>
+<tr class="memdesc:a8e046ff8e04b40ec84eccef67d649f28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the m_scale object.  <a href="structmio_1_1StateAgeFunction.html#a8e046ff8e04b40ec84eccef67d649f28">More...</a><br /></td></tr>
+<tr class="separator:a8e046ff8e04b40ec84eccef67d649f28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21e4c67c141247d550d7ff981c1d4700"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a21e4c67c141247d550d7ff981c1d4700">StateAgeFunction</a> (const <a class="el" href="structmio_1_1StateAgeFunction.html">StateAgeFunction</a> &amp;other)=default</td></tr>
 <tr class="memdesc:a21e4c67c141247d550d7ff981c1d4700"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="structmio_1_1StateAgeFunction.html#a21e4c67c141247d550d7ff981c1d4700">More...</a><br /></td></tr>
 <tr class="separator:a21e4c67c141247d550d7ff981c1d4700"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18945462efbf27a476c694a1ccef06fb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a18945462efbf27a476c694a1ccef06fb">StateAgeFunction</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> init_parameter)</td></tr>
-<tr class="memdesc:a18945462efbf27a476c694a1ccef06fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a> object.  <a href="structmio_1_1StateAgeFunction.html#a18945462efbf27a476c694a1ccef06fb">More...</a><br /></td></tr>
-<tr class="separator:a18945462efbf27a476c694a1ccef06fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a344c6b0c45a456911ac919d31f02307c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a344c6b0c45a456911ac919d31f02307c">StateAgeFunction</a> (<a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> init_distribution_parameter, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> init_location=0, <a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> init_scale=1)</td></tr>
+<tr class="memdesc:a344c6b0c45a456911ac919d31f02307c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a> object.  <a href="structmio_1_1StateAgeFunction.html#a344c6b0c45a456911ac919d31f02307c">More...</a><br /></td></tr>
+<tr class="separator:a344c6b0c45a456911ac919d31f02307c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7979e9f84a61a442b23729f39f10a651"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a7979e9f84a61a442b23729f39f10a651">StateAgeFunction</a> (<a class="el" href="structmio_1_1StateAgeFunction.html">StateAgeFunction</a> &amp;&amp;other)=default</td></tr>
 <tr class="memdesc:a7979e9f84a61a442b23729f39f10a651"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor.  <a href="structmio_1_1StateAgeFunction.html#a7979e9f84a61a442b23729f39f10a651">More...</a><br /></td></tr>
 <tr class="separator:a7979e9f84a61a442b23729f39f10a651"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -145,35 +160,41 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
+<tr class="memitem:a96e92e3d84be7e07931c3607c2be3011"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a96e92e3d84be7e07931c3607c2be3011">m_distribution_parameter</a></td></tr>
+<tr class="memdesc:a96e92e3d84be7e07931c3607c2be3011"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameter for function in derived class.  <a href="structmio_1_1StateAgeFunction.html#a96e92e3d84be7e07931c3607c2be3011">More...</a><br /></td></tr>
+<tr class="separator:a96e92e3d84be7e07931c3607c2be3011"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e517fc83faafbe5f8858ef429834204"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a9e517fc83faafbe5f8858ef429834204">m_location</a></td></tr>
+<tr class="memdesc:a9e517fc83faafbe5f8858ef429834204"><td class="mdescLeft">&#160;</td><td class="mdescRight">Location parameter for function in derived class.  <a href="structmio_1_1StateAgeFunction.html#a9e517fc83faafbe5f8858ef429834204">More...</a><br /></td></tr>
+<tr class="separator:a9e517fc83faafbe5f8858ef429834204"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56698106d1b0c274550ef5c0fa18e6f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a56698106d1b0c274550ef5c0fa18e6f2">m_mean</a></td></tr>
 <tr class="memdesc:a56698106d1b0c274550ef5c0fa18e6f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mean value of the function.  <a href="structmio_1_1StateAgeFunction.html#a56698106d1b0c274550ef5c0fa18e6f2">More...</a><br /></td></tr>
 <tr class="separator:a56698106d1b0c274550ef5c0fa18e6f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e90ea547398820417c76826c4351e6d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a9e90ea547398820417c76826c4351e6d">m_mean_tol</a></td></tr>
-<tr class="memdesc:a9e90ea547398820417c76826c4351e6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tolerance for computation of the mean.  <a href="structmio_1_1StateAgeFunction.html#a9e90ea547398820417c76826c4351e6d">More...</a><br /></td></tr>
+<tr class="memitem:a9e90ea547398820417c76826c4351e6d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a9e90ea547398820417c76826c4351e6d">m_mean_tol</a> {-1}</td></tr>
+<tr class="memdesc:a9e90ea547398820417c76826c4351e6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tolerance for computation of the mean (initialize as not set).  <a href="structmio_1_1StateAgeFunction.html#a9e90ea547398820417c76826c4351e6d">More...</a><br /></td></tr>
 <tr class="separator:a9e90ea547398820417c76826c4351e6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a469c9cc2424038fd50fb0573f67634d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a469c9cc2424038fd50fb0573f67634d5">m_parameter</a></td></tr>
-<tr class="memdesc:a469c9cc2424038fd50fb0573f67634d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameter for function in derived class.  <a href="structmio_1_1StateAgeFunction.html#a469c9cc2424038fd50fb0573f67634d5">More...</a><br /></td></tr>
-<tr class="separator:a469c9cc2424038fd50fb0573f67634d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa69a54bdb187126a5889f45d2072476"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#aaa69a54bdb187126a5889f45d2072476">m_scale</a></td></tr>
+<tr class="memdesc:aaa69a54bdb187126a5889f45d2072476"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scale parameter for function in derived class.  <a href="structmio_1_1StateAgeFunction.html#aaa69a54bdb187126a5889f45d2072476">More...</a><br /></td></tr>
+<tr class="separator:aaa69a54bdb187126a5889f45d2072476"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3cf36b541cce1a757f959c4a51d57599"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a3cf36b541cce1a757f959c4a51d57599">m_support_max</a></td></tr>
 <tr class="memdesc:a3cf36b541cce1a757f959c4a51d57599"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum of the support of the function.  <a href="structmio_1_1StateAgeFunction.html#a3cf36b541cce1a757f959c4a51d57599">More...</a><br /></td></tr>
 <tr class="separator:a3cf36b541cce1a757f959c4a51d57599"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4982979d884fab781c0df7508fe801cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a4982979d884fab781c0df7508fe801cc">m_support_tol</a></td></tr>
-<tr class="memdesc:a4982979d884fab781c0df7508fe801cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tolerance for computation of the support.  <a href="structmio_1_1StateAgeFunction.html#a4982979d884fab781c0df7508fe801cc">More...</a><br /></td></tr>
+<tr class="memitem:a4982979d884fab781c0df7508fe801cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmio_1_1StateAgeFunction.html#a4982979d884fab781c0df7508fe801cc">m_support_tol</a> {-1}</td></tr>
+<tr class="memdesc:a4982979d884fab781c0df7508fe801cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tolerance for computation of the support (initialize as not set).  <a href="structmio_1_1StateAgeFunction.html#a4982979d884fab781c0df7508fe801cc">More...</a><br /></td></tr>
 <tr class="separator:a4982979d884fab781c0df7508fe801cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A generic function depending on the state age, i.e. </p>
 <p>the time already spent in some #InfectionState. This is an abstract class and cannot be instantiated on its own.</p>
 <p>By construction, <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a>s S(x) are only defined for non-negative values x&gt;=0 with S(0)&gt;=0. In order to approximate the support (size) of a <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a> it is thus sufficient to evaluate the function for positive x.</p>
-<p>Derived StateAgeFunctions can be used for two types of functionality. a) Monotonously decreasing functions describing the share of individuals that have not yet transitioned to the next #InfectionState. These functions are denoted as #TransitionDistributions since 1 - TransitionDistribution represents a cumulative distribution function. b) Arbitrary non-negative functions used for parameters such as TransmissionProbabilityOnContact.</p>
-<p>Derived classes must implement the eval method which implements the actual function that is evaluated at some state age. This function can depend on one parameter.</p>
+<p>Derived StateAgeFunctions can be used for two types of functionality. a) Monotonously decreasing functions describing the share of individuals that have not yet transitioned to the next #InfectionState. These functions are denoted as #TransitionDistributions since 1 - TransitionDistribution represents a cumulative distribution function. Such functions are also called survival functions. b) Arbitrary non-negative functions used for parameters such as TransmissionProbabilityOnContact.</p>
+<p>Derived classes must implement the eval method which implements the actual function that is evaluated at some state age. This function can depend on the parameter 'scale' to scale the function and on the parameter 'location' to shift the function. Location should be a positive number to fulfill the characteristics of a TransitionDistribution and scale has to be positive. For a Function F we normally use these parameters at state age x as F(x,location,scale)=F((x-location)/scale). These two parameters are optional and a derived class does not have to use them. Additionally there is one parameter which specifies the distribution.</p>
 <p>The derived classes must also implement the clone_impl method which allows to deepcopy the derived class.</p>
 <p>The get_support_max method is virtual and implements a basic version to determine the maximum of the support. For some derived classes there is a more efficient way (see e.g., <a class="el" href="structmio_1_1SmootherCosine.html" title="Class that defines an smoother_cosine function depending on the state age.">SmootherCosine</a>) to do this which is why it can be overridden. The base class implementation uses the fact that the <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a> is monotonously decreasing. This is no limitation as the support is only needed for StateAgeFunctions of Type a) as given above. For classes of type b) a dummy implementation logging an error and returning -2 for <a class="el" href="structmio_1_1StateAgeFunction.html#acbd1ff5de577fc8bb70b191d4676761e" title="Computes the maximum of the support of the function using the time step size dt and some tolerance to...">get_support_max()</a> should be implemented.</p>
-<p>The get_mean method is virtual and implements a basic version to determine the mean value of the <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a>. The base class implementation uses the fact that the <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a> is a survival function (i.e. 1-CDF for any cumulative distribution function CDF). Therefore, the base class implementation should only be used for <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a>s of type a). For some derived classes there is a more efficient way (see e.g., <a class="el" href="structmio_1_1ExponentialDecay.html" title="Class that defines an exponential decay function depending on the state age.">ExponentialDecay</a>) to do this which is why it can be overridden.</p>
-<p>See <a class="el" href="structmio_1_1ExponentialDecay.html" title="Class that defines an exponential decay function depending on the state age.">ExponentialDecay</a>, <a class="el" href="structmio_1_1SmootherCosine.html" title="Class that defines an smoother_cosine function depending on the state age.">SmootherCosine</a> and <a class="el" href="structmio_1_1ConstantFunction.html" title="Class that defines a constant function.">ConstantFunction</a> for examples of derived classes. </p>
+<p>The get_mean method is virtual and implements a basic version to determine the mean value of the <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a>. The base class implementation uses the fact that the <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a> is a survival function (i.e. 1-CDF for any cumulative distribution function CDF). Therefore, the base class implementation should only be used for <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a>s of type a). For some derived classes there is a more efficient way (see e.g., <a class="el" href="structmio_1_1ExponentialSurvivalFunction.html" title="Class that defines the survival function corresponding to the exponential distribution depending on t...">ExponentialSurvivalFunction</a>) to do this which is why it can be overridden.</p>
+<p>See <a class="el" href="structmio_1_1ExponentialSurvivalFunction.html" title="Class that defines the survival function corresponding to the exponential distribution depending on t...">ExponentialSurvivalFunction</a>, <a class="el" href="structmio_1_1SmootherCosine.html" title="Class that defines an smoother_cosine function depending on the state age.">SmootherCosine</a> and <a class="el" href="structmio_1_1ConstantFunction.html" title="Class that defines a constant function.">ConstantFunction</a> for examples of derived classes. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a18945462efbf27a476c694a1ccef06fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18945462efbf27a476c694a1ccef06fb">&#9670;&nbsp;</a></span>StateAgeFunction() <span class="overload">[1/3]</span></h2>
+<a id="a344c6b0c45a456911ac919d31f02307c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a344c6b0c45a456911ac919d31f02307c">&#9670;&nbsp;</a></span>StateAgeFunction() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -182,8 +203,24 @@ Protected Attributes</h2></td></tr>
           <td class="memname">mio::StateAgeFunction::StateAgeFunction </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td>
-          <td class="paramname"><em>init_parameter</em></td><td>)</td>
+          <td class="paramname"><em>init_distribution_parameter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td>
+          <td class="paramname"><em>init_location</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td>
+          <td class="paramname"><em>init_scale</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -191,7 +228,9 @@ Protected Attributes</h2></td></tr>
 <p>Constructs a new <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a> object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">init_parameter</td><td>Specifies the initial function parameter of the function. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">init_distribution_parameter</td><td>Specifies the initial distribution parameter of the function. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">init_location</td><td>A parameter to shift the function. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">init_scale</td><td>A parameter to scale the function. Parameter has to be positive. </td></tr>
   </table>
   </dd>
 </dl>
@@ -328,7 +367,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Pure virtual method that implements cloning. </p>
 
-<p>Implemented in <a class="el" href="structmio_1_1ConstantFunction.html#a9f264362511e367a72106d27136ffa0b">mio::ConstantFunction</a>, <a class="el" href="structmio_1_1SmootherCosine.html#a3bab7fde95ece935197c777166b740ce">mio::SmootherCosine</a>, and <a class="el" href="structmio_1_1ExponentialDecay.html#aa04033a467772ab130ba9b3923cb6cec">mio::ExponentialDecay</a>.</p>
+<p>Implemented in <a class="el" href="structmio_1_1ErlangDensity.html#a4dec1852a1a919b9f9d2506316e1024d">mio::ErlangDensity</a>, <a class="el" href="structmio_1_1ConstantFunction.html#a9f264362511e367a72106d27136ffa0b">mio::ConstantFunction</a>, <a class="el" href="structmio_1_1LognormSurvivalFunction.html#aea71585aa03ae7237731eb2a0cc348c4">mio::LognormSurvivalFunction</a>, <a class="el" href="structmio_1_1GammaSurvivalFunction.html#ad06cde19653e203e9d2bb3b3a56fd53d">mio::GammaSurvivalFunction</a>, <a class="el" href="structmio_1_1SmootherCosine.html#a3bab7fde95ece935197c777166b740ce">mio::SmootherCosine</a>, and <a class="el" href="structmio_1_1ExponentialSurvivalFunction.html#a5f1537faf6d69ae893bb9bfcbce015e9">mio::ExponentialSurvivalFunction</a>.</p>
 
 </div>
 </div>
@@ -365,7 +404,49 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="structmio_1_1ConstantFunction.html#a6bc5f853b1546e405a7d9b2d56f586a5">mio::ConstantFunction</a>, <a class="el" href="structmio_1_1SmootherCosine.html#a8d4d62acdad83bf98639e8ae926a758d">mio::SmootherCosine</a>, and <a class="el" href="structmio_1_1ExponentialDecay.html#ad6df3f0c7efed1bfd59cb81ca198e5d6">mio::ExponentialDecay</a>.</p>
+<p>Implemented in <a class="el" href="structmio_1_1ErlangDensity.html#aa844a6b40c0d105dacd5fb36bb6a620d">mio::ErlangDensity</a>, <a class="el" href="structmio_1_1ConstantFunction.html#a6bc5f853b1546e405a7d9b2d56f586a5">mio::ConstantFunction</a>, <a class="el" href="structmio_1_1LognormSurvivalFunction.html#a7c140d104e121ea4c433ba9b5f716065">mio::LognormSurvivalFunction</a>, <a class="el" href="structmio_1_1GammaSurvivalFunction.html#a42abb7d7b38fcea8edb152e499ecfb21">mio::GammaSurvivalFunction</a>, <a class="el" href="structmio_1_1SmootherCosine.html#a8d4d62acdad83bf98639e8ae926a758d">mio::SmootherCosine</a>, and <a class="el" href="structmio_1_1ExponentialSurvivalFunction.html#a462001dd67c034961704e412292171dd">mio::ExponentialSurvivalFunction</a>.</p>
+
+</div>
+</div>
+<a id="a068028753d6bd6ae50a1975652ca62af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a068028753d6bd6ae50a1975652ca62af">&#9670;&nbsp;</a></span>get_distribution_parameter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> mio::StateAgeFunction::get_distribution_parameter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the m_distribution_parameter object. </p>
+<p>Can be used to access the m_distribution_parameter object, which specifies the used function.</p>
+<dl class="section return"><dt>Returns</dt><dd>ScalarType </dd></dl>
+
+</div>
+</div>
+<a id="a9add3677f112a857aad867e75df1eb24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9add3677f112a857aad867e75df1eb24">&#9670;&nbsp;</a></span>get_location()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> mio::StateAgeFunction::get_location </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the m_location object. </p>
+<p>Can be used to access the m_location object, which specifies the shift of the function.</p>
+<dl class="section return"><dt>Returns</dt><dd>ScalarType </dd></dl>
 
 </div>
 </div>
@@ -405,7 +486,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Computes the mean value of the function using the time step size dt and some tolerance tol. </p>
 <p>This is a basic version to determine the mean value of a survival function through numerical integration of the integral that describes the expected value. This basic implementation is only valid if the <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a> is of type a). Otherwise it should be overridden.</p>
-<p>For some specific derivations of <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a>s there are more efficient ways to determine the the mean value which is why this member function is virtual and can be overridden (see, e.g., <a class="el" href="structmio_1_1ExponentialDecay.html" title="Class that defines an exponential decay function depending on the state age.">ExponentialDecay</a>). The mean value is only needed for <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a>s that are used as TransitionDistributions.</p>
+<p>For some specific derivations of <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a>s there are more efficient ways to determine the mean value which is why this member function is virtual and can be overridden (see, e.g., <a class="el" href="structmio_1_1ExponentialSurvivalFunction.html" title="Class that defines the survival function corresponding to the exponential distribution depending on t...">ExponentialSurvivalFunction</a>). The mean value is only needed for <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a>s that are used as TransitionDistributions.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>Time step size used for the numerical integration. </td></tr>
@@ -415,18 +496,18 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ScalarType mean value. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="structmio_1_1ConstantFunction.html#a263ebe6d835ef35f4c4e73991c680b4a">mio::ConstantFunction</a>, and <a class="el" href="structmio_1_1ExponentialDecay.html#a0c72ebf9f9e78ad242b588e493cf4c5e">mio::ExponentialDecay</a>.</p>
+<p>Reimplemented in <a class="el" href="structmio_1_1ErlangDensity.html#afed0c5a4311afe912987ced0db1e7f8f">mio::ErlangDensity</a>, <a class="el" href="structmio_1_1ConstantFunction.html#a263ebe6d835ef35f4c4e73991c680b4a">mio::ConstantFunction</a>, <a class="el" href="structmio_1_1GammaSurvivalFunction.html#a3972d2085553bd56f302a67d22537a40">mio::GammaSurvivalFunction</a>, <a class="el" href="structmio_1_1SmootherCosine.html#a4c50ef28be8f17f140fbf20bda074c1b">mio::SmootherCosine</a>, and <a class="el" href="structmio_1_1ExponentialSurvivalFunction.html#a896f481491209366921fa817d3c5ab48">mio::ExponentialSurvivalFunction</a>.</p>
 
 </div>
 </div>
-<a id="a256b32f998a32c8fa5641c517a3be1c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a256b32f998a32c8fa5641c517a3be1c9">&#9670;&nbsp;</a></span>get_parameter()</h2>
+<a id="aed64ca6c598a2c09c223d974a670c0c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed64ca6c598a2c09c223d974a670c0c2">&#9670;&nbsp;</a></span>get_scale()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> mio::StateAgeFunction::get_parameter </td>
+          <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> mio::StateAgeFunction::get_scale </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -434,8 +515,8 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the m_parameter object. </p>
-<p>Can be used to access the m_parameter object, which specifies the used function.</p>
+<p>Get the m_scale object. </p>
+<p>Can be used to access the m_scale object, which is used to scale the function.</p>
 <dl class="section return"><dt>Returns</dt><dd>ScalarType </dd></dl>
 
 </div>
@@ -511,7 +592,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ScalarType support_max </dd></dl>
 
-<p>Reimplemented in <a class="el" href="structmio_1_1ConstantFunction.html#adc86914891a6627be212bd290c513dc0">mio::ConstantFunction</a>, and <a class="el" href="structmio_1_1SmootherCosine.html#af070174a182de21c5727087ec87e782b">mio::SmootherCosine</a>.</p>
+<p>Reimplemented in <a class="el" href="structmio_1_1ErlangDensity.html#a6c50ecd9ecb479028eff85512b5ff644">mio::ErlangDensity</a>, <a class="el" href="structmio_1_1ConstantFunction.html#adc86914891a6627be212bd290c513dc0">mio::ConstantFunction</a>, and <a class="el" href="structmio_1_1SmootherCosine.html#af070174a182de21c5727087ec87e782b">mio::SmootherCosine</a>.</p>
 
 </div>
 </div>
@@ -591,27 +672,81 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a16785c5752b8b585fd951d0cecdd577b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a16785c5752b8b585fd951d0cecdd577b">&#9670;&nbsp;</a></span>set_parameter()</h2>
+<a id="a9c29c96af18d8605776fbae9e0bef693"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c29c96af18d8605776fbae9e0bef693">&#9670;&nbsp;</a></span>set_distribution_parameter()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void mio::StateAgeFunction::set_parameter </td>
+          <td class="memname">void mio::StateAgeFunction::set_distribution_parameter </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td>
-          <td class="paramname"><em>new_parameter</em></td><td>)</td>
+          <td class="paramname"><em>new_distribution_parameter</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set the m_parameter object. </p>
-<p>Can be used to set the m_parameter object, which specifies the used function. The maximum support of a function may be costly to evaluate. In order to not always reevaluate or recompute the support when the user asks for it, a cached value is used. If m_support_max is set to -1, the cached value is deleted and a recomputation is done the next time the user asks for the support. As the support (potentially) depends on the m_parameter object, the cached value has to be deleted. For details see <a class="el" href="structmio_1_1StateAgeFunction.html#acbd1ff5de577fc8bb70b191d4676761e" title="Computes the maximum of the support of the function using the time step size dt and some tolerance to...">get_support_max()</a>.</p>
+<p>Set the m_distribution_parameter object. </p>
+<p>Can be used to set the m_distribution_parameter object, which specifies the used function. The maximum support of a function may be costly to evaluate. In order to not always reevaluate or recompute the support when the user asks for it, a cached value is used. If m_support_max is set to -1, the cached value is deleted and a recomputation is done the next time the user asks for the support. As the support (potentially) depends on the m_distribution_parameter object, the cached value has to be deleted. For details see <a class="el" href="structmio_1_1StateAgeFunction.html#acbd1ff5de577fc8bb70b191d4676761e" title="Computes the maximum of the support of the function using the time step size dt and some tolerance to...">get_support_max()</a>. The same applies to the m_mean object. See <a class="el" href="structmio_1_1StateAgeFunction.html#af82f4d6a76e5ecdc38f385176f7d7140" title="Computes the mean value of the function using the time step size dt and some tolerance tol.">get_mean()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">new_parameter</td><td>New parameter for <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">new_distribution_parameter</td><td>New parameter for <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7dda801d47f25cf5d3dc37293977cf28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dda801d47f25cf5d3dc37293977cf28">&#9670;&nbsp;</a></span>set_location()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mio::StateAgeFunction::set_location </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td>
+          <td class="paramname"><em>new_location</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the m_location object. </p>
+<p>Can be used to set the m_location object, which specifies the shift of the function. The maximum support of a function may be costly to evaluate. In order to not always reevaluate or recompute the support when the user asks for it, a cached value is used. If m_support_max is set to -1, the cached value is deleted and a recomputation is done the next time the user asks for the support. As the support (potentially) depends on the m_location object, the cached value has to be deleted. For details see <a class="el" href="structmio_1_1StateAgeFunction.html#acbd1ff5de577fc8bb70b191d4676761e" title="Computes the maximum of the support of the function using the time step size dt and some tolerance to...">get_support_max()</a>. The same applies to the m_mean object. See <a class="el" href="structmio_1_1StateAgeFunction.html#af82f4d6a76e5ecdc38f385176f7d7140" title="Computes the mean value of the function using the time step size dt and some tolerance tol.">get_mean()</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">new_location</td><td>New location for <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8e046ff8e04b40ec84eccef67d649f28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e046ff8e04b40ec84eccef67d649f28">&#9670;&nbsp;</a></span>set_scale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mio::StateAgeFunction::set_scale </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a>&#160;</td>
+          <td class="paramname"><em>new_scale</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the m_scale object. </p>
+<p>Can be used to access the m_scale object, which is used to scale the function. The maximum support of a function may be costly to evaluate. In order to not always reevaluate or recompute the support when the user asks for it, a cached value is used. If m_support_max is set to -1, the cached value is deleted and a recomputation is done the next time the user asks for the support. As the support (potentially) depends on the m_scale object, the cached value has to be deleted. For details see <a class="el" href="structmio_1_1StateAgeFunction.html#acbd1ff5de577fc8bb70b191d4676761e" title="Computes the maximum of the support of the function using the time step size dt and some tolerance to...">get_support_max()</a>. The same applies to the m_mean object. See <a class="el" href="structmio_1_1StateAgeFunction.html#af82f4d6a76e5ecdc38f385176f7d7140" title="Computes the mean value of the function using the time step size dt and some tolerance tol.">get_mean()</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">new_scale</td><td>New Scale for <a class="el" href="structmio_1_1StateAgeFunction.html" title="A generic function depending on the state age, i.e.">StateAgeFunction</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -619,6 +754,54 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a96e92e3d84be7e07931c3607c2be3011"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96e92e3d84be7e07931c3607c2be3011">&#9670;&nbsp;</a></span>m_distribution_parameter</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> mio::StateAgeFunction::m_distribution_parameter</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parameter for function in derived class. </p>
+
+</div>
+</div>
+<a id="a9e517fc83faafbe5f8858ef429834204"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e517fc83faafbe5f8858ef429834204">&#9670;&nbsp;</a></span>m_location</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> mio::StateAgeFunction::m_location</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Location parameter for function in derived class. </p>
+
+</div>
+</div>
 <a id="a56698106d1b0c274550ef5c0fa18e6f2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a56698106d1b0c274550ef5c0fa18e6f2">&#9670;&nbsp;</a></span>m_mean</h2>
 
@@ -653,7 +836,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> mio::StateAgeFunction::m_mean_tol</td>
+          <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> mio::StateAgeFunction::m_mean_tol {-1}</td>
         </tr>
       </table>
   </td>
@@ -663,12 +846,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Tolerance for computation of the mean. </p>
+<p>Tolerance for computation of the mean (initialize as not set). </p>
 
 </div>
 </div>
-<a id="a469c9cc2424038fd50fb0573f67634d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a469c9cc2424038fd50fb0573f67634d5">&#9670;&nbsp;</a></span>m_parameter</h2>
+<a id="aaa69a54bdb187126a5889f45d2072476"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa69a54bdb187126a5889f45d2072476">&#9670;&nbsp;</a></span>m_scale</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -677,7 +860,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> mio::StateAgeFunction::m_parameter</td>
+          <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> mio::StateAgeFunction::m_scale</td>
         </tr>
       </table>
   </td>
@@ -687,7 +870,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Parameter for function in derived class. </p>
+<p>Scale parameter for function in derived class. </p>
 
 </div>
 </div>
@@ -725,7 +908,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> mio::StateAgeFunction::m_support_tol</td>
+          <td class="memname"><a class="el" href="memilio_2config_8h.html#acd4f1d492d83a74716a42615e127d641">ScalarType</a> mio::StateAgeFunction::m_support_tol {-1}</td>
         </tr>
       </table>
   </td>
@@ -735,7 +918,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Tolerance for computation of the support. </p>
+<p>Tolerance for computation of the support (initialize as not set). </p>
 
 </div>
 </div>
