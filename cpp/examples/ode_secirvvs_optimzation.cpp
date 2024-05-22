@@ -38,7 +38,6 @@
 class Secirvvs_NLP : public Ipopt::TNLP
 {
 public:
-    static constexpr double N              = 327167434; // total US population
     Secirvvs_NLP()                               = default;
     Secirvvs_NLP(const Secirvvs_NLP&)            = delete;
     Secirvvs_NLP(Secirvvs_NLP&&)                 = delete;
@@ -170,7 +169,7 @@ void set_initial_values(mio::osecirvvs::Model<FP>& model)
     auto& contact_matrix = contacts.get_cont_freq_mat();
     contact_matrix[0].get_baseline().setConstant(0.5);
     contact_matrix[0].get_baseline().diagonal().setConstant(5.0);
-    contact_matrix[0].add_damping(0.3, mio::SimulationTime<FP>(5.0));
+    //contact_matrix[0].add_damping(0.3, mio::SimulationTime<FP>(5.0));
 
     //times
     model.parameters.template get<mio::osecirvvs::TimeExposed<FP>>()[mio::AgeGroup(0)]            = 3.33;
@@ -299,11 +298,10 @@ bool Secirvvs_NLP::get_nlp_info(Ipopt::Index& n, Ipopt::Index& m, Ipopt::Index& 
 
     m = m_;
 
-    // in this example the jacobian is dense and contains 8 nonzeros
+    // in this example the jacobian is dense
     nnz_jac_g = m_ * n_;
 
-    // the Hessian is also dense and has 16 total nonzeros, but we
-    // only need the lower left corner (since it is symmetric)
+    // the Hessian is also dense
     nnz_h_lag = n_ * n_;
 
     // use the C style indexing (0-based)
@@ -324,7 +322,7 @@ bool Secirvvs_NLP::get_bounds_info(Ipopt::Index n, Ipopt::Number* x_l, Ipopt::Nu
     // path constraints
     for (int i = 0; i < m_; ++i) {
         g_l[i] = 0.0;
-        g_u[i] = 20.;
+        g_u[i] = 15.;
     }
     return true;
 }
@@ -436,7 +434,39 @@ void Secirvvs_NLP::finalize_solution(Ipopt::SolverReturn status, Ipopt::Index n,
     for (Ipopt::Index i = 0; i < m; ++i) {
         std::cout << g[i] << std::endl;
     }
-    //std::cout << "Writing output to text files" << std::endl;
+    std::cout << "Writing output to text files" << std::endl;
+
+    double t0   = 0;
+    double tmax = this->tmax;
+    double dt   = 0.2;
+
+    mio::osecirvvs::Model<double> model(1);
+    set_initial_values(model);
+
+    std::vector<double> grid(numIntervals_ + 1);
+    for (int i = 0; i < numIntervals_ + 1; ++i) {
+        grid[i] = (tmax / numIntervals_) * i + (t0 / numIntervals_) * (numIntervals_ - i);
+    }
+    std::ofstream outFileContactControl("contactControl.txt");
+
+    int gridindex = 0;
+    for (int controlIndex = 0; controlIndex < numControlIntervals_; ++controlIndex) {
+        model.parameters.template get<mio::osecirvvs::ContactControl<double>>() = x[controlIndex];
+        outFileContactControl << grid[gridindex] << " "
+                              << model.parameters.template get<mio::osecirvvs::ContactControl<double>>() << "\n";
+        for (int i = 0; i < pcresolution_; ++i, ++gridindex) {
+            auto result =
+                mio::simulate<double, mio::osecirvvs::Model<double>>(grid[gridindex], grid[gridindex + 1], dt, model);
+
+            for (int j = 0; j < (int)mio::oseair::InfectionState::Count; ++j) {
+                model.populations[{mio::AgeGroup(0), mio::oseair::InfectionState(j)}] = result.get_last_value()[j];
+            }
+        }
+        outFileContactControl << grid[gridindex] << " "
+                              << model.parameters.template get<mio::osecirvvs::ContactControl<double>>() << "\n";
+    }
+
+    outFileContactControl.close();
 
     return;
 }

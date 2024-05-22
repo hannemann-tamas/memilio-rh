@@ -245,11 +245,10 @@ bool Seair_NLP::get_nlp_info(Ipopt::Index& n, Ipopt::Index& m, Ipopt::Index& nnz
 
     m = m_;
 
-    // in this example the jacobian is dense and contains 8 nonzeros
+    // in this example the jacobian is dense
     nnz_jac_g = m_ * n_;
 
-    // the Hessian is also dense and has 16 total nonzeros, but we
-    // only need the lower left corner (since it is symmetric)
+    // the Hessian is also dense
     nnz_h_lag = n_ * n_;
 
     // use the C style indexing (0-based)
