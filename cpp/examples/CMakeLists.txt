@@ -39,6 +39,9 @@ if(MEMILIO_ENABLE_OPTIMIZATION)
 
     add_executable(ode_secirvvs_optimzation ode_secirvvs_optimzation.cpp)
     target_link_libraries(ode_secirvvs_optimzation PRIVATE memilio ode_seair ode_secirvvs AD::AD Ipopt::Ipopt)
+
+    add_executable(ode_secirvvs_optimzation2 ode_secirvvs_optimzation2.cpp)
+    target_link_libraries(ode_secirvvs_optimzation2 PRIVATE memilio ode_seair ode_secirvvs AD::AD Ipopt::Ipopt)
 endif()
 
 add_executable(ad_square_example ad_square_example.cpp)
