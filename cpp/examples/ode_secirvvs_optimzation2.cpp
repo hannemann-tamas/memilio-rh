@@ -18,7 +18,6 @@
 * limitations under the License.
 */
 
-
 #include "ad/ad.hpp"
 #include "ad/ad_spdlog_formatter.h" // IWYU pragma: keep
 
@@ -106,12 +105,12 @@ public:
 private:
     const int numControlIntervals_ = 20;
     const int numControls_         = 1;
-    const int numPathConstraints_  = 1;
+    const int numPathConstraints_  = 0;
     const int pcresolution_ =
         7; // the resolution of path constraints is by this factor higher than the control discretization
     const int numIntervals_        = pcresolution_ * numControlIntervals_;
     const int n_                   = numControlIntervals_ * numControls_;
-    const int m_                   = numIntervals_ * numPathConstraints_;
+    const int m_                   = 1;
 };
 
 template <typename FP>
@@ -221,10 +220,11 @@ void Secirvvs_NLP::eval_objective_constraints(const std::vector<FP>& x, std::vec
     set_initial_values(model);
     int gridindex = 0;
     objective     = FP(0.0);
+    constraints[0] = FP(0.0);
     for (int controlIndex = 0; controlIndex < numControlIntervals_; ++controlIndex) {
         auto& contactControl = model.parameters.template get<mio::osecirvvs::ContactControl<FP>>();
         contactControl       = x[controlIndex];
-        objective -= x[controlIndex];
+        constraints[0] += x[controlIndex];
 
         for (int i = 0; i < pcresolution_; ++i, ++gridindex) {
 
@@ -234,8 +234,9 @@ void Secirvvs_NLP::eval_objective_constraints(const std::vector<FP>& x, std::vec
                 model.populations[{mio::AgeGroup(0), mio::osecirvvs::InfectionState(j)}] = result.get_last_value()[j];
             }
 
-            constraints[gridindex] =
-                result.get_last_value()[(int)mio::osecirvvs::InfectionState::InfectedNoSymptomsNaive];
+            if (i == pcresolution_ - 1) {
+                objective = result.get_last_value()[(int)mio::osecirvvs::InfectionState::InfectedNoSymptomsNaive];
+            }
         }
     }
 
