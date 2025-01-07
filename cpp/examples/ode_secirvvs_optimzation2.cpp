@@ -34,6 +34,13 @@
 #include "IpIpoptApplication.hpp"
 #include <fstream>
 
+/**************************************************************
+ * 
+ * SECIRVVS optimization, constraints is integral of controls, 
+ * objective is integral of a type of infected persons
+ *
+ *************************************************************/
+
 class Secirvvs_NLP : public Ipopt::TNLP
 {
 public:
@@ -108,9 +115,9 @@ private:
     const int numPathConstraints_  = 0;
     const int pcresolution_ =
         7; // the resolution of path constraints is by this factor higher than the control discretization
-    const int numIntervals_        = pcresolution_ * numControlIntervals_;
-    const int n_                   = numControlIntervals_ * numControls_;
-    const int m_                   = 1;
+    const int numIntervals_ = pcresolution_ * numControlIntervals_;
+    const int n_            = numControlIntervals_ * numControls_;
+    const int m_            = 1;
 };
 
 template <typename FP>
@@ -218,13 +225,13 @@ void Secirvvs_NLP::eval_objective_constraints(const std::vector<FP>& x, std::vec
     auto& params = model.parameters;
 
     set_initial_values(model);
-    int gridindex = 0;
-    objective     = FP(0.0);
+    int gridindex  = 0;
+    objective      = FP(0.0);
     constraints[0] = FP(0.0);
     for (int controlIndex = 0; controlIndex < numControlIntervals_; ++controlIndex) {
         auto& contactControl = model.parameters.template get<mio::osecirvvs::ContactControl<FP>>();
         contactControl       = x[controlIndex];
-        constraints[0] += x[controlIndex];
+        constraints[0] += x[controlIndex] * pcresolution_;
 
         for (int i = 0; i < pcresolution_; ++i, ++gridindex) {
 
@@ -234,12 +241,10 @@ void Secirvvs_NLP::eval_objective_constraints(const std::vector<FP>& x, std::vec
                 model.populations[{mio::AgeGroup(0), mio::osecirvvs::InfectionState(j)}] = result.get_last_value()[j];
             }
 
-            if (i == pcresolution_ - 1) {
-                objective = result.get_last_value()[(int)mio::osecirvvs::InfectionState::InfectedNoSymptomsNaive];
-            }
+            objective += result.get_last_value()[(int)mio::osecirvvs::InfectionState::InfectedNoSymptomsNaive];
         }
     }
-
+    int dummy = 0;
     return;
 }
 
@@ -320,11 +325,10 @@ bool Secirvvs_NLP::get_bounds_info(Ipopt::Index n, Ipopt::Number* x_l, Ipopt::Nu
         x_u[i] = 1.0; // upper bound of ContactControl
     }
 
-    // path constraints
-    for (int i = 0; i < m_; ++i) {
-        g_l[i] = 0.0;
-        g_u[i] = 15.;
-    }
+    // constraint on integral of control
+    g_l[0] = this->tmax * 0.3;
+    g_u[0] = this->tmax * 1.1;
+
     return true;
 }
 
