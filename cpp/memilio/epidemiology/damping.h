@@ -97,7 +97,7 @@ public:
     Damping(const Eigen::MatrixBase<ME>& m, DampingLevel level, DampingType type, SimulationTime<FP> t)
         : Base(m, level, type, t)
     {
-        assert((get_coeffs().array() <= 1.).all() && "damping coefficient out of range");
+        assert((get_coeffs().array() <= FP(1.)).all() && "damping coefficient out of range");
     }
 
     /**
@@ -110,7 +110,7 @@ public:
      * @tparam T Shape constructor arguments.
      */
     template <class... T, class = std::enable_if_t<std::is_constructible<Shape, T...>::value, void>>
-    Damping(double d, DampingLevel level, DampingType type, SimulationTime<FP> t, T... shape_args)
+    Damping(FP d, DampingLevel level, DampingType type, SimulationTime<FP> t, T... shape_args)
         : Damping(Matrix::Constant(Shape(shape_args...).rows(), Shape(shape_args...).cols(), d), level, type, t)
     {
     }
@@ -135,7 +135,7 @@ public:
      * @tparam T Shape constructor arguments.
      */
     template <class... T, class = std::enable_if_t<std::is_constructible<Shape, T...>::value, void>>
-    Damping(double d, SimulationTime<FP> t, T... shape_args)
+    Damping(FP d, SimulationTime<FP> t, T... shape_args)
         : Damping(d, DampingLevel(0), DampingType(0), t, shape_args...)
     {
     }

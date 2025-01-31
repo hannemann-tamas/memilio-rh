@@ -143,7 +143,7 @@ struct TestAndTraceCapacity {
 /**
  * @brief the contact patterns within the society are modelled using an UncertainContactMatrix
  */
-template <typename FP = double>
+template <typename FP>
 struct ContactPatterns {
     using Type = UncertainContactMatrix<FP>;
     static Type get_default(AgeGroup size)

@@ -223,7 +223,23 @@ void Secirvvs_NLP::eval_objective_constraints(const std::vector<FP>& x, std::vec
     objective     = FP(0.0);
     for (int controlIndex = 0; controlIndex < numControlIntervals_; ++controlIndex) {
         auto& contactControl = model.parameters.template get<mio::osecirvvs::ContactControl<FP>>();
-        contactControl       = x[controlIndex];
+
+        // contactControl = x[controlIndex];
+
+        auto& contacts       = model.parameters.template get<mio::osecirvvs::ContactPatterns<FP>>();
+        auto& contact_matrix = contacts.get_cont_freq_mat();
+        //contact_matrix[0].get_baseline().setConstant(0.5);
+        //contact_matrix[0].get_baseline().diagonal().setConstant(5.0);
+        if constexpr (std::is_same_v<FP, double>) {
+            contact_matrix[0].add_damping(FP(FP(1.) - x[controlIndex]),
+                                          mio::SimulationTime<FP>(controlIndex * pcresolution_));
+        }
+        else {
+            mio::SquareMatrixShape<FP> shape(1);
+            contact_matrix[0].add_damping(FP(FP(1.) - x[controlIndex]),
+                                          mio::SimulationTime<FP>(controlIndex * pcresolution_), std::move(shape));
+        }
+
         objective -= x[controlIndex];
 
         for (int i = 0; i < pcresolution_; ++i, ++gridindex) {

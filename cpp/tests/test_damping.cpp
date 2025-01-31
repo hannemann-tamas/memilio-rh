@@ -45,7 +45,7 @@ TEST(TestDampings, dampingsOnDifferentLevels)
 
 TEST(TestDampings, dampingsOnSameLevel)
 {
-    mio::Dampings<double, mio::Damping<double, mio::SquareMatrixShape<>>> dampings(2);
+    mio::Dampings<double, mio::Damping<double, mio::SquareMatrixShape<double>>> dampings(2);
     auto D1 = 0.25;
     auto D2 = (Eigen::MatrixXd(2, 2) << 0.0, 0.25, 0.5, 0.75).finished();
     dampings.add(D1, mio::DampingLevel(-2), mio::DampingType(0), mio::SimulationTime<>(0.5));
